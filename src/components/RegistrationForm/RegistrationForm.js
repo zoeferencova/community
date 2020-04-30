@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-export default class RegistrationForm extends Component {    
-    handleSubmit() {
+class RegistrationForm extends Component {    
+    handleSubmit(e) {
+        e.preventDefault();
         this.props.history.push("/login")
     }
     
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={e => this.handleSubmit(e)}>
                 <div>
                     <label htmlFor="first-name">First name</label>
                     <input required type="text" name="first-name" id="first-name" />
@@ -31,3 +32,5 @@ export default class RegistrationForm extends Component {
         )
     }
 }
+
+export default withRouter(RegistrationForm)
