@@ -11,7 +11,7 @@ export default class UnauthenticatedApp extends Component {
         <main className="App">
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/login" component={() => <LoginPage setLoggedIn={this.props.setLoggedIn} />} />
+            <Route path="/login" component={() => <LoginPage toggleLogin={this.props.toggleLogin} />} />
             <Route path="/register" component={RegistrationPage} />
             <Route component={NotFoundPage} />
           </Switch>

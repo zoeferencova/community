@@ -15,12 +15,9 @@ import MyPostPage from "../../routes/MyPostPage/MyPostPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 
 export default class AuthenticatedApp extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            users: STORE.users,
-            posts: STORE.posts
-        }
+    state = {
+        users: STORE.users,
+        posts: STORE.posts
     }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children
