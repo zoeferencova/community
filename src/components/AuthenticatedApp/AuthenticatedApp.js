@@ -41,7 +41,6 @@ export default class AuthenticatedApp extends Component {
             <Route component={NotFoundPage} />
           </Switch>
       </CommUnityContext.Provider>
-      
     );
   }
 }
