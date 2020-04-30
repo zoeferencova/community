@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UnauthenticatedApp from "../UnauthenticatedApp/UnauthenticatedApp";
 import AuthenticatedApp from "../AuthenticatedApp/AuthenticatedApp";
+import Nav from '../Nav/Nav'
 // import TokenService from "../../services/token-service";
 
 export default class App extends Component {
@@ -18,6 +19,7 @@ export default class App extends Component {
   render() {
     return ( 
         <main className="App">
+          <Nav isLoggedIn={this.isLoggedIn} />
           {this.state.isLoggedIn ? <AuthenticatedApp setLoggedIn={this.setLoggedIn} /> : <UnauthenticatedApp setLoggedIn={this.setLoggedIn} />}
         </main>
     );

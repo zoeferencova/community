@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const CommUnityContext = React.createContext({
     users: [],
-    pms: []
+    posts: []
 })
 
 export default CommUnityContext;
