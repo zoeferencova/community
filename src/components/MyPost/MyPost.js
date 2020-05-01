@@ -7,7 +7,7 @@ export default class MyPost extends Component {
     }
     render() {
         return (   
-            <p className={styles.userPost}>{this.capitalizeFirstLetter(this.props.type)} created {Date.now() - this.props.timestamp} hours ago.</p>
+            <p className={styles.userPost}>{this.capitalizeFirstLetter(this.props.type)} created {Date.now() - this.props.timestamp} hours ago</p>
         )
     }
 }
