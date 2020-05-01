@@ -4,3 +4,8 @@
     margin: 5px;
     font-size: 14px;
 }
+
+.link {
+    color: black;
+    text-decoration: none;
+}

@@ -8,8 +8,7 @@ import AccountPage from "../../routes/AccountPage/AccountPage";
 import MessagePage from "../../routes/MessagePage/MessagePage";
 import LocationPage from "../../routes/LocationPage/LocationPage";
 import PostDetailPage from "../../routes/PostDetailPage/PostDetailPage";
-import NewOfferPage from "../../routes/NewOfferPage/NewOfferPage";
-import NewRequestPage from "../../routes/NewRequestPage/NewRequestPage";
+import NewPostPage from "../../routes/NewPostPage/NewPostPage";
 import MyPostPage from "../../routes/MyPostPage/MyPostPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
@@ -34,8 +33,7 @@ export default class AuthenticatedApp extends Component {
             <Route path="/messages" component={MessagePage} />
             <Route path="/location" component={LocationPage} />
             <Route path="/post/:id" component={PostDetailPage} />
-            <Route path="/new-offer" component={NewOfferPage} />
-            <Route path="/new-request" component={NewRequestPage} />
+            <Route path="/new-post/:type" component={NewPostPage} />
             <Route path="/my-post/:id" component={MyPostPage} />
             <Route component={NotFoundPage} />
           </Switch>

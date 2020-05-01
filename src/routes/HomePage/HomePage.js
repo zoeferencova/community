@@ -25,6 +25,10 @@ export default class HomePage extends Component {
                     <div className={styles.userInfo}>
                         <h2>Welcome, {this.context.currentUser.first_name}!</h2>
                         <div>
+                            <Link className={styles.newPostLink} to="/new-post/offer">Offer Help</Link>
+                            <Link className={styles.newPostLink} to="/new-post/request">Request Help</Link>
+                        </div>
+                        <div>
                             <h3>Your Posts</h3>
                             {this.makeUserPosts()}
                         </div>
