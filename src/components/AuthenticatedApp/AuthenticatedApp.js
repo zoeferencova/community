@@ -13,6 +13,7 @@ import NewOfferPage from "../../routes/NewOfferPage/NewOfferPage";
 import NewRequestPage from "../../routes/NewRequestPage/NewRequestPage";
 import MyPostPage from "../../routes/MyPostPage/MyPostPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
+import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
 
 export default class AuthenticatedApp extends Component {
     state = {
@@ -30,6 +31,7 @@ export default class AuthenticatedApp extends Component {
           <Switch>
             <Route path="/home" component={HomePage} />
             <Route path="/account" component={AccountPage} />
+            <Route path="/change-password" component={ChangePasswordPage} />
             <Route path="/messages" component={MessagePage} />
             <Route path="/location" component={LocationPage} />
             <Route path="/offer/:id" component={OfferPage} />

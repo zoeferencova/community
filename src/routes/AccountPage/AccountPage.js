@@ -8,7 +8,7 @@ export default class AccountPage extends Component {
 
     state = {
         first_name: this.context.currentUser.first_name,
-        email: this.context.currentUser.email
+        email: this.context.currentUser.email,
     }
 
     handleChangeName = e => {
@@ -33,8 +33,8 @@ export default class AccountPage extends Component {
                         <input type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
                     </div>
                     <div>
-                        <a href="#">Change password</a>
-                        <a href="#">Deactivate account</a>
+                        <Link to="/change-password">Change password</Link>
+                        <p>Deactivate account</p>
                     </div>
                     <Link to="/home"><button>Cancel</button></Link>
                     <button type="submit">Save</button>
