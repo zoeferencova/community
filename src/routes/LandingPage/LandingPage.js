@@ -32,3 +32,46 @@ export default class LandingPage extends Component {
         )
     }
 }
+
+// function initGmap() {
+//     let startLat = parseFloat(document.getElementById("lat").value)
+//     let startLng = parseFloat(document.getElementById("lng").value)
+//     let hideMarker = document.getElementById("hideMarker").value === "true"
+//     let radiusInput = document.getElementById("radius")
+//     let radius = parseInt(radiusInput.value)
+//     let startingPoint = {lat: startLat || -33.8688, lng: startLng || 151.2195}
+
+//     let map = new google.maps.Map(document.getElementById('gmap'), {
+//       center: startingPoint,
+//       zoom: 3,
+//       disableDefaultUI: true,
+//     });
+    
+//     let marker = new google.maps.Marker({
+//       map: map,
+//       anchorPoint: new google.maps.Point(0, -29)
+//     });
+
+//     if(startLat && startLng){
+//       if(!hideMarker){
+//         marker.setPosition(startingPoint);
+//       }
+      
+//       if(radius){
+//         const circle = new google.maps.Circle({
+//           map: map,
+//           strokeWeight: 1,
+//           strokeColor: '#48bb78',
+//           radius: radius,    // 10 miles in metres
+//           fillColor: '#abf5aa',
+//           center: startingPoint
+//         });
+
+//         map.fitBounds(circle.getBounds())
+//       } else {
+//         map.setZoom(12);
+//       }
+//     }
+//   }
+
+//   initGmap()

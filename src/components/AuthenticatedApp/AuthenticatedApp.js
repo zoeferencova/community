@@ -17,7 +17,8 @@ import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 export default class AuthenticatedApp extends Component {
     state = {
         users: STORE.users,
-        posts: STORE.posts
+        posts: STORE.posts,
+        currentUser: STORE.users[2],
     }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children

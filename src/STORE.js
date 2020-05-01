@@ -32,9 +32,10 @@ const STORE = {
             post_id: 1,
             user_id: 1,
             type: "offer",
-            help_items: ["Picking up supplies", "Running errands"],
+            help_items: ["Running errands"],
             description: "Available to help in Queens",
             urgency: null,
+            timestamp: Date.now(),
             // joined from users table
             first_name: "Zoe",
             location: "Woodside",
@@ -44,9 +45,10 @@ const STORE = {
             post_id: 2,
             user_id: 2,
             type: "request",
-            help_items: ["Running errands"],
+            help_items: ["Running errands", "Picking up supplies"],
             description: "Need help picking up prescription",
             urgency: "medium",
+            timestamp: Date.now(),
             // joined from users table
             first_name: "James",
             location: "Flushing",
@@ -59,6 +61,7 @@ const STORE = {
             help_items: ["Friendly chat"],
             description: null,
             urgency: "low",
+            timestamp: Date.now(),
             // joined from users table
             first_name: "Robin",
             location: "Bushwick",

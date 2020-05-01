@@ -9,7 +9,7 @@ import "./App.css"
 export default class App extends Component {
   state = {
       // isLoggedIn: TokenService.hasAuthToken() ? true : false,
-      isLoggedIn: false
+      isLoggedIn: true
   }
 
   //Passed as a prop to AuthenticatedApp and UnauthenticatedApp

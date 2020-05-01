@@ -1,0 +1,45 @@
+.post {
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    padding: 20px;
+    text-align: left;
+    margin: 15px 0px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    padding: 10px;
+    margin-top: 15px;
+    width: 50%;
+    align-self: center;
+}
+
+.helpItems {
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.helpItems li {
+    border: 1px solid gray;
+    padding: 4px 7px;
+    margin-right: 8px;
+    font-size: 13px;
+}
+
+.post h4 {
+    margin-top: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    .post {
+        width: 500px;
+    }
+}
