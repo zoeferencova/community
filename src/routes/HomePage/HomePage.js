@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import MyPost from "../../components/MyPost/MyPost";
 import Post from "../../components/Post/Post";
+import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import CommUnityContext from "../../contexts/context";
 import styles from "./HomePage.module.css";
 
@@ -34,9 +35,7 @@ export default class HomePage extends Component {
                         </div>
                     </div>
                     <div className={styles.mapSection}>
-                        <div className={styles.map}>
-                            <p>Placeholder for Google map showing current location</p>
-                        </div>
+                        <GoogleMap className={styles.map} />
                         <span>Results are being shown for this area. <Link to="/location">Change location?</Link></span>
                     </div>
                 </header>
