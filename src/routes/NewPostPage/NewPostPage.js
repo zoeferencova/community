@@ -12,20 +12,20 @@ export default class NewPostPage extends Component {
                     <div>
                         <label className={styles.label} htmlFor="help-categories">{type === "offer" ? "What can you help with?": "What do you need help with?"}</label>
                         <select className={styles.select} id="help-categories" multiple>
-                            <option value="supplies">Picking up supplies</option>
-                            <option value="errands">Running errands</option>
-                            <option value="phone">Phone call</option>
-                            <option value="chat">Online chat</option>
-                            <option value="dog">Walking a dog</option>
-                            <option value="other">Other</option>
+                            <option value="Picking up supplies">Picking up supplies</option>
+                            <option value="Running errands">Running errands</option>
+                            <option value="Phone call">Phone call</option>
+                            <option value="Online chat">Online chat</option>
+                            <option value="Walking a dog">Walking a dog</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     {type === "request" && <div>
-                        <label className={styles.label} for="priority">Priority</label>
+                        <label className={styles.label} htmlFor="priority">Urgency</label>
                         <select className={styles.select} id="priority">
-                            <option value="supplies">Low</option>
-                            <option value="errands">Medium</option>
-                            <option value="phone">Urgent</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Urgent">Urgent</option>
                         </select>
                     </div>}
                     <div>

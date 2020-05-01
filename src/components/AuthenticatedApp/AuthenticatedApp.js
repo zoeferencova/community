@@ -10,6 +10,7 @@ import LocationPage from "../../routes/LocationPage/LocationPage";
 import PostDetailPage from "../../routes/PostDetailPage/PostDetailPage";
 import NewPostPage from "../../routes/NewPostPage/NewPostPage";
 import MyPostPage from "../../routes/MyPostPage/MyPostPage";
+import EditPostPage from "../../routes/EditPostPage/EditPostPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
 
@@ -35,6 +36,7 @@ export default class AuthenticatedApp extends Component {
             <Route path="/post/:id" component={PostDetailPage} />
             <Route path="/new-post/:type" component={NewPostPage} />
             <Route path="/my-post/:id" component={MyPostPage} />
+            <Route path="/edit-post/:id" component={EditPostPage} />
             <Route component={NotFoundPage} />
           </Switch>
       </CommUnityContext.Provider>

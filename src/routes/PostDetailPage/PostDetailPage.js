@@ -23,6 +23,7 @@ class PostDetailPage extends Component {
                 <ul className={styles.tasks}>
                     {post.help_items.map(task => <Task task={task} />)}
                 </ul>
+                {post.type === "request" && <p>Urgency: {post.urgency}</p>}
                 <div className={styles.map}>
                     <p>Placeholder for Google map showing user's location radius</p>
                 </div>

@@ -10,6 +10,7 @@ export default class Post extends Component {
                 <div className={styles.details}>
                     <div>
                         <h4>{this.props.first_name} {this.props.type === "offer" ? "offered to help" : "requested help"}</h4>
+                        {this.props.type === "request" && <span className={styles.urgency}>{this.props.urgency} urgency</span>}
                         <ul className={styles.helpItems}>
                             {this.props.help_items.map(task => <Task task={task} />)}
                         </ul>

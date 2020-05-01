@@ -34,7 +34,7 @@ const STORE = {
             type: "offer",
             help_items: ["Running errands"],
             description: "Available to help in Queens",
-            urgency: null,
+            urgency: "Low",
             timestamp: Date.now(),
             // joined from users table
             first_name: "Zoe",
@@ -47,7 +47,7 @@ const STORE = {
             type: "request",
             help_items: ["Running errands", "Picking up supplies"],
             description: "Need help picking up prescription",
-            urgency: "medium",
+            urgency: "Medium",
             timestamp: Date.now(),
             // joined from users table
             first_name: "James",
@@ -58,9 +58,9 @@ const STORE = {
             post_id: 3,
             user_id: 3,
             type: "request",
-            help_items: ["Friendly chat"],
+            help_items: ["Online chat", "Phone call"],
             description: null,
-            urgency: "low",
+            urgency: "Low",
             timestamp: Date.now(),
             // joined from users table
             first_name: "Robin",

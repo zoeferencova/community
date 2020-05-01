@@ -28,6 +28,12 @@
 
 .post h4 {
     margin-top: 0;
+    display: inline-block;
+}
+
+.urgency {
+    font-size: 12px;
+    margin-left: 10px;
 }
 
 @media only screen and (min-width: 600px) {
