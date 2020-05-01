@@ -1,0 +1,41 @@
+.main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.tasks {
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding-left: 0px;
+}
+
+.map {
+    height: 250px;
+    width: 100%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin: 15px 0px;
+}
+
+.textarea {
+    height: 100px;
+    width: 100%;
+    margin: 15px 0px;
+}
+
+@media only screen and (min-width: 600px) {
+    .map {
+        width: 400px;
+    }
+
+    .textarea {
+        width: 400px;
+    }
+}

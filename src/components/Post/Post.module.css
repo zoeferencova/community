@@ -13,24 +13,17 @@
     justify-content: space-between;
 }
 
-.button {
+.button, .buttonLink {
     padding: 10px;
     margin-top: 15px;
-    width: 50%;
     align-self: center;
+    width: 200px;
 }
 
 .helpItems {
     display: flex;
     list-style: none;
     padding-left: 0px;
-}
-
-.helpItems li {
-    border: 1px solid black;
-    padding: 4px 7px;
-    margin-right: 8px;
-    font-size: 13px;
 }
 
 .post h4 {

@@ -1,0 +1,24 @@
+.main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.map {
+    height: 250px;
+    width: 90%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+    .map {
+        width: 400px;
+    }
+}

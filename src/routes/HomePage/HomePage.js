@@ -10,12 +10,12 @@ export default class HomePage extends Component {
 
     makeUserPosts() {
         const userPosts = this.context.posts.filter(post => post.user_id === this.context.currentUser.user_id);
-        return userPosts.map(post => <MyPost type={post.type} timestamp={post.timestamp} />)
+        return userPosts.map(post => <MyPost post_id={post.post_id} type={post.type} timestamp={post.timestamp} />)
     }
 
     makeAllPosts() {
         const notUserPosts = this.context.posts.filter(post => post.user_id !== this.context.currentUser.user_id);
-        return notUserPosts.map(post => <Post type={post.type} first_name={post.first_name} help_items={post.help_items} description={post.description} urgency={post.urgency} timestamp={post.timestamp} location={post.location} />)
+        return notUserPosts.map(post => <Post post_id={post.post_id} type={post.type} first_name={post.first_name} help_items={post.help_items} description={post.description} urgency={post.urgency} timestamp={post.timestamp} location={post.location} />)
     }
     
     render() {

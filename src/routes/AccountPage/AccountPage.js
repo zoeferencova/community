@@ -32,12 +32,14 @@ export default class AccountPage extends Component {
                         <label htmlFor="email">Email</label>
                         <input type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
                     </div>
-                    <div>
-                        <Link to="/change-password">Change password</Link>
-                        <p>Deactivate account</p>
-                    </div>
                     <Link to="/home"><button>Cancel</button></Link>
                     <button type="submit">Save</button>
+                    <div className={styles.links}>
+                        <Link to="/change-password">Change password</Link>
+                        <Link to="/location">Change location</Link>
+                        <p>Deactivate account</p>
+                    </div>
+                    
                 </form>
             </main>
         )
