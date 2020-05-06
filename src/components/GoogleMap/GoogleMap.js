@@ -1,16 +1,16 @@
 import React, { useRef, useEffect } from "react";
 
-const mapStyles = {
-    height: "300px",
-    width: "400px",
-};
-
 export default function GoogleMaps(props) {
     const googleMapRef = React.createRef();
     const googleMap = useRef(null);
     const marker = useRef(null);
     const circle = useRef(null);
     const radius = parseFloat(props.radius)*1609.344 || 1609.344;
+
+    const mapStyles = {
+        height: "100%",
+        width: "100%",
+    };
 
     const createGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {

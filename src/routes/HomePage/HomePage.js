@@ -36,7 +36,7 @@ export default class HomePage extends Component {
                     </div>
                     <div className={styles.mapSection}>
                         <GoogleMap className={styles.map} radius={this.context.currentUser.radius} location={this.context.currentUser.location} displayMarker={true} />
-                        <span>Results are being shown for this area. <Link to="/location">Change location?</Link></span>
+                        <p>Results are being shown for this area. <Link to="/location">Change location?</Link></p>
                     </div>
                 </header>
                 <section className={styles.feed}>
