@@ -1,123 +1,87 @@
-import React from 'react';
-import PlacesAutocomplete, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-places-autocomplete';
+import React, { useRef } from "react";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import useOnclickOutside from "react-cool-onclickoutside";
 
-export default class MapSearch extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { address: '' };
-  }
- 
-  handleChange = address => {
-    this.setState({ address });
+import styles from "./MapSearch.module.css";
+
+const MapSearch = (props) => {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestions
+  } = usePlacesAutocomplete({
+    requestOptions: {},
+    debounce: 300
+  });
+
+  const ref = useRef();
+  useOnclickOutside(ref, () => {
+    // When user clicks outside of the component, we can dismiss
+    // the searched suggestions by calling this method
+    clearSuggestions();
+  });
+
+  const handleInput = e => {
+    // Update the keyword of the input element
+    setValue(e.target.value);
   };
- 
-  handleSelect = address => {
-    geocodeByAddress(address)
+
+  const handleSelect = ({ description }) => () => {
+    // When user selects a place, we can replace the keyword without request data from API
+    // by setting the second parameter as "false"
+    setValue(description, false);
+    clearSuggestions();
+
+    // Get latitude and longitude via utility functions
+    getGeocode({ address: description })
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
+      .then(({ lat, lng }) => {
+        props.handleLocationChange({ lat, lng });
+      }).catch(error => {
+        console.log('Error: ', error)
+      });
   };
 
-  useEffect() {
-      const googleMapScript = document.createElement('script');
-      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMAPS_API_KEY}&libraries=places`
-      window.document.body.appendChild(googleMapScript);
-  }
- 
-  render() {
-    return (
-      <PlacesAutocomplete
-        value={this.state.address}
-        onChange={this.handleChange}
-        onSelect={this.handleSelect}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <input
-              {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
-              })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
-    );
-  }
-}
+  const renderSuggestions = () =>
+    data.map(suggestion => {
+      const {
+        id,
+        structured_formatting: { main_text, secondary_text }
+      } = suggestion;
 
-// import React, { Component } from "react";
-// import Script from "react-load-script";
+      return (
+        <li
+          key={id}
+          onClick={handleSelect(suggestion)}
+          className={styles.suggestion}
+        >
+          <i className="fas fa-map-marker-alt"></i><strong>{main_text}</strong> <small>{secondary_text}</small>
+        </li>
+      );
+    });
 
-// import styles from "./MapSearch.module.css"
+  return (
+    <div ref={ref}>
+      <input
+        className={styles.input}
+        value={value}
+        onChange={handleInput}
+        disabled={!ready}
+        placeholder="Enter an address"
+      />
+      {/* We can use the "status" to decide whether we should display the dropdown or not */}
+      {status === 'OK' && <ul className={styles.suggestionList}>
+        {renderSuggestions()}
+          <img
+            src="https://developers.google.com/maps/documentation/images/powered_by_google_on_white.png"
+            alt="Powered by Google"
+            className={styles.googleImage}
+          />
+      </ul>}
+    </div>
+  );
+};
 
-// export default class MapSearch extends Component {
-//     state = {
-//         query: "",
-//         location: {
-//             lat: null,
-//             lng: null
-//         }
-//     };
-
-//     handleScriptLoad = () => {
-//         this.autocomplete = new window.google.maps.places.Autocomplete(
-//             document.getElementById("autocomplete"),
-//         );
-
-//         this.autocomplete.setFields(["address_components", "formatted_address"]);
-
-//         this.autocomplete.addListener("place_changed", this.handlePlaceSelect);
-//     }
-  
-//     handlePlaceSelect = () => {
-//         const addressObject = this.autocomplete.getPlace().geometry.location;
-
-//         if (address) {
-//             this.setState({ query: addressObject.formatted_address });
-//         }
-
-
-//     }
-
-//     geocode() {
-
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 <Script
-//                     url="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPEhrQmxY5UVQtIQdnTN4sJWWuhejKVas&libraries=places"
-//                     onLoad={this.handleScriptLoad}
-//                 />
-//                 <input id="autocomplete" defaultValue={this.state.query} className={styles.input} />
-//             </div>
-//         );
-//     }
-// }
+export default MapSearch;

@@ -13,8 +13,8 @@ export default class LocationPage extends Component {
         radius: this.context.currentUser.radius
     }
 
-    handleLocationChange = e => {
-        this.setState({ location: e.target.value });
+    handleLocationChange = location => {
+        this.setState({ location });
     }
 
     handleRadiusChange = e => {
@@ -26,12 +26,12 @@ export default class LocationPage extends Component {
             <main className={styles.main}>
                 <h3>Location Settings</h3>
                 <div className={styles.map}>
-                    <GoogleMap radius={this.state.radius} location={this.state.location} />
+                    <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
                 </div>
                 <form className={styles.form}>
                     <div>
                         <label htmlFor="location">Location</label>
-                        <MapSearch />
+                        <MapSearch handleLocationChange={this.handleLocationChange} currentLocation={this.state.location} />
                     </div>
                     <div>
                         <label htmlFor="radius">Radius</label>

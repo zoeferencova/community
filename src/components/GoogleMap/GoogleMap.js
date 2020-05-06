@@ -12,21 +12,25 @@ export default function GoogleMaps(props) {
     const circle = useRef(null);
     const radius = parseFloat(props.radius)*1609.344 || 1609.344;
 
-    const createGoogleMap = () =>
-        new window.google.maps.Map(googleMapRef.current, {
+    const createGoogleMap = () => {
+        return new window.google.maps.Map(googleMapRef.current, {
             zoom: 14,
             center: props.location,
             disableDefaultUI: true,
         });
+    }
+        
 
-    const createMarker = () =>
+    const createMarker = () => {
+        props.displayMarker &&
         new window.google.maps.Marker({
             position: {lat: props.location.lat, lng: props.location.lng},
             map: googleMap.current
         });
-
-    const createCircle = () => 
-        new window.google.maps.Circle({
+    }
+        
+    const createCircle = () => {
+        return new window.google.maps.Circle({
             strokeColor: '#4d9e9a',
             strokeOpacity: 0.8,
             strokeWeight: 1,
@@ -36,18 +40,14 @@ export default function GoogleMaps(props) {
             center: props.location,
             radius: radius
         });
+    }
+        
 
     useEffect(() => {
-        const googleMapScript = document.createElement("script");
-        googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMAPS_API_KEY}&libraries=places`
-        window.document.body.appendChild(googleMapScript);
-
-        googleMapScript.addEventListener("load", () => {
-            googleMap.current = createGoogleMap();
-            marker.current = createMarker();
-            circle.current = createCircle();
-            googleMap.current.fitBounds(circle.current.getBounds())
-        })
+        googleMap.current = createGoogleMap();
+        marker.current = createMarker();
+        circle.current = createCircle();
+        googleMap.current.fitBounds(circle.current.getBounds())
     });
 
     return (

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
+import GoogleMap from "../../components/GoogleMap/GoogleMap";
 
 import styles from "./PostDetailPage.module.css";
 
@@ -21,11 +22,11 @@ class PostDetailPage extends Component {
                 <h3>Respond to {post.first_name}'s' {post.type}.</h3>
                 <h4>{post.first_name} needs help with:</h4>
                 <ul className={styles.tasks}>
-                    {post.help_items.map(task => <Task task={task} />)}
+                    {post.help_items.map(task => <Task key={task} task={task} />)}
                 </ul>
                 {post.type === "request" && <p>Urgency: {post.urgency}</p>}
                 <div className={styles.map}>
-                    <p>Placeholder for Google map showing user's location radius</p>
+                    <GoogleMap location={post.location} radius={post.radius} displayMarker={false} />
                 </div>
                 <label htmlFor="message">Write a message</label>
                 <textarea className={styles.textarea} placeholder="Hi James..."></textarea>

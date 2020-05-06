@@ -1,3 +1,39 @@
+.suggestion {
+    list-style: none;
+    padding: 12px 15px 12px 15px;
+    font-size: 13px;
+    width: 273px;
+    text-align: left;
+    font-family: 'Arial'
+}
+
+.suggestion i {
+    color: darkgray;
+    margin-right: 7px;
+}
+
+.suggestion:hover {
+    cursor: pointer;
+    background-color: #f5f5f5;
+    transition: 0.1s;
+}
+
+.suggestionList {
+    margin-top: -1px;
+    padding: 0px;
+    position: absolute;
+    border: 1px solid lightgray;
+    background-color: white;
+}
+
 .input {
-    width: 400px;
+    width: 300px;
+    height: 25px;
+}
+
+.googleImage {
+    margin: 5px 10px 10px 10px;
+    width: 120px;
+    float: right;
+
 }
