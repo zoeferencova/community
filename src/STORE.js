@@ -10,7 +10,8 @@ const STORE = {
                 lat: 40.7450271,
                 lng: -73.8858674
             },
-            radius: 2
+            radius: 2,
+            neighborhood: "Woodside"
         },
         {
             user_id: 2,
@@ -21,7 +22,8 @@ const STORE = {
                 lat: 40.7450271,
                 lng: -73.8858674
             },
-            radius: 3
+            radius: 3,
+            neighborhood: "Woodside"
         },
         {
             user_id: 3,
@@ -32,7 +34,8 @@ const STORE = {
                 lat: 40.7450271,
                 lng: -73.8858674
             },
-            radius: 1
+            radius: 1,
+            neighborhood: "Woodside"
         }
     ],
     posts: [
@@ -47,10 +50,11 @@ const STORE = {
             // joined from users table
             first_name: "Zoe",
             location: {
-                lat: 40.7450271,
-                lng: -73.8858674
+                lat: 40.693451,
+                lng: -73.917007
             },
-            radius: 2
+            radius: 2,
+            neighborhood: "Bushwick"
         },
         {
             post_id: 2,
@@ -66,7 +70,8 @@ const STORE = {
                 lat: 40.7450271,
                 lng: -73.8858674
             },
-            radius: 3
+            radius: 3,
+            neighborhood: "Woodside"
         },
         {
             post_id: 3,
@@ -82,7 +87,8 @@ const STORE = {
                 lat: 40.7450271,
                 lng: -73.8858674
             },
-            radius: 1
+            radius: 1,
+            neighborhood: "Woodside"
         }
     ]
 } 

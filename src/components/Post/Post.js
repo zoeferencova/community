@@ -16,7 +16,7 @@ export default class Post extends Component {
                         </ul>
                         <p>{this.props.description}</p>
                     </div>
-                    <span></span>
+                    <span>{this.props.neighborhood}</span>
                 </div>
                 <Link className={styles.buttonLink} to={`/post/${this.props.post_id}`}><button className={styles.button}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button></Link>
             </div>        
