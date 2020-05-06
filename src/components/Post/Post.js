@@ -12,11 +12,11 @@ export default class Post extends Component {
                         <h4>{this.props.first_name} {this.props.type === "offer" ? "offered to help" : "requested help"}</h4>
                         {this.props.type === "request" && <span className={styles.urgency}>{this.props.urgency} urgency</span>}
                         <ul className={styles.helpItems}>
-                            {this.props.help_items.map(task => <Task task={task} />)}
+                            {this.props.help_items.map(task => <Task key={task} task={task} />)}
                         </ul>
                         <p>{this.props.description}</p>
                     </div>
-                    <span>{this.props.location}</span>
+                    <span></span>
                 </div>
                 <Link className={styles.buttonLink} to={`/post/${this.props.post_id}`}><button className={styles.button}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button></Link>
             </div>        

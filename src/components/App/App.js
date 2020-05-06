@@ -19,6 +19,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_GMAPS_API_KEY)
     return ( 
         <main className="App">
           <Nav isLoggedIn={this.state.isLoggedIn} />

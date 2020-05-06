@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import styles from "./LocationPage.module.css";
+import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import MapSearch from "../../components/MapSearch/MapSearch"
 
 export default class LocationPage extends Component {
     static contextType = CommUnityContext;
@@ -24,16 +26,16 @@ export default class LocationPage extends Component {
             <main className={styles.main}>
                 <h3>Location Settings</h3>
                 <div className={styles.map}>
-                    <p>Placeholder for Google map showing current location</p>
+                    <GoogleMap radius={this.state.radius} location={this.state.location} />
                 </div>
                 <form className={styles.form}>
                     <div>
                         <label htmlFor="location">Location</label>
-                        <input type="text" name="location" id="location" value={this.state.location} onChange={this.handleLocationChange} />
+                        <MapSearch />
                     </div>
                     <div>
                         <label htmlFor="radius">Radius</label>
-                        <input type="number" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
+                        <input type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
                         <span>miles</span>
                     </div>
                     <Link to="/home"><button>Cancel</button></Link>

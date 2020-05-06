@@ -6,8 +6,10 @@ const STORE = {
             email: "zoeferencova@gmail.com",
             password: "Password1!",
             // does this need to be coordinates?
-            location: "Woodside",
-            // miles?
+            location: {
+                lat: 40.7450271,
+                lng: -73.8858674
+            },
             radius: 2
         },
         {
@@ -15,7 +17,10 @@ const STORE = {
             first_name: "James",
             email: "james@gmail.com",
             password: "Password2!",
-            location: "Flushing",
+            location: {
+                lat: 40.7450271,
+                lng: -73.8858674
+            },
             radius: 3
         },
         {
@@ -23,8 +28,11 @@ const STORE = {
             first_name: "Robin",
             email: "robin@gmail.com",
             password: "Password3!",
-            location: "Bushwick",
-            radius: 5
+            location: {
+                lat: 40.7450271,
+                lng: -73.8858674
+            },
+            radius: 1
         }
     ],
     posts: [
@@ -38,7 +46,10 @@ const STORE = {
             timestamp: Date.now(),
             // joined from users table
             first_name: "Zoe",
-            location: "Woodside",
+            location: {
+                lat: 40.7450271,
+                lng: -73.8858674
+            },
             radius: 2
         },
         {
@@ -51,7 +62,10 @@ const STORE = {
             timestamp: Date.now(),
             // joined from users table
             first_name: "James",
-            location: "Flushing",
+            location: {
+                lat: 40.7450271,
+                lng: -73.8858674
+            },
             radius: 3
         },
         {
@@ -64,8 +78,11 @@ const STORE = {
             timestamp: Date.now(),
             // joined from users table
             first_name: "Robin",
-            location: "Bushwick",
-            radius: 5
+            location: {
+                lat: 40.7450271,
+                lng: -73.8858674
+            },
+            radius: 1
         }
     ]
 } 

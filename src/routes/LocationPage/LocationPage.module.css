@@ -7,13 +7,8 @@
 }
 
 .map {
-    height: 250px;
+    height: 300px;
     width: 90%;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
     margin-bottom: 15px;
 }
 
