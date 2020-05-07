@@ -19,7 +19,7 @@ class PostDetailPage extends Component {
         const post = this.findPost();
         return (   
             <main className={styles.main}>
-                <h3>Respond to {post.first_name}'s' {post.type}.</h3>
+                <h3>Respond to {post.first_name}'s {post.type}.</h3>
                 <h4>{post.first_name} needs help with:</h4>
                 <ul className={styles.tasks}>
                     {post.help_items.map(task => <Task key={task} task={task} />)}
@@ -29,7 +29,7 @@ class PostDetailPage extends Component {
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={false} />
                 </div>
                 <label htmlFor="message">Write a message</label>
-                <textarea className={styles.textarea} placeholder="Hi James..."></textarea>
+                <textarea className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></textarea>
                 <div>
                     <Link to="/home"><button>Cancel</button></Link>
                     <button type="submit">Send Message</button>

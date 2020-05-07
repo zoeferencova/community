@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 class LoginForm extends Component {
     logIn() {
         this.props.toggleLogin();
-        this.props.history.push("/home");
+        this.props.history.push("/location");
     }
     
     render() {

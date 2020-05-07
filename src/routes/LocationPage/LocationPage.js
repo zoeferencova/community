@@ -20,6 +20,10 @@ export default class LocationPage extends Component {
     handleRadiusChange = e => {
         this.setState({ radius: e.target.value });
     }
+
+    handleSubmit = () => {
+        this.props.history.push("/home")
+    }
     
     render() {
         return (   
@@ -28,7 +32,7 @@ export default class LocationPage extends Component {
                 <div className={styles.map}>
                     <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
                 </div>
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="location">Location</label>
                         <MapSearch handleLocationChange={this.handleLocationChange} currentLocation={this.state.location} />
