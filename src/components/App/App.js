@@ -18,10 +18,10 @@ export default class App extends Component {
     this.state.isLoggedIn ? this.setState({ isLoggedIn: false }) : this.setState({ isLoggedIn: true });
   }
 
-  useEffect() {
-      const googleMapScript = document.createElement("script");
-      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMAPS_API_KEY}&libraries=places`
-      window.document.body.appendChild(googleMapScript);
+  componentDidMount() {
+    const googleMapScript = document.createElement("script");
+    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMAP_API_KEY}&libraries=places`
+    window.document.body.appendChild(googleMapScript);
   }
 
   render() {

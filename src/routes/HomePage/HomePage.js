@@ -16,7 +16,7 @@ export default class HomePage extends Component {
 
     makeAllPosts() {
         const notUserPosts = this.context.posts.filter(post => post.user_id !== this.context.currentUser.user_id);
-        return notUserPosts.map(post => <Post key={post.post_id} post_id={post.post_id} type={post.type} first_name={post.first_name} help_items={post.help_items} description={post.description} urgency={post.urgency} timestamp={post.timestamp} location={post.location} neighborhood={post.neighborhood} />)
+        return notUserPosts.map(post => <Post key={post.post_id} post_id={post.post_id} type={post.type} first_name={post.first_name} help_items={post.help_items} description={post.description} urgency={post.urgency} timestamp={post.timestamp} location={post.location} neighborhood={post.neighborhood} distanceFromUser={post.distanceFromUser} />)
     }
     
     render() {

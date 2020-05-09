@@ -16,7 +16,7 @@ export default class NewPostPage extends Component {
                             <option value="Running errands">Running errands</option>
                             <option value="Phone call">Phone call</option>
                             <option value="Online chat">Online chat</option>
-                            <option value="Walking a dog">Walking a dog</option>
+                            <option value="Dog walking">Dog walking</option>
                             <option value="Other">Other</option>
                         </select>
                     </div>

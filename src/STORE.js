@@ -23,7 +23,7 @@ const STORE = {
                 lng: -73.8858674
             },
             radius: 3,
-            neighborhood: "Woodside"
+            neighborhood: "Woodside",
         },
         {
             user_id: 3,
@@ -35,7 +35,7 @@ const STORE = {
                 lng: -73.8858674
             },
             radius: 1,
-            neighborhood: "Woodside"
+            neighborhood: "Woodside",
         }
     ],
     posts: [
@@ -54,7 +54,8 @@ const STORE = {
                 lng: -73.917007
             },
             radius: 2,
-            neighborhood: "Bushwick"
+            neighborhood: "Woodside",
+            distanceFromUser: 0.1
         },
         {
             post_id: 2,
@@ -71,7 +72,8 @@ const STORE = {
                 lng: -73.8858674
             },
             radius: 3,
-            neighborhood: "Woodside"
+            neighborhood: "Woodside",
+            distanceFromUser: 0.5
         },
         {
             post_id: 3,
@@ -88,7 +90,8 @@ const STORE = {
                 lng: -73.8858674
             },
             radius: 1,
-            neighborhood: "Woodside"
+            neighborhood: "Woodside",
+            distanceFromUser: 0
         }
     ]
 } 
