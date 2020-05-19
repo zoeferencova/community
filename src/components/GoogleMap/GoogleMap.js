@@ -1,11 +1,15 @@
 import React, { useRef, useEffect } from "react";
 
 export default function GoogleMaps(props) {
+    console.log(props)
     const googleMapRef = React.createRef();
     const googleMap = useRef(null);
     const marker = useRef(null);
     const circle = useRef(null);
-    const radius = parseFloat(props.radius)*1609.344 || 1609.344;
+    const defaultRadius = 1609.344;
+    const defaultLocation = { lat: 40.7450271, lng: -73.8858674 }
+    const radius = parseFloat(props.radius)*1609.344 || defaultRadius;
+    const location = props.location || defaultLocation;
 
     const mapStyles = {
         height: "100%",
@@ -15,7 +19,7 @@ export default function GoogleMaps(props) {
     const createGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
             zoom: 14,
-            center: props.location,
+            center: location,
             disableDefaultUI: true,
         });
     }
@@ -24,7 +28,7 @@ export default function GoogleMaps(props) {
     const createMarker = () => {
         props.displayMarker &&
         new window.google.maps.Marker({
-            position: {lat: props.location.lat, lng: props.location.lng},
+            position: location,
             map: googleMap.current
         });
     }
@@ -37,7 +41,7 @@ export default function GoogleMaps(props) {
             fillColor: '#84c4c1',
             fillOpacity: 0.35,
             map: googleMap.current,
-            center: props.location,
+            center: location,
             radius: radius
         });
     }

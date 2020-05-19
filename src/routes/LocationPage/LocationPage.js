@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
+import UserDataService from "../../services/user-data-service";
 import styles from "./LocationPage.module.css";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import MapSearch from "../../components/MapSearch/MapSearch"
@@ -9,8 +10,8 @@ export default class LocationPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        location: this.context.currentUser.location,
-        radius: this.context.currentUser.radius
+        location: this.context.user.location,
+        radius: this.context.user.radius || 1
     }
 
     handleLocationChange = location => {
@@ -21,8 +22,15 @@ export default class LocationPage extends Component {
         this.setState({ radius: e.target.value });
     }
 
-    handleSubmit = () => {
-        this.props.history.push("/home")
+    handleSubmit = e => {
+        e.preventDefault();
+        const pointLocation = UserDataService.locationToPoint(this.state.location);
+        const meterRadius = UserDataService.milesToMeters(this.state.radius);
+        UserDataService.patchUser({ location: pointLocation, radius: meterRadius}, this.context.user.id)
+            .then(res => {
+                this.context.updateUser({ location: this.state.location, radius: meterRadius })
+                this.props.history.push("/home")
+            })
     }
     
     render() {
@@ -32,14 +40,14 @@ export default class LocationPage extends Component {
                 <div className={styles.map}>
                     <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
                 </div>
-                <form className={styles.form} onSubmit={this.handleSubmit}>
+                <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <label htmlFor="location">Location</label>
                         <MapSearch handleLocationChange={this.handleLocationChange} currentLocation={this.state.location} />
                     </div>
                     <div>
                         <label htmlFor="radius">Radius</label>
-                        <input type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
+                        <input required type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
                         <span>miles</span>
                     </div>
                     <Link to="/home"><button>Cancel</button></Link>

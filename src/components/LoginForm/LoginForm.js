@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-service";
+import UserDataService from "../../services/user-data-service";
 
 // import styles from "./LoginForm.module.css";
 
@@ -16,10 +17,10 @@ class LoginForm extends Component {
             email: email.value,
             password: password.value,
         })
-            .then(res => {
+            .then(user => {
                 email.value = "";
                 password.value = "";
-                this.props.history.push("/home")
+                !user.location ? this.props.history.push("/location") : this.props.history.push("/home");
             })
             .then(res => this.props.setLoggedIn(true))
             .catch(res => {

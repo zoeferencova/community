@@ -9,8 +9,8 @@ class AccountPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        first_name: this.context.currentUser.first_name,
-        email: this.context.currentUser.email,
+        first_name: this.context.user.first_name,
+        email: this.context.user.email,
     }
 
     handleChangeName = e => {

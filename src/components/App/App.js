@@ -17,12 +17,6 @@ export default class App extends Component {
     this.setState({ isLoggedIn: status })
   }
 
-  componentDidMount() {
-    const googleMapScript = document.createElement("script");
-    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GMAP_API_KEY}&libraries=places`
-    window.document.body.appendChild(googleMapScript);
-  }
-
   render() {
     return ( 
         <main className="App">

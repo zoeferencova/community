@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
-import STORE from "../../STORE";
+import UserDataService from "../../services/user-data-service";
 
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
@@ -15,11 +15,38 @@ import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
 
 export default class AuthenticatedApp extends Component {
-    state = {
-        users: STORE.users,
-        posts: STORE.posts,
-        currentUser: STORE.users[2],
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      user_posts: [],
+      neighborhood_posts: [],
+      updateUser: this.updateUser,
     }
+  }
+
+  componentDidMount() {
+    UserDataService.getUser()
+      .then(user => {
+        console.log(user)
+        user.location = UserDataService.pointToLocation(user.location)
+        this.setState({ user })
+
+        if (user.location && user.radius) {
+          UserDataService.getPosts()
+            .then(posts => {
+              posts.map(post => post.location = UserDataService.pointToLocation(posts.location))
+              const user_posts = posts.filter(post => post.user_id === user.id)
+              const neighborhood_posts = posts.filter(post => post.user_id !== user.id)
+              this.setState({ user_posts, neighborhood_posts })
+            })
+        }
+      })
+  }
+
+  updateUser = (updateValues) => {
+    this.setState({ user: {...this.state.user, updateValues} })
+  }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children
   render() {
