@@ -10,7 +10,7 @@ export default class LoginPage extends Component {
             <div>
                 <h1>Sign in</h1>
                 <div>
-                    <LoginForm toggleLogin={this.props.toggleLogin}  />
+                    <LoginForm setLoggedIn={this.props.setLoggedIn}  />
                     <p>Don't have an account? <Link to="/register">Sign up</Link></p>
                 </div>
             </div>

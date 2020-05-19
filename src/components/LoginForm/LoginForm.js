@@ -1,17 +1,35 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import AuthApiService from "../../services/auth-api-service";
 
 // import styles from "./LoginForm.module.css";
 
 class LoginForm extends Component {
-    logIn() {
-        this.props.toggleLogin();
-        this.props.history.push("/location");
+    state = { error: null }
+
+    handleSubmit(e) {
+        e.preventDefault();
+
+        const { email, password } = e.target;
+
+        AuthApiService.postLogin({
+            email: email.value,
+            password: password.value,
+        })
+            .then(res => {
+                email.value = "";
+                password.value = "";
+                this.props.history.push("/home")
+            })
+            .then(res => this.props.setLoggedIn(true))
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
     
     render() {
         return (
-            <form onSubmit={() => this.logIn()}>
+            <form onSubmit={e => this.handleSubmit(e)}>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input required type="text" name="email" id="email" />

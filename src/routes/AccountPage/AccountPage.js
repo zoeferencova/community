@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+
+import TokenService from "../../services/token-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
 
-export default class AccountPage extends Component {
+class AccountPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
@@ -17,6 +19,13 @@ export default class AccountPage extends Component {
 
     handleChangeEmail = e => {
         this.setState({ email: e.target.value })
+    }
+
+    handleLogout = e => {
+        e.preventDefault();
+        TokenService.clearAuthToken();
+        this.props.setLoggedIn(false);
+        this.props.history.push("/");
     }
 
     render() {
@@ -34,6 +43,7 @@ export default class AccountPage extends Component {
                     </div>
                     <Link to="/home"><button>Cancel</button></Link>
                     <button type="submit">Save</button>
+                    <button onClick={this.handleLogout}>Log out</button>
                     <div className={styles.links}>
                         <Link to="/change-password">Change password</Link>
                         <Link to="/location">Change location</Link>
@@ -45,3 +55,5 @@ export default class AccountPage extends Component {
         )
     }
 }
+
+export default withRouter(AccountPage);

@@ -1,21 +1,20 @@
 import React, { Component } from "react";
+import TokenService from "../../services/token-service";
+
 import UnauthenticatedApp from "../UnauthenticatedApp/UnauthenticatedApp";
 import AuthenticatedApp from "../AuthenticatedApp/AuthenticatedApp";
-import Nav from "../Nav/Nav"
+import Nav from "../Nav/Nav";
 // import TokenService from "../../services/token-service";
 
 import "./App.css"
 
 export default class App extends Component {
   state = {
-      // isLoggedIn: TokenService.hasAuthToken() ? true : false,
-      isLoggedIn: false
+    isLoggedIn: TokenService.hasAuthToken() ? true : false,
   }
 
-  //Passed as a prop to AuthenticatedApp and UnauthenticatedApp
-  //Sets isLoggedIn state to true or false which conditionally renders the Authenticated and Unauthenticated App components based on whether an Auth Token is present
-  toggleLogin = () => {
-    this.state.isLoggedIn ? this.setState({ isLoggedIn: false }) : this.setState({ isLoggedIn: true });
+  setLoggedIn = (status) => {
+    this.setState({ isLoggedIn: status })
   }
 
   componentDidMount() {
@@ -28,7 +27,7 @@ export default class App extends Component {
     return ( 
         <main className="App">
           <Nav isLoggedIn={this.state.isLoggedIn} />
-          {this.state.isLoggedIn ? <AuthenticatedApp toggleLogin={this.toggleLogin} /> : <UnauthenticatedApp toggleLogin={this.toggleLogin} />}
+          {this.state.isLoggedIn ? <AuthenticatedApp setLoggedIn={this.setLoggedIn} /> : <UnauthenticatedApp setLoggedIn={this.setLoggedIn} />}
         </main>
     );
   }

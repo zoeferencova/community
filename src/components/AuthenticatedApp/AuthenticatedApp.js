@@ -29,7 +29,7 @@ export default class AuthenticatedApp extends Component {
       <CommUnityContext.Provider value={value}>
           <Switch>
             <Route path="/home" component={HomePage} />
-            <Route path="/account" component={AccountPage} />
+            <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
             <Route path="/change-password" component={ChangePasswordPage} />
             <Route path="/messages" component={MessagePage} />
             <Route path="/location" component={LocationPage} />
