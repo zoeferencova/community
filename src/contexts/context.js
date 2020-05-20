@@ -5,6 +5,8 @@ const CommUnityContext = React.createContext({
     user_posts: [],
     neighborhood_posts: [],
     addNewPost: () => {},
+    updatePost: () => {},
+    removePost: () => {},
     updateUser: () => {},
 })
 

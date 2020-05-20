@@ -53,6 +53,25 @@ const UserDataService = {
                     : res.json()
             )
     },
+    patchPost(updateValues, postId) {
+        return fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+            },
+            body: JSON.stringify(updateValues)
+          })
+    },
+    deletePost(postId) {
+        return fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+            }     
+        })
+    },
     patchUser(updateValues, userId) {
         return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
             method: 'PATCH',

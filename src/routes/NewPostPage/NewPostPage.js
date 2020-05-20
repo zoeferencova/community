@@ -16,7 +16,7 @@ export default class NewPostPage extends Component {
           option = e.target.categories[i];
     
           if (option.selected) {
-            category_ids.push(parseInt(option.value));
+            category_ids.push(i+1);
           }
         }
         
@@ -46,12 +46,12 @@ export default class NewPostPage extends Component {
                     <div>
                         <label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?": "What do you need help with?"}</label>
                         <select className={styles.select} id="categories" multiple>
-                            <option value="1">Picking up supplies</option>
-                            <option value="2">Running errands</option>
-                            <option value="3">Phone call</option>
-                            <option value="4">Online chat</option>
-                            <option value="5">Dog walking</option>
-                            <option value="6">Other</option>
+                            <option value="Picking up supplies">Picking up supplies</option>
+                            <option value="Running errands">Running errands</option>
+                            <option value="Phone call">Phone call</option>
+                            <option value="Online chat">Online chat</option>
+                            <option value="Dog walking">Dog walking</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     {type === "request" && <div>

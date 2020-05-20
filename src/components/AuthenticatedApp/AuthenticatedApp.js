@@ -22,6 +22,8 @@ export default class AuthenticatedApp extends Component {
       user_posts: [],
       neighborhood_posts: [],
       addNewPost: this.addNewPost,
+      updatePost: this.updatePost,
+      removePost: this.removePost,
       updateUser: this.updateUser,
     }
   }
@@ -44,6 +46,18 @@ export default class AuthenticatedApp extends Component {
 
   addNewPost = post => {
     this.setState({ user_posts: [...this.state.user_posts, post] })
+  }
+
+  updatePost = updatedPost => {
+    const newPosts = this.state.user_posts.map(post => {
+      return post.id === updatedPost.id ? updatedPost : post
+    })
+    this.setState({ user_posts: newPosts })
+  }
+
+  removePost = postId => {
+    const newPosts = this.state.user_posts.filter(post => Number(postId) !== Number(post.id))
+    this.setState({ user_posts: newPosts })
   }
 
   updateUser = updateValues => {
