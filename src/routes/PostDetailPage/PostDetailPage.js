@@ -12,7 +12,7 @@ class PostDetailPage extends Component {
     
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
-        return this.context.posts.find(post => post.post_id === postId)
+        return this.context.neighborhood_posts.find(post => post.id === postId)
     }
 
     render() {
@@ -22,7 +22,7 @@ class PostDetailPage extends Component {
                 <h3>Respond to {post.first_name}'s {post.type}.</h3>
                 <h4>{post.first_name} needs help with:</h4>
                 <ul className={styles.tasks}>
-                    {post.help_items.map(task => <Task key={task} task={task} />)}
+                    {post.categories.map(task => <Task key={task} task={task} />)}
                 </ul>
                 {post.type === "request" && <p>Urgency: {post.urgency}</p>}
                 <div className={styles.map}>

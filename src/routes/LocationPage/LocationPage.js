@@ -11,7 +11,7 @@ export default class LocationPage extends Component {
 
     state = {
         location: this.context.user.location,
-        radius: parseFloat(this.context.user.radius) || 1
+        radius: parseFloat(this.context.user.radius)
     }
 
     handleLocationChange = location => {
@@ -19,13 +19,14 @@ export default class LocationPage extends Component {
     }
 
     handleRadiusChange = e => {
-        this.setState({ radius: e.target.value });
+        this.setState({ radius: parseFloat(e.target.value) });
     }
 
     handleSubmit = e => {
         e.preventDefault();
         const pointLocation = UserDataService.locationToPoint(this.state.location);
-        UserDataService.patchUser({ location: pointLocation, radius: this.state.radius }, this.context.user.id)
+        const meterRadius = UserDataService.milesToMeters(this.state.radius)
+        UserDataService.patchUser({ location: pointLocation, radius: meterRadius }, this.context.user.id)
             .then(res => {
                 this.context.updateUser({ location: this.state.location, radius: this.state.radius })
                 this.props.history.push("/home")
@@ -33,6 +34,8 @@ export default class LocationPage extends Component {
     }
     
     render() {
+        console.log(this.state)
+
         return (   
             <main className={styles.main}>
                 <h3>Location Settings</h3>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Task from "../Task/Task";
+import UserDataService from "../../services/user-data-service";
 import styles from "./Post.module.css";
 
 export default class Post extends Component {
@@ -12,15 +13,15 @@ export default class Post extends Component {
                         <h4>{this.props.first_name} {this.props.type === "offer" ? "offered to help" : "requested help"}</h4>
                         {this.props.type === "request" && <span className={styles.urgency}>{this.props.urgency} urgency</span>}
                         <ul className={styles.helpItems}>
-                            {this.props.help_items.map(task => <Task key={task} task={task} />)}
+                            {this.props.categories.map(task => <Task key={task} task={task} />)}
                         </ul>
                         <p>{this.props.description}</p>
                     </div>
                     <div>
-                        <span>{this.props.neighborhood} - {this.props.distanceFromUser + " mi"}</span>
+                        <span>{UserDataService.metersToMiles(this.props.distance_from_user) + " mi"}</span>
                     </div>
                 </div>
-                <Link className={styles.buttonLink} to={`/post/${this.props.post_id}`}><button className={styles.button}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button></Link>
+                <Link className={styles.buttonLink} to={`/post/${this.props.id}`}><button className={styles.button}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button></Link>
             </div>        
         )
     }

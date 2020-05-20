@@ -21,6 +21,7 @@ export default class AuthenticatedApp extends Component {
       user: {},
       user_posts: [],
       neighborhood_posts: [],
+      addNewPost: this.addNewPost,
       updateUser: this.updateUser,
     }
   }
@@ -28,7 +29,6 @@ export default class AuthenticatedApp extends Component {
   componentDidMount() {
     UserDataService.getUser()
       .then(user => {
-        console.log(user)
         this.setState({ user })
 
         if (user.location && user.radius) {
@@ -42,7 +42,11 @@ export default class AuthenticatedApp extends Component {
       })
   }
 
-  updateUser = (updateValues) => {
+  addNewPost = post => {
+    this.setState({ user_posts: [...this.state.user_posts, post] })
+  }
+
+  updateUser = updateValues => {
     this.setState({ user: {...this.state.user, ...updateValues} })
   }
 

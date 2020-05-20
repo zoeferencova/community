@@ -4,8 +4,8 @@ const CommUnityContext = React.createContext({
     user: {},
     user_posts: [],
     neighborhood_posts: [],
+    addNewPost: () => {},
     updateUser: () => {},
-    
 })
 
 export default CommUnityContext;

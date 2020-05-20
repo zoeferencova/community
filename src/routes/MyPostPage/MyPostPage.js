@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task"
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
@@ -10,7 +11,7 @@ export default class MyPostPage extends Component {
     
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
-        return this.context.posts.find(post => post.post_id === postId)
+        return this.context.user_posts.find(post => Number(post.id) === Number(postId))
     }
     
     render() {
@@ -18,20 +19,21 @@ export default class MyPostPage extends Component {
 
         return (   
             <main className={styles.main}>
-                <h3>Your {post.type}</h3>
-                <span>You posted on {post.timestamp}</span>
-                <h4>{post.type === "offer" ? "Offering to" : "Requesting"} help with:</h4>
+                <h3>Your {post.post_type}</h3>
+                <span>You posted on {moment(post.date_created).format('LLLL')}</span>
+                <h4>{post.post_type === "offer" ? "Offering to" : "Requesting"} help with:</h4>
                 <ul className={styles.tasks}>
-                    {post.help_items.map(task => <Task key={task} task={task} />)}
+                    {post.categories.map(task => <Task key={task} task={task} />)}
                 </ul>
                 {post.type === "request" && <p>Urgency: {post.urgency}</p>}
                 <h4>Location</h4>
                 <div className={styles.map}>
-                    <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                </div>
+                    <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                
+                </div>
                 <div>
                     <Link to="/home"><button>Back</button></Link>
                     <button>Delete</button>
-                    <Link to={`/edit-post/${post.post_id}`}><button>Edit</button></Link>
+                    <Link to={`/edit-post/${post.id}`}><button>Edit</button></Link>
                 </div>
             </main>
         )

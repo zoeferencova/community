@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 import styles from "./MyPost.module.css";
 
 export default class MyPost extends Component {
@@ -8,7 +9,7 @@ export default class MyPost extends Component {
     }
     render() {
         return (   
-            <Link className={styles.link} to={`/my-post/${this.props.post_id}`}><p className={styles.userPost}>{this.capitalizeFirstLetter(this.props.type)} created {Date.now() - this.props.timestamp} hours ago</p></Link>
+            <Link className={styles.link} to={`/my-post/${this.props.id}`}><p className={styles.userPost}>{this.capitalizeFirstLetter(this.props.post_type)} created {moment(this.props.date_created).fromNow()}</p></Link>
         )
     }
 }

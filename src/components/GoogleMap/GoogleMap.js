@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
 export default function GoogleMaps(props) {
-    console.log(props)
     const googleMapRef = React.createRef();
     const googleMap = useRef(null);
     const marker = useRef(null);

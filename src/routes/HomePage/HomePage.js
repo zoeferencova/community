@@ -4,7 +4,6 @@ import MyPost from "../../components/MyPost/MyPost";
 import Post from "../../components/Post/Post";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import CommUnityContext from "../../contexts/context";
-import UserDataService from "../../services/user-data-service";
 import styles from "./HomePage.module.css";
 
 export default class HomePage extends Component {
@@ -15,11 +14,10 @@ export default class HomePage extends Component {
     }
 
     makeAllPosts() {
-        return this.context.neighborhood_posts.map(post => <Post key={post.id} post_id={post.id} type={post.post_type} first_name={post.first_name} categories={post.categories} description={post.description} urgency={post.urgency} date_created={post.date_created} location={post.location} distance_from_user={post.distance_from_user} />)
+        return this.context.neighborhood_posts.map(post => <Post key={post.id} id={post.id} type={post.post_type} first_name={post.first_name} categories={post.categories} description={post.description} urgency={post.urgency} date_created={post.date_created} location={post.location} distance_from_user={post.distance_from_user} />)
     }
     
     render() {
-        console.log(this.context)
         return (   
             <main>
                 <header className={styles.header}>
@@ -39,10 +37,10 @@ export default class HomePage extends Component {
                         <p>Results are being shown for this area. <Link to="/location">Change location?</Link></p>
                     </div>
                 </header>
-                {/* <section className={styles.feed}>
+                <section className={styles.feed}>
                     <h2>Posts in your area</h2>
                     {this.context.user.location ? this.makeAllPosts() : "Please save your current location to view posts in your area"}
-                </section> */}
+                </section>
             </main>
         )
     }

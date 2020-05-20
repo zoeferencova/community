@@ -7,6 +7,9 @@ const UserDataService = {
     milesToMeters(mileRadius) {
         return parseFloat(mileRadius*1609.34).toFixed(2);
     },
+    metersToMiles(meterValue) {
+        return parseFloat(meterValue/1609.34).toFixed(1);
+    },
     getUser() {
         return fetch(`${config.API_ENDPOINT}/users`, {
             method: 'GET',
@@ -33,6 +36,21 @@ const UserDataService = {
                 (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
+            )
+    },
+    postPost(post) {
+        return fetch(`${config.API_ENDPOINT}/posts`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+            },
+            body: JSON.stringify(post)
+        })
+            .then(res => 
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()
             )
     },
     patchUser(updateValues, userId) {
