@@ -1,12 +1,6 @@
 import config from "../config";
 
 const UserDataService = {
-    pointToLocation(point) {
-        const nums = point.slice(6, 1);
-        console.log(nums)
-        const arr = nums.split(" ")
-        return { lat: arr[1], lng: arr[0] }
-    },
     locationToPoint(location) {
         return `POINT(${location.lng} ${location.lat})`
     },

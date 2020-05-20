@@ -29,13 +29,11 @@ export default class AuthenticatedApp extends Component {
     UserDataService.getUser()
       .then(user => {
         console.log(user)
-        user.location = UserDataService.pointToLocation(user.location)
         this.setState({ user })
 
         if (user.location && user.radius) {
           UserDataService.getPosts()
             .then(posts => {
-              posts.map(post => post.location = UserDataService.pointToLocation(posts.location))
               const user_posts = posts.filter(post => post.user_id === user.id)
               const neighborhood_posts = posts.filter(post => post.user_id !== user.id)
               this.setState({ user_posts, neighborhood_posts })
@@ -45,7 +43,7 @@ export default class AuthenticatedApp extends Component {
   }
 
   updateUser = (updateValues) => {
-    this.setState({ user: {...this.state.user, updateValues} })
+    this.setState({ user: {...this.state.user, ...updateValues} })
   }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children
