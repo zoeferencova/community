@@ -9,7 +9,6 @@ class RegistrationForm extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const { first_name, email, password, confirm_password } = e.target;
-        console.log(first_name.value)
         password.value !== confirm_password.value
             ? this.setState({ error: "Passwords do not match" })
             : AuthApiService.postUser({
@@ -32,9 +31,10 @@ class RegistrationForm extends Component {
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)}>
+                {this.state.error && 
                 <div role="alert">
-                    {this.state.error && <p>{this.state.error}</p>}
-                </div>
+                    <p>{this.state.error}</p>
+                </div>} 
                 <div>
                     <label htmlFor="first_name">First name</label>
                     <input required type="text" name="first_name" id="first_name" />
