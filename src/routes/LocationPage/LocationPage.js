@@ -44,7 +44,7 @@ export default class LocationPage extends Component {
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <label htmlFor="location">Location</label>
-                        <MapSearch handleLocationChange={this.handleLocationChange} currentLocation={this.state.location} />
+                        <MapSearch handleLocationChange={this.handleLocationChange} />
                     </div>
                     <div>
                         <label htmlFor="radius">Radius</label>

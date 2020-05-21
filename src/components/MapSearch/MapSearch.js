@@ -1,10 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import CommUnityContext from "../../contexts/context";
 
 import styles from "./MapSearch.module.css";
 
 const MapSearch = (props) => {
+  const context = useContext(CommUnityContext)
+  
   const {
     ready,
     value,
@@ -33,6 +36,8 @@ const MapSearch = (props) => {
     // by setting the second parameter as "false"
     setValue(description, false);
     clearSuggestions();
+
+    context.updateUser({ address: description })
 
     // Get latitude and longitude via utility functions
     getGeocode({ address: description })
@@ -69,7 +74,7 @@ const MapSearch = (props) => {
         value={value}
         onChange={handleInput}
         disabled={!ready}
-        placeholder="Enter an address"
+        placeholder={context.user.address || "Enter an address"}
       />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === 'OK' && <ul className={styles.suggestionList}>

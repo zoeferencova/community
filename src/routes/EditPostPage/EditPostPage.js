@@ -80,7 +80,7 @@ export default class EditPostPage extends Component {
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <label className={styles.label} htmlFor="categories">{this.state.post.post_type === "offer" ? "What can you help with?": "What do you need help with?"}</label>
-                        <select value={this.state.post.categories} onChange={this.handleTaskChange} className={styles.select} id="categories" multiple>
+                        <select value={this.state.post.categories} onChange={this.handleTaskChange} className={styles.select} id="categories" multiple required>
                             <option value="Picking up supplies">Picking up supplies</option>
                             <option value="Running errands">Running errands</option>
                             <option value="Phone call">Phone call</option>
@@ -90,11 +90,12 @@ export default class EditPostPage extends Component {
                         </select>
                     </div>
                     {this.state.post.post_type === "request" && <div>
-                        <label className={styles.label} htmlFor="priority">Urgency</label>
-                        <select value={this.state.post.urgency} onChange={this.handleUrgencyChange} className={styles.select} id="priority">
+                        <label className={styles.label} htmlFor="urgency">Urgency</label>
+                        <select value={this.state.post.urgency} onChange={this.handleUrgencyChange} className={styles.select} id="urgency" required>
+                            <option></option>
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
-                            <option value="Urgent">Urgent</option>
+                            <option value="High">High</option>
                         </select>
                     </div>}
                     <div>

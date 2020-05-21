@@ -42,7 +42,10 @@ export default class ChangePasswordPage extends Component {
         return ( 
             <div>
                 <h3>Change Password</h3>
-                {this.state.error && <p>{this.state.error}</p>}
+                {this.state.error && 
+                <div role="alert">
+                    <p>{this.state.error}</p>
+                </div>} 
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <label htmlFor="old_password">Old Password</label>

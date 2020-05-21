@@ -45,7 +45,7 @@ export default class NewPostPage extends Component {
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?": "What do you need help with?"}</label>
-                        <select className={styles.select} id="categories" multiple>
+                        <select className={styles.select} id="categories" multiple required>
                             <option value="Picking up supplies">Picking up supplies</option>
                             <option value="Running errands">Running errands</option>
                             <option value="Phone call">Phone call</option>
@@ -56,7 +56,8 @@ export default class NewPostPage extends Component {
                     </div>
                     {type === "request" && <div>
                         <label className={styles.label} htmlFor="urgency">Urgency</label>
-                        <select className={styles.select} id="urgency">
+                        <select className={styles.select} id="urgency" required>
+                            <option></option>
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
