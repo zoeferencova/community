@@ -59,7 +59,7 @@ export default class NewPostPage extends Component {
                         <select className={styles.select} id="urgency">
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
-                            <option value="Urgent">Urgent</option>
+                            <option value="High">High</option>
                         </select>
                     </div>}
                     <div>

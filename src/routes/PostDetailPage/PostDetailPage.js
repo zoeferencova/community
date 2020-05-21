@@ -25,6 +25,7 @@ class PostDetailPage extends Component {
                     {post.categories.map(task => <Task key={task} task={task} />)}
                 </ul>
                 {post.post_type === "request" && <p>Urgency: {post.urgency}</p>}
+                {post.description && <p>Description: {post.description}</p>}
                 <div className={styles.map}>
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={false} />
                 </div>

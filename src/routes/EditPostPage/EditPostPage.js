@@ -69,7 +69,7 @@ export default class EditPostPage extends Component {
         UserDataService.patchPost(post, this.state.post.id)
             .then(res => {
                 this.context.updatePost(this.state.post)
-                this.props.history.push("/home")
+                this.props.history.push(`/my-post/${this.state.post.id}`)
             })
     }
     

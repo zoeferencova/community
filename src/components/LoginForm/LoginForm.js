@@ -30,6 +30,7 @@ class LoginForm extends Component {
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)}>
+                {this.state.error && <p>{this.state.error}</p>}
                 <div>
                     <label htmlFor="email">Email</label>
                     <input required type="text" name="email" id="email" />

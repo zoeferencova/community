@@ -29,13 +29,12 @@ export default class LocationPage extends Component {
         UserDataService.patchUser({ location: pointLocation, radius: meterRadius }, this.context.user.id)
             .then(res => {
                 this.context.updateUser({ location: this.state.location, radius: this.state.radius })
+                this.context.getAllPosts(this.context.user.id)
                 this.props.history.push("/home")
             })
     }
     
     render() {
-        console.log(this.state)
-
         return (   
             <main className={styles.main}>
                 <h3>Location Settings</h3>

@@ -22,6 +22,7 @@ export default class AuthenticatedApp extends Component {
       user: {},
       user_posts: [],
       neighborhood_posts: [],
+      getAllPosts: this.getAllPosts,
       addNewPost: this.addNewPost,
       updatePost: this.updatePost,
       removePost: this.removePost,
@@ -35,13 +36,17 @@ export default class AuthenticatedApp extends Component {
         this.setState({ user })
 
         if (user.location && user.radius) {
-          UserDataService.getPosts()
-            .then(posts => {
-              const user_posts = posts.filter(post => post.user_id === user.id)
-              const neighborhood_posts = posts.filter(post => post.user_id !== user.id)
-              this.setState({ user_posts, neighborhood_posts })
-            })
+          this.getAllPosts(user.id)
         }
+      })
+  }
+
+  getAllPosts = userId => {
+    UserDataService.getPosts()
+      .then(posts => {
+        const user_posts = posts.filter(post => post.user_id === userId)
+        const neighborhood_posts = posts.filter(post => post.user_id !== userId)
+        this.setState({ user_posts, neighborhood_posts })
       })
   }
 

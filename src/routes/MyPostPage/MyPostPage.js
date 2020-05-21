@@ -9,20 +9,11 @@ import styles from "./MyPostPage.module.css";
 
 class MyPostPage extends Component {
     static contextType = CommUnityContext;
-
-    // state = {
-
-    // }
-
-    // componentDidMount() {
-    //     this.findPost()
-    // }
     
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
         const post = this.context.user_posts.find(post => post.id === postId)
         return post;
-        // this.setState({ post })
     }
 
     handleDelete(postId) {
@@ -39,8 +30,6 @@ class MyPostPage extends Component {
         const post = this.findPost()
         return (   
             <main className={styles.main}>
-                {/* {this.state.post && 
-                <> */}
                 <h3>Your {post.post_type}</h3>
                 <span>You posted on {moment(post.date_created).format('LLLL')}</span>
                 <h4>{post.post_type === "offer" ? "Offering to" : "Requesting"} help with:</h4>
@@ -48,6 +37,7 @@ class MyPostPage extends Component {
                     {post.categories.map(task => <Task key={task} task={task} />)}
                 </ul>
                 {post.post_type === "request" && <p>Urgency: {post.urgency}</p>}
+                {post.description && <p>Description: {post.description}</p>}
                 <h4>Location</h4>
                 <div className={styles.map}>
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                
@@ -57,7 +47,6 @@ class MyPostPage extends Component {
                     <button onClick={() => this.handleDelete(post.id)}>Delete</button>
                     <Link to={`/edit-post/${post.id}`}><button>Edit</button></Link>
                 </div>
-                {/* </>} */}
             </main>
         )
     }
