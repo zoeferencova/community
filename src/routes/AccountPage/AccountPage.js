@@ -61,7 +61,7 @@ class AccountPage extends Component {
                     <div className={styles.links}>
                         <Link to="/change-password">Change password</Link>
                         <Link to="/location">Change location</Link>
-                        <p>Deactivate account</p>
+                        <Link to="/confirm-deactivation">Deactivate account</Link>
                     </div>
                     
                 </form>

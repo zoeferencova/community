@@ -13,6 +13,7 @@ import MyPostPage from "../../routes/MyPostPage/MyPostPage";
 import EditPostPage from "../../routes/EditPostPage/EditPostPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
+import DeactivationConfirmationPage from "../../routes/DeactivationConfirmationPage/DeactivationConfirmationPage";
 
 export default class AuthenticatedApp extends Component {
   constructor(props) {
@@ -80,6 +81,7 @@ export default class AuthenticatedApp extends Component {
             <Route path="/new-post/:type" component={NewPostPage} />
             <Route path="/my-post/:id" component={MyPostPage} />
             <Route path="/edit-post/:id" component={EditPostPage} />
+            <Route path="/confirm-deactivation" component={() => <DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
             <Route component={NotFoundPage} />
           </Switch>
       </CommUnityContext.Provider>

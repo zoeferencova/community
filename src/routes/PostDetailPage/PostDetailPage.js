@@ -19,12 +19,12 @@ class PostDetailPage extends Component {
         const post = this.findPost();
         return (   
             <main className={styles.main}>
-                <h3>Respond to {post.first_name}'s {post.type}.</h3>
-                <h4>{post.first_name} needs help with:</h4>
+                <h3>Respond to {post.first_name}'s {post.post_type}.</h3>
+                <h4>{post.first_name} {post.post_type === "request" ? "needs help with:" : "can help with:"}</h4>
                 <ul className={styles.tasks}>
                     {post.categories.map(task => <Task key={task} task={task} />)}
                 </ul>
-                {post.type === "request" && <p>Urgency: {post.urgency}</p>}
+                {post.post_type === "request" && <p>Urgency: {post.urgency}</p>}
                 <div className={styles.map}>
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={false} />
                 </div>

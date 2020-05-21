@@ -14,7 +14,7 @@ export default class HomePage extends Component {
     }
 
     makeAllPosts() {
-        return this.context.neighborhood_posts.map(post => <Post key={post.id} id={post.id} type={post.post_type} first_name={post.first_name} categories={post.categories} description={post.description} urgency={post.urgency} date_created={post.date_created} location={post.location} distance_from_user={post.distance_from_user} />)
+        return this.context.neighborhood_posts.map(post => <Post key={post.id} id={post.id} post_type={post.post_type} first_name={post.first_name} categories={post.categories} description={post.description} urgency={post.urgency} date_created={post.date_created} location={post.location} distance_from_user={post.distance_from_user} />)
     }
     
     render() {

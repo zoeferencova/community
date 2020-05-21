@@ -32,10 +32,23 @@ const AuthApiService = {
             .then(res => {
                 TokenService.saveAuthToken(res.authToken)
                 return res.user
-            })
-            
+            })    
     },
-
+    checkPassword(password) {
+        return fetch(`${config.API_ENDPOINT}/auth/confirm-password`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+            },
+            body: JSON.stringify(password),
+        })
+            .then(res => 
+                (!res.ok)
+                    ? res.json()
+                    : res.body
+            )
+    }
 }
 
 export default AuthApiService;
