@@ -55,9 +55,9 @@ class AccountPage extends Component {
                         <label htmlFor="email">Email</label>
                         <input required type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
                     </div>
-                    <Link to="/home"><button>Cancel</button></Link>
+                    <button type="button" onClick={() => this.props.history.push("/home")}>Cancel</button>
                     <button type="submit">Save</button>
-                    <button onClick={this.handleLogout}>Log out</button>
+                    <button type="button" onClick={this.handleLogout}>Log out</button>
                     <div className={styles.links}>
                         <Link to="/change-password">Change password</Link>
                         <Link to="/location">Change location</Link>

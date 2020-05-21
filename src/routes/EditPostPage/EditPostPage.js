@@ -1,25 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import config from "../../config";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "../NewPostPage/NewPostPage.module.css";
 
-export default class EditPostPage extends Component {
+class EditPostPage extends Component {
     static contextType = CommUnityContext;
 
-    state = {
-       post: {}
-    }
-
     componentDidMount() {
-        const post = this.findPost()
-        this.setState({ post })
-    }
-
-    findPost() {
-        const postId = parseFloat(this.props.match.params.id);
-        const post = this.context.user_posts.find(post => post.id === postId)
-        return post;
+        const postId = parseInt(this.props.match.params.id);
+        fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+            }
+        })
+            .then(res => res.json())
+            .then(resJson => this.setState({ post: resJson }))
     }
 
     handleDescriptionChange = e => {
@@ -76,6 +75,7 @@ export default class EditPostPage extends Component {
     render() {
         return (   
             <main>
+                {this.state && <>
                 <h3>Edit {this.state.post.post_type}</h3>
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
@@ -102,10 +102,13 @@ export default class EditPostPage extends Component {
                         <label className={styles.label} htmlFor="description">Description (optional)</label>
                         <textarea value={this.state.post.description === null ? "" : this.state.post.description} onChange={this.handleDescriptionChange} className={styles.textarea} name="description" id="description"></textarea>
                     </div>
-                    <Link to={`/my-post/${this.state.post.id}`}><button>Cancel</button></Link>
+                    <button type="button" onClick={() => this.props.history.goBack()}>Cancel</button>
                     <button type="submit">Submit</button>
                 </form>
+                </>}
             </main>
         )
     }
 }
+
+export default withRouter(EditPostPage);

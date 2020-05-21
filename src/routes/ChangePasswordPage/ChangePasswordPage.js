@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import AuthApiService from "../../services/auth-api-service";
 
-export default class ChangePasswordPage extends Component {
+class ChangePasswordPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
@@ -59,10 +59,12 @@ export default class ChangePasswordPage extends Component {
                         <label htmlFor="confirm_password">Confirm New Password</label>
                         <input type="password" name="confirm_password" id="confirm_password" />
                     </div>
-                    <Link to="/account"><button>Cancel</button></Link>
+                    <button type="button" onClick={() => this.props.history.goBack()}>Cancel</button>
                     <button type="submit">Change Password</button>
                 </form>
             </div>  
         )
     }
 }
+
+export default withRouter(ChangePasswordPage);

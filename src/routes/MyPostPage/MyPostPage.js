@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import moment from "moment";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
@@ -11,6 +11,7 @@ class MyPostPage extends Component {
     static contextType = CommUnityContext;
     
     findPost() {
+        console.log(this.context)
         const postId = parseFloat(this.props.match.params.id);
         const post = this.context.user_posts.find(post => post.id === postId)
         return post;
@@ -30,6 +31,7 @@ class MyPostPage extends Component {
         const post = this.findPost()
         return (   
             <main className={styles.main}>
+                {post && <>
                 <h3>Your {post.post_type}</h3>
                 <span>You posted on {moment(post.date_created).format('LLLL')}</span>
                 <h4>{post.post_type === "offer" ? "Offering to" : "Requesting"} help with:</h4>
@@ -43,10 +45,11 @@ class MyPostPage extends Component {
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                
                 </div>
                 <div>
-                    <Link to="/home"><button>Back</button></Link>
+                    <button type="button" onClick={() => this.props.history.push("/home")}>Back</button>
                     <button onClick={() => this.handleDelete(post.id)}>Delete</button>
-                    <Link to={`/edit-post/${post.id}`}><button>Edit</button></Link>
+                    <button type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</button>
                 </div>
+                </>}
             </main>
         )
     }

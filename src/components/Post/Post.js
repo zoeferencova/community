@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Task from "../Task/Task";
 import UserDataService from "../../services/user-data-service";
 import styles from "./Post.module.css";
 
-export default class Post extends Component {
+class Post extends Component {
     render() {
         return (   
             <div className={styles.post}>
@@ -21,11 +21,13 @@ export default class Post extends Component {
                         <span>{UserDataService.metersToMiles(this.props.distance_from_user) + " mi"}</span>
                     </div>
                 </div>
-                <Link className={styles.buttonLink} to={`/post/${this.props.id}`}><button className={styles.button}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button></Link>
+                <button type="button" onClick={() => this.props.history.push(`/post/${this.props.id}`)} className={styles.buttonLink}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button>
             </div>        
         )
     }
 }
+
+export default withRouter(Post);
 
 
 

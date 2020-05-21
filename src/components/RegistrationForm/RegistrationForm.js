@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import AuthApiService from "../../services/auth-api-service";
 
@@ -51,7 +51,7 @@ class RegistrationForm extends Component {
                     <label htmlFor="confirm_password">Confirm Password</label>
                     <input required type="password" name="confirm_password" id="confirm_password" />
                 </div>
-                <Link to="/"><button>Cancel</button></Link>
+                <button type="button" onClick={() => this.props.history.push("/")}>Cancel</button>
                 <button type="submit">Create Account</button>
             </form>
         )

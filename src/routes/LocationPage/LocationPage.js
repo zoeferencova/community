@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import styles from "./LocationPage.module.css";
@@ -10,8 +9,8 @@ export default class LocationPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        location: this.context.user.location,
-        radius: parseFloat(this.context.user.radius)
+        location: this.props.location,
+        radius: parseFloat(this.props.radius)
     }
 
     handleLocationChange = location => {
@@ -37,6 +36,7 @@ export default class LocationPage extends Component {
     render() {
         return (   
             <main className={styles.main}>
+                {this.state.location && <>
                 <h3>Location Settings</h3>
                 <div className={styles.map}>
                     <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
@@ -51,9 +51,10 @@ export default class LocationPage extends Component {
                         <input required type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
                         <span>miles</span>
                     </div>
-                    <Link to="/home"><button>Cancel</button></Link>
+                    <button type="button" onClick={this.props.history.goBack}>Cancel</button>
                     <button type="submit">Use this location</button>
                 </form>
+                </>}
             </main>
         )
     }

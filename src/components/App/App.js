@@ -7,8 +7,9 @@ import Nav from "../Nav/Nav";
 // import TokenService from "../../services/token-service";
 
 import "./App.css"
+import { withRouter } from "react-router-dom";
 
-export default class App extends Component {
+class App extends Component {
   state = {
     isLoggedIn: TokenService.hasAuthToken() ? true : false,
   }
@@ -21,8 +22,10 @@ export default class App extends Component {
     return ( 
         <main className="App">
           <Nav isLoggedIn={this.state.isLoggedIn} />
-          {this.state.isLoggedIn ? <AuthenticatedApp setLoggedIn={this.setLoggedIn} /> : <UnauthenticatedApp setLoggedIn={this.setLoggedIn} />}
+          {this.state.isLoggedIn ? <AuthenticatedApp history={this.props.history} setLoggedIn={this.setLoggedIn} /> : <UnauthenticatedApp history={this.props.history} setLoggedIn={this.setLoggedIn} />}
         </main>
     );
   }
 }
+
+export default withRouter(App);

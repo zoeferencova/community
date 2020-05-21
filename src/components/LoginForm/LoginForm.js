@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import AuthApiService from "../../services/auth-api-service";
 
 // import styles from "./LoginForm.module.css";
@@ -42,7 +42,7 @@ class LoginForm extends Component {
                     <label htmlFor="password">Password</label>
                     <input required type="password" name="password" id="password" />
                 </div>
-                <Link to="/"><button>Cancel</button></Link>
+                <button type="button" onClick={() => this.props.history.push("/")}>Cancel</button>
                 <button type="submit">Sign in</button>
             </form>
         )

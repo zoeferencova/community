@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import styles from "./NewPostPage.module.css";
 import UserDataService from "../../services/user-data-service";
 
-export default class NewPostPage extends Component {
+class NewPostPage extends Component {
     static contextType = CommUnityContext;
     
     handleSubmit(e) {
@@ -67,10 +67,12 @@ export default class NewPostPage extends Component {
                         <label className={styles.label} htmlFor="description">Description (optional)</label>
                         <textarea className={styles.textarea} name="description" id="description"></textarea>
                     </div>
-                    <Link to="/home"><button>Cancel</button></Link>
+                    <button type="button" onClick={() => this.props.history.goBack()}>Cancel</button>
                     <button type="submit">Submit</button>
                 </form>
             </main>
         )
     }
 }
+
+export default withRouter(NewPostPage);

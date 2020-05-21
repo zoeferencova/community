@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
@@ -19,6 +19,7 @@ class PostDetailPage extends Component {
         const post = this.findPost();
         return (   
             <main className={styles.main}>
+                {post && <>
                 <h3>Respond to {post.first_name}'s {post.post_type}.</h3>
                 <h4>{post.first_name} {post.post_type === "request" ? "needs help with:" : "can help with:"}</h4>
                 <ul className={styles.tasks}>
@@ -32,9 +33,10 @@ class PostDetailPage extends Component {
                 <label htmlFor="message">Write a message</label>
                 <textarea className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></textarea>
                 <div>
-                    <Link to="/home"><button>Cancel</button></Link>
+                    <button type="button" onClick={() => this.props.history.goBack()}>Cancel</button>
                     <button type="submit">Send Message</button>
                 </div>
+                </>}
             </main>
         )
     }
