@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import MessageLayout from "../../components/MessageLayout/MessageLayout";
 
 export default class MessagePage extends Component {
     render() {
-        return (   
-            <h1>MessagePage</h1>
+        return(
+            <MessageLayout title="Chat App" user={this.props.user} />
         )
     }
 }

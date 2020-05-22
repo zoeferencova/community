@@ -75,19 +75,19 @@ export default class AuthenticatedApp extends Component {
     const value = { ...this.state }
     return ( 
       <CommUnityContext.Provider value={value}>
-          <Switch>
-            <Route path="/home" component={HomePage} />
-            <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
-            <Route path="/change-password" component={ChangePasswordPage} />
-            <Route path="/messages" component={MessagePage} />
-            <Route path="/location" component={() => <LocationPage location={this.state.user.location} radius={this.state.user.radius} history={this.props.history} />} />
-            <Route path="/post/:id" component={PostDetailPage} />
-            <Route path="/new-post/:type" component={NewPostPage} />
-            <Route path="/my-post/:id" component={MyPostPage} />
-            <Route path="/edit-post/:id" component={EditPostPage} />
-            <Route path="/confirm-deactivation" component={() => <DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
-            <Route component={NotFoundPage} />
-          </Switch>
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
+          <Route path="/change-password" component={ChangePasswordPage} />
+          <Route path="/messages" component={() => <MessagePage user={this.state.user} />} />
+          <Route path="/location" component={() => <LocationPage location={this.state.user.location} radius={this.state.user.radius} history={this.props.history} />} />
+          <Route path="/post/:id" component={PostDetailPage} />
+          <Route path="/new-post/:type" component={NewPostPage} />
+          <Route path="/my-post/:id" component={MyPostPage} />
+          <Route path="/edit-post/:id" component={EditPostPage} />
+          <Route path="/confirm-deactivation" component={() => <DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </CommUnityContext.Provider>
     );
   }

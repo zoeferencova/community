@@ -1,0 +1,102 @@
+import React, { Component } from "react";
+import MessageSideBar from "../MessageSideBar/MessageSideBar";
+import MessageHeading from "../MessageHeading/MessageHeading";
+import MessageInput from "../MessageInput/MessageInput";
+import Messages from "../Messages/Messages";
+import { MESSAGE_SENT, TYPING, MESSAGE_RECEIVED, COMMUNITY_CHAT } from "../../message-utils/events";
+import styles from "../MessageLayout/MessageLayout.module.css";
+
+export default class MessageContainer extends Component {
+    constructor(props) {
+        super(props);
+        this._isMounted = false;
+        this.state = {
+            chats: [],
+            activeChat: null
+        }
+    }
+
+    componentDidMount() {
+        this._isMounted = true;
+        const { socket } = this.props;
+        socket.emit(COMMUNITY_CHAT, this.resetChat)
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
+
+    resetChat = chat => {
+        return this.addChat(chat, true)
+    }
+
+    addChat = (chat, reset) => {
+        const { socket } = this.props;
+        const { chats } = this.state;
+
+        const newChats = reset ? [chat] : [...chats, chat]
+        this._isMounted && this.setState({ chats: newChats })
+
+        const messageEvent = `${MESSAGE_RECEIVED}-${chat.id}`
+        const typingEvent = `${TYPING}-${chat.id}`
+
+        socket.on(typingEvent, )
+        this._isMounted &&  socket.on(messageEvent, this.addMessageToChat(chat.id))
+    }
+
+    addMessageToChat = (chatId) => {
+        console.log(chatId)
+        return message => {
+            const { chats } = this.state
+            let newChats = chats.map(chat => {
+                if ((chat.id) === (chatId)) 
+                    chat.messages.push('message')
+                return chat;
+            })
+            this.setState({ chats: newChats })
+        }
+    }
+
+    updateTypingInChat = chatId => {
+
+    }
+
+    setActiveChat = activeChat => {
+        this.setState({ activeChat })
+    }
+
+    sendMessage = (chatId, message) => {
+        const { socket } = this.props;
+        socket.emit(MESSAGE_SENT, { chatId, message })
+    }
+
+    sendTyping = (chatId, isTyping) => {
+        const { socket } = this.props;
+        socket.emit(TYPING, { chatId, isTyping })
+    }
+    
+    render() {
+        const { user } = this.props;
+        const { chats, activeChat } = this.state;
+        return (
+            <div className={styles.container}>
+                <MessageSideBar chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
+                <div className={styles.chatRoomContainer}>
+                    {
+                        activeChat !== null ? (
+                            <div className={styles.chatRoom}>
+                                <MessageHeading name={activeChat.name} />
+                                <Messages messages={activeChat.messages} user={user} typingUsers={activeChat.typingUsers} />
+                                <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} sendTyping={isTyping => this.sendTyping(activeChat.id, isTyping)} />
+                            </div>
+                        )
+                        : 
+                        <div className={`${styles.chatRoom} ${styles.choose}`}>
+                            <h3>Choose a chat!</h3>
+                        </div>
+                    }
+                </div>
+            </div>
+        )
+    }
+}
