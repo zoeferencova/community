@@ -9,7 +9,7 @@ import DeactivationSuccessPage from "../../routes/DeactivationSuccessPage/Deacti
 export default class UnauthenticatedApp extends Component {
   render() {
     return ( 
-        <main className="App">
+        <main>
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={() => <LoginPage setLoggedIn={this.props.setLoggedIn} />} />

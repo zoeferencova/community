@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import io from "socket.io-client";
-import config from "../../config";
 import { USER_CONNECTED } from "../../message-utils/events";
 import MessageContainer from "../MessageContainer/MessageContainer";
 
@@ -11,13 +10,13 @@ export default class MessageLayout extends Component {
         socket: null,
         user: null
     }
-
+    
     componentDidMount() {
         this.initSocket(this.props.user)
     }
 
     initSocket = (user) => {
-        const socket = io(`${config.API_ENDPOINT}/chat`);
+        const socket = io(`http://localhost:8000`);
 
         socket.on("connect", () => {
             console.log("connected")
@@ -31,7 +30,7 @@ export default class MessageLayout extends Component {
         const { socket, user } = this.state;
         return (
             <div className={styles.container}>
-                {this.state.user &&
+                {this.state.socket &&
                     <MessageContainer socket={socket} user={user} />
                 }
             </div>

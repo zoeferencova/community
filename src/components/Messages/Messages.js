@@ -25,10 +25,10 @@ export default class Messages extends Component {
         return messages.map(msg => {
             return (
                 <div key={msg.id} className={`${styles.messageContainer} ${msg.sender.id === user.id && styles.right}`}>
-                    <div className={styles.time}>{msg.time}</div>
+                    <div className={styles.time}>{msg.timestamp}</div>
                     <div className={styles.data}>
                         <div className={styles.message}>{msg.message}</div>
-                        <div className={styles.name}>{msg.sender.name}</div>
+                        <div className={styles.name}>{msg.sender.first_name}</div>
                     </div>
                 </div>
             )
@@ -37,10 +37,10 @@ export default class Messages extends Component {
 
     makeTypingUsers = () => {
         const { typingUsers } = this.props;
-        return typingUsers.map(name => {
+        return typingUsers.map(u => {
             return (
-                <div key={name} className={styles.typingUser}>
-                    {`${name} is typing...`}
+                <div key={u.first_name} className={styles.typingUser}>
+                    {`${u.first_name} is typing...`}
                 </div>
             )
         })

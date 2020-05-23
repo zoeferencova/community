@@ -80,7 +80,7 @@ export default class AuthenticatedApp extends Component {
           <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
           <Route path="/change-password" component={ChangePasswordPage} />
           <Route path="/messages" component={() => <MessagePage user={this.state.user} />} />
-          <Route path="/location" component={() => <LocationPage location={this.state.user.location} radius={this.state.user.radius} history={this.props.history} />} />
+          {this.state.user.first_name && <Route path="/location" component={() => <LocationPage location={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 } } radius={this.state.user.radius ? this.state.user.radius : parseFloat(1609.344)} history={this.props.history} />} />}
           <Route path="/post/:id" component={PostDetailPage} />
           <Route path="/new-post/:type" component={NewPostPage} />
           <Route path="/my-post/:id" component={MyPostPage} />
