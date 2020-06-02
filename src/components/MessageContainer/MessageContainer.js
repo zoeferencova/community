@@ -3,7 +3,7 @@ import MessageSideBar from "../MessageSideBar/MessageSideBar";
 import MessageHeading from "../MessageHeading/MessageHeading";
 import MessageInput from "../MessageInput/MessageInput";
 import Messages from "../Messages/Messages";
-import { MESSAGE_SENT, TYPING, MESSAGE_RECEIVED, COMMUNITY_CHAT } from "../../message-utils/events";
+import { MESSAGE_SENT, TYPING, MESSAGE_RECEIVED, COMMUNITY_CHAT, PRIVATE_MESSAGE } from "../../message-utils/events";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageContainer extends Component {
@@ -16,26 +16,39 @@ export default class MessageContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        this._isMounted = true;
-        const { socket } = this.props;
-        socket.emit(COMMUNITY_CHAT, this.resetChat)
-    }
+    // componentDidMount() {
+    //     this._isMounted = true;
+    //     const { socket } = this.props;
+    //     this.initSocket(socket)
+    // }
 
     componentWillUnmount() {
         this._isMounted = false;
+    }
+
+    initSocket(socket) {
+        socket.emit(COMMUNITY_CHAT, this.resetChat)
+        socket.on(PRIVATE_MESSAGE, this.addChat)
+        socket.on("connect", () => {
+            socket.emit(COMMUNITY_CHAT, this.resetChat)
+        })
+    }
+
+    sendOpenPrivateMessage(receiver) {
+        const { socket, user } = this.props;
+        socket.emit(PRIVATE_MESSAGE, { receiver, sender: user })
     }
 
     resetChat = chat => {
         return this.addChat(chat, true)
     }
 
-    addChat = (chat, reset) => {
+    addChat = (chat, reset=false) => {
         const { socket } = this.props;
         const { chats } = this.state;
 
         const newChats = reset ? [chat] : [...chats, chat]
-        this._isMounted && this.setState({ chats: newChats })
+        this._isMounted && this.setState({ chats: newChats, activeChat: reset ? chat : this.state.activeChat })
 
         const messageEvent = `${MESSAGE_RECEIVED}-${chat.id}`
         const typingEvent = `${TYPING}-${chat.id}`
@@ -52,7 +65,7 @@ export default class MessageContainer extends Component {
                     chat.messages.push(message)
                 return chat;
             })
-            this.setState({ chats: newChats })
+            this._isMounted && this.setState({ chats: newChats })
         }
     }
 
@@ -73,13 +86,13 @@ export default class MessageContainer extends Component {
 					}
 					return chat
 				})
-				this.setState({chats:newChats})
+				this._isMounted && this.setState({chats:newChats})
 			}
 		}
 	}
 
     setActiveChat = activeChat => {
-        this.setState({ activeChat })
+        this._isMounted && this.setState({ activeChat })
     }
 
     sendMessage = (chatId, message) => {
