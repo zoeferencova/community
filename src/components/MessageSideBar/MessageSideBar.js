@@ -1,31 +1,28 @@
 import React, { Component } from "react";
+import CommUnityContext from "../../contexts/context";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageSideBar extends Component {
-    
+    static contextType = CommUnityContext;
+
     makeChats = () => {
         const { chats, activeChat, setActiveChat } = this.props;
         return chats.map(chat => {
-            if (chat.name) {
-                const lastMessage = chat.messages[chat.messages.length - 1];
-                
-                const user = chat.users.find(({ id }) => {
-                    return id !== this.props.user.id
-                }) || { first_name: "Community" }
-                
-                const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
+            const lastMessage = chat.messages[chat.messages.length - 1];
+            
+            const user = chat.user1.id === this.context.user.id ? chat.user2 : chat.user1;
+            console.log(user)
+            const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
 
-                return (
-                    <div key={chat.id} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
-                        <div className={styles.userPhoto}>{user.first_name[0].toUpperCase()}</div>
-                        <div className={styles.userInfo}>
-                            <div className={styles.name}>{user.first_name}</div>
-                            {lastMessage && <div className={styles.lastMessage}>{lastMessage.message}</div>}
-                        </div>
+            return (
+                <div key={chat.id} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
+                    <div className={styles.userPhoto}>{user.first_name[0].toUpperCase()}</div>
+                    <div className={styles.userInfo}>
+                        <div className={styles.name}>{user.first_name}</div>
+                        {lastMessage && <div className={styles.lastMessage}>{lastMessage.message_content}</div>}
                     </div>
-                )
-            }
-            return null;
+                </div>
+            )
         })
     }
 

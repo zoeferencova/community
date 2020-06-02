@@ -21,14 +21,14 @@ export default class Messages extends Component {
     }
 
     makeMessages = () => {
-        const { messages, user } = this.props;
+        const { messages, user, receiver } = this.props;
         return messages.map(msg => {
             return (
-                <div key={msg.id} className={`${styles.messageContainer} ${msg.sender.id === user.id && styles.right}`}>
-                    <div className={styles.time}>{msg.timestamp}</div>
+                <div key={msg.id} className={`${styles.messageContainer} ${msg.sender_id === user.id && styles.right}`}>
+                    <div className={styles.time}>{`${new Date(msg.message_timestamp).getHours()}:${("0" + new Date(msg.message_timestamp).getMinutes()).slice(-2)}`}</div>
                     <div className={styles.data}>
-                        <div className={styles.message}>{msg.message}</div>
-                        <div className={styles.name}>{msg.sender.first_name}</div>
+                        <div className={styles.message}>{msg.message_content}</div>
+                        <div className={styles.name}>{msg.sender_id === user.id ? user.first_name : receiver.first_name}</div>
                     </div>
                 </div>
             )
@@ -51,7 +51,7 @@ export default class Messages extends Component {
             <div ref="container" className={styles.threadContainer}>
                 <div className={styles.thread}>
                     {this.makeMessages()}
-                    {this.makeTypingUsers()}
+                    {/* {this.makeTypingUsers()} */}
                 </div>
             </div>
         )

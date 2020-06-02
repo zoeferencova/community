@@ -22,7 +22,7 @@ const ChatService = {
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
             },
-            body: JSON.stringify(post)
+            body: JSON.stringify(chat)
         })
             .then(res => 
                 (!res.ok)
@@ -46,7 +46,7 @@ const ChatService = {
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
             },
-            body: JSON.stringify(post)
+            body: JSON.stringify(message)
         })
             .then(res => 
                 (!res.ok)

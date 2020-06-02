@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
+import ChatService from "../../services/chat-service";
 
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
@@ -22,6 +23,7 @@ export default class AuthenticatedApp extends Component {
       user: {},
       user_posts: [],
       neighborhood_posts: [],
+      chats: [],
       getAllPosts: this.getAllPosts,
       addNewPost: this.addNewPost,
       updatePost: this.updatePost,
@@ -39,6 +41,9 @@ export default class AuthenticatedApp extends Component {
           this.getAllPosts(user.id)
         }
       })
+
+    ChatService.getUserChats()
+      .then(chats => this.setState({ chats }))
   }
 
   getAllPosts = userId => {

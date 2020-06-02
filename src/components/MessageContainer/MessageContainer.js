@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CommUnityContext from "../../contexts/context";
 import MessageSideBar from "../MessageSideBar/MessageSideBar";
 import MessageHeading from "../MessageHeading/MessageHeading";
 import MessageInput from "../MessageInput/MessageInput";
@@ -7,6 +8,8 @@ import { MESSAGE_SENT, TYPING, MESSAGE_RECEIVED, COMMUNITY_CHAT, PRIVATE_MESSAGE
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageContainer extends Component {
+    static contextType = CommUnityContext;
+
     constructor(props) {
         super(props);
         this._isMounted = false;
@@ -16,11 +19,12 @@ export default class MessageContainer extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     this._isMounted = true;
-    //     const { socket } = this.props;
-    //     this.initSocket(socket)
-    // }
+    componentDidMount() {
+        // this._isMounted = true;
+        // const { socket } = this.props;
+        // this.initSocket(socket)
+        this.setState({ chats: this.context.chats, activeChat: this.context.chats[0] })
+    }
 
     componentWillUnmount() {
         this._isMounted = false;
@@ -92,7 +96,7 @@ export default class MessageContainer extends Component {
 	}
 
     setActiveChat = activeChat => {
-        this._isMounted && this.setState({ activeChat })
+        this.setState({ activeChat })
     }
 
     sendMessage = (chatId, message) => {
@@ -107,16 +111,17 @@ export default class MessageContainer extends Component {
     
     render() {
         const { user } = this.props;
-        const { chats, activeChat } = this.state;
+        const { activeChat, chats } = this.state;
         return (
             <div className={styles.container}>
+                {this.state.chats && <>
                 <MessageSideBar chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
                 <div className={styles.chatRoomContainer}>
                     {
                         activeChat !== null ? (
                             <div className={styles.chatRoom}>
-                                <MessageHeading name={activeChat.name} />
-                                <Messages messages={activeChat.messages} user={user} typingUsers={activeChat.typingUsers} />
+                                <MessageHeading name={activeChat.user1.id === user.id ? activeChat.user2.first_name : activeChat.user1.first_name}/>
+                                <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} typingUsers={activeChat.typingUsers} />
                                 <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} sendTyping={isTyping => this.sendTyping(activeChat.id, isTyping)} />
                             </div>
                         )
@@ -126,6 +131,7 @@ export default class MessageContainer extends Component {
                         </div>
                     }
                 </div>
+                </>}
             </div>
         )
     }
