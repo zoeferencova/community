@@ -29,10 +29,15 @@ export default class AuthenticatedApp extends Component {
       updatePost: this.updatePost,
       removePost: this.removePost,
       updateUser: this.updateUser,
+      addNewMessage: this.addNewMessage,
+      addNewChat: this.addNewChat,
+      removeChat: this.removeChat
     }
+    this.is_Mounted = false;
   }
 
   componentDidMount() {
+    this._isMounted = true;
     UserDataService.getUser()
       .then(user => {
         this.setState({ user })
@@ -44,6 +49,10 @@ export default class AuthenticatedApp extends Component {
 
     ChatService.getUserChats()
       .then(chats => this.setState({ chats }))
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   getAllPosts = userId => {
@@ -73,6 +82,22 @@ export default class AuthenticatedApp extends Component {
 
   updateUser = updateValues => {
     this.setState({ user: {...this.state.user, ...updateValues} })
+  }
+
+  addNewMessage = (message, chatId) => {
+    const chat = this.state.chats.find(chat => chat.id === chatId)
+    const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
+    const newChats = chat.messages ? [{...chat, messages: [...chat.messages, message]}, ...filteredChats] : [{...chat, messages: [message]}, ...filteredChats]
+    this._isMounted && this.setState({ chats: newChats })
+  }
+
+  addNewChat = chat => {
+    this.setState({ chats: [...this.state.chats, chat] })
+  }
+
+  removeChat = chatId => {
+    const newChats = this.state.chats.filter(chat => Number(chatId) !== Number(chat.id))
+    this.setState({ chats: newChats })
   }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children

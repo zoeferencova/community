@@ -7,13 +7,19 @@ export default class MessageSideBar extends Component {
 
     makeChats = () => {
         const { chats, activeChat, setActiveChat } = this.props;
-        return chats.map(chat => {
+        const sortedChats = chats.sort((a, b) => {
+            if (b.messages[b.messages.length - 1].message_timestamp < a.messages[a.messages.length - 1].message_timestamp) {
+                return -1
+            } else if (b.messages[b.messages.length - 1].message_timestamp > a.messages[a.messages.length - 1].message_timestamp) {
+                return 1
+            }
+        })
+
+        return sortedChats.map(chat => {
             const lastMessage = chat.messages[chat.messages.length - 1];
             
             const user = chat.user1.id === this.context.user.id ? chat.user2 : chat.user1;
-            console.log(user)
             const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
-
             return (
                 <div key={chat.id} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
                     <div className={styles.userPhoto}>{user.first_name[0].toUpperCase()}</div>

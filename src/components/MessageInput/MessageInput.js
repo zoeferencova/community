@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ChatService from "../../services/chat-service";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageInput extends Component {
@@ -51,7 +52,16 @@ export default class MessageInput extends Component {
         return (
             <div className={styles.messageInput}>
                 <form onSubmit={this.handleSubmit} className={styles.messageForm}>
-                    <input id="message" ref={"messageinput"} type="text" className={styles.formControl} value={message} autoComplete={"off"} placeholder = "Type something here" onKeyUp={e => {e.keyCode !== 13 && this.sendTyping()}} onChange={({target}) => {this.setState({ message: target.value })}}></input>
+                    <input 
+                        id="message" 
+                        ref={"messageinput"} 
+                        type="text" 
+                        className={styles.formControl} 
+                        value={message} 
+                        autoComplete={"off"} 
+                        placeholder = "Type something here" 
+                        // onKeyUp={e => {e.keyCode !== 13 && this.sendTyping()}} 
+                        onChange={({target}) => {this.setState({ message: target.value })}}></input>
                     <button disabled={message.length < 1} type="submit" className={styles.send}>Send</button>
                 </form>
             </div>

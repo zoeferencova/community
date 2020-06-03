@@ -10,6 +10,9 @@ const CommUnityContext = React.createContext({
     updatePost: () => {},
     removePost: () => {},
     updateUser: () => {},
+    addNewMessage: () => {},
+    addNewChat: () => {},
+    removeChat: () => {}
 })
 
 export default CommUnityContext;
