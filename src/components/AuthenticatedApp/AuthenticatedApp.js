@@ -5,7 +5,7 @@ import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import ChatService from "../../services/chat-service";
 import TokenService from "../../services/token-service";
-import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE, NEW_CHAT } from "../../message-utils/events";
+import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE, NEW_CHAT, CHAT_TO_REMOVE } from "../../message-utils/events";
 
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
@@ -71,6 +71,7 @@ export default class AuthenticatedApp extends Component {
     socket.emit(USER_CONNECTED, this.state.user);
     socket.on(PRIVATE_MESSAGE, message => this.addNewMessage(message, message.chat_id))
     socket.on(NEW_CHAT, chat => this.addNewChat(chat))
+    socket.on(CHAT_TO_REMOVE, chatId => this.removeChat(chatId))
     this.setState({ socket })
   }
 

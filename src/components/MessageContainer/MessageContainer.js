@@ -83,7 +83,7 @@ export default class MessageContainer extends Component {
                     {
                         activeChat !== null ? (
                             <div className={styles.chatRoom}>
-                                <MessageHeading chatId={activeChat.id} name={activeChat.user1.id === user.id ? activeChat.user2.first_name : activeChat.user1.first_name}/>
+                                <MessageHeading chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
                                 <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} typingUsers={activeChat.typingUsers} />
                                 <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} sendTyping={isTyping => this.sendTyping(activeChat.id, isTyping)} />
                             </div>

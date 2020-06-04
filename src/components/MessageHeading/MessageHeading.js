@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CHAT_DELETED } from "../../message-utils/events";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "../MessageLayout/MessageLayout.module.css";
@@ -8,15 +9,20 @@ export default class MessageHeading extends Component {
     
     handleDelete(e) {
         e.preventDefault()
-        ChatService.deleteChat(this.props.chatId)
-            .then(res => this.context.removeChat(this.props.chatId))
+        if (window.confirm('Are you sure you want to delete this chat? Your message history will be lost.')) {
+            ChatService.deleteChat(this.props.chatId)
+            .then(res => {
+                this.context.removeChat(this.props.chatId)
+                this.context.socket.emit(CHAT_DELETED, { chatId: this.props.chatId, receiverId: this.props.receiver.id })
+            })
+        }
     }
 
     render() {
         return (
             <div className={styles.chatHeader}>
                 <div className={styles.userInfo}>
-                    <div className={styles.userName}>{this.props.name}</div>
+                    <div className={styles.userName}>{this.props.receiver.first_name}</div>
                     <div className={styles.status}>
                         <div className={styles.indicator}></div>
                     </div>
