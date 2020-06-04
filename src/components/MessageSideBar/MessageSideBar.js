@@ -13,6 +13,7 @@ export default class MessageSideBar extends Component {
             } else if (b.messages[b.messages.length - 1].message_timestamp > a.messages[a.messages.length - 1].message_timestamp) {
                 return 1
             }
+            return null;
         })
 
         return sortedChats.map(chat => {

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
-import TokenService from "../../services/token-service";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
@@ -24,9 +23,7 @@ class AccountPage extends Component {
 
     handleLogout = e => {
         e.preventDefault();
-        TokenService.clearAuthToken();
-        this.props.setLoggedIn(false);
-        this.props.history.push("/");
+        this.context.logout();
     }
 
     handleSubmit = e => {

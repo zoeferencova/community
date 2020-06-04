@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ChatService from "../../services/chat-service";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageInput extends Component {

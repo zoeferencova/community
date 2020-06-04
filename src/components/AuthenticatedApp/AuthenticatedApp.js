@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
+import io from "socket.io-client";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import ChatService from "../../services/chat-service";
+import TokenService from "../../services/token-service";
+import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE } from "../../message-utils/events";
 
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
@@ -24,6 +27,7 @@ export default class AuthenticatedApp extends Component {
       user_posts: [],
       neighborhood_posts: [],
       chats: [],
+      socket: null,
       getAllPosts: this.getAllPosts,
       addNewPost: this.addNewPost,
       updatePost: this.updatePost,
@@ -31,7 +35,8 @@ export default class AuthenticatedApp extends Component {
       updateUser: this.updateUser,
       addNewMessage: this.addNewMessage,
       addNewChat: this.addNewChat,
-      removeChat: this.removeChat
+      removeChat: this.removeChat,
+      logout: this.logout,
     }
     this.is_Mounted = false;
   }
@@ -41,6 +46,8 @@ export default class AuthenticatedApp extends Component {
     UserDataService.getUser()
       .then(user => {
         this.setState({ user })
+
+        this.initSocket()
 
         if (user.location && user.radius) {
           this.getAllPosts(user.id)
@@ -54,6 +61,28 @@ export default class AuthenticatedApp extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
+
+  initSocket = () => {
+    const socket = io(`http://localhost:8000`)
+    socket.on("connect", () => {
+      console.log("connected")
+    })
+
+    socket.emit(USER_CONNECTED, this.state.user);
+    socket.on(PRIVATE_MESSAGE, message => this.addNewMessage(message, message.chat_id))
+
+    this.setState({ socket })
+  }
+
+  // reconnect = socket => {
+  //     socket.emit(USER_CONNECTED, this.state.user, ({ isUser, user }) => {
+  //         if (isUser) {
+  //             this.setState({ user: null })
+  //         } else {
+  //             this.setUser(user)
+  //         }
+  //     });
+  // }
 
   getAllPosts = userId => {
     UserDataService.getPosts()
@@ -85,6 +114,7 @@ export default class AuthenticatedApp extends Component {
   }
 
   addNewMessage = (message, chatId) => {
+    console.log(message)
     const chat = this.state.chats.find(chat => chat.id === chatId)
     const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
     const newChats = chat.messages ? [{...chat, messages: [...chat.messages, message]}, ...filteredChats] : [{...chat, messages: [message]}, ...filteredChats]
@@ -98,6 +128,15 @@ export default class AuthenticatedApp extends Component {
   removeChat = chatId => {
     const newChats = this.state.chats.filter(chat => Number(chatId) !== Number(chat.id))
     this.setState({ chats: newChats })
+  }
+
+  logout = () => {
+    const { socket } = this.state;
+    socket.emit(LOGOUT);
+
+    TokenService.clearAuthToken();
+    this.props.setLoggedIn(false);
+    this.props.history.push("/");
   }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children

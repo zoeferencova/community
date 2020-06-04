@@ -18,9 +18,10 @@ class PostDetailPage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        const post = this.findPost()
         const messageContent = e.target.message.value;
-        const receiverId = this.findPost().user_id;
-        const newChat = { user2Id: receiverId }
+        const receiverId = post.user_id;
+        const newChat = { user2Id: receiverId, postId: post.id }
         ChatService.postChat(newChat)
             .then(chat => {
                 this.context.addNewChat(chat)
