@@ -40,7 +40,6 @@ const ChatService = {
         })
     },
     postMessage(message) {
-        console.log(message)
         return fetch(`${config.API_ENDPOINT}/messages`, {
             method: 'POST',
             headers: {

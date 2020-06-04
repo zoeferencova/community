@@ -5,7 +5,7 @@ import MessageSideBar from "../MessageSideBar/MessageSideBar";
 import MessageHeading from "../MessageHeading/MessageHeading";
 import MessageInput from "../MessageInput/MessageInput";
 import Messages from "../Messages/Messages";
-import { MESSAGE_SENT, TYPING, MESSAGE_RECEIVED, COMMUNITY_CHAT, PRIVATE_MESSAGE } from "../../message-utils/events";
+import { MESSAGE_SENT, TYPING } from "../../message-utils/events";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageContainer extends Component {
