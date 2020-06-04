@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { CHAT_STARTED, MESSAGE_SENT } from "../../message-utils/events";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
@@ -25,10 +26,12 @@ class PostDetailPage extends Component {
         ChatService.postChat(newChat)
             .then(chat => {
                 this.context.addNewChat(chat)
+                this.context.socket.emit(CHAT_STARTED, { receiverId, chat })
                 const newMessage = { message_content: messageContent, chat_id: chat.id  }
                 ChatService.postMessage(newMessage)
                     .then(message => {
-                        this.context.addNewMessage(message, chat.id)
+                        this.context.addNewMessage(message, message.chat_id)
+                        this.context.socket.emit(MESSAGE_SENT, { sender: this.context.user, receiverId, message })
                         this.props.history.push("/messages")
                     })
             })

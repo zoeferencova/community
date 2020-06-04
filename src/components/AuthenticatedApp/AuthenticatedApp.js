@@ -5,7 +5,7 @@ import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import ChatService from "../../services/chat-service";
 import TokenService from "../../services/token-service";
-import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE } from "../../message-utils/events";
+import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE, NEW_CHAT } from "../../message-utils/events";
 
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
@@ -70,19 +70,9 @@ export default class AuthenticatedApp extends Component {
 
     socket.emit(USER_CONNECTED, this.state.user);
     socket.on(PRIVATE_MESSAGE, message => this.addNewMessage(message, message.chat_id))
-
+    socket.on(NEW_CHAT, chat => this.addNewChat(chat))
     this.setState({ socket })
   }
-
-  // reconnect = socket => {
-  //     socket.emit(USER_CONNECTED, this.state.user, ({ isUser, user }) => {
-  //         if (isUser) {
-  //             this.setState({ user: null })
-  //         } else {
-  //             this.setUser(user)
-  //         }
-  //     });
-  // }
 
   getAllPosts = userId => {
     UserDataService.getPosts()
@@ -114,7 +104,6 @@ export default class AuthenticatedApp extends Component {
   }
 
   addNewMessage = (message, chatId) => {
-    console.log(message)
     const chat = this.state.chats.find(chat => chat.id === chatId)
     const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
     const newChats = chat.messages ? [{...chat, messages: [...chat.messages, message]}, ...filteredChats] : [{...chat, messages: [message]}, ...filteredChats]

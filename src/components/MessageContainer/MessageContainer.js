@@ -63,7 +63,7 @@ export default class MessageContainer extends Component {
         ChatService.postMessage(message)
             .then(msg => {
                 this.context.addNewMessage(msg, chatId)
-                this.context.socket.emit(MESSAGE_SENT, { sender: user, receiver, message: msg })
+                this.context.socket.emit(MESSAGE_SENT, { sender: user, receiverId: receiver.id, message: msg })
             })
     }
 

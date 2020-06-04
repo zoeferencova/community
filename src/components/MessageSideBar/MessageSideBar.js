@@ -8,7 +8,9 @@ export default class MessageSideBar extends Component {
     makeChats = () => {
         const { chats, activeChat, setActiveChat } = this.props;
         const sortedChats = chats.sort((a, b) => {
-            if (b.messages[b.messages.length - 1].message_timestamp < a.messages[a.messages.length - 1].message_timestamp) {
+            if (b.messages === undefined || a.messages === undefined) {
+                return -1
+            } else if (b.messages[b.messages.length - 1].message_timestamp < a.messages[a.messages.length - 1].message_timestamp) {
                 return -1
             } else if (b.messages[b.messages.length - 1].message_timestamp > a.messages[a.messages.length - 1].message_timestamp) {
                 return 1
@@ -17,7 +19,7 @@ export default class MessageSideBar extends Component {
         })
 
         return sortedChats.map(chat => {
-            const lastMessage = chat.messages[chat.messages.length - 1];
+            const lastMessage = chat.messages ? chat.messages[chat.messages.length - 1] : "";
             
             const user = chat.user1.id === this.context.user.id ? chat.user2 : chat.user1;
             const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
