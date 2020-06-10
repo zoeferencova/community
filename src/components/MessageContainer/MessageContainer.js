@@ -16,13 +16,13 @@ export default class MessageContainer extends Component {
         this._isMounted = false;
         this.state = {
             chats: [],
-            activeChat: null
+            mobileDisplay: null
         }
     }
 
     componentDidMount() {
         this._isMounted = true;
-        this.setState({ chats: this.context.chats, activeChat: this.context.chats[0] })
+        this.setState({ chats: this.context.chats, mobileDisplay: this.context.activeChat === null ? "contacts" : "chats" })
     }
 
     componentWillUnmount() {
@@ -52,13 +52,17 @@ export default class MessageContainer extends Component {
 	}
 
     setActiveChat = activeChat => {
-        this.setState({ activeChat })
+        this.context.updateActiveChat(activeChat.id)
+    }
+
+    mobileDisplayContacts = () => {
+        this.setState({ mobileDisplay: "contacts" })
+        this.context.updateActiveChat(null)
     }
 
     sendMessage = (chatId, messageContent) => {
         const message = { chat_id: chatId, sender_id: this.context.user.id, message_content: messageContent }
-        const { activeChat } = this.state;
-        const { user } = this.context;
+        const { activeChat, user } = this.context;
         const receiver = activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1;
         ChatService.postMessage(message)
             .then(msg => {
@@ -73,17 +77,18 @@ export default class MessageContainer extends Component {
     }
     
     render() {
-        const { user } = this.context;
-        const { activeChat, chats } = this.state;
+        const { user, activeChat } = this.context;
+        const { chats } = this.state;
+
         return (
             <div className={styles.container}>
-                {(this.state.chats && this.state.activeChat) && <>
-                <MessageSideBar chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
-                <div className={styles.chatRoomContainer}>
+                {(this.state.chats) && <>
+                <MessageSideBar mobileDisplay={this.state.mobileDisplay === "contacts" ? true : false} chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
+                <div className={`${styles.chatRoomContainer} ${this.state.mobileDisplay === "chats" ? styles.activeMobile : styles.inactiveMobile}`}>
                     {
                         activeChat !== null ? (
                             <div className={styles.chatRoom}>
-                                <MessageHeading chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
+                                <MessageHeading mobileDisplayContacts={this.mobileDisplayContacts} chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
                                 <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} typingUsers={activeChat.typingUsers} />
                                 <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} sendTyping={isTyping => this.sendTyping(activeChat.id, isTyping)} />
                             </div>

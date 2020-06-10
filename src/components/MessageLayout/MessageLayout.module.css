@@ -58,11 +58,17 @@
     padding:18px 16px;
 }
 
-.sideBar .users .user.active, .sideBar .users .user:hover {
+.sideBar .users .user:hover {
     background:#2e2e4f;
 }
 
-.sideBar .users .user:hover:not(.active) {
+@media screen and (min-width: 510px) {
+    .sideBar .users .user.active {
+        background:#2e2e4f;
+    }
+}
+
+.sideBar .users .user:hover {
     cursor:pointer;
 }
 
@@ -138,16 +144,6 @@
 .chatRoomContainer {
     height:100%;
     width:76.25%;
-}
-
-@media screen and (max-width: 510px) {
-    .sideBar {
-        position:absolute;
-        left:-100%
-    }
-    .chatRoomContainer {
-        width:100%
-    }
 }
 
 .chatRoom { 
@@ -351,4 +347,44 @@
 .messageInput .messageForm .send:disabled {
     opacity:.2;
     background:#5d5d8a
+}
+
+.chatBackArrow {
+    display: none;
+}
+
+@media screen and (max-width: 510px) {
+    .container {
+        position: relative;
+    }
+
+    .chatRoomContainer, .sideBar {
+        width: 100%;
+    }
+    
+    .chatRoomContainer {
+        left: 100%;
+    }
+
+    .sideBar {
+        left: -100%;
+    }
+
+    .activeMobile {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .chatBackArrow {
+        display: inline;
+        margin-right: 25px;
+    }
+
+    .chatBackArrow:hover {
+        cursor: pointer;
+    }
+
 }

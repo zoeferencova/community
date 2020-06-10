@@ -22,6 +22,7 @@ export default class MessageHeading extends Component {
         return (
             <div className={styles.chatHeader}>
                 <div className={styles.userInfo}>
+                    <i className={`fas fa-chevron-left ${styles.chatBackArrow}`} onClick={this.props.mobileDisplayContacts}></i>
                     <div className={styles.userName}>{this.props.receiver.first_name}</div>
                     <div className={styles.status}>
                         <div className={styles.indicator}></div>

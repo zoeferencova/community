@@ -28,6 +28,7 @@ export default class AuthenticatedApp extends Component {
       neighborhood_posts: [],
       chats: [],
       socket: null,
+      activeChat: null,
       getAllPosts: this.getAllPosts,
       addNewPost: this.addNewPost,
       updatePost: this.updatePost,
@@ -36,6 +37,7 @@ export default class AuthenticatedApp extends Component {
       addNewMessage: this.addNewMessage,
       addNewChat: this.addNewChat,
       removeChat: this.removeChat,
+      updateActiveChat: this.updateActiveChat,
       logout: this.logout,
     }
     this.is_Mounted = false;
@@ -107,17 +109,28 @@ export default class AuthenticatedApp extends Component {
   addNewMessage = (message, chatId) => {
     const chat = this.state.chats.find(chat => chat.id === chatId)
     const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
-    const newChats = chat.messages ? [{...chat, messages: [...chat.messages, message]}, ...filteredChats] : [{...chat, messages: [message]}, ...filteredChats]
+    const newChat = chat.messages ? { ...chat, messages: [...chat.messages, message]} : {...chat, messages: [message]}
+    const newChats = chat.messages ? [newChat, ...filteredChats] : [newChat, ...filteredChats]
     this._isMounted && this.setState({ chats: newChats })
+    message.sender_id === this.state.user.id && this.setState({ activeChat: newChat })
   }
 
   addNewChat = chat => {
-    this.setState({ chats: [...this.state.chats, chat] })
+    this.setState({ chats: [...this.state.chats, chat], activeChat: chat })
   }
 
   removeChat = chatId => {
     const newChats = this.state.chats.filter(chat => Number(chatId) !== Number(chat.id))
     this.setState({ chats: newChats })
+  }
+
+  updateActiveChat = chatId => {
+    if (chatId === null) {
+      this.setState({ activeChat: null })
+    } else {
+      const chat = this.state.chats.find(chat => chat.id === chatId)
+      this.setState({ activeChat: chat })
+    }
   }
 
   logout = () => {

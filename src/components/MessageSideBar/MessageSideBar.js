@@ -38,10 +38,9 @@ export default class MessageSideBar extends Component {
     render() {
         const { setActiveChat } = this.props;
         return (
-            <div id="side-bar" className={styles.sideBar}>
+            <div id="side-bar" className={`${styles.sideBar} ${this.props.mobileDisplay === true ? styles.activeMobile : styles.inactiveMobile}`}>
                 <div className={styles.heading}>
                     <div className={styles.appName}>Chat</div>
-                    <div className={styles.menu}></div>
                 </div>
                 <div className={styles.users} ref="users" onClick={e => {(e.target === this.refs.user) && setActiveChat(null)}}>
                     {this.makeChats()}

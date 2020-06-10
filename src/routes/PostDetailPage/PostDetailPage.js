@@ -37,8 +37,14 @@ class PostDetailPage extends Component {
             })
     }
 
+    goToMessages = chat => {
+        this.context.updateActiveChat(chat.id)
+        this.props.history.push("/messages")
+    }
+
     render() {
         const post = this.findPost();
+
         return (   
             <main className={styles.main}>
                 {post && <>
@@ -66,7 +72,7 @@ class PostDetailPage extends Component {
                             <p>You have a chat with {post.first_name}</p> 
                             <div>
                                     <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
-                                    <button type="button" onClick={() => this.props.history.push("/messages")}>Go to Messages</button>
+                                    <button type="button" onClick={() => this.goToMessages(this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to Messages</button>
                             </div>  
                         </>
                     }
