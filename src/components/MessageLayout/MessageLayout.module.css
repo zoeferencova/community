@@ -350,7 +350,7 @@
 }
 
 .chatBackArrow {
-    display: none;
+    display: none !important;
 }
 
 @media screen and (max-width: 510px) {
@@ -379,7 +379,7 @@
     }
 
     .chatBackArrow {
-        display: inline;
+        display: inline-block;
         margin-right: 25px;
     }
 
