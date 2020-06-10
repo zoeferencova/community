@@ -112,7 +112,7 @@ export default class AuthenticatedApp extends Component {
     const newChat = chat.messages ? { ...chat, messages: [...chat.messages, message]} : {...chat, messages: [message]}
     const newChats = chat.messages ? [newChat, ...filteredChats] : [newChat, ...filteredChats]
     this._isMounted && this.setState({ chats: newChats })
-    message.sender_id === this.state.user.id && this.setState({ activeChat: newChat })
+    this._isMounted && (message.sender_id === this.state.user.id || this.state.activeChat.id === newChat.id) && this.setState({ activeChat: newChat })
   }
 
   addNewChat = chat => {
