@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import io from "socket.io-client";
+import config from "../../config";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import ChatService from "../../services/chat-service";
@@ -65,7 +66,7 @@ export default class AuthenticatedApp extends Component {
   }
 
   initSocket = () => {
-    const socket = io(`http://localhost:8000`)
+    const socket = io(config.SOCKET_URL)
     socket.on("connect", () => {
       console.log("connected")
     })
@@ -135,7 +136,7 @@ export default class AuthenticatedApp extends Component {
 
   logout = () => {
     const { socket } = this.state;
-    socket.emit(LOGOUT);
+    socket && socket.emit(LOGOUT);
 
     TokenService.clearAuthToken();
     this.props.setLoggedIn(false);
