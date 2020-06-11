@@ -135,11 +135,12 @@
     flex-direction:row;
     justify-content:space-around;
     height:100%;
-    width:15%
 }
 
-.chatHeader .options svg {
-    cursor:pointer
+.chatHeader .options i {
+    cursor:pointer;
+    font-size: 19px;
+    margin: 0 8px;
 }
 
 .chatRoomContainer {
@@ -377,6 +378,10 @@
         right: 0;
         left: 0;
         z-index: 100;
+    }
+
+    .inactiveMobile {
+        opacity: 0%;
     }
 
     .chatBackArrow {

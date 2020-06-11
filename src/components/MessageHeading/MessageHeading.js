@@ -19,6 +19,11 @@ export default class MessageHeading extends Component {
         }
     }
 
+    handleClose(e) {
+        e.preventDefault()
+        this.context.updateActiveChat(null)
+    }
+
     render() {
         return (
             <div className={styles.chatHeader}>
@@ -30,7 +35,8 @@ export default class MessageHeading extends Component {
                     </div>
                 </div>
                 <div className={styles.options}>
-                    <button type="button" onClick={e => this.handleDelete(e)}>Delete chat</button>
+                    <i className="fas fa-info-circle" onClick={e => this.handleDelete(e)}></i>
+                    <i className="fas fa-times" onClick={e => this.handleClose(e)}></i>
                 </div>
             </div>
         );
