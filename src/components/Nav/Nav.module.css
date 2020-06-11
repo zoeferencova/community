@@ -47,3 +47,10 @@
     color: #ebebeb;
 }
 
+@media only screen and (max-width: 500px) {
+    .logIn, .signUp {
+        font-size: 12.5px;
+        padding: 8px 10px;
+    }
+}
+
