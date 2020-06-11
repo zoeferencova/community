@@ -12,6 +12,7 @@ export default class MessageHeading extends Component {
         if (window.confirm('Are you sure you want to delete this chat? Your message history will be lost.')) {
             ChatService.deleteChat(this.props.chatId)
             .then(res => {
+                this.context.updateActiveChat(null)
                 this.context.removeChat(this.props.chatId)
                 this.context.socket.emit(CHAT_DELETED, { chatId: this.props.chatId, receiverId: this.props.receiver.id })
             })

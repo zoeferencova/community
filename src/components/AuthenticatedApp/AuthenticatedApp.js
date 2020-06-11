@@ -71,6 +71,10 @@ export default class AuthenticatedApp extends Component {
       console.log("connected")
     })
 
+    socket.on("reconnect", () => {
+      socket.emit(USER_CONNECTED, this.state.user)
+    })
+
     socket.emit(USER_CONNECTED, this.state.user);
     socket.on(PRIVATE_MESSAGE, message => this.addNewMessage(message, message.chat_id))
     socket.on(NEW_CHAT, chat => this.addNewChat(chat))
@@ -123,6 +127,7 @@ export default class AuthenticatedApp extends Component {
   removeChat = chatId => {
     const newChats = this.state.chats.filter(chat => Number(chatId) !== Number(chat.id))
     this.setState({ chats: newChats })
+    this.setState({ activeChat: null })
   }
 
   updateActiveChat = chatId => {
