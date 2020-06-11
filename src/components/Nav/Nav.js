@@ -6,7 +6,7 @@ import styles from "./Nav.module.css";
 export default class Nav extends Component {
     render() {
         return (   
-            <nav className={styles.nav}>
+            <div className={styles.nav}>
                 <NavLink to={this.props.isLoggedIn ? "/home" : "/"}><img src={require("../../images/logo-placeholder.png")} alt="logo" className={styles.logo} /></NavLink>
                 {this.props.isLoggedIn ? 
                     <ul className={styles.navLinks}>
@@ -19,7 +19,7 @@ export default class Nav extends Component {
                         <NavLink to="/register"><li className={styles.signUp}>Sign Up</li></NavLink>
                     </ul>
                 } 
-            </nav>  
+            </div>  
         )
     }
 }
