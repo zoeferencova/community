@@ -76,6 +76,9 @@ export default class AuthenticatedApp extends Component {
 
     socket.on("reconnect", () => {
       socket.emit(USER_CONNECTED, this.state.user)
+
+      ChatService.getUserChats()
+        .then(chats => this.setState({ chats }))
     })
 
     socket.emit(USER_CONNECTED, this.state.user);
