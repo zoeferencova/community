@@ -1,6 +1,6 @@
 .nav {
     display: flex;
-    height: 65px;
+    height: 65px !important;
     background-color: #ebebeb;
     justify-content: space-between;
     align-items: center;

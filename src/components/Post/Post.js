@@ -21,7 +21,7 @@ class Post extends Component {
                         <span>{UserDataService.metersToMiles(this.props.distance_from_user) + " mi"}</span>
                     </div>
                 </div>
-                <button type="button" onClick={() => this.props.history.push(`/post/${this.props.id}`)} className={styles.buttonLink}>{this.props.type === "offer" ? "Accept offer" : "Offer to help"}</button>
+                <button type="button" onClick={() => this.props.history.push(`/post/${this.props.id}`)} className={styles.buttonLink}>{this.props.post_type === "offer" ? "Accept offer" : "Offer to help"}</button>
             </div>        
         )
     }
