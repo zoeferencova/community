@@ -8,6 +8,7 @@ import ChatService from "../../services/chat-service";
 import TokenService from "../../services/token-service";
 import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE, NEW_CHAT, CHAT_TO_REMOVE } from "../../message-utils/events";
 
+import Nav from "../Nav/Nav"
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
 import MessagePage from "../../routes/MessagePage/MessagePage";
@@ -152,6 +153,8 @@ export default class AuthenticatedApp extends Component {
   render() {
     const value = { ...this.state }
     return ( 
+      <>
+      <Nav isLoggedIn={this.props.isLoggedIn} />
       <CommUnityContext.Provider value={value}>
         <Switch>
           <Route path="/home" component={HomePage} />
@@ -167,6 +170,7 @@ export default class AuthenticatedApp extends Component {
           <Route component={NotFoundPage} />
         </Switch>
       </CommUnityContext.Provider>
+      </>
     );
   }
 }
