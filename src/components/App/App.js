@@ -21,7 +21,8 @@ class App extends Component {
   render() {
     return ( 
         <main className="App">
-          {this.state.isLoggedIn ? <AuthenticatedApp history={this.props.history} setLoggedIn={this.setLoggedIn} isLoggedIn={this.state.isLoggedIn} /> : <UnauthenticatedApp history={this.props.history} setLoggedIn={this.setLoggedIn} isLoggedIn={this.state.isLoggedIn} />}
+          <Nav isLoggedIn={this.state.isLoggedIn} />
+          {this.state.isLoggedIn ? <AuthenticatedApp history={this.props.history} setLoggedIn={this.setLoggedIn} /> : <UnauthenticatedApp history={this.props.history} setLoggedIn={this.setLoggedIn} />}
         </main>
     );
   }

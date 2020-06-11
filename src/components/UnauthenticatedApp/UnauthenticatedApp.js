@@ -11,7 +11,6 @@ export default class UnauthenticatedApp extends Component {
   render() {
     return ( 
         <main>
-          <Nav isLoggedIn={this.props.isLoggedIn} />
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={() => <LoginPage setLoggedIn={this.props.setLoggedIn} />} />

@@ -153,8 +153,6 @@ export default class AuthenticatedApp extends Component {
   render() {
     const value = { ...this.state }
     return ( 
-      <>
-      <Nav isLoggedIn={this.props.isLoggedIn} />
       <CommUnityContext.Provider value={value}>
         <Switch>
           <Route path="/home" component={HomePage} />
@@ -170,7 +168,6 @@ export default class AuthenticatedApp extends Component {
           <Route component={NotFoundPage} />
         </Switch>
       </CommUnityContext.Provider>
-      </>
     );
   }
 }
