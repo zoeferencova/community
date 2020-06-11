@@ -19,7 +19,7 @@ export default class HomePage extends Component {
     
     render() {
         return (   
-            <main>
+            <main className={styles.main}>
                 <header className={styles.header}>
                     <div className={styles.userInfo}>
                         <h2>Welcome, {this.context.user.first_name}!</h2>
@@ -27,14 +27,14 @@ export default class HomePage extends Component {
                             <Link className={styles.newPostLink} to="/new-post/offer">Offer Help</Link>
                             <Link className={styles.newPostLink} to="/new-post/request">Request Help</Link>
                         </div>
-                        <div>
+                        <div className={styles.yourPosts}>
                             <h3>Your Posts</h3>
                             {this.context.user_posts.length ? this.makeUserPosts() : "You do not have any posts"}
                         </div>
                     </div>
                     <div className={styles.mapSection}>
                         <GoogleMap className={styles.map} radius={this.context.user.radius} location={this.context.user.location} displayMarker={true} />
-                        <p>Results are being shown for this area. <Link to="/location">Change location?</Link></p>
+                        <p className={styles.mapSubtitle}>Results are being shown for this area. <Link to="/location">Change location?</Link></p>
                     </div>
                 </header>
                 <section className={styles.feed}>

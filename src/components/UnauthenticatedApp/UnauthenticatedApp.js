@@ -7,10 +7,12 @@ import RegistrationPage from "../../routes/RegistrationPage/RegistrationPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import DeactivationSuccessPage from "../../routes/DeactivationSuccessPage/DeactivationSuccessPage";
 
+import styles from "./UnauthenticatedApp.module.css";
+
 export default class UnauthenticatedApp extends Component {
   render() {
     return ( 
-        <main>
+        <main className={styles.main}>
           <Nav isLoggedIn={this.props.isLoggedIn} />
           <Switch>
             <Route exact path="/" component={LandingPage} />

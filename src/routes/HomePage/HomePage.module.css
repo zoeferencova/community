@@ -1,6 +1,13 @@
+.main {
+    position: absolute;
+    top: 65px;
+    width: 100%;
+}
+
 .header {
     padding: 50px 15px;
     display: flex;
+    padding-bottom: 80px;
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
@@ -17,20 +24,27 @@
     font-size: 15px;
 }
 
+.yourPosts {
+    margin-bottom: 30px;
+}
+
 .mapSection {
     width: 95%;
     height: 250px;
 }
 
 .mapSection p {
-    margin-top: 10px;
+    margin: 10px 0;
+    padding-bottom: 15px;
 }
 
 .feed {
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
-    padding: 60px 0px;
+    padding: 50px 0px;
+    margin: 0 auto;
 }
 
 @media only screen and (min-width: 600px) {

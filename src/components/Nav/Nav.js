@@ -10,8 +10,8 @@ export default class Nav extends Component {
                 <NavLink to={this.props.isLoggedIn ? "/home" : "/"}><img src={require("../../images/logo-placeholder.png")} alt="logo" className={styles.logo} /></NavLink>
                 {this.props.isLoggedIn ? 
                     <ul className={styles.navLinks}>
-                        <NavLink to="/messages"><li><i className="far fa-comment"></i> Messages</li></NavLink>
-                        <NavLink to="/account"><li><i className="far fa-user"></i> Account</li></NavLink>
+                        <NavLink to="/messages"><li><i className="far fa-comment"></i></li></NavLink>
+                        <NavLink to="/account"><li><i className="far fa-user"></i></li></NavLink>
                     </ul>
                 :
                     <ul className={styles.navLinks}>
