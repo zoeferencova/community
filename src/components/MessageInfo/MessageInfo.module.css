@@ -13,7 +13,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 100%;
     animation: fadeInDown ease 0.3s;
     -webkit-animation: fadeInDown ease 0.3s;
     -moz-animation: fadeInDown ease 0.3s;
@@ -23,55 +22,55 @@
 
 @keyframes fadeInDown {
     0% {
-       opacity: 0%;
+       opacity: 0;
        transform: translateY(-10px);
     }
     100% {
-       opacity: 100%;
+       opacity: 1;
        transform: translateY(0);
     }
 } 
 
 @-moz-keyframes fadeInDown {
     0% {
-       opacity: 0%;
+       opacity: 0;
        transform: translateY(-10px);
     }
     100% {
-       opacity: 100%;
+       opacity: 1;
        transform: translateY(0);
     }
 } 
 
 @-webkit-keyframes fadeInDown {
     0% {
-       opacity: 0%;
+       opacity: 0;
        transform: translateY(-10px);
     }
     100% {
-       opacity: 100%;
+       opacity: 1;
        transform: translateY(0);
     }
 } 
 
 @-o-keyframes fadeInDown {
     0% {
-       opacity: 0%;
+       opacity: 0;
        transform: translateY(-10px);
     }
     100% {
-       opacity: 100%;
+       opacity: 1;
        transform: translateY(0);
     }
 } 
 
 @-ms-keyframes fadeInDown {
     0% {
-       opacity: 0%;
+       opacity: 0;
        transform: translateY(-10px);
     }
     100% {
-       opacity: 100%;
+       opacity: 1;
        transform: translateY(0);
     }
 } 

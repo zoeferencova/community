@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { CHAT_DELETED } from "../../message-utils/events";
-import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./MessageInfo.module.css";
 
@@ -10,7 +8,12 @@ class MessageInfo extends Component {
 
     handleGoToPost(e, post) {
         e.preventDefault();
-        this.props.history.push(`/post/${post.id}`)
+        if (post.user_id === this.context.user.id) {
+            this.props.history.push(`/my-post/${post.id}`)
+        } else {
+            this.props.history.push(`/post/${post.id}`)
+        }
+        
     }
 
     formatSentence(post, user) {
