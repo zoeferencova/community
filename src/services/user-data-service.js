@@ -15,7 +15,7 @@ const UserDataService = {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             }
         })
             .then(res => 
@@ -29,7 +29,7 @@ const UserDataService = {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             }
         })
             .then(res => 
@@ -43,7 +43,7 @@ const UserDataService = {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(post)
         })
@@ -58,7 +58,7 @@ const UserDataService = {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(updateValues)
           })
@@ -68,7 +68,7 @@ const UserDataService = {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             }     
         })
     },
@@ -77,7 +77,7 @@ const UserDataService = {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(updateValues)
           })
@@ -87,7 +87,7 @@ const UserDataService = {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             }     
         })
     }

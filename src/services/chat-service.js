@@ -6,7 +6,7 @@ const ChatService = {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             }
         })
             .then(res => 
@@ -20,7 +20,7 @@ const ChatService = {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(chat)
         })
@@ -35,7 +35,7 @@ const ChatService = {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             }     
         })
     },
@@ -44,7 +44,7 @@ const ChatService = {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(message)
         })

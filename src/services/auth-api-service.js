@@ -39,7 +39,7 @@ const AuthApiService = {
             method: "POST",
             headers: {
                 "content-type": "application/json",
-                'Authorization': `Bearer ${window.sessionStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(password),
         })
