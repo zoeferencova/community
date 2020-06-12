@@ -12,7 +12,6 @@ class MyPostPage extends Component {
     static contextType = CommUnityContext;
     
     findPost() {
-        console.log(this.context)
         const postId = parseFloat(this.props.match.params.id);
         const post = this.context.user_posts.find(post => post.id === postId)
         return post;
@@ -34,7 +33,7 @@ class MyPostPage extends Component {
             <main className={styles.main}>
                 {post && <>
                 <h3>Your {post.post_type}</h3>
-                <span>You posted on {moment(post.date_created).tz('America/New_York').format('LLLL z')}</span>
+                <span>You posted on {moment(post.date_created).tz(this.context.timeZone).format('LLLL z')}</span>
                 <h4>{post.post_type === "offer" ? "Offering to" : "Requesting"} help with:</h4>
                 <ul className={styles.tasks}>
                     {post.categories.map(task => <Task key={task} task={task} />)}

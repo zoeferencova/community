@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import io from "socket.io-client";
+import jstz from "jstimezonedetect";
 import config from "../../config";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
@@ -33,6 +34,7 @@ export default class AuthenticatedApp extends Component {
       chats: [],
       socket: null,
       activeChat: null,
+      timeZone: null,
       getAllPosts: this.getAllPosts,
       addNewPost: this.addNewPost,
       updatePost: this.updatePost,
@@ -49,6 +51,10 @@ export default class AuthenticatedApp extends Component {
 
   componentDidMount() {
     this._isMounted = true;
+    
+    const tz = jstz.determine().name();
+    this.setState({ timeZone: tz });
+
     UserDataService.getUser()
       .then(user => {
         this.setState({ user })

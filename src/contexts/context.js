@@ -7,6 +7,7 @@ const CommUnityContext = React.createContext({
     chats: [],
     socket: null,
     activeChat: null,
+    timeZone: null,
     getAllPosts: () => {},
     addNewPost: () => {},
     updatePost: () => {},

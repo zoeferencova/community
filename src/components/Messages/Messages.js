@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import moment from "moment";
 import tz from "moment-timezone";
+import CommUnityContext from "../../contexts/context";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class Messages extends Component {
+    static contextType = CommUnityContext;
+
     constructor(props) {
         super(props)
         this.scrollDown = this.scrollDown.bind(this)
@@ -26,7 +29,7 @@ export default class Messages extends Component {
         const { messages, user, receiver } = this.props;
         if (messages !== undefined) {
             return messages.map(msg => {
-                const timezoneTimestamp = moment.tz(msg.message_timestamp, 'UTC').clone().tz('America/New_York')
+                const timezoneTimestamp = moment.tz(msg.message_timestamp, this.context.timeZone)
                 return (
                     <div key={msg.id} className={`${styles.messageContainer} ${msg.sender_id === user.id && styles.right}`}>
                         <div className={styles.time}>{timezoneTimestamp.format("h:mm A")}</div>
