@@ -29,7 +29,7 @@ export default class Messages extends Component {
         const { messages, user, receiver } = this.props;
         if (messages !== undefined) {
             return messages.map(msg => {
-                const timezoneTimestamp = moment.tz(msg.message_timestamp, this.context.timeZone)
+                const timezoneTimestamp = moment.tz(msg.message_timestamp, 'UTC').clone().tz(this.context.timeZone)
                 return (
                     <div key={msg.id} className={`${styles.messageContainer} ${msg.sender_id === user.id && styles.right}`}>
                         <div className={styles.time}>{timezoneTimestamp.format("h:mm A")}</div>
