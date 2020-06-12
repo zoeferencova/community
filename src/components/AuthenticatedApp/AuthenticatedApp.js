@@ -76,9 +76,19 @@ export default class AuthenticatedApp extends Component {
 
     socket.on("reconnect", () => {
       socket.emit(USER_CONNECTED, this.state.user)
-
+      
       ChatService.getUserChats()
-        .then(chats => this.setState({ chats }))
+        .then(chats => {
+          if (this.state.activeChat) {
+            const currentChat = this.state.chats.find(chat => chat.id === this.state.activeChat.id)
+            const activeChat = chats.find(chat => chat.id === this.state.activeChat.id)
+            if (activeChat.messages.length > currentChat.messages.length) {
+              this.setState({ chats, activeChat })
+            }
+          } else {
+            this.setState({ chats })
+          }
+        })
     })
 
     socket.emit(USER_CONNECTED, this.state.user);
