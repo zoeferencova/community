@@ -1,0 +1,23 @@
+.button {
+    padding: 8px 16px;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: inherit;
+    border: 1px solid rgb(38, 38, 39);
+    color: rgb(38, 38, 39);
+    border-radius: 2px;
+    background-color: transparent;
+    transition: 0.2s border;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    border: 1px solid rgba(38, 38, 39, 0.8);
+}
+
+.buttonDark {
+    composes: button;
+    background-color: rgb(38, 38, 39);
+    color: white;
+}

@@ -1,14 +1,16 @@
 @font-face {
   font-family: "ApercuLight";
-  src: local("ApercuLight"), url("../src/fonts/Apercu-Font/Apercu\ Pro\ Light.otf") format("truetype");
+  src: local("Apercu"), url("../src/fonts/Apercu-Font/Apercu\ Pro\ \Light.otf") format("truetype");
 }
 
 body {
   margin: 0;
   font-family: "ApercuLight";
+  color: rgb(38, 38, 39);
   letter-spacing: 0.1px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fffbf5;
 }
 
 code {

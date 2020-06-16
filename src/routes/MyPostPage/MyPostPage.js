@@ -6,6 +6,7 @@ import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import Task from "../../components/Task/Task"
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import { ButtonLight } from "../../components/Utils/Utils";
 import styles from "./MyPostPage.module.css";
 
 class MyPostPage extends Component {
@@ -45,9 +46,9 @@ class MyPostPage extends Component {
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                
                 </div>
                 <div>
-                    <button type="button" onClick={() => this.props.history.push("/home")}>Back</button>
-                    <button onClick={() => this.handleDelete(post.id)}>Delete</button>
-                    <button type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</button>
+                    <ButtonLight type="button" onClick={() => this.props.history.push("/home")}>Back</ButtonLight>
+                    <ButtonLight onClick={() => this.handleDelete(post.id)}>Delete</ButtonLight>
+                    <ButtonLight type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonLight>
                 </div>
                 </>}
             </main>
