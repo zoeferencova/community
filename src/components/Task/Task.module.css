@@ -1,6 +1,36 @@
 .task {
-    border: 1px solid black;
-    padding: 4px 7px;
+    padding: 7px 10px;
     margin-right: 8px;
     font-size: 13px;
+    border-radius: 5px;
+}
+
+.errands {
+    background-color: #e4f2f2;
+    color: #164d4d;
+}
+
+.supplies {
+    background-color: #e4f0e4;
+    color: #004d00;
+}
+
+.call {
+    background-color: #f2f0fa;
+    color: #130840;
+}
+
+.chat {
+    background-color: #f5e6e6;
+    color: #5e0202;
+}
+
+.dog {
+    background-color: #faf9e6;
+    color: #404040;
+}
+
+.other {
+    background-color: #fcf5e8;
+    color: #404040;
 }

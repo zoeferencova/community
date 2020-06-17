@@ -1,11 +1,26 @@
 .post {
-    background-color: #ededed;
     display: flex;
     flex-direction: column;
     width: 90%;
     padding: 20px;
     text-align: left;
     margin: 15px 0px;
+    background-color: #fffefc;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
+    border-radius: 10px;
+}
+
+.postHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 0 20px 0;
+
+    height: 30px;
+}
+
+.postHeader h4 {
+    margin-left: 10px;
 }
 
 .details {
@@ -13,11 +28,27 @@
     justify-content: space-between;
 }
 
+.distance {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #404040;
+}
+
 .button, .buttonLink {
-    padding: 10px;
     margin-top: 15px;
     align-self: center;
     width: 200px;
+    font-size: 14px;
+    border: none;
+    background-color: #f2f4f7;
+}
+
+.buttonLink:hover {
+    border: none;
+    background-color: #e4e9f0;
+    transition: 0.5s;
+    opacity: 1;
 }
 
 .helpItems {
@@ -26,18 +57,25 @@
     padding-left: 0px;
 }
 
-.post h4 {
-    margin-top: 0;
-    display: inline-block;
-}
-
 .urgency {
     font-size: 12px;
     margin-left: 10px;
 }
 
-@media only screen and (min-width: 600px) {
+.heart, .hand {
+    margin-right: 10px;
+}
+
+.heart {
+    color: #bf5e6b;
+}
+
+.hand {
+    color: #e6c78e;
+}
+
+@media only screen and (min-width: 830px) {
     .post {
-        width: 65%;
+        width: 70%;
     }
 }

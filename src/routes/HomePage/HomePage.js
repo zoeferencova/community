@@ -36,15 +36,15 @@ export default class HomePage extends Component {
                     <div className={styles.mapSection}>
                         <h3 className={styles.mapTitle}>Your Location</h3>
                         <GoogleMap className={styles.map} radius={this.context.user.radius} location={this.context.user.location} displayMarker={true} />
-                        <p className={styles.mapSubtitle}>Results are being shown for this area. <Link to="/location">Change location?</Link></p>
+                        <p className={styles.mapSubtitle}>Results are being shown for this area. <Link to="/location" className={styles.mapSubLink}>Change location?</Link></p>
                     </div>
                 </header>
                 <section className={styles.feed}>
                     <div className={styles.feedHeader}>
-                        <h2>Posts in your area</h2>
+                        <h3>There are {this.context.neighborhood_posts.length} posts in your area</h3>
                         <div className={styles.newPostButtons}>
-                            <ButtonLight className={styles.requestButton} onClick={() => this.goToNewPost("request")}><i className={`fas fa-hand-paper ${styles.hand}`}></i> Request</ButtonLight>
-                            <ButtonLight onClick={() => this.goToNewPost("offer")}><i className={`fas fa-heart ${styles.heart}`}></i> Offer</ButtonLight>
+                            <ButtonLight className={styles.requestButton} onClick={() => this.goToNewPost("request")}><i className={`fas fa-hand-paper ${styles.hand}`}></i> Request help</ButtonLight>
+                            <ButtonLight onClick={() => this.goToNewPost("offer")}><i className={`fas fa-heart ${styles.heart}`}></i> Offer help</ButtonLight>
                         </div>
                     </div> 
                     {this.context.user.location ? this.makeAllPosts() : "Please save your current location to view posts in your area"}

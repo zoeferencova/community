@@ -1,13 +1,13 @@
 .button {
     padding: 8px 16px;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     font-family: inherit;
     border: 1px solid rgb(38, 38, 39);
     color: rgb(38, 38, 39);
     border-radius: 2px;
     background-color: transparent;
-    transition: 0.2s border;
+    transition: 0.2s;
 }
 
 .button:hover {
@@ -18,6 +18,43 @@
 
 .buttonDark {
     composes: button;
-    background-color: rgb(38, 38, 39);
+    background-color: #415166;
     color: white;
+    border: 1px solid #415166;
+}
+
+.circle {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+:global .red {
+    background-color: #bf5656;
+}
+
+:global .green {
+    background-color: #8cc47a;
+}
+
+:global .indigo {
+    background-color: #7784bf;
+}
+
+:global .purple {
+    background-color: #8878b0;
+}
+
+:global .teal {
+    background-color: #78b09a
+}
+
+:global .blue {
+    background-color: #56bcbf;
 }

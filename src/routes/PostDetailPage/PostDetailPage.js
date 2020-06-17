@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { CHAT_STARTED, MESSAGE_SENT } from "../../message-utils/events";
+import { ButtonDark, ButtonLight } from "../../components/Utils/Utils";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
@@ -48,34 +49,38 @@ class PostDetailPage extends Component {
         return (   
             <main className={styles.main}>
                 {post && <>
-                    <h3>Respond to {post.first_name}'s {post.post_type}.</h3>
-                    <h4>{post.first_name} {post.post_type === "request" ? "needs help with:" : "can help with:"}</h4>
+                    <div className={styles.map}>
+                        <GoogleMap className={styles.gmap} location={post.location} radius={post.radius} displayMarker={false} />
+                    </div>
+                    <div className={styles.postHeader}>
+                        <h3 className={styles.postTitle}>Respond to {post.first_name}'s {post.post_type}</h3>
+                        {post.post_type === "request" && <span className={styles[post.urgency]}><i className="fas fa-circle"></i> {post.urgency} urgency</span>}
+                    </div>
                     <ul className={styles.tasks}>
                         {post.categories.map(task => <Task key={task} task={task} />)}
                     </ul>
-                    {post.post_type === "request" && <p>Urgency: {post.urgency}</p>}
-                    {post.description && <p>Description: {post.description}</p>}
-                    <div className={styles.map}>
-                        <GoogleMap location={post.location} radius={post.radius} displayMarker={false} />
+                    {post.description && <p className={styles.description}>{post.description}</p>}
+                    <div className={styles.messageSection}>
+                        {!this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id) ?
+                            <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
+                                <label htmlFor="message">Write a message</label>
+                                <textarea id="message" className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></textarea>
+                                <div className={styles.buttonSection}>
+                                    <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Go Back</ButtonLight>
+                                    <ButtonDark type="submit">Send Message</ButtonDark>
+                                </div>
+                            </form>
+                            :
+                            <>
+                                <p className={styles.chatMessage}>You have a chat with {post.first_name}</p> 
+                                <div className={styles.buttonSection}>
+                                        <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Go back</ButtonLight>
+                                        <ButtonDark type="button" onClick={() => this.goToMessages(this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to chat</ButtonDark>
+                                </div>  
+                            </>
+                        }
                     </div>
-                    {!this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id) ?
-                        <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
-                            <label htmlFor="message">Write a message</label>
-                            <textarea id="message" className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></textarea>
-                            <div>
-                                <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
-                                <button type="submit">Send Message</button>
-                            </div>
-                        </form>
-                        :
-                        <>
-                            <p>You have a chat with {post.first_name}</p> 
-                            <div>
-                                    <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
-                                    <button type="button" onClick={() => this.goToMessages(this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to Messages</button>
-                            </div>  
-                        </>
-                    }
+                    
                 </>}
             </main>
         )
