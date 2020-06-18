@@ -7,9 +7,8 @@
 }
 
 .header {
-    padding: 50px 15px;
+    padding: 50px 15px 0px 15px;
     display: flex;
-    padding-bottom: 80px;
     justify-content: space-evenly;
     flex-wrap: wrap;
     align-items: center;
@@ -17,6 +16,7 @@
 
 .header h2 {
     font-size: 30px;
+    margin-bottom: -30px;
 }
 
 .heart, .hand {
@@ -52,8 +52,6 @@
 
 .yourPosts h3, .mapTitle {
     text-align: left;
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
@@ -61,11 +59,55 @@
 
 .mapSection {
     width: 80%;
-    height: 250px;
 }
 
 .userInfo {
     width: 80%;
+}
+
+.infoTitle {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.plus {
+    font-size: 25px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.infoTitle:hover {
+    cursor: pointer;
+}
+
+.rotate {
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.unrotate {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+.infoBody {
+    width: 100%;
+    height: 100%;
+}
+
+.hide {
+    display: none;
+}
+
+.infoBodyMap {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 40px;
 }
 
 .mapSubtitle {
@@ -94,7 +136,7 @@
     flex-direction: column;
     align-items: center;
     padding: 50px 0px;
-    margin: 30px auto;
+    margin: 0px auto;
 }
 
 @media only screen and (min-width: 830px) {
@@ -105,8 +147,20 @@
         margin-top: 0;
     }
 
+    .header h2 {
+        margin-bottom: 25px;
+    }
+
+    .plus {
+        display: none;
+    }
+
     .feed {
         margin-top: 20px;
+    }
+
+    .hide {
+        display: block;
     }
 
     .yourPosts {
@@ -127,6 +181,10 @@
 
     .userInfo {
         width: 90%;
+    }
+
+    .infoBodyMap {
+        height: 180px;
     }
 
     .main {

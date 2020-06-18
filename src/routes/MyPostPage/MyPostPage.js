@@ -6,7 +6,7 @@ import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import Task from "../../components/Task/Task"
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
-import { ButtonLight } from "../../components/Utils/Utils";
+import { ButtonLight, ButtonDark } from "../../components/Utils/Utils";
 import styles from "./MyPostPage.module.css";
 
 class MyPostPage extends Component {
@@ -33,22 +33,26 @@ class MyPostPage extends Component {
         return (   
             <main className={styles.main}>
                 {post && <>
-                <h3>Your {post.post_type}</h3>
-                <span>You posted on {moment(post.date_created).tz(this.context.timeZone).format('LLLL z')}</span>
-                <h4>{post.post_type === "offer" ? "Offering to" : "Requesting"} help with:</h4>
-                <ul className={styles.tasks}>
-                    {post.categories.map(task => <Task key={task} task={task} />)}
-                </ul>
-                {post.post_type === "request" && <p>Urgency: {post.urgency}</p>}
-                {post.description && <p>Description: {post.description}</p>}
-                <h4>Location</h4>
                 <div className={styles.map}>
                     <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                
                 </div>
-                <div>
+                <div className={styles.postHeader}>
+                    <div>
+                        <h3>Your {post.post_type}</h3>
+                        <p className={styles.date}>{moment(post.date_created).tz(this.context.timeZone).format('LLLL z')}</p>
+                    </div>
+                    {post.post_type === "request" && <span className={`${styles[post.urgency]} ${styles.urgency}`}><i className="fas fa-circle"></i> {post.urgency} urgency</span>}
+                </div>
+                <ul className={styles.tasks}>
+                    {post.categories.map(task => <Task key={task} task={task} />)}
+                </ul>
+                {post.description && <p className={styles.description}>{post.description}</p>}
+                <div className={styles.buttonSection}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/home")}>Back</ButtonLight>
-                    <ButtonLight onClick={() => this.handleDelete(post.id)}>Delete</ButtonLight>
-                    <ButtonLight type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonLight>
+                    <div>
+                        <ButtonDark className={styles.delete} onClick={() => this.handleDelete(post.id)}>Delete</ButtonDark>
+                        <ButtonDark type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonDark>
+                    </div>
                 </div>
                 </>}
             </main>

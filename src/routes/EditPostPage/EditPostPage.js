@@ -65,6 +65,8 @@ class EditPostPage extends Component {
             post.urgency = (this.state.post.urgency).toLowerCase();
         }
 
+        console.log(post)
+
         UserDataService.patchPost(post, this.state.post.id)
             .then(res => {
                 this.context.updatePost(this.state.post)
@@ -93,9 +95,9 @@ class EditPostPage extends Component {
                         <label className={styles.label} htmlFor="urgency">Urgency</label>
                         <select value={this.state.post.urgency} onChange={this.handleUrgencyChange} className={styles.select} id="urgency" required>
                             <option></option>
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
                         </select>
                     </div>}
                     <div>

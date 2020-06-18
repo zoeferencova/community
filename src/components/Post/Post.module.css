@@ -57,9 +57,27 @@
     padding-left: 0px;
 }
 
-.urgency {
+.high, .medium, .low {
     font-size: 12px;
-    margin-left: 10px;
+    display: inline-block;
+    padding-top: 8px;
+}
+
+.high i, .medium i, .low i {
+    font-size: 10px;
+    margin-right: 3px;
+}
+
+.high {
+    color: #ad3434;
+}
+
+.medium {
+    color: #edcb64;
+}
+
+.low {
+    color: #3d9145;
 }
 
 .heart, .hand {
