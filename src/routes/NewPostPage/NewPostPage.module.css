@@ -12,6 +12,11 @@
     margin: 30px auto;
 } 
 
+.main h3 {
+    margin: 35px 0;
+    font-size: 18px;
+}
+
 .textarea {
     height: 100px;
 }
@@ -23,6 +28,18 @@
 .buttonContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.heart, .hand {
+    margin-left: 4px;
+}
+
+.heart {
+    color: #bf5e6b;
+}
+
+.hand {
+    color: #e6c78e;
 }
 
 @media only screen and (min-width: 600px) {
@@ -42,3 +59,5 @@
         width: 50%;
     }
 }
+
+

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
+import { ButtonLight, ButtonDark, Input, Label } from "../../components/Utils/Utils";
 import styles from "./LocationPage.module.css";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import MapSearch from "../../components/MapSearch/MapSearch"
@@ -36,26 +37,25 @@ export default class LocationPage extends Component {
     }
     
     render() {
-        console.log(this.state)
         return (   
             <main className={styles.main}>
                 {this.state.location && <>
-                <h3>Location Settings</h3>
                 <div className={styles.map}>
                     <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
                 </div>
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
-                        <label htmlFor="location">Location</label>
+                        <Label htmlFor="location">Location</Label>
                         <MapSearch handleLocationChange={this.handleLocationChange} />
                     </div>
-                    <div>
-                        <label htmlFor="radius">Radius</label>
-                        <input required type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
-                        <span>miles</span>
+                    <div className={styles.radiusSection}>
+                        <Label htmlFor="radius">Radius (miles)</Label>
+                        <Input className={styles.radius} required type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
                     </div>
-                    <button type="button" onClick={this.props.history.goBack}>Cancel</button>
-                    <button type="submit">Use this location</button>
+                    <div className={styles.buttonSection}>
+                        <ButtonLight type="button" onClick={this.props.history.goBack}>Cancel</ButtonLight>
+                        <ButtonDark type="submit">Use this location</ButtonDark>
+                    </div>
                 </form>
                 </>}
             </main>
