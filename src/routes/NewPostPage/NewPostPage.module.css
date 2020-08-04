@@ -1,10 +1,16 @@
-.form div {
-
+.main {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    margin: 20px auto;
-}
+    align-items: center;
+    position: absolute;
+    top: 65px;
+    width: 90%;
+    background-color: white;
+    padding: 0 0 30px 0;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
+    border-radius: 10px;
+    margin: 30px auto;
+} 
 
 .textarea {
     height: 100px;
@@ -14,13 +20,25 @@
     margin-bottom: 10px;
 }
 
-.select {
-    width: 200px;
-    margin: 0 auto;
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
 }
 
 @media only screen and (min-width: 600px) {
     .form div {
         width: 400px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .main {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .main {
+        width: 50%;
     }
 }

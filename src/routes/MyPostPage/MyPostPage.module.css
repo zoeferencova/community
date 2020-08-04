@@ -90,6 +90,10 @@
     border: 1px solid #ad3434;
 }
 
+.delete:hover {
+    border: 1px solid #b55151;
+}
+
 .postTitle {
     font-size: 18px;
     text-align: left;

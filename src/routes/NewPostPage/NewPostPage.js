@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import styles from "./NewPostPage.module.css";
 import UserDataService from "../../services/user-data-service";
+import { ButtonLight, ButtonDark, Label, Textarea, Select } from "../../components/Utils/Utils";
 
 class NewPostPage extends Component {
     static contextType = CommUnityContext;
@@ -40,11 +41,11 @@ class NewPostPage extends Component {
     render() {
         const type = this.props.match.params.type;
         return (   
-            <main>
+            <main className={styles.main}>
                 <h3>Create a new {type}</h3>
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
-                        <label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?": "What do you need help with?"}</label>
+                        <Label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?": "What do you need help with?"}</Label>
                         <select className={styles.select} id="categories" multiple required>
                             <option value="Picking up supplies">Picking up supplies</option>
                             <option value="Running errands">Running errands</option>
@@ -55,20 +56,22 @@ class NewPostPage extends Component {
                         </select>
                     </div>
                     {type === "request" && <div>
-                        <label className={styles.label} htmlFor="urgency">Urgency</label>
-                        <select className={styles.select} id="urgency" required>
+                        <Label className={styles.label} htmlFor="urgency">Urgency</Label>
+                        <Select className={styles.select} id="urgency" required>
                             <option></option>
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
-                        </select>
+                        </Select>
                     </div>}
                     <div>
-                        <label className={styles.label} htmlFor="description">Description (optional)</label>
-                        <textarea className={styles.textarea} name="description" id="description"></textarea>
+                        <Label className={styles.label} htmlFor="description">Description (optional)</Label>
+                        <Textarea className={styles.textarea} name="description" id="description"></Textarea>
                     </div>
-                    <button type="button" onClick={() => this.props.history.goBack()}>Cancel</button>
-                    <button type="submit">Submit</button>
+                    <div className={styles.buttonContainer}>
+                        <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Cancel</ButtonLight>
+                        <ButtonDark type="submit">Submit</ButtonDark>
+                    </div>
                 </form>
             </main>
         )

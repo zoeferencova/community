@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
+import {Input, Label, ProfilePicture, ButtonDark, ButtonLight} from "../../components/Utils/Utils";
 
 class AccountPage extends Component {
     static contextType = CommUnityContext;
@@ -41,27 +42,24 @@ class AccountPage extends Component {
 
     render() {
         return (   
-            <main>
-                <h3>Account</h3>
-                <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
-                    <div>
-                        <label htmlFor="first_name">First Name</label>
-                        <input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChangeName} />
+            <main className={styles.main}>
+                <button className={styles.backButton} type="button" onClick={() => this.props.history.push("/home")}><i className="fas fa-arrow-left"></i></button>
+                {this.context.user.first_name && <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
+                    <ProfilePicture className={styles.profPic} first_name={this.context.user.first_name} />
+                    <Label htmlFor="first_name">First Name</Label>
+                    <Input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChangeName} />
+                    <Label htmlFor="email">Email</Label>
+                    <Input required type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
+                    <div className={styles.buttonContainer}>
+                        <ButtonLight className={styles.logoutButton} type="button" onClick={this.handleLogout}>Log out</ButtonLight>
+                        <ButtonDark type="submit">Update</ButtonDark>
                     </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input required type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
-                    </div>
-                    <button type="button" onClick={() => this.props.history.push("/home")}>Cancel</button>
-                    <button type="submit">Save</button>
-                    <button type="button" onClick={this.handleLogout}>Log out</button>
                     <div className={styles.links}>
-                        <Link to="/change-password">Change password</Link>
-                        <Link to="/location">Change location</Link>
-                        <Link to="/confirm-deactivation">Deactivate account</Link>
+                        <Link to="/change-password"><i className="fas fa-key"></i> Change password</Link>
+                        <Link to="/location"><i className="fas fa-map-marker-alt"></i> Change location</Link>
+                        <Link to="/confirm-deactivation"><i className="fas fa-ban"></i> Deactivate account</Link>
                     </div>
-                    
-                </form>
+                </form>}
             </main>
         )
     }

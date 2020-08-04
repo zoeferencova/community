@@ -13,12 +13,16 @@ export function Input({ className, ...props }) {
     return <input className={`${styles.input} ${className}`} {...props} />
 }
 
+export function Label({ className, ...props }) {
+    return <label className={`${styles.label} ${className}`} {...props} />
+}
+
 export function Textarea({ className, ...props }) {
-    return <textarea className={`${styles.textarea} ${className}`} {...props} />
+    return <textarea className={`${styles.input} ${className}`} {...props} />
 }
 
 export function Select({ className, ...props }) {
-    return <select className={`${styles.select} ${className}`} {...props} />
+    return <select className={`${styles.input} ${className}`} {...props} />
 }
 
 export function ProfilePicture({ className, ...props }) {
