@@ -33,6 +33,10 @@ export default class HomePage extends Component {
                 <header className={styles.header}>
                     <div className={styles.userInfo}>
                         <h2>Welcome, {this.context.user.first_name}!</h2>
+                        <div className={styles.newPostButtons}>
+                            <ButtonLight className={styles.newPostButton} onClick={() => this.goToNewPost("request")}><i className={`fas fa-hand-paper ${styles.hand}`}></i> Request</ButtonLight>
+                            <ButtonLight className={styles.newPostButton} onClick={() => this.goToNewPost("offer")}><i className={`fas fa-heart ${styles.heart}`}></i> Offer</ButtonLight>
+                        </div>
                         <div className={styles.yourPosts}>
                             <div className={styles.infoTitle} onClick={() => this.state.showPosts ? this.setState({ showPosts: false }) : this.setState({ showPosts: true })}>
                                 <h3>Your Posts</h3>
@@ -57,10 +61,7 @@ export default class HomePage extends Component {
                 <section className={styles.feed}>
                     <div className={styles.feedHeader}>
                         <h3>There are {this.context.neighborhood_posts.length} posts in your area</h3>
-                        <div className={styles.newPostButtons}>
-                            <ButtonLight className={styles.requestButton} onClick={() => this.goToNewPost("request")}><i className={`fas fa-hand-paper ${styles.hand}`}></i> Request help</ButtonLight>
-                            <ButtonLight onClick={() => this.goToNewPost("offer")}><i className={`fas fa-heart ${styles.heart}`}></i> Offer help</ButtonLight>
-                        </div>
+                        
                     </div> 
                     {this.context.user.location ? this.makeAllPosts() : "Please save your current location to view posts in your area"}
                 </section>
