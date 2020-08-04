@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
+import { ButtonDark, ButtonLight } from "../../components/Utils/Utils";
+import styles from "./DeactivationConfirmationPage.module.css";
 import UserDataService from "../../services/user-data-service";
 import TokenService from "../../services/token-service";
 
@@ -19,11 +21,15 @@ class DeactivationConfirmationPage extends Component {
     
     render() {
         return ( 
-            <div>
+            <div className={styles.main}>
                 <h3>Deactivate Account</h3>
-                <h4>We're sad to see you go. Are you sure you want to deactivate your account?</h4>
-                <button type="button" onClick={() => this.props.history.push("/account")}>Nevermind!</button>
-                <button type="submit" onClick={this.handleDeactivation}>Yes</button>
+                <div className={styles.inner}>
+                    <h4>We're sad to see you go 😔. Are you sure you want to deactivate your account?</h4>
+                    <div className={styles.buttonSection}>
+                        <ButtonDark type="button" onClick={() => this.props.history.push("/account")}>Nevermind!</ButtonDark>
+                        <ButtonLight className={styles.yesButton} type="submit" onClick={this.handleDeactivation}>Yes</ButtonLight>
+                    </div> 
+                </div> 
             </div>  
         )
     }

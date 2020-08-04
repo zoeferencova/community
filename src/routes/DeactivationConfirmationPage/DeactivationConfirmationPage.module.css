@@ -1,0 +1,38 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 65px;
+    width: 90%;
+    max-width: 500px;
+    background-color: white;
+    padding: 30px 0;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
+    border-radius: 10px;
+    margin: 30px auto;
+} 
+
+.main h4 {
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.inner {
+    width: 70%;
+}
+
+.buttonSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.yesButton {
+    color: #ad3434;
+    border: 1px solid #ad3434;
+}
+
+.yesButton:hover {
+    border: 1px solid #b55151;
+}

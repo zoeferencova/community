@@ -66,7 +66,7 @@ class PostDetailPage extends Component {
                                 <label htmlFor="message">Write a message</label>
                                 <textarea id="message" className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></textarea>
                                 <div className={styles.buttonSection}>
-                                    <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Go Back</ButtonLight>
+                                    <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Back</ButtonLight>
                                     <ButtonDark type="submit">Send Message</ButtonDark>
                                 </div>
                             </form>
@@ -74,7 +74,7 @@ class PostDetailPage extends Component {
                             <>
                                 <p className={styles.chatMessage}>You have a chat with {post.first_name}</p> 
                                 <div className={styles.buttonSection}>
-                                        <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Go back</ButtonLight>
+                                        <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Back</ButtonLight>
                                         <ButtonDark type="button" onClick={() => this.goToMessages(this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to chat</ButtonDark>
                                 </div>  
                             </>
