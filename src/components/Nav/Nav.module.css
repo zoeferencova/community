@@ -74,5 +74,9 @@
     .desktop {
         display: none;
     }
+
+    :global .active li {
+        border: none;
+    }
 }
 

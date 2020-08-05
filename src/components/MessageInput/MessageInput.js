@@ -58,10 +58,10 @@ export default class MessageInput extends Component {
                         className={styles.formControl} 
                         value={message} 
                         autoComplete={"off"} 
-                        placeholder = "Type something here" 
+                        placeholder = "Type a message..." 
                         // onKeyUp={e => {e.keyCode !== 13 && this.sendTyping()}} 
                         onChange={({target}) => {this.setState({ message: target.value })}}></input>
-                    <button disabled={message.length < 1} type="submit" className={styles.send}>Send</button>
+                    <button disabled={message.length < 1} type="submit" className={styles.send}><img className={styles.sendIcon} src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"/></button>
                 </form>
             </div>
         )

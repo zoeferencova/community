@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CommUnityContext from "../../contexts/context";
+import { ProfilePicture } from "../../components/Utils/Utils";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageSideBar extends Component {
@@ -25,7 +26,7 @@ export default class MessageSideBar extends Component {
             const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
             return (
                 <div key={chat.id} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
-                    <div className={styles.userPhoto}>{user.first_name[0].toUpperCase()}</div>
+                    <ProfilePicture className={styles.sidebarPic} first_name={user.first_name} />
                     <div className={styles.userInfo}>
                         <div className={styles.name}>{user.first_name}</div>
                         {lastMessage && <div className={styles.lastMessage}>{lastMessage.message_content}</div>}

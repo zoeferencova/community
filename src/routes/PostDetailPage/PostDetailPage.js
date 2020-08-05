@@ -6,6 +6,7 @@ import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import { Textarea } from "../../components/Utils/Utils";
 
 import styles from "./PostDetailPage.module.css";
 
@@ -64,7 +65,7 @@ class PostDetailPage extends Component {
                         {!this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id) ?
                             <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                                 <label htmlFor="message">Write a message</label>
-                                <textarea id="message" className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></textarea>
+                                <Textarea id="message" className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></Textarea>
                                 <div className={styles.buttonSection}>
                                     <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Back</ButtonLight>
                                     <ButtonDark type="submit">Send Message</ButtonDark>
