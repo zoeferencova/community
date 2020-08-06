@@ -82,6 +82,7 @@
     border-bottom: 1px solid black;
     align-items: flex-end;
     margin-bottom: 20px;
+    height: 45px;
 }
 
 .plus {
@@ -193,6 +194,7 @@
     .infoBodyMap {
         height: 180px;
     }
+
 
     .main {
         flex-direction: row;
