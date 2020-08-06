@@ -1,8 +1,8 @@
 .task {
     padding: 7px 10px;
-    margin-right: 8px;
     font-size: 13px;
     border-radius: 5px;
+    margin: 0px 8px 8px 0px;
 }
 
 .errands {

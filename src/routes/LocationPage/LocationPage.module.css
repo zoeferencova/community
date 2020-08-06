@@ -20,7 +20,7 @@
 }
 
 .form {
-    width: 70%;
+    width: 85%;
 }
 
 .buttonSection {
@@ -42,5 +42,9 @@
 @media only screen and (min-width: 800px) {
     .main {
         width: 50%;
+    }
+
+    .form {
+        width: 70%;
     }
 }
