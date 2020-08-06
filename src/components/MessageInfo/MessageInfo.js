@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
+import { ButtonLight, ButtonDark } from "../Utils/Utils";
 import styles from "./MessageInfo.module.css";
 
 class MessageInfo extends Component {
@@ -37,10 +38,10 @@ class MessageInfo extends Component {
         const { user } = this.props;
         return (
             <div className={styles.container}>
-                <p>{this.formatSentence(post, user)}</p>
+                <p>{this.formatSentence(post, user)}<span>{post.post_type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>}</span></p>
                 <div className={styles.buttons}>
-                    <button type="button" onClick={e => this.handleGoToPost(e, post)}>Go to post</button>
-                    <button type="button" onClick={e => this.props.deleteChat(e)}>Delete chat</button>
+                    <ButtonDark type="button" onClick={e => this.handleGoToPost(e, post)}>Go to post</ButtonDark>
+                    <ButtonLight className={styles.deleteButton} type="button" onClick={e => this.props.deleteChat(e)}>Delete chat</ButtonLight>
                 </div>
             </div>
         );

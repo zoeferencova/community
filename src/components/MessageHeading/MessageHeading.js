@@ -3,6 +3,7 @@ import { CHAT_DELETED } from "../../message-utils/events";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import MessageInfo from "../MessageInfo/MessageInfo";
+import { ProfilePicture } from "../Utils/Utils";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageHeading extends Component {
@@ -42,6 +43,8 @@ export default class MessageHeading extends Component {
                 <div className={styles.chatHeader}>
                     <div className={styles.userInfo}>
                         <i className={`fas fa-chevron-left ${styles.chatBackArrow}`} onClick={this.props.mobileDisplayContacts}></i>
+                        
+                        <ProfilePicture className={styles.headerPic} first_name={this.props.receiver.first_name} />
                         <div className={styles.userName}>{this.props.receiver.first_name}</div>
                         <div className={styles.status}>
                             <div className={styles.indicator}></div>

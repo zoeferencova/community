@@ -95,7 +95,7 @@ export default class MessageContainer extends Component {
                         )
                         : 
                         <div className={`${styles.chatRoom} ${styles.choose}`}>
-                            <h3>Choose a chat!</h3>
+                            <h3><i className="fas fa-arrow-left"></i> Choose a chat!</h3>
                         </div>
                     }
                 </div>

@@ -4,20 +4,53 @@
     top: 0;
     z-index: 1000;
     top: 75px;
-    background-color: white;
+    background-color: #f2f5f7;
     display: flex;
     padding: 0px 15px;
     left: 10px; 
     right: 10px;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     animation: fadeInDown ease 0.3s;
     -webkit-animation: fadeInDown ease 0.3s;
     -moz-animation: fadeInDown ease 0.3s;
     -o-animation: fadeInDown ease 0.3s;
     -ms-animation: fadeInDown ease 0.3s;
+}
+
+.container p {
+   color: black;
+   font-size: 15px;
+   margin-left: 15px;
+   text-align: left;
+}
+
+
+.buttons button {
+   margin: 0px 10px;
+}
+
+.deleteButton {
+   color: #ad3434;
+   border: 1px solid #ad3434;
+}
+
+.deleteButton:hover {
+   border: 1px solid #b55151;
+}
+
+.heart, .hand {
+   margin-left: 6px;
+   font-size: 16px;
+}
+
+.heart {
+   color: #bf5e6b;
+}
+
+.hand {
+   color: #e6c78e;
 }
 
 @keyframes fadeInDown {
@@ -75,11 +108,15 @@
     }
 } 
 
-.container p {
-    font-size: 14px;
-    color: gray;
-}
+@media only screen and (max-width: 608px) {
+   .container {
+      flex-wrap: wrap;
+      height: 130px;
+      justify-content: center;
+   }
 
-.buttons button {
-    margin: 0px 10px;
+   .container .buttons {
+      margin-bottom: 20px;
+   }
+
 }

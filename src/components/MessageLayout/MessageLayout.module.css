@@ -28,14 +28,15 @@
     flex-direction:row;
     align-items:center;
     justify-content:space-between;
-    background:white;
+    background: #fffefc;
     border-top: 1px solid #e9ebf0;
     border-right: 1px solid #e9ebf0;
+    border-bottom: 1px solid #e9ebf0;
 }
 
 .sideBar .users {
     overflow-y:scroll;
-    background: white;
+    background: #fffefc;
     flex-grow:1;
 }
 
@@ -126,9 +127,17 @@
     padding-left:16px;
     padding-right:16px;
 }
+
+.chatName {
+    font-weight: bold;
+    font-size: 13.5px;
+    text-transform: uppercase;
+    letter-spacing: 2.8px;
+    margin-left: 12px;
+}
     
 .chatHeader {
-    background:white;
+    background:#fffefc !important;
     box-shadow:0px 6px 5px -2px rgba(225,225,225,0.7);
     box-sizing:border-box;
     display:flex;
@@ -144,10 +153,6 @@
 .chatHeader .userInfo {
     align-items:center;
     display:flex;
-}
-
-.chatHeader .userInfo .userName {
-    margin-right:10px;
 }
 
 .chatHeader .userInfo .status {
@@ -168,6 +173,10 @@
     cursor:pointer;
     font-size: 19px;
     margin: 0 8px;
+}
+
+.chatHeader .headerPic {
+    margin-right: 15px;
 }
 
 .headerContainer {
@@ -192,7 +201,24 @@
 .chatRoom.choose {
     align-items:center;
     justify-content:center;
-    font-size:2em
+    font-size: 14px;
+}
+
+.choose h3 {
+    background-color:#f2f5f7;
+    color: #6f7ba3;
+    width: 50%;
+    height: 8%;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    margin-top: -150px;
+}
+
+.choose i {
+    margin-right: 15px;
 }
 
 .threadContainer {
@@ -223,7 +249,7 @@
     flex-direction:column;
     justify-content:flex-end;
     color:black;
-    background:white;
+    background:#fffefc;
 }
 
 .messageContainer {
@@ -409,7 +435,7 @@
     border:none;
     height:100%;
     color:black;
-    background:white;
+    background:#fffefc;
     transition:all .35s ease-out
 }
 
@@ -493,6 +519,7 @@
     .chatBackArrow {
         display: inline-block !important;
         margin-right: 25px;
+        color: #6f7ba3;
     }
 
     .chatBackArrow:hover {
