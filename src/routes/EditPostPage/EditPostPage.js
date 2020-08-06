@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import config from "../../config";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
+import { ButtonDark, ButtonLight, Textarea, Label } from "../../components/Utils/Utils";
+import SlimSelect from "slim-select";
 import styles from "../NewPostPage/NewPostPage.module.css";
 
 class EditPostPage extends Component {
@@ -19,6 +21,18 @@ class EditPostPage extends Component {
         })
             .then(res => res.json())
             .then(resJson => this.setState({ post: resJson }))
+            .then(res => {
+                new SlimSelect({
+                    select: "#categories",
+                    showSearch: false
+                })
+        
+                this.state.post.post_type === "request" && new SlimSelect({
+                    select: "#urgency",
+                    showSearch: false
+                })
+            })
+        
     }
 
     handleDescriptionChange = e => {
@@ -76,41 +90,44 @@ class EditPostPage extends Component {
     
     render() {
         return (   
-            <main>
+            <main className={styles.main}>
                 {this.state && <>
                 <h3>Edit {this.state.post.post_type}</h3>
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
-                        <label className={styles.label} htmlFor="categories">{this.state.post.post_type === "offer" ? "What can you help with?": "What do you need help with?"}</label>
-                        <select value={this.state.post.categories} onChange={this.handleTaskChange} className={styles.select} id="categories" multiple required>
-                            <option value="Picking up supplies">Picking up supplies</option>
-                            <option value="Running errands">Running errands</option>
-                            <option value="Phone call">Phone call</option>
-                            <option value="Online chat">Online chat</option>
-                            <option value="Walking a dog">Walking a dog</option>
-                            <option value="Other">Other</option>
+                        <Label className={styles.label} htmlFor="categories">{this.state.post.post_type === "offer" ? "What can you help with?": "What do you need help with?"}</Label>
+                        <select id="categories" value={this.state.post.categories} onChange={this.handleTaskChange} multiple required>
+                            <option className="supplies" value="Picking up supplies">Picking up supplies</option>
+                            <option id="errands" value="Running errands">Running errands</option>
+                            <option className="phone" value="Phone call">Phone call</option>
+                            <option className="online" value="Online chat">Online chat</option>
+                            <option className="dog" value="Dog walking">Dog walking</option>
+                            <option className="other" value="Other">Other</option>
                         </select>
                     </div>
                     {this.state.post.post_type === "request" && <div>
-                        <label className={styles.label} htmlFor="urgency">Urgency</label>
-                        <select value={this.state.post.urgency} onChange={this.handleUrgencyChange} className={styles.select} id="urgency" required>
-                            <option></option>
+                        <Label className={styles.label} htmlFor="urgency">Urgency</Label>
+                        <select value={this.state.post.urgency} onChange={this.handleUrgencyChange} id="urgency" required>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
                             <option value="high">High</option>
                         </select>
                     </div>}
                     <div>
-                        <label className={styles.label} htmlFor="description">Description (optional)</label>
-                        <textarea value={this.state.post.description === null ? "" : this.state.post.description} onChange={this.handleDescriptionChange} className={styles.textarea} name="description" id="description"></textarea>
+                        <Label className={styles.label} htmlFor="description">Description (optional)</Label>
+                        <Textarea value={this.state.post.description === null ? "" : this.state.post.description} onChange={this.handleDescriptionChange} className={styles.textarea} name="description" id="description"></Textarea>
                     </div>
-                    <button type="button" onClick={() => this.props.history.goBack()}>Cancel</button>
-                    <button type="submit">Submit</button>
+                    <div className={styles.buttonContainer}>
+                        <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Cancel</ButtonLight>
+                        <ButtonDark type="submit">Submit</ButtonDark>
+                    </div>
                 </form>
                 </>}
             </main>
         )
     }
 }
+
+
 
 export default withRouter(EditPostPage);
