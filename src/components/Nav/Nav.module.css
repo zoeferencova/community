@@ -7,37 +7,53 @@
     height: 65px;
     position: relative;
     width: 100%;
-    min-height: 65px;
+    min-height: 80px;
 }
 
-.logo {
-    height: 45px;
-    margin-left: 15px;
+.bigLogo {
+    height: 90px;
+    margin-left: 50px;
+    margin-top: 60px;
+}
+
+.smallLogo {
+    width: 90px;
+    align-self: center;
+    margin-top: 5px;
+    margin-left: 20px;
 }
 
 .navLinks {
     list-style: none;
     display: flex;
+    font-size: 15px;
+    letter-spacing: 0.7px;
+    margin-right: 35px;
 }
 
 .navLinks li {
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .navLinks i {
-    font-size: 23px;
+    font-size: 25px;
     margin-right: 10px;
 }
 
 .navLinks a {
     text-decoration: none;
-    color: black;
+    color: #96a5b3;
+    align-self: center;
 }
 
 :global .active li {
-    display: block;
-    padding-bottom: 3px;
-    border-bottom: 1px solid black;
+    color: #435361;
+    transition: 0.5s;
+}
+
+
+.profPic {
+    align-self: center;
 }
 
 .logIn, .signUp {
@@ -75,6 +91,15 @@
 
     :global .active li {
         border: none;
+    }
+
+    .navLinks {
+        margin-right: 10px;
+    }
+
+    .smallLogo {
+        margin-left: 0px;
+        width: 80px;
     }
 }
 

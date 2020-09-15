@@ -1,6 +1,6 @@
 .main {
     position: absolute;
-    top: 65px;
+    top: 70px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -182,7 +182,7 @@
         min-width: 260px;
         width: 35%;
         padding: 20px;
-        margin-left: 5%;
+        margin-left: 4%;
         align-items: flex-start;
         justify-content: flex-start;
     }

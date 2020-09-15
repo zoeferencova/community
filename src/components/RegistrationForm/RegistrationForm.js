@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { ButtonLight, ButtonDark, Input, Label } from "../Utils/Utils";
+import styles from "../LoginForm/LoginForm.module.css"
 
 import AuthApiService from "../../services/auth-api-service";
 
@@ -35,24 +37,19 @@ class RegistrationForm extends Component {
                 <div role="alert">
                     <p>{this.state.error}</p>
                 </div>} 
-                <div>
-                    <label htmlFor="first_name">First name</label>
-                    <input required type="text" name="first_name" id="first_name" />
+                <Label htmlFor="first_name">First name</Label>
+                <Input required type="text" name="first_name" id="first_name" />
+                <Label htmlFor="email">Email</Label>
+                <Input required type="email" name="email" id="email" />
+                <Label htmlFor="password">Password</Label>
+                <Input required type="password" name="password" id="password" />
+                <Label htmlFor="confirm_password">Confirm Password</Label>
+                <Input required type="password" name="confirm_password" id="confirm_password" />
+                <div className={styles.buttonContainer}>
+                    <ButtonLight type="button" onClick={() => this.props.history.push("/")}>Cancel</ButtonLight>
+                    <ButtonDark type="submit">Create Account</ButtonDark>
                 </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input required type="email" name="email" id="email" />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input required type="password" name="password" id="password" />
-                </div>
-                <div>
-                    <label htmlFor="confirm_password">Confirm Password</label>
-                    <input required type="password" name="confirm_password" id="confirm_password" />
-                </div>
-                <button type="button" onClick={() => this.props.history.push("/")}>Cancel</button>
-                <button type="submit">Create Account</button>
+                
             </form>
         )
     }

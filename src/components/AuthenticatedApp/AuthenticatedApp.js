@@ -179,7 +179,7 @@ export default class AuthenticatedApp extends Component {
       <main >
         <CommUnityContext.Provider value={value} >
           <div className={styles.main}>
-            <Nav isLoggedIn={this.props.isLoggedIn} />
+            {this.state.user.first_name && <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />}
             <Switch>
               <Route path="/home" component={HomePage} />
               <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
