@@ -31,8 +31,8 @@ export default class Nav extends Component {
                     </>
                 :
                     <ul className={styles.navLinks}>
-                        <NavLink to="/login"><li className={styles.logIn}>Log In</li></NavLink>
-                        <NavLink to="/register"><li className={styles.signUp}>Sign Up</li></NavLink>
+                        <NavLink to="/login"><li className={styles.logIn}>Log in</li></NavLink>
+                        <NavLink to="/register"><li className={styles.signUp}>Sign up</li></NavLink>
                     </ul>
                 } 
             </nav>  

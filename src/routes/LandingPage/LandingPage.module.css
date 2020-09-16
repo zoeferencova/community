@@ -2,17 +2,105 @@
     padding: 5px 0;
     background-color: #aaa;
 }
+
+.header, .section {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
   
 .header {
-    padding: 45px 15px;
+    height: 100vh;
+    background-color: #F5F1EA;
+    position: absolute;
+    top: 0;
 }
-  
+
+.header h1 {
+    padding-top: 100px;
+}
+
+.banner {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    z-index: 0;
+    opacity: 0.9;
+}
+
+.header .left {
+    z-index: 10;
+    background-color: #F5F1EA;
+}
+
+.first {
+    margin-top: 100vh;
+}
+
+.first .left, .first .right {
+    margin-top: -160px;
+}
+
 .section {
-    min-height: 200px;
-    padding: 30px 15px;
-    background-color: #bbb;
+    height: 70vh;
+}
+
+.icons {
+    flex-direction: column;
 }
   
-.section:nth-child(even) {
-    background-color: #ddd;
+.right, .left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.heading, .subheading, .buttonSection {
+    width: 70%;
+    margin: 0px auto 40px auto;
+}
+
+.heading {
+    font-size: 48px;
+    padding-bottom: 0px;
+}
+
+.subheading {
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.demoButton, .signupButton {
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 12px 15px !important;
+    font-family: inherit;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+    margin-right: 20px;
+}
+
+.demoButton:hover, .signupButton:hover {
+    cursor: pointer;
+}
+
+.demoButton {
+    color: black;
+    background-color: transparent;
+}
+
+.signupButton {
+    background-color: black;
+    color: white;
+}
+
+.iconList {
+    display: flex;
+}
+
+.icons h2 {
+    font-size: 35px;
 }

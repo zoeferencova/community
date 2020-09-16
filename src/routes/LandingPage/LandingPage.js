@@ -1,24 +1,27 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { ButtonLight, ButtonDark } from "../../components/Utils/Utils";
 
 import styles from "./LandingPage.module.css";
 
 class LandingPage extends Component {
     render() {
         return (   
-            <main>
+            <main className={styles.main}>
                 <header className={styles.header}>
                     <div className={styles.left}>
                         <h1 className={styles.heading}>Coming together in a time of need</h1>
                         <p className={styles.subheading}>Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a free platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.</p>
-                        <button type="button" onClick={() => this.props.history.push("/register")}>Start now</button>
-                        <button type="button" onClick={() => this.props.history.push("/demo")}>See a demo</button>
+                        <div className={styles.buttonSection}>
+                            <button className={styles.signupButton} type="button" onClick={() => this.props.history.push("/register")}>Start now</button>
+                            <button className={styles.demoButton} type="button" onClick={() => this.props.history.push("/demo")}>See a demo</button>
+                        </div> 
                     </div>
                     <div className={styles.right}>
-                        {/* image here */}
+                        <img className={styles.banner} src={require("../../images/banner.jpeg")} alt="grocery delivery" />
                     </div>
                 </header>
-                <section className={styles.section}>
+                <section className={`${styles.section} ${styles.first}`}>
                     <div className={styles.left}>
                         <h2 className={styles.heading}>How does it work?</h2>
                         <p className={styles.subheading}>CommUnity lets users post offers or requests for help and see other active postings in their neighborhood. Just set your location and neighborhood radius and create a post. Other members of your community can then offer to help or accept help which will initiate a private chat where you can securely work out the details.</p>
