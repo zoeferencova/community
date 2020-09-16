@@ -24,10 +24,10 @@ class LandingPage extends Component {
                 <section className={`${styles.section} ${styles.first}`}>
                     <div className={styles.left}>
                         <h2 className={styles.heading}>How does it work?</h2>
-                        <p className={styles.subheading}>CommUnity lets users post offers or requests for help and see other active postings in their neighborhood. Just set your location and neighborhood radius and create a post. Other members of your community can then offer to help or accept help which will initiate a private chat where you can securely work out the details.</p>
+                        <p className={styles.subheading}>Post offers or requests for help and see other active postings in your neighborhood. <br></br><br></br> Other members of your community can then offer to help or accept your offer, initiating a private chat where you can securely work out the details.</p>
                     </div>
                     <div className={styles.right}>
-                        {/* mockup here */}
+                        <img className={styles.mockupDesktop} src={require("../../images/mockup1.png")} alt="mockup of application on desktop browser" />
                     </div>
                 </section>
                 <section className={`${styles.section} ${styles.icons}`}>
@@ -41,7 +41,7 @@ class LandingPage extends Component {
                         <div className={styles.iconSection}>
                             {/* icon here */}
                             <h3 className={styles.iconHeading}>Dog walking</h3>
-                            <p className={styles.iconSubheading}>Our helpers can take your furry friend for a safe stroll if you don’t feel safe being out and about.</p>
+                            <p className={styles.iconSubheading}>Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.</p>
                         </div>
                         <div className={styles.iconSection}>
                             {/* icon here */}

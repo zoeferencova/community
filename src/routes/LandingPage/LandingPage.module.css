@@ -38,10 +38,6 @@
     margin-top: 100vh;
 }
 
-.first .left, .first .right {
-    margin-top: -160px;
-}
-
 .section {
     height: 70vh;
 }
@@ -95,6 +91,27 @@
 .signupButton {
     background-color: black;
     color: white;
+}
+
+.first .left {
+    width: 40%;
+}
+
+.first .right {
+    width: 60%;
+}
+
+.section .heading {
+    font-size: 38px;
+}
+
+.section .subheading {
+    font-size: 18px;
+}
+
+.mockupDesktop {
+    height: auto;
+    width: 100%;
 }
 
 .iconList {
