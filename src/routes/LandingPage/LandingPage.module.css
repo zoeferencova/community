@@ -24,7 +24,7 @@
     height: 100vh;
     position: absolute;
     top: 0;
-    right: -30px;
+    right: 0px;
     z-index: 0;
     opacity: 0.9;
 }
@@ -35,11 +35,11 @@
 }
 
 .first {
-    margin-top: 100vh;
+    margin-top: 90vh;
 }
 
 .section {
-    height: 70vh;
+    padding: 80px 0px;
 }
 
 .icons {
@@ -114,10 +114,38 @@
     width: 100%;
 }
 
+.icons {
+    background-color: #ebeef2;
+}
+
 .iconList {
     display: flex;
+    padding: 0px 30px;
 }
 
 .icons h2 {
     font-size: 35px;
+}
+
+.iconImage {
+    height: auto;
+    width: 100%;
+}
+
+.iconSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+
+.iconHeading {
+    align-self: flex-start;
+    margin-bottom: 0px;
+}
+
+.iconSubheading {
+    width: 100%;
+    margin: 10px 15px;
+    display: block;
 }

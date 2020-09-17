@@ -34,17 +34,17 @@ class LandingPage extends Component {
                     <h2>What our helpers can do for you</h2>
                     <div className={styles.iconList}>
                         <div className={styles.iconSection}>
-                            {/* icon here */}
-                            <h3 className={styles.iconHeading}>Picking up supplies</h3>
+                            <img className={styles.iconImage} src={require("../../images/supplies.jpg")} alt="man handing supplies to older couple" />
+                            <h3 className={styles.iconHeading}>Pick up supplies</h3>
                             <p className={styles.iconSubheading}>Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop them off at your doorstep.</p>
                         </div>
                         <div className={styles.iconSection}>
-                            {/* icon here */}
-                            <h3 className={styles.iconHeading}>Dog walking</h3>
+                            <img className={styles.iconImage} src={require("../../images/dog.jpg")} alt="woman walking dog wearing a face mask" />
+                            <h3 className={styles.iconHeading}>Walk your dog</h3>
                             <p className={styles.iconSubheading}>Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.</p>
                         </div>
                         <div className={styles.iconSection}>
-                            {/* icon here */}
+                            <img className={styles.iconImage} src={require("../../images/phone.jpg")} alt="woman talking on the phone looking at laptop" />
                             <h3 className={styles.iconHeading}>Friendly chat</h3>
                             <p className={styles.iconSubheading}>We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.</p>
                         </div>
