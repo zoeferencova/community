@@ -52,7 +52,6 @@
     transition: 0.5s;
 }
 
-
 .profPic {
     align-self: center;
 }
@@ -64,13 +63,13 @@
 }
 
 .logIn {
-    color: black;
+    color: black !important;
     background-color: rgba(225, 225, 225, 0.7);
 }
 
 .signUp {
     background-color: black;
-    color: white;
+    color: white !important;
 }
 
 .mobile {

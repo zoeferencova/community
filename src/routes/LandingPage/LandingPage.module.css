@@ -132,7 +132,7 @@
     width: 100%;
 }
 
-.iconSection {
+.iconSection, .last {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -148,4 +148,34 @@
     width: 100%;
     margin: 10px 15px;
     display: block;
+}
+
+.security {
+    background-color: #F5F1EA;
+}
+
+.security .left {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.security .right {
+    width: 40%;
+}
+
+.securityMockup {
+    width: 95%;
+    height: auto;
+    align-self: flex-start;
+}
+
+.last {
+    text-align: center;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.last .heading {
+    font-size: 28px;
 }

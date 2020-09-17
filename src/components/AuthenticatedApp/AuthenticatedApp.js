@@ -46,7 +46,7 @@ export default class AuthenticatedApp extends Component {
       updateActiveChat: this.updateActiveChat,
       logout: this.logout,
     }
-    this.is_Mounted = false;
+    this._isMounted = false;
   }
 
   componentDidMount() {

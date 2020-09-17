@@ -50,14 +50,24 @@ class LandingPage extends Component {
                         </div>
                     </div>
                 </section>
-                <section className={styles.section}>
+                <section className={`${styles.section} ${styles.security}`}>
                     <div className={styles.left}>
-                        {/* mockup here */}
+                        {/* <img className={styles.chatMockup} src={require("../../images/chat-mockup.png")} alt="mockup of chat functionality" />
+                        <img className={styles.mobileMockup} src={require("../../images/mobile-mockup.png")} alt="mockup of request details on mobile layout" /> */}
+                        <img className={styles.securityMockup} src={require("../../images/security-mockups.png")} alt="mockup of chat functionality" />
+
                     </div>
                     <div className={styles.right}>
-                    <h2 className={styles.heading}>Your safety and security is important to us</h2>
+                        <h2 className={styles.heading}>Your safety and security are important to us</h2>
                         <p className={styles.subheading}>We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location) so the amount of information that you share in the chat is 100% your call.</p>
                     </div>
+                </section>
+                <section className={`${styles.section} ${styles.last}`}>
+                    <h2 className={styles.heading}>Ready to make a difference in your community?</h2>
+                    <div className={styles.buttonSection}>
+                        <button className={styles.signupButton} type="button" onClick={() => this.props.history.push("/register")}>Start now</button>
+                        <button className={styles.demoButton} type="button" onClick={() => this.props.history.push("/demo")}>See a demo</button>
+                    </div> 
                 </section>
                 <footer className={styles.footer}>Footer</footer>
             </main>
