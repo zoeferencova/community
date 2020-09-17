@@ -1,5 +1,3 @@
-
-
 .header, .section {
     display: flex;
     align-items: center;
@@ -149,7 +147,7 @@
 
 .iconSubheading {
     width: 100%;
-    margin: 10px 15px;
+    margin: 10px 0px;
     display: block;
 }
 
@@ -220,7 +218,8 @@
     z-index: 0;
     height: 600px;
     width: 550px;
-    transform: rotate(-20deg)
+    transform: rotate(-20deg);
+    overflow: hidden;
 }
 
 .shape2 {
@@ -229,4 +228,191 @@
     top: 225vh;
     height: 700px;
     right: -130px;
+    overflow: hidden;
+}
+
+.mobile {
+    display: none;
+}
+
+.iconColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (max-width: 1050px) {
+    .header, .banner {
+        height: 80vh;   
+    }
+
+    .header {
+        overflow: hidden;
+    }
+
+    .banner {
+        right: -120px;
+    }
+
+    .header .heading {
+        font-size: 35px;
+        margin-bottom: 25px;
+        margin-top: 40px;
+    }
+
+    .header .subheading {
+        font-size: 18px;
+    }
+
+    .first {
+        margin-top: 70vh;
+    }
+
+    .first .heading, .security .heading, .icons h2 {
+        font-size: 30px;
+    }
+
+    .first .subheading, .security .subheading {
+        font-size: 16px;
+    }
+
+    .shape1 {
+        top: 130vh;
+        height: 500px;
+    }
+
+    .shape2 {
+        top: 185vh;
+        height: 600px;
+    }
+
+    .iconSection {
+        margin: 20px;
+    }
+
+    .last .heading {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .mobile {
+        display: block;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        height: 75vh;
+        align-items: center;
+    }
+
+    .header .heading {
+        font-size: 30px;
+    }
+
+    .right {
+        width: 0;
+        height: 0;
+    }
+
+    .header .left, .header .right {
+        width: 100%;
+    }
+
+    .first {
+        margin-top: 70vh;
+    }
+
+    
+
+    .section {
+        flex-direction: column;
+        padding: 50px 0;
+    }
+
+    .section .left, .section .right {
+        width: 100%;
+        height: auto;
+    }
+
+    .section .heading, .section .subheading, .icons h2 {
+        width: 85%;
+    }
+
+    .first, .security {
+        flex-direction: column-reverse !important;
+    }
+
+    .first img, .security img {
+        width: 85%;
+        
+    }
+
+    .first img {
+        margin: 0 auto 60px auto;
+    }
+
+    .icons h2 {
+        margin-bottom: 50px;
+    }
+
+    .iconList {
+        flex-direction: column;
+    }
+
+    .iconSection {
+        flex-direction: row;
+        margin-bottom: 50px;
+    }
+
+    .iconImage {
+        width: 50%;
+    }
+
+    .iconColumn {
+        padding: 0 0 0 50px;
+    }
+
+    .iconSection:nth-child(2) {
+        flex-direction: row-reverse;
+    }
+
+    .iconSection:nth-child(2) .iconColumn {
+        padding: 0 50px 0 0;
+    }
+
+    .security h2 {
+        margin-top: 50px;
+    }
+
+    .shape1 {
+        top: 142vh;
+        left: -250px;
+    }
+
+    .shape2 {
+        top: 217vh;
+    }
+}
+
+@media only screen and (min-height: 1030px) {
+    .header, .banner {
+        height: 55vh;   
+    }
+
+    .first {
+        margin-top: 55vh
+    }
+
+    .shape1 {
+        top: 90vh;
+    }
+
+    .shape2 {
+        top: 120vh;
+    }
 }

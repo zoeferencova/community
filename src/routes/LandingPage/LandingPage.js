@@ -11,14 +11,14 @@ class LandingPage extends Component {
                 <header className={styles.header}>
                     <div className={styles.left}>
                         <h1 className={styles.heading}>Coming together in a time of need</h1>
-                        <p className={styles.subheading}>Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a free platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.</p>
+                        <p className={styles.subheading}>Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.</p>
                         <div className={styles.buttonSection}>
                             <button className={styles.signupButton} type="button" onClick={() => this.props.history.push("/register")}>Start now</button>
                             <button className={styles.demoButton} type="button" onClick={() => this.props.history.push("/demo")}>See a demo</button>
                         </div> 
                     </div>
                     <div className={styles.right}>
-                        <img className={styles.banner} src={require("../../images/banner.jpeg")} alt="grocery delivery" />
+                        <img className={`${styles.banner} ${styles.desktop}`} src={require("../../images/banner.jpeg")} alt="grocery delivery" />
                     </div>
                 </header>
                 <section className={`${styles.section} ${styles.first}`}>
@@ -35,18 +35,24 @@ class LandingPage extends Component {
                     <div className={styles.iconList}>
                         <div className={styles.iconSection}>
                             <img className={styles.iconImage} src={require("../../images/supplies.jpg")} alt="man handing supplies to older couple" />
-                            <h3 className={styles.iconHeading}>Pick up supplies</h3>
-                            <p className={styles.iconSubheading}>Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop them off at your doorstep.</p>
+                            <div className={styles.iconColumn}>
+                                <h3 className={styles.iconHeading}>Pick up supplies</h3>
+                                <p className={styles.iconSubheading}>Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop it off at your doorstep.</p>
+                            </div>
                         </div>
                         <div className={styles.iconSection}>
                             <img className={styles.iconImage} src={require("../../images/dog.jpg")} alt="woman walking dog wearing a face mask" />
-                            <h3 className={styles.iconHeading}>Walk your dog</h3>
-                            <p className={styles.iconSubheading}>Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.</p>
+                            <div className={styles.iconColumn}>
+                                <h3 className={styles.iconHeading}>Walk your dog</h3>
+                                <p className={styles.iconSubheading}>Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.</p>
+                            </div>
                         </div>
                         <div className={styles.iconSection}>
                             <img className={styles.iconImage} src={require("../../images/phone.jpg")} alt="woman talking on the phone looking at laptop" />
-                            <h3 className={styles.iconHeading}>Friendly chat</h3>
-                            <p className={styles.iconSubheading}>We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.</p>
+                            <div className={styles.iconColumn}>
+                                <h3 className={styles.iconHeading}>Friendly chat</h3>
+                                <p className={styles.iconSubheading}>We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.</p>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -56,7 +62,7 @@ class LandingPage extends Component {
                     </div>
                     <div className={styles.right}>
                         <h2 className={styles.heading}>Your safety and security are important to us</h2>
-                        <p className={styles.subheading}>We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location) so the amount of information that you share in the chat is 100% your call.</p>
+                        <p className={styles.subheading}>We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location), so the amount of information that you share in the chat is 100% your call.</p>
                     </div>
                 </section>
                 <section className={`${styles.section} ${styles.last}`}>

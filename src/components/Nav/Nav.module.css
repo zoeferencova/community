@@ -76,6 +76,13 @@
     display: none;
 }
 
+@media only screen and (max-width: 800px) {
+    .bigLogo {
+        margin-left: 30px;
+        height: 70px;
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .logIn, .signUp {
         font-size: 12.5px;
