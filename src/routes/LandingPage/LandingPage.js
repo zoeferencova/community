@@ -52,10 +52,7 @@ class LandingPage extends Component {
                 </section>
                 <section className={`${styles.section} ${styles.security}`}>
                     <div className={styles.left}>
-                        {/* <img className={styles.chatMockup} src={require("../../images/chat-mockup.png")} alt="mockup of chat functionality" />
-                        <img className={styles.mobileMockup} src={require("../../images/mobile-mockup.png")} alt="mockup of request details on mobile layout" /> */}
-                        <img className={styles.securityMockup} src={require("../../images/security-mockups.png")} alt="mockup of chat functionality" />
-
+                        <img className={styles.securityMockup} src={require("../../images/security-mockups.png")} alt="mockup of chat functionality and post detail page" />
                     </div>
                     <div className={styles.right}>
                         <h2 className={styles.heading}>Your safety and security are important to us</h2>
@@ -69,7 +66,16 @@ class LandingPage extends Component {
                         <button className={styles.demoButton} type="button" onClick={() => this.props.history.push("/demo")}>See a demo</button>
                     </div> 
                 </section>
-                <footer className={styles.footer}>Footer</footer>
+                <footer className={styles.footer}>
+                    <div className={styles.footerDetails}>
+                        <p>Made by Zoe Ferencova</p>
+                        <a href="https://github.com/zoeferencova/" target="_blank"><i className="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/zoeferencova/" target="_blank"><i className="fab fa-linkedin"></i></a>
+                    </div>
+                    <img className={styles.securityMockup} src={require("../../images/light-logo.png")} alt="small logo" />
+                </footer>
+                <img className={styles.shape1} src={require("../../images/shape1.png")} alt="decorative shape" />
+                <img className={styles.shape2} src={require("../../images/shape2.png")} alt="decorative shape" />
             </main>
         )
     }
