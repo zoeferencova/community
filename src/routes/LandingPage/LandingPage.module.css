@@ -144,7 +144,6 @@
 .iconHeading {
     align-self: flex-start;
     margin: 30px 0px 0px 0px;
-    font-weight: bold;
 
 }
 
@@ -177,7 +176,9 @@
 .last {
     text-align: center;
     margin-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 60px;
+    background-color: #F5F1EA;
+    margin: 0;
 }
 
 .last .heading {
@@ -219,13 +220,13 @@
     z-index: 0;
     height: 600px;
     width: 550px;
-    transform: rotate(-10deg)
+    transform: rotate(-20deg)
 }
 
 .shape2 {
     position: absolute;
     z-index: 0;
-    top: 220vh;
+    top: 225vh;
     height: 700px;
     right: -130px;
 }
