@@ -14,7 +14,7 @@
 .bigLogo {
     height: 90px;
     margin-left: 60px;
-    margin-top: 60px;
+    margin-top: 65px;
 }
 
 .smallLogo {
@@ -60,6 +60,7 @@
     border: none;
     border-radius: 3px;
     padding: 12px 15px !important;
+    margin-top: 15px;
 }
 
 .logIn {
@@ -76,10 +77,19 @@
     display: none;
 }
 
+@media only screen and (max-width: 1050px) {
+    .bigLogo {
+        margin-left: 40px;
+        height: 80px;
+        margin-top: 50px;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     .bigLogo {
         margin-left: 30px;
         height: 70px;
+        margin-top: 25px;
     }
 }
 
@@ -87,6 +97,10 @@
     .logIn, .signUp {
         font-size: 12.5px;
         padding: 8px 10px;
+    }
+
+    .signUp {
+        display: none;
     }
 
     .mobile {
@@ -108,6 +122,12 @@
     .smallLogo {
         margin-left: 0px;
         width: 80px;
+    }
+
+    .bigLogo {
+        margin-top: 20px;
+        height: 65px;
+        margin-left: 15px;
     }
 }
 
