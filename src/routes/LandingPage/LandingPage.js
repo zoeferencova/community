@@ -48,6 +48,8 @@ class LandingPage extends Component {
                             </div>
                         </div>
                         <div className={styles.iconSection}>
+                        <img className={styles.shape1} src={require("../../images/shape1.png")} alt="decorative shape" />
+                        <img className={styles.shape2} src={require("../../images/shape2.png")} alt="decorative shape" />   
                             <img className={styles.iconImage} src={require("../../images/phone.jpg")} alt="woman talking on the phone looking at laptop" />
                             <div className={styles.iconColumn}>
                                 <h3 className={styles.iconHeading}>Friendly chat</h3>
@@ -80,8 +82,6 @@ class LandingPage extends Component {
                     </div>
                     <img className={styles.securityMockup} src={require("../../images/light-logo.png")} alt="small logo" />
                 </footer>
-                <img className={styles.shape1} src={require("../../images/shape1.png")} alt="decorative shape" />
-                <img className={styles.shape2} src={require("../../images/shape2.png")} alt="decorative shape" />
             </main>
         )
     }

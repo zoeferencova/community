@@ -112,6 +112,7 @@
 
 .icons {
     background-color: #f7f9fa;
+    position: relative;
 }
 
 .iconList {
@@ -122,7 +123,7 @@
 
 .icons h2 {
     font-size: 35px;
-    z-index: 30;
+    z-index: 50;
     /* align-self: flex-start;
     margin-left: 80px; */
 }
@@ -130,6 +131,7 @@
 .iconImage {
     height: auto;
     width: 100%;
+    z-index: 30;
 }
 
 .iconSection, .last {
@@ -142,13 +144,14 @@
 .iconHeading {
     align-self: flex-start;
     margin: 30px 0px 0px 0px;
-
+    z-index: 30;
 }
 
 .iconSubheading {
     width: 100%;
     margin: 10px 0px;
     display: block;
+    z-index: 30;
 }
 
 .security {
@@ -213,19 +216,19 @@
 
 .shape1 {
     position: absolute;
-    top: 170vh;
-    left: -150px;
+    top: -100px;
+    left: -200px;
     z-index: 0;
     height: 600px;
     width: 550px;
-    transform: rotate(-20deg);
+    transform: rotate(-10deg);
     overflow: hidden;
 }
 
 .shape2 {
     position: absolute;
     z-index: 0;
-    top: 225vh;
+    bottom: -290px;
     height: 700px;
     right: -130px;
     overflow: hidden;
@@ -276,13 +279,12 @@
     }
 
     .shape1 {
-        top: 130vh;
         height: 500px;
     }
 
     .shape2 {
-        top: 185vh;
         height: 600px;
+        /* top: 720px; */
     }
 
     .iconSection {
@@ -326,9 +328,6 @@
     .first {
         margin-top: 70vh;
     }
-
-    
-
     .section {
         flex-direction: column;
         padding: 50px 0;
@@ -389,13 +388,70 @@
         margin-top: 50px;
     }
 
-    .shape1 {
-        top: 142vh;
-        left: -250px;
+    .shape2 {
+        bottom: -220px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .header, .banner {
+        height: 80vh;
+    }
+
+    .header .heading {
+        font-size: 27px;
+    }
+
+    .header .subheading {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .section .heading, .icons h2 {
+        font-size: 23px;
+    }
+
+    .section .subheading {
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .demoButton, .signupButton {
+        font-size: 12.5px;
+        padding: 8px 10px;
+    }
+
+    .buttonSection {
+        width: 90%;
+    }
+
+    .iconSection, .iconSection:nth-child(2) {
+        flex-direction: column;
+        margin: 0px 0px 40px 0px;
+    }
+
+    .iconColumn, .iconSection:nth-child(2) .iconColumn, .iconSection {
+        padding: 0px;
+        width: 100%;
+    }
+
+    .iconSection img {
+        width: 100%;
     }
 
     .shape2 {
-        top: 217vh;
+        height: 550px;
+        right: -110px;
+        bottom: -180px;
+    }
+
+    .footer {
+        padding: 5px 15px;
+        font-size: 14px;
+    }
+
+    .footer img {
+        height: 60px;
     }
 }
 
@@ -408,11 +464,20 @@
         margin-top: 55vh
     }
 
-    .shape1 {
-        top: 90vh;
+}
+
+@media only screen and (max-height: 600px) {
+    .header, .banner {
+        height: 80vh;   
     }
 
-    .shape2 {
-        top: 120vh;
+    .header .heading {
+        font-size: 21px;
+    }
+
+    .header .subheading {
+        font-size: 14px;
+        line-height: 16px;
     }
 }
+
