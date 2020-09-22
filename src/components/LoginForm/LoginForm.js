@@ -31,7 +31,7 @@ class LoginForm extends Component {
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)} className={styles.form}>
-                {this.state.error && <Error errorMessage={this.state.error} />}                
+                {this.state.error && <Error message={this.state.error} />}                
                 <Label htmlFor="email">Email</Label>
                 <Input required type="text" name="email" id="email" />
                 <Label htmlFor="password">Password</Label>

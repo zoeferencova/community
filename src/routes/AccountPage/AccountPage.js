@@ -50,7 +50,7 @@ class AccountPage extends Component {
                 <button className={styles.backButton} type="button" onClick={() => this.props.history.push("/home")}><i className="fas fa-arrow-left"></i></button>
                 {this.context.user.first_name && <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <ProfilePicture className={styles.profPic} first_name={this.context.user.first_name} />
-                    {this.state.error && <Error errorMessage={this.state.error} />}
+                    {this.state.error && <Error message={this.state.error} />}
                     <Label htmlFor="first_name">First Name</Label>
                     <Input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChangeName} />
                     <Label htmlFor="email">Email</Label>

@@ -33,7 +33,7 @@ class RegistrationForm extends Component {
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)}>
-                {this.state.error && <Error errorMessage={this.state.error} />}                
+                {this.state.error && <Error message={this.state.error} />}                
                 <Label htmlFor="first_name">First name</Label>
                 <Input required type="text" name="first_name" id="first_name" />
                 <Label htmlFor="email">Email</Label>

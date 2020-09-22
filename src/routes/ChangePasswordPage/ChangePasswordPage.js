@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
-import { ButtonDark, ButtonLight, Input, Label } from "../../components/Utils/Utils";
+import { ButtonDark, ButtonLight, Input, Label, Error } from "../../components/Utils/Utils";
 import styles from "./ChangePasswordPage.module.css";
 import UserDataService from "../../services/user-data-service";
 import AuthApiService from "../../services/auth-api-service";
@@ -44,10 +44,7 @@ class ChangePasswordPage extends Component {
         return ( 
             <div className={styles.main}>
                 <h3>Change Password</h3>
-                {this.state.error && 
-                <div role="alert">
-                    <p>{this.state.error}</p>
-                </div>} 
+                {this.state.error && <Error message={this.state.error} />}                
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <Label htmlFor="old_password">Old Password</Label>
