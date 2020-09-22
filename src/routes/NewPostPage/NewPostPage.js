@@ -9,6 +9,8 @@ import { ButtonLight, ButtonDark, Label, Textarea, Select } from "../../componen
 
 class NewPostPage extends Component {
     static contextType = CommUnityContext;
+
+    state = { error: null }
     
     handleSubmit(e) {
         e.preventDefault();
@@ -38,12 +40,15 @@ class NewPostPage extends Component {
                 this.context.addNewPost(post)
                 this.props.history.push("/home")
             })
+            .catch(err => {
+                this.setState({ error: "Please select one or more categories" })
+            })
     }
 
     componentDidMount() {
         new SlimSelect({
             select: "#categories",
-            showSearch: false
+            showSearch: false,
         })
 
         this.props.match.params.type === "request" && new SlimSelect({
@@ -60,7 +65,7 @@ class NewPostPage extends Component {
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <Label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?": "What do you need help with?"}</Label>
-                        <select  id="categories" multiple required>
+                        <select  id="categories" multiple name="categories" className={this.state.error && styles.errorCell}>
                             <option className="supplies" value="Picking up supplies">Picking up supplies</option>
                             <option id="errands" value="Running errands">Running errands</option>
                             <option className="phone" value="Phone call">Phone call</option>
@@ -68,6 +73,7 @@ class NewPostPage extends Component {
                             <option className="dog" value="Dog walking">Dog walking</option>
                             <option className="other" value="Other">Other</option>
                         </select>
+                        {this.state.error && <div className={styles.error}>{this.state.error}</div>}
                     </div>
                     {type === "request" && <div>
                         <Label className={styles.label} htmlFor="urgency">Urgency</Label>

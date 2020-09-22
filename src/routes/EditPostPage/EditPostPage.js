@@ -10,6 +10,11 @@ import styles from "../NewPostPage/NewPostPage.module.css";
 class EditPostPage extends Component {
     static contextType = CommUnityContext;
 
+    state = { 
+        error: null,
+        post: {}
+    }
+
     componentDidMount() {
         const postId = parseInt(this.props.match.params.id);
         fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
@@ -59,33 +64,40 @@ class EditPostPage extends Component {
     handleSubmit = e => {
         e.preventDefault()
 
-        const post_type = this.state.post.post_type;
-        let category_ids = [], option;
-        for (let i = 0; i < e.target.categories.length; i++) {
-          option = e.target.categories[i];
-    
-          if (option.selected) {
-            category_ids.push(i+1);
-          }
-        }
+        if (this.state.post.categories.length === 0) {
+            this.setState({ error: "Please select one or more categories" })
+        } else {
+            const post_type = this.state.post.post_type;
+            let category_ids = [], option;
+            for (let i = 0; i < e.target.categories.length; i++) {
+            option = e.target.categories[i];
         
-        const post = { post_type, category_ids }
+            if (option.selected) {
+                category_ids.push(i+1);
+            }
+            }
+            
+            const post = { post_type, category_ids }
 
-        if (this.state.post.description) {
-            post.description = this.state.post.description;
+            if (this.state.post.description) {
+                post.description = this.state.post.description;
+            }
+
+            if (post_type === "request" && this.state.post.urgency) {
+                post.urgency = (this.state.post.urgency).toLowerCase();
+            }
+
+            UserDataService.patchPost(post, this.state.post.id)
+                .then(res => {
+                    this.context.updatePost(this.state.post)
+                    this.props.history.push(`/my-post/${this.state.post.id}`)
+                })
+                .catch(err => {
+                    this.setState({ error: "Please select one or more categories" })
+                })
         }
 
-        if (post_type === "request" && this.state.post.urgency) {
-            post.urgency = (this.state.post.urgency).toLowerCase();
-        }
-
-        console.log(post)
-
-        UserDataService.patchPost(post, this.state.post.id)
-            .then(res => {
-                this.context.updatePost(this.state.post)
-                this.props.history.push(`/my-post/${this.state.post.id}`)
-            })
+        
     }
     
     render() {
@@ -96,7 +108,7 @@ class EditPostPage extends Component {
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <div>
                         <Label className={styles.label} htmlFor="categories">{this.state.post.post_type === "offer" ? "What can you help with?": "What do you need help with?"}</Label>
-                        <select id="categories" value={this.state.post.categories} onChange={this.handleTaskChange} multiple required>
+                        <select id="categories" value={this.state.post.categories} onChange={this.handleTaskChange} multiple className={this.state.error && styles.errorCell}>
                             <option className="supplies" value="Picking up supplies">Picking up supplies</option>
                             <option id="errands" value="Running errands">Running errands</option>
                             <option className="phone" value="Phone call">Phone call</option>
@@ -104,6 +116,7 @@ class EditPostPage extends Component {
                             <option className="dog" value="Dog walking">Dog walking</option>
                             <option className="other" value="Other">Other</option>
                         </select>
+                        {this.state.error && <div className={styles.error}>{this.state.error}</div>}
                     </div>
                     {this.state.post.post_type === "request" && <div>
                         <Label className={styles.label} htmlFor="urgency">Urgency</Label>
