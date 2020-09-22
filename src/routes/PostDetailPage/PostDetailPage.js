@@ -13,6 +13,8 @@ import styles from "./PostDetailPage.module.css";
 
 class PostDetailPage extends Component {
     static contextType = CommUnityContext;
+
+    state = { error: null }
     
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
@@ -21,22 +23,27 @@ class PostDetailPage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const post = this.findPost()
+        const post = this.findPost();
         const messageContent = e.target.message.value;
-        const receiverId = post.user_id;
-        const newChat = { user2Id: receiverId, postId: post.id }
-        ChatService.postChat(newChat)
-            .then(chat => {
-                this.context.addNewChat(chat)
-                this.context.socket.emit(CHAT_STARTED, { receiverId, chat })
-                const newMessage = { message_content: messageContent, chat_id: chat.id  }
-                ChatService.postMessage(newMessage)
-                    .then(message => {
-                        this.context.addNewMessage(message, message.chat_id)
-                        this.context.socket.emit(MESSAGE_SENT, { sender: this.context.user, receiverId, message })
-                        this.props.history.push("/messages")
-                    })
-            })
+
+        if (!messageContent.length) {
+            this.setState({ error: "Please enter a message" })
+        } else {
+            const receiverId = post.user_id;
+            const newChat = { user2Id: receiverId, postId: post.id }
+            ChatService.postChat(newChat)
+                .then(chat => {
+                    this.context.addNewChat(chat)
+                    this.context.socket.emit(CHAT_STARTED, { receiverId, chat })
+                    const newMessage = { message_content: messageContent, chat_id: chat.id  }
+                    ChatService.postMessage(newMessage)
+                        .then(message => {
+                            this.context.addNewMessage(message, message.chat_id)
+                            this.context.socket.emit(MESSAGE_SENT, { sender: this.context.user, receiverId, message })
+                            this.props.history.push("/messages")
+                        })
+                })
+        }
     }
 
     goToMessages = chat => {
@@ -65,7 +72,8 @@ class PostDetailPage extends Component {
                         {!this.context.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id) ?
                             <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                                 <label htmlFor="message">Write a message</label>
-                                <Textarea id="message" className={styles.textarea} placeholder={`Hi ${post.first_name}...`}></Textarea>
+                                <Textarea id="message" className={`${styles.textarea} ${this.state.error && styles.errorCell}`} placeholder={`Hi ${post.first_name}...`}></Textarea>
+                                {this.state.error && <div className={styles.error}>{this.state.error}</div>}
                                 <div className={styles.buttonSection}>
                                     <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Back</ButtonLight>
                                     <ButtonDark type="submit">Send Message</ButtonDark>

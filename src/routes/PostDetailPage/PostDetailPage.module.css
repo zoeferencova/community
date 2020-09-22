@@ -105,6 +105,18 @@
     margin: 0 0 30px 0 !important;
 }
 
+.error {
+    text-align: left;
+    font-size: 12px;
+    color: #a34343;
+    margin: -5px 0px 15px 0px;
+}
+
+.errorCell {
+    border: 1px solid #a34343;
+    border-radius: 3px;
+}
+
 @media only screen and (min-width: 600px) {
     .main {
         width: 80%;
