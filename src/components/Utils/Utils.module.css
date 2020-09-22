@@ -86,3 +86,16 @@
 :global .blue {
     background-color: #56bcbf;
 }
+
+.error {
+    font-size: 13px;
+    margin: 0px 0px 25px 0px;
+    background-color: #f5ebeb;
+    color: #7a130f;
+    border-radius: 3px;
+    padding: 14px;
+}
+
+.error i {
+    margin-right: 5px;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { ButtonLight, ButtonDark, Input, Label } from "../Utils/Utils";
+import { ButtonLight, ButtonDark, Input, Label, Error } from "../Utils/Utils";
 import styles from "../LoginForm/LoginForm.module.css"
 
 import AuthApiService from "../../services/auth-api-service";
@@ -33,10 +33,7 @@ class RegistrationForm extends Component {
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)}>
-                {this.state.error && 
-                <div role="alert">
-                    <p>{this.state.error}</p>
-                </div>} 
+                {this.state.error && <Error errorMessage={this.state.error} />}                
                 <Label htmlFor="first_name">First name</Label>
                 <Input required type="text" name="first_name" id="first_name" />
                 <Label htmlFor="email">Email</Label>
