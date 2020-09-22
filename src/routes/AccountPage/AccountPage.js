@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
-import {Input, Label, ProfilePicture, ButtonDark, ButtonLight} from "../../components/Utils/Utils";
+import {Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error} from "../../components/Utils/Utils";
 
 class AccountPage extends Component {
     static contextType = CommUnityContext;
@@ -12,6 +12,7 @@ class AccountPage extends Component {
     state = {
         first_name: this.context.user.first_name,
         email: this.context.user.email,
+        error: null
     }
 
     handleChangeName = e => {
@@ -38,6 +39,9 @@ class AccountPage extends Component {
             .then(res => {
                 this.context.updateUser(userInfo)
             })
+            .catch(res => {
+                this.setState({...this.state, error: res.error })
+            })
     }
 
     render() {
@@ -46,6 +50,7 @@ class AccountPage extends Component {
                 <button className={styles.backButton} type="button" onClick={() => this.props.history.push("/home")}><i className="fas fa-arrow-left"></i></button>
                 {this.context.user.first_name && <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <ProfilePicture className={styles.profPic} first_name={this.context.user.first_name} />
+                    {this.state.error && <Error errorMessage={this.state.error} />}
                     <Label htmlFor="first_name">First Name</Label>
                     <Input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChangeName} />
                     <Label htmlFor="email">Email</Label>
