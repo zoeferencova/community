@@ -17,7 +17,7 @@ class RegistrationForm extends Component {
 
         const { first_name, email, password, confirm_password } = e.target;
         password.value !== confirm_password.value
-            ? this.setState({ error: "Passwords do not match" })
+            ? this.setState({ error: "Passwords do not match", loading: false })
             : AuthApiService.postUser({
                 first_name: first_name.value,
                 email: email.value,

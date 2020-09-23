@@ -26,11 +26,11 @@ class LoginForm extends Component {
                 email.value = "";
                 password.value = "";
                 this.setState({...this.state, loading: false })
+                this.props.setLoggedIn(true)
                 !user.location ? this.props.history.push("/location") : this.props.history.push("/home");
             })
-            .then(res => this.props.setLoggedIn(true))
             .catch(res => {
-                this.setState({loading: false, error: res.error })
+                this.setState({ loading: false, error: res.error })
             })
     }
     

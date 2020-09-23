@@ -16,10 +16,10 @@ export default class UnauthenticatedApp extends Component {
           <Nav isLoggedIn={this.props.isLoggedIn} />
           <Switch>
             <Route exact path="/"  component={() => <LandingPage setLoggedIn={this.props.setLoggedIn} isLoggedIn={this.props.isLoggedIn} />}  />
-            <Route path="/login" component={() => <LoginPage setLoggedIn={this.props.setLoggedIn} />} />
+            <Route path="/login" component={() => <LoginPage setLoggedIn={this.props.setLoggedIn} isLoggedIn={this.props.isLoggedIn} />} />
             <Route path="/register" component={RegistrationPage} />
             <Route path="/deactivated" component={DeactivationSuccessPage} />
-            <Route component={NotFoundPage} />
+            <Route component={() => <NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
           </Switch>
         </main>
     );

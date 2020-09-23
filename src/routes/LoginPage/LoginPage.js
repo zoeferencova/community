@@ -11,7 +11,7 @@ export default class LoginPage extends Component {
                 <div className={styles.main}>
                     <h1>Sign in</h1>
                     <div className={styles.form}>
-                        <LoginForm setLoggedIn={this.props.setLoggedIn} />
+                        <LoginForm setLoggedIn={this.props.setLoggedIn} isLoggedIn={this.props.isLoggedIn} />
                         <p>Don't have an account? <Link to="/register">Sign up</Link></p>
                     </div>
                 </div>

@@ -3,8 +3,6 @@ import TokenService from "../../services/token-service";
 
 import UnauthenticatedApp from "../UnauthenticatedApp/UnauthenticatedApp";
 import AuthenticatedApp from "../AuthenticatedApp/AuthenticatedApp";
-import Nav from "../Nav/Nav";
-// import TokenService from "../../services/token-service";
 
 import "./App.css"
 import { withRouter } from "react-router-dom";

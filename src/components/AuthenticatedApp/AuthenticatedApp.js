@@ -183,7 +183,7 @@ export default class AuthenticatedApp extends Component {
           <div className={styles.main}>
             {this.state.user.first_name && <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />}
             <Switch>
-              <Route path="/home" component={HomePage} />
+              <Route path="/home" component={() => <HomePage loading={this.state.loading} />} />
               <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
               <Route path="/change-password" component={ChangePasswordPage} />
               <Route path="/messages" component={() => <MessagePage user={this.state.user} />} />
@@ -193,7 +193,7 @@ export default class AuthenticatedApp extends Component {
               <Route path="/my-post/:id" component={MyPostPage} />
               <Route path="/edit-post/:id" component={EditPostPage} />
               <Route path="/confirm-deactivation" component={() => <DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
-              <Route component={NotFoundPage} />
+              <Route component={() => <NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
             </Switch>
           </div>
         </CommUnityContext.Provider>

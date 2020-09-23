@@ -30,7 +30,7 @@ export default class HomePage extends Component {
     render() {
         return (   
             <main className={styles.main}>
-                {!this.context.loading && <>
+                {!this.props.loading && <>
                 <header className={styles.header}>
                     <div className={styles.userInfo}>
                         <h2>Welcome, {this.context.user.first_name}!</h2>
