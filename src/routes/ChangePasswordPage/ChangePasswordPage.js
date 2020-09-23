@@ -10,32 +10,33 @@ class ChangePasswordPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        error: null
+        error: null,
+        loading: false
     }
     
     handleSubmit = e => {
         e.preventDefault();
+
+        this.setState({...this.state, loading: true })
+
         const { old_password, new_password, confirm_password } = e.target;
         const { user } = this.context
         
         if (new_password.value !== confirm_password.value) {
-            return this.setState({ error: "New password and confirm password do not match" })
+            return this.setState({loading: false, error: "New password and confirm password do not match" })
         }
 
         AuthApiService.checkPassword({ password: old_password.value })
             .then(res => {
                 if (res.error) {
-                    return this.setState({ error: "Old password is incorrect" })
+                    return this.setState({loading: false, error: "Old password is incorrect" })
                 } else {
-                    return UserDataService.patchUser({ password: new_password.value }, user.id)
+                    UserDataService.patchUser({ password: new_password.value }, user.id)
                         .then(res => {
-                            if (!res.ok) {
-                                res.json().then(resJson => this.setState({ error: resJson.error }))
-                            } else {
-                                console.log("success")
-                                this.props.history.push("/account")
-                            }
+                            this.setState({...this.state, loading: false})
+                            return this.props.history.push("/account")
                         })
+                        .catch(res => this.setState({ error: res.error, loading: false }))
                 }
             })
     }
@@ -44,8 +45,9 @@ class ChangePasswordPage extends Component {
         return ( 
             <div className={styles.main}>
                 <h3>Change Password</h3>
-                {this.state.error && <Error message={this.state.error} />}                
                 <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
+                    {this.state.error && <Error message={this.state.error} className={styles.error} />}                
+
                     <div>
                         <Label htmlFor="old_password">Old Password</Label>
                         <Input type="password" name="old_password" id="old_password" />
@@ -60,7 +62,7 @@ class ChangePasswordPage extends Component {
                     </div>
                     <div className={styles.buttonSection}>
                         <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Cancel</ButtonLight>
-                        <ButtonDark type="submit">Change Password</ButtonDark>
+                        <ButtonDark type="submit" className={styles.submitButton} loading={this.state.loading.toString()}>Change Password</ButtonDark>
                     </div>
                 </form>
             </div>  
