@@ -45,6 +45,7 @@ export default class AuthenticatedApp extends Component {
       removeChat: this.removeChat,
       updateActiveChat: this.updateActiveChat,
       logout: this.logout,
+      loading: true,
     }
     this._isMounted = false;
   }
@@ -61,7 +62,7 @@ export default class AuthenticatedApp extends Component {
 
         this.initSocket()
 
-        if (user.location && user.radius) {
+        if (user.location && parseInt(user.radius) !== 0) {
           this.getAllPosts(user.id)
         }
       })
@@ -105,11 +106,12 @@ export default class AuthenticatedApp extends Component {
   }
 
   getAllPosts = userId => {
-    UserDataService.getPosts()
+    this.state.user.location && this.state.user.radius && UserDataService.getPosts()
       .then(posts => {
         const user_posts = posts.filter(post => post.user_id === userId)
         const neighborhood_posts = posts.filter(post => post.user_id !== userId)
         this.setState({ user_posts, neighborhood_posts })
+        this.setState({ loading: false })
       })
   }
 

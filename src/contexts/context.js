@@ -18,6 +18,7 @@ const CommUnityContext = React.createContext({
     removeChat: () => {},
     updateActiveChat: () => {},
     logout: () => {},
+    loading: null
 })
 
 export default CommUnityContext;

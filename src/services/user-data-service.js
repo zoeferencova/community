@@ -34,7 +34,7 @@ const UserDataService = {
         })
             .then(res => 
                 (!res.ok)
-                ? res.json().then(e => Promise.reject(e))
+                ? console.log('hi')
                 : res.json()
             )
     },
@@ -81,10 +81,7 @@ const UserDataService = {
             },
             body: JSON.stringify(updateValues)
           })
-          .then(res => 
-            (!res.ok)
-            ? res.json().then(e => Promise.reject(e))
-            : res.json()
+          .then(res => !res.ok && res.json().then(e => Promise.reject(e)) 
         )
     },
     deleteUser(userId) {

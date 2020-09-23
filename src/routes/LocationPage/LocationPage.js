@@ -40,23 +40,23 @@ export default class LocationPage extends Component {
         return (   
             <main className={styles.main}>
                 {this.state.location && <>
-                <div className={styles.map}>
-                    <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
-                </div>
-                <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
-                    <div>
-                        <Label htmlFor="location">Location</Label>
-                        <MapSearch handleLocationChange={this.handleLocationChange} />
+                    <div className={styles.map}>
+                        <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
                     </div>
-                    <div className={styles.radiusSection}>
-                        <Label htmlFor="radius">Radius (miles)</Label>
-                        <Input className={styles.radius} required type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
-                    </div>
-                    <div className={styles.buttonSection}>
-                        <ButtonLight type="button" onClick={this.props.history.goBack}>Cancel</ButtonLight>
-                        <ButtonDark type="submit">Use this location</ButtonDark>
-                    </div>
-                </form>
+                    <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
+                        <div>
+                            <Label htmlFor="location">Location</Label>
+                            <MapSearch handleLocationChange={this.handleLocationChange} />
+                        </div>
+                        <div className={styles.radiusSection}>
+                            <Label htmlFor="radius">Radius (miles)</Label>
+                            <Input className={styles.radius} required type="number" step="0.25" name="radius" id="radius" value={this.state.radius} onChange={this.handleRadiusChange} />
+                        </div>
+                        <div className={styles.buttonSection}>
+                            <ButtonLight type="button" onClick={this.props.history.goBack}>Cancel</ButtonLight>
+                            <ButtonDark type="submit">Use this location</ButtonDark>
+                        </div>
+                    </form>
                 </>}
             </main>
         )

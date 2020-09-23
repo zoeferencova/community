@@ -12,7 +12,7 @@ export default class HomePage extends Component {
 
     state = {
         showPosts: false,
-        showLocation: false
+        showLocation: false,
     }
 
     makeUserPosts() {
@@ -30,6 +30,7 @@ export default class HomePage extends Component {
     render() {
         return (   
             <main className={styles.main}>
+                {!this.context.loading && <>
                 <header className={styles.header}>
                     <div className={styles.userInfo}>
                         <h2>Welcome, {this.context.user.first_name}!</h2>
@@ -64,6 +65,7 @@ export default class HomePage extends Component {
                     </div> 
                     {this.context.user.location ? this.makeAllPosts() : "Please save your current location to view posts in your area"}
                 </section>
+                </>}
             </main>
         )
     }
