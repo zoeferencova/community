@@ -12,7 +12,8 @@ class AccountPage extends Component {
     state = {
         first_name: this.context.user.first_name,
         email: this.context.user.email,
-        error: null
+        error: null,
+        loading: false,
     }
 
     handleChangeName = e => {
@@ -31,6 +32,8 @@ class AccountPage extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
+        this.setState({...this.state, loading: true })
+
         const { first_name, email } = this.state;
         const userInfo = { first_name, email };
         const userId = this.context.user.id;
@@ -38,9 +41,10 @@ class AccountPage extends Component {
         UserDataService.patchUser(userInfo, userId)
             .then(res => {
                 this.context.updateUser(userInfo)
+                this.setState({...this.state, loading: false })
             })
             .catch(res => {
-                this.setState({...this.state, error: res.error })
+                this.setState({...this.state, error: res.error, loading: false })
             })
     }
 
@@ -57,7 +61,7 @@ class AccountPage extends Component {
                     <Input required type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
                     <div className={styles.buttonContainer}>
                         <ButtonLight className={styles.logoutButton} type="button" onClick={this.handleLogout}>Log out</ButtonLight>
-                        <ButtonDark type="submit">Update</ButtonDark>
+                        <ButtonDark type="submit" loading={this.state.loading.toString()}>Update</ButtonDark>
                     </div>
                     <div className={styles.links}>
                         <Link to="/change-password"><i className="fas fa-key"></i> Change password</Link>
