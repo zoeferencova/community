@@ -14,7 +14,10 @@ import styles from "./PostDetailPage.module.css";
 class PostDetailPage extends Component {
     static contextType = CommUnityContext;
 
-    state = { error: null }
+    state = { 
+        error: null,
+        loading: false
+    }
     
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
@@ -23,16 +26,21 @@ class PostDetailPage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        this.setState({...this.state, loading: true })
+
         const post = this.findPost();
         const messageContent = e.target.message.value;
 
         if (!messageContent.length) {
-            this.setState({ error: "Please enter a message" })
+            this.setState({ error: "Please enter a message", loading: false })
         } else {
             const receiverId = post.user_id;
             const newChat = { user2Id: receiverId, postId: post.id }
             ChatService.postChat(newChat)
                 .then(chat => {
+                    this.setState({...this.state, loading: false })
+                    this.props.history.push("/messages")
                     this.context.addNewChat(chat)
                     this.context.socket.emit(CHAT_STARTED, { receiverId, chat })
                     const newMessage = { message_content: messageContent, chat_id: chat.id  }
@@ -40,7 +48,6 @@ class PostDetailPage extends Component {
                         .then(message => {
                             this.context.addNewMessage(message, message.chat_id)
                             this.context.socket.emit(MESSAGE_SENT, { sender: this.context.user, receiverId, message })
-                            this.props.history.push("/messages")
                         })
                 })
         }
@@ -76,7 +83,7 @@ class PostDetailPage extends Component {
                                 {this.state.error && <div className={styles.error}>{this.state.error}</div>}
                                 <div className={styles.buttonSection}>
                                     <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Back</ButtonLight>
-                                    <ButtonDark type="submit">Send Message</ButtonDark>
+                                    <ButtonDark type="submit" className={styles.submitButton} loading={this.state.loading.toString()}>Send Message</ButtonDark>
                                 </div>
                             </form>
                             :

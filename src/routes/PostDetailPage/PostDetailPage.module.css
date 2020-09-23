@@ -85,6 +85,10 @@
     margin-top: 10px;
 }
 
+.submitButton {
+    min-width: 120px;
+}
+
 .postTitle {
     font-size: 18px;
     text-align: left;

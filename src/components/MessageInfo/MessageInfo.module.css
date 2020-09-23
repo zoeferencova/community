@@ -26,6 +26,11 @@
    text-align: left;
 }
 
+.buttons {
+   display: flex;
+   flex-direction: row;
+}
+
 
 .buttons button {
    margin: 0px 10px;
