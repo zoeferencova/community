@@ -10,10 +10,15 @@ import { ButtonLight, ButtonDark, Label, Textarea, Select } from "../../componen
 class NewPostPage extends Component {
     static contextType = CommUnityContext;
 
-    state = { error: null }
+    state = { 
+        error: null ,
+        loading: false
+    }
     
     handleSubmit(e) {
         e.preventDefault();
+
+        this.setState({...this.state, loading: true })
 
         const post_type = this.props.match.params.type;
         let category_ids = [], option;
@@ -38,10 +43,11 @@ class NewPostPage extends Component {
         UserDataService.postPost(post)
             .then(post => {
                 this.context.addNewPost(post)
+                this.setState({...this.state, loading: false })
                 this.props.history.push("/home")
             })
             .catch(err => {
-                this.setState({ error: "Please select one or more categories" })
+                this.setState({ error: "Please select one or more categories", loading: false })
             })
     }
 
@@ -89,7 +95,7 @@ class NewPostPage extends Component {
                     </div>
                     <div className={styles.buttonContainer}>
                         <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Cancel</ButtonLight>
-                        <ButtonDark type="submit">Submit</ButtonDark>
+                        <ButtonDark type="submit" loading={this.state.loading.toString()}>Submit</ButtonDark>
                     </div>
                 </form>
             </main>

@@ -49,7 +49,7 @@ class MyPostPage extends Component {
                 {post.description && <p className={styles.description}>{post.description}</p>}
                 <div className={styles.buttonSection}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/home")}>Back</ButtonLight>
-                    <div>
+                    <div className={styles.rightButtons}>
                         <ButtonLight className={styles.delete} onClick={() => this.handleDelete(post.id)}>Delete</ButtonLight>
                         <ButtonDark type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonDark>
                     </div>

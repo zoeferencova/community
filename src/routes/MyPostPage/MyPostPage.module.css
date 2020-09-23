@@ -85,6 +85,11 @@
     width: 85%;
 }
 
+.rightButtons {
+    display: flex;
+    flex-direction: row;
+}
+
 .delete {
     margin-right: 10px;
     color: #ad3434;
