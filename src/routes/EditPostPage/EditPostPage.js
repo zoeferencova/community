@@ -12,7 +12,8 @@ class EditPostPage extends Component {
 
     state = { 
         error: null,
-        post: {}
+        post: {},
+        loading: false
     }
 
     componentDidMount() {
@@ -62,10 +63,12 @@ class EditPostPage extends Component {
     }
 
     handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
+
+        this.setState({...this.state, loading: true })
 
         if (this.state.post.categories.length === 0) {
-            this.setState({ error: "Please select one or more categories" })
+            this.setState({ error: "Please select one or more categories", loading: false })
         } else {
             const post_type = this.state.post.post_type;
             let category_ids = [], option;
@@ -90,10 +93,11 @@ class EditPostPage extends Component {
             UserDataService.patchPost(post, this.state.post.id)
                 .then(res => {
                     this.context.updatePost(this.state.post)
+                    this.setState({...this.state, loading: false })
                     this.props.history.push(`/my-post/${this.state.post.id}`)
                 })
                 .catch(err => {
-                    this.setState({ error: "Please select one or more categories" })
+                    this.setState({...this.state, error: "Please select one or more categories", loading: false })
                 })
         }
 
@@ -132,7 +136,7 @@ class EditPostPage extends Component {
                     </div>
                     <div className={styles.buttonContainer}>
                         <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Cancel</ButtonLight>
-                        <ButtonDark type="submit">Submit</ButtonDark>
+                        <ButtonDark type="submit" loading={this.state.loading.toString()}>Submit</ButtonDark>
                     </div>
                 </form>
                 </>}
