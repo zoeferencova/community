@@ -41,7 +41,7 @@ class MessageInfo extends Component {
                 <p>{this.formatSentence(post, user)}<span>{post.post_type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>}</span></p>
                 <div className={styles.buttons}>
                     <ButtonDark type="button" onClick={e => this.handleGoToPost(e, post)}>Go to post</ButtonDark>
-                    <ButtonLight className={styles.deleteButton} type="button" onClick={e => this.props.deleteChat(e)}>Delete chat</ButtonLight>
+                    <ButtonLight className={styles.deleteButton} type="button" onClick={e => this.props.deleteChat(e)} loading={this.props.loading.toString()}>Delete chat</ButtonLight>
                 </div>
             </div>
         );

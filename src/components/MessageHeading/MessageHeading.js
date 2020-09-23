@@ -10,15 +10,20 @@ export default class MessageHeading extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        infoOpen: false
+        infoOpen: false,
+        loading: false
     }
     
     handleDelete = e => {
         e.preventDefault()
+
+        this.setState({...this.state, loading: true })
+
         const chatId = this.context.activeChat.id;
         if (window.confirm('Are you sure you want to delete this chat? Your message history will be lost.')) {
             ChatService.deleteChat(chatId)
                 .then(res => {
+                    this.setState({...this.state, loading: false })
                     this.context.removeChat(chatId)
                     this.context.socket.emit(CHAT_DELETED, { chatId: chatId, receiverId: this.props.receiver.id })
                 })
@@ -55,7 +60,7 @@ export default class MessageHeading extends Component {
                         <i className="fas fa-times" onClick={e => this.handleClose(e)}></i>
                     </div>
                 </div>
-                {this.state.infoOpen && <MessageInfo user={this.props.receiver} deleteChat={this.handleDelete} />}
+                {this.state.infoOpen && <MessageInfo user={this.props.receiver} deleteChat={this.handleDelete} loading={this.state.loading} />}
             </div>
         );
     }
