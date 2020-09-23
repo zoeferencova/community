@@ -11,6 +11,10 @@ import styles from "./MyPostPage.module.css";
 
 class MyPostPage extends Component {
     static contextType = CommUnityContext;
+
+    state = {
+        loading: false,
+    }
     
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
@@ -20,8 +24,10 @@ class MyPostPage extends Component {
 
     handleDelete(postId) {
         if (window.confirm("Are you sure you want to delete this post?")) {
+            this.setState({ loading: true })
             UserDataService.deletePost(postId)
                 .then(res => {
+                    this.setState({ loading: false })
                     this.props.history.push("/home")
                     this.context.removePost(postId)
                 })
@@ -50,7 +56,7 @@ class MyPostPage extends Component {
                 <div className={styles.buttonSection}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/home")}>Back</ButtonLight>
                     <div className={styles.rightButtons}>
-                        <ButtonLight className={styles.delete} onClick={() => this.handleDelete(post.id)}>Delete</ButtonLight>
+                        <ButtonLight className={styles.delete} onClick={() => this.handleDelete(post.id)} loading={this.state.loading.toString()}>Delete</ButtonLight>
                         <ButtonDark type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonDark>
                     </div>
                 </div>
