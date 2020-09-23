@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './Utils.module.css';
 
 export function ButtonLight({ className, ...props }) {
-    return <button className={`${styles.button} ${className}`} {...props} />
+    return <button className={`${styles.button} ${className}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
 }
 
 export function ButtonDark({ className, ...props }) {
-    return <button className={`${styles.buttonDark} ${className}`} {...props} />
+    return <button className={`${styles.buttonDark} ${className}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
 }
 
 export function Input({ className, ...props }) {

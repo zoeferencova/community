@@ -8,6 +8,10 @@
     border-radius: 3px;
     background-color: transparent;
     transition: 0.2s;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button:hover {
@@ -28,6 +32,10 @@
     background-color: #e4e9f0;
     transition: 0.5s;
     opacity: 1;
+}
+
+.spinner {
+    font-size: 20px;
 }
 
 .input {

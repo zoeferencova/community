@@ -82,6 +82,13 @@
 .demoButton {
     color: black;
     background-color: transparent;
+    min-width: 125px;
+}
+
+.spinner {
+    font-size: 20px;
+    margin-top: -4px;
+    
 }
 
 .signupButton {

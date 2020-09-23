@@ -6,10 +6,15 @@ import AuthApiService from "../../services/auth-api-service";
 import styles from "./LoginForm.module.css";
 
 class LoginForm extends Component {
-    state = { error: null }
+    state = { 
+        error: null,
+        loading: false
+    }
 
     handleSubmit(e) {
         e.preventDefault();
+
+        this.setState({...this.state, loading: true })
 
         const { email, password } = e.target;
 
@@ -20,11 +25,12 @@ class LoginForm extends Component {
             .then(user => {
                 email.value = "";
                 password.value = "";
+                this.setState({...this.state, loading: false })
                 !user.location ? this.props.history.push("/location") : this.props.history.push("/home");
             })
             .then(res => this.props.setLoggedIn(true))
             .catch(res => {
-                this.setState({ error: res.error })
+                this.setState({...this.state, error: res.error })
             })
     }
     
@@ -38,7 +44,7 @@ class LoginForm extends Component {
                 <Input required type="password" name="password" id="password" />
                 <div className={styles.buttonContainer}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/")}>Cancel</ButtonLight>
-                    <ButtonDark type="submit">Sign in</ButtonDark>
+                    <ButtonDark type="submit" loading={this.state.loading.toString()}>Sign in</ButtonDark>
                 </div>
                 
             </form>

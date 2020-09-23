@@ -5,11 +5,15 @@ import AuthApiService from "../../services/auth-api-service";
 import styles from "./LandingPage.module.css";
 
 class LandingPage extends Component {
-
+    state = {
+        loading: false
+    }
 
     demoLogin() {
+        this.setState({ loading: true })
         AuthApiService.postLogin({ email: "demo@email.com", password: "DemoPass33!" })
             .then(res => {
+                this.setState({ loading: false })
                 this.props.setLoggedIn(true)
                 this.props.history.push("/home")
             })
@@ -24,7 +28,7 @@ class LandingPage extends Component {
                         <p className={styles.subheading}>Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.</p>
                         <div className={styles.buttonSection}>
                             <button className={styles.signupButton} type="button" onClick={() => this.props.history.push("/register")}>Start now</button>
-                            <button className={styles.demoButton} type="button" onClick={() => this.demoLogin()}>See a demo</button>
+                            <button className={styles.demoButton} type="button" onClick={() => this.demoLogin()}>{this.state.loading ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : "See a demo"}</button>
                         </div> 
                     </div>
                     <div className={styles.right}>
@@ -81,7 +85,7 @@ class LandingPage extends Component {
                     <h2 className={styles.heading}>Ready to make a difference in your community?</h2>
                     <div className={styles.buttonSection}>
                         <button className={styles.signupButton} type="button" onClick={() => this.props.history.push("/register")}>Start now</button>
-                        <button className={styles.demoButton} type="button" onClick={() => this.demoLogin()}>See a demo</button>
+                        <button className={styles.demoButton} type="button" onClick={() => this.demoLogin()}>{this.state.loading ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : "See a demo"}</button>
                     </div> 
                 </section>
                 <footer className={styles.footer}>
