@@ -6,10 +6,15 @@ import styles from "../LoginForm/LoginForm.module.css"
 import AuthApiService from "../../services/auth-api-service";
 
 class RegistrationForm extends Component {    
-    state = { error: null };
+    state = { 
+        error: null,
+        loading: false 
+    };
     
     handleSubmit = e => {
         e.preventDefault();
+        this.setState({...this.state, loading: true })
+
         const { first_name, email, password, confirm_password } = e.target;
         password.value !== confirm_password.value
             ? this.setState({ error: "Passwords do not match" })
@@ -23,10 +28,11 @@ class RegistrationForm extends Component {
                     email.value = "";
                     password.value = "";
                     confirm_password.value = "";
+                    this.setState({...this.state, loading: false })
                     this.props.history.push("/login");
                 })
                 .catch(res => 
-                    this.setState({ error: res.error })
+                    this.setState({ error: res.error, loading: false })
                 )
     }
     
@@ -44,7 +50,7 @@ class RegistrationForm extends Component {
                 <Input required type="password" name="confirm_password" id="confirm_password" />
                 <div className={styles.buttonContainer}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/")}>Cancel</ButtonLight>
-                    <ButtonDark type="submit">Create Account</ButtonDark>
+                    <ButtonDark type="submit" className={styles.registerButton} loading={this.state.loading.toString()}>Create Account</ButtonDark>
                 </div>
                 
             </form>

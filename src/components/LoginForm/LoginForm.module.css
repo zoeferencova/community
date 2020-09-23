@@ -4,3 +4,7 @@
     justify-content: space-between;
     margin-bottom: 30px;
 }
+
+.registerButton {
+    min-width: 130px;
+}

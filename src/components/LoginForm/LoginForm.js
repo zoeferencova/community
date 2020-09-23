@@ -30,7 +30,7 @@ class LoginForm extends Component {
             })
             .then(res => this.props.setLoggedIn(true))
             .catch(res => {
-                this.setState({...this.state, error: res.error })
+                this.setState({loading: false, error: res.error })
             })
     }
     
