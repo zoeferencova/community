@@ -11,7 +11,8 @@ export default class LocationPage extends Component {
 
     state = {
         location: this.props.location,
-        radius: parseFloat(this.props.radius)
+        radius: parseFloat(this.props.radius),
+        loading: false
     }
 
     handleLocationChange = location => {
@@ -24,6 +25,9 @@ export default class LocationPage extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
+
+        this.setState({...this.state, loading: true })
+
         const pointLocation = UserDataService.locationToPoint(this.state.location);
         const meterRadius = UserDataService.milesToMeters(this.state.radius)
         UserDataService.patchUser({ location: pointLocation, radius: meterRadius }, this.context.user.id)
@@ -32,6 +36,7 @@ export default class LocationPage extends Component {
             })
             .then(res => {
                 this.context.getAllPosts(this.context.user.id)
+                this.setState({...this.state, loading: false })
                 this.props.history.push("/home")
             })
     }
@@ -54,7 +59,7 @@ export default class LocationPage extends Component {
                         </div>
                         <div className={styles.buttonSection}>
                             <ButtonLight type="button" onClick={this.props.history.goBack}>Cancel</ButtonLight>
-                            <ButtonDark type="submit">Use this location</ButtonDark>
+                            <ButtonDark type="submit" className={styles.submitButton} loading={this.state.loading.toString()}>Use this location</ButtonDark>
                         </div>
                     </form>
                 </>}

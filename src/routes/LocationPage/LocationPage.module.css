@@ -29,6 +29,10 @@
     justify-content: space-between;
 }
 
+.submitButton {
+    min-width: 140px;
+}
+
 .radiusSection {
     margin-top: 25px;
 }
