@@ -9,7 +9,7 @@ export default class Nav extends Component {
     static contextType = CommUnityContext;
 
     handleClick(e) {
-        window.location.pathname === "/location" && this.props.isLoggedIn && e.preventDefault()
+        return (window.location.pathname === "/location" && !this.context.user.location.lat) ? this.props.isLoggedIn && e.preventDefault() : ""
     }
 
     render() {
