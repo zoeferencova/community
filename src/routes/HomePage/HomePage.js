@@ -4,6 +4,7 @@ import { ButtonLight, ButtonDark } from "../../components/Utils/Utils";
 import MyPost from "../../components/MyPost/MyPost";
 import Post from "../../components/Post/Post";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import MapErrorBoundary from "../../components/MapErrorBoundary/MapErrorBoundary";
 import CommUnityContext from "../../contexts/context";
 import styles from "./HomePage.module.css";
 
@@ -54,7 +55,9 @@ export default class HomePage extends Component {
                             <p className={`${styles.plus} ${!this.state.showLocation && styles.unrotate} ${this.state.showLocation && styles.rotate}`}>+</p>
                         </div>
                         <div className={`${styles.infoBody} ${styles.infoBodyMap} ${!this.state.showLocation && styles.hide}`}>
-                            <GoogleMap className={styles.map} radius={this.context.user.radius} location={this.context.user.location} displayMarker={true} />
+                            <MapErrorBoundary>
+                                <GoogleMap className={styles.map} radius={this.context.user.radius} location={this.context.user.location} displayMarker={true} />
+                            </MapErrorBoundary>
                             <p className={styles.mapSubtitle}>Results are being shown for this area. <Link to="/location" className={styles.mapSubLink}>Change location?</Link></p>
                         </div>
                     </div>

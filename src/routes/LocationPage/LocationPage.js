@@ -4,7 +4,8 @@ import UserDataService from "../../services/user-data-service";
 import { ButtonLight, ButtonDark, Input, Label } from "../../components/Utils/Utils";
 import styles from "./LocationPage.module.css";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
-import MapSearch from "../../components/MapSearch/MapSearch"
+import MapSearch from "../../components/MapSearch/MapSearch";
+import MapErrorBoundary from "../../components/MapErrorBoundary/MapErrorBoundary";
 
 export default class LocationPage extends Component {
     static contextType = CommUnityContext;
@@ -46,7 +47,9 @@ export default class LocationPage extends Component {
             <main className={styles.main}>
                 {this.state.location && <>
                     <div className={styles.map}>
-                        <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
+                        <MapErrorBoundary>
+                            <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
+                        </MapErrorBoundary>
                     </div>
                     <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                         <div>
