@@ -16,7 +16,7 @@ export default function GoogleMaps(props) {
     };
 
     const createGoogleMap = () => {
-        return new window.google.smaps.Map(googleMapRef.current, {
+        return new window.google.maps.Map(googleMapRef.current, {
             zoom: 14,
             center: location,
             disableDefaultUI: true,
