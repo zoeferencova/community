@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { PropTypes } from 'prop-types';
 
 export default function GoogleMaps(props) {
     const googleMapRef = React.createRef();
@@ -56,4 +57,10 @@ export default function GoogleMaps(props) {
     return (
         <div id="google-map" ref={googleMapRef} style={mapStyles} />
     )
+}
+
+GoogleMaps.propTypes = {
+    location: PropTypes.objectOf(PropTypes.number),
+    radius: PropTypes.number,
+    displayMarker: PropTypes.bool
 }

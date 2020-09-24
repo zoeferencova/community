@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { PropTypes } from 'prop-types';
+
 import styles from "./Task.module.css";
 
 const classNames = {
@@ -18,6 +20,6 @@ export default class Task extends Component {
     }
 }
 
-
-
-
+Task.propTypes = {
+    task: PropTypes.string
+}

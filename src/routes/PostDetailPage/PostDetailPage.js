@@ -65,7 +65,7 @@ class PostDetailPage extends Component {
             <main className={styles.main}>
                 {post && <>
                     <div className={styles.map}>
-                        <GoogleMap className={styles.gmap} location={post.location} radius={post.radius} displayMarker={false} />
+                        <GoogleMap className={styles.gmap} location={post.location} radius={parseFloat(post.radius)} displayMarker={false} />
                     </div>
                     <div className={styles.postHeader}>
                         <h3 className={styles.postTitle}>Respond to {post.first_name}'s {post.post_type}</h3>

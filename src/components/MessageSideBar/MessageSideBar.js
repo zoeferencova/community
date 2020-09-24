@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import { ProfilePicture } from "../../components/Utils/Utils";
 import styles from "../MessageLayout/MessageLayout.module.css";
@@ -49,4 +50,11 @@ export default class MessageSideBar extends Component {
             </div>
         )
     }
+}
+
+MessageSideBar.propTypes = {
+    chats: PropTypes.array,
+    activeChat: PropTypes.object,
+    setActiveChat: PropTypes.func,
+    mobileDisplay: PropTypes.bool
 }

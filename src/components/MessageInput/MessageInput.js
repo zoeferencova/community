@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PropTypes } from 'prop-types';
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageInput extends Component {
@@ -66,4 +67,9 @@ export default class MessageInput extends Component {
             </div>
         )
     }
+}
+
+MessageInput.propTypes = {
+    sendMessage: PropTypes.func,
+    sendTyping: PropTypes.func
 }

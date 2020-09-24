@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import { ButtonLight, ProfilePicture } from "../Utils/Utils";
 import Task from "../Task/Task";
@@ -43,6 +44,11 @@ class Post extends Component {
 
 export default withRouter(Post);
 
-
-
-
+Post.propTypes = {
+    first_name: PropTypes.string,
+    post_type: PropTypes.string,
+    distance_from_user: PropTypes.string,
+    categories: PropTypes.array,
+    description: PropTypes.string,
+    id: PropTypes.number
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
+import { PropTypes } from 'prop-types';
 import Nav from "../Nav/Nav";
 import LandingPage from "../../routes/LandingPage/LandingPage";
 import LoginPage from "../../routes/LoginPage/LoginPage";
@@ -27,4 +28,9 @@ export default class UnauthenticatedApp extends Component {
         </main>
     );
   }
+}
+
+UnauthenticatedApp.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  setLoggedIn: PropTypes.func
 }

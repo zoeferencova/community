@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import { ButtonDark, ButtonLight } from "../../components/Utils/Utils";
 import styles from "./DeactivationConfirmationPage.module.css";
@@ -41,4 +42,8 @@ class DeactivationConfirmationPage extends Component {
     }
 }
 
-export default withRouter(DeactivationConfirmationPage)
+export default withRouter(DeactivationConfirmationPage);
+
+DeactivationConfirmationPage.propTypes = {
+    setLoggedIn: PropTypes.func
+}

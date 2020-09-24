@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PropTypes } from 'prop-types';
 import { CHAT_DELETED } from "../../message-utils/events";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
@@ -64,4 +65,9 @@ export default class MessageHeading extends Component {
             </div>
         );
     }
+}
+
+MessageHeading.propTypes = {
+    receiver: PropTypes.object,
+    mobileDisplayContacts: PropTypes.func
 }

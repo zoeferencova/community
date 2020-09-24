@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import { ProfilePicture } from "../Utils/Utils";
 
@@ -42,4 +43,9 @@ export default class Nav extends Component {
             </nav>  
         )
     }
+}
+
+Nav.propTypes = {
+    isLoggedIn: PropTypes.bool,
+    first_name: PropTypes.string
 }

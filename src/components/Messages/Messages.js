@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import tz from "moment-timezone";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import styles from "../MessageLayout/MessageLayout.module.css";
 import { ProfilePicture } from "../Utils/Utils";
@@ -75,4 +76,10 @@ export default class Messages extends Component {
             </div>
         )
     }
+}
+
+Messages.propTypes = {
+    messages: PropTypes.array,
+    user: PropTypes.object,
+    receiver: PropTypes.object
 }

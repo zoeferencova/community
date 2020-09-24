@@ -40,7 +40,7 @@ class MyPostPage extends Component {
             <main className={styles.main}>
                 {post && <>
                 <div className={styles.map}>
-                    <GoogleMap location={post.location} radius={post.radius} displayMarker={true} />                
+                    <GoogleMap location={post.location} radius={parseFloat(post.radius)} displayMarker={true} />                
                 </div>
                 <div className={styles.postHeader}>
                     <div>

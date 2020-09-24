@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import { ButtonLight, ButtonDark } from "../Utils/Utils";
 import styles from "./MessageInfo.module.css";
@@ -48,4 +49,10 @@ class MessageInfo extends Component {
     }
 }
 
-export default withRouter(MessageInfo)
+export default withRouter(MessageInfo);
+
+MessageInfo.propTypes = {
+    user: PropTypes.object,
+    deleteChat: PropTypes.func,
+    loading: PropTypes.bool
+}

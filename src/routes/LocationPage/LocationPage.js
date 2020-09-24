@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import { ButtonLight, ButtonDark, Input, Label } from "../../components/Utils/Utils";
@@ -69,4 +70,9 @@ export default class LocationPage extends Component {
             </main>
         )
     }
+}
+
+LocationPage.propTypes = {
+    location: PropTypes.objectOf(PropTypes.number),
+    radius: PropTypes.number
 }

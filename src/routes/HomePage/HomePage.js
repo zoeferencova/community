@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { ButtonLight, ButtonDark } from "../../components/Utils/Utils";
+import { PropTypes } from 'prop-types';
+import { ButtonLight } from "../../components/Utils/Utils";
 import MyPost from "../../components/MyPost/MyPost";
 import Post from "../../components/Post/Post";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
@@ -56,7 +57,7 @@ export default class HomePage extends Component {
                         </div>
                         <div className={`${styles.infoBody} ${styles.infoBodyMap} ${!this.state.showLocation && styles.hide}`}>
                             <MapErrorBoundary>
-                                <GoogleMap className={styles.map} radius={this.context.user.radius} location={this.context.user.location} displayMarker={true} />
+                                <GoogleMap className={styles.map} radius={parseInt(this.context.user.radius)} location={this.context.user.location} displayMarker={true} />
                             </MapErrorBoundary>
                             <p className={styles.mapSubtitle}>Results are being shown for this area. <Link to="/location" className={styles.mapSubLink}>Change location?</Link></p>
                         </div>
@@ -72,4 +73,8 @@ export default class HomePage extends Component {
             </main>
         )
     }
+}
+
+HomePage.propTypes = {
+    loading: PropTypes.bool
 }

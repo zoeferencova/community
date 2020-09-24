@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { PropTypes } from 'prop-types';
 import LoginForm from "../../components/LoginForm/LoginForm";
 
 import styles from "./LoginPage.module.css";
@@ -19,4 +20,8 @@ export default class LoginPage extends Component {
             
         )
     }
+}
+
+LoginPage.propTypes = {
+    setLoggedIn: PropTypes.func
 }

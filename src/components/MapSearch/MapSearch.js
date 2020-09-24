@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { PropTypes } from 'prop-types';
 
 import styles from "./MapSearch.module.css";
 
@@ -85,3 +86,7 @@ const MapSearch = (props) => {
 };
 
 export default MapSearch;
+
+MapSearch.propTypes = {
+  handleLocationChange: PropTypes.func
+}
