@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Task renders Task component 1`] = `
+<li
+  className="task supplies"
+>
+  Picking up supplies
+</li>
+`;

@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders App component 1`] = `
+<main
+  class="App"
+>
+  <main
+    class="main"
+  >
+    <nav
+      class="nav"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="bigLogo"
+          src="big-logo.png"
+        />
+      </a>
+      <ul
+        class="navLinks"
+      >
+        <a
+          href="/login"
+        >
+          <li
+            class="logIn"
+          >
+            Log in
+          </li>
+        </a>
+        <a
+          href="/register"
+        >
+          <li
+            class="signUp"
+          >
+            Sign up
+          </li>
+        </a>
+      </ul>
+    </nav>
+    <main
+      class="main"
+    >
+      <header
+        class="header"
+      >
+        <div
+          class="left"
+        >
+          <h1
+            class="heading"
+          >
+            Coming together in a time of need
+          </h1>
+          <p
+            class="subheading"
+          >
+            Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.
+          </p>
+          <div
+            class="buttonSection"
+          >
+            <button
+              class="signupButton"
+              type="button"
+            >
+              Start now
+            </button>
+            <button
+              class="demoButton"
+              type="button"
+            >
+              See a demo
+            </button>
+          </div>
+        </div>
+        <div
+          class="right"
+        >
+          <img
+            alt="grocery delivery"
+            class="banner desktop"
+            src="banner.jpeg"
+          />
+        </div>
+      </header>
+      <section
+        class="section first"
+      >
+        <div
+          class="left"
+        >
+          <h2
+            class="heading"
+          >
+            How does it work?
+          </h2>
+          <p
+            class="subheading"
+          >
+            Post offers or requests for help and see other active postings in your neighborhood. 
+            <br />
+            <br />
+             Other members of your community can then offer to help or accept your offer, initiating a private chat where you can securely work out the details.
+          </p>
+        </div>
+        <div
+          class="right"
+        >
+          <img
+            alt="mockup of application on desktop browser"
+            class="mockupDesktop"
+            src="mockup1.png"
+          />
+        </div>
+      </section>
+      <section
+        class="section icons"
+      >
+        <h2>
+          What our helpers can do for you
+        </h2>
+        <div
+          class="iconList"
+        >
+          <div
+            class="iconSection"
+          >
+            <img
+              alt="man handing supplies to older couple"
+              class="iconImage"
+              src="supplies.jpg"
+            />
+            <div
+              class="iconColumn"
+            >
+              <h3
+                class="iconHeading"
+              >
+                Pick up supplies
+              </h3>
+              <p
+                class="iconSubheading"
+              >
+                Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop it off at your doorstep.
+              </p>
+            </div>
+          </div>
+          <div
+            class="iconSection"
+          >
+            <img
+              alt="woman walking dog wearing a face mask"
+              class="iconImage"
+              src="dog.jpg"
+            />
+            <div
+              class="iconColumn"
+            >
+              <h3
+                class="iconHeading"
+              >
+                Walk your dog
+              </h3>
+              <p
+                class="iconSubheading"
+              >
+                Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.
+              </p>
+            </div>
+          </div>
+          <div
+            class="iconSection"
+          >
+            <img
+              alt="decorative shape"
+              class="shape1"
+              src="shape1.png"
+            />
+            <img
+              alt="decorative shape"
+              class="shape2"
+              src="shape2.png"
+            />
+            <img
+              alt="woman talking on the phone looking at laptop"
+              class="iconImage"
+              src="phone.jpg"
+            />
+            <div
+              class="iconColumn"
+            >
+              <h3
+                class="iconHeading"
+              >
+                Friendly chat
+              </h3>
+              <p
+                class="iconSubheading"
+              >
+                We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section security"
+      >
+        <div
+          class="left"
+        >
+          <img
+            alt="mockup of chat functionality and post detail page"
+            class="securityMockup"
+            src="security-mockups.png"
+          />
+        </div>
+        <div
+          class="right"
+        >
+          <h2
+            class="heading"
+          >
+            Your safety and security are important to us
+          </h2>
+          <p
+            class="subheading"
+          >
+            We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location), so the amount of information that you share in the chat is 100% your call.
+          </p>
+        </div>
+      </section>
+      <section
+        class="section last"
+      >
+        <h2
+          class="heading"
+        >
+          Ready to make a difference in your community?
+        </h2>
+        <div
+          class="buttonSection"
+        >
+          <button
+            class="signupButton"
+            type="button"
+          >
+            Start now
+          </button>
+          <button
+            class="demoButton"
+            type="button"
+          >
+            See a demo
+          </button>
+        </div>
+      </section>
+      <footer
+        class="footer"
+      >
+        <div
+          class="footerDetails"
+        >
+          <p>
+            Made by Zoe Ferencova
+          </p>
+          <a
+            href="https://github.com/zoeferencova/"
+            target="_blank"
+          >
+            <i
+              class="fab fa-github"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/zoeferencova/"
+            target="_blank"
+          >
+            <i
+              class="fab fa-linkedin"
+            />
+          </a>
+        </div>
+        <img
+          alt="small logo"
+          class="securityMockup"
+          src="light-logo.png"
+        />
+      </footer>
+    </main>
+  </main>
+</main>
+`;

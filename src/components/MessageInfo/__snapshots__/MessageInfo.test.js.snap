@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageInfo renders MessageInfo component given mock context data 1`] = `
+<div
+  class="container"
+>
+  <p>
+    James offered to help you
+    <span>
+      <i
+        class="fas fa-heart heart"
+      />
+    </span>
+  </p>
+  <div
+    class="buttons"
+  >
+    <button
+      class="buttonDark "
+      type="button"
+    >
+      Go to post
+    </button>
+    <button
+      class="button deleteButton"
+      loading="false"
+      type="button"
+    >
+      Delete chat
+    </button>
+  </div>
+</div>
+`;

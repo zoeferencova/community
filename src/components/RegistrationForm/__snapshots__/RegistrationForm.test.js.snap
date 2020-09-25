@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationForm renders RegistrationForm component 1`] = `
+<form>
+  <label
+    class="label "
+    for="first_name"
+  >
+    First name
+  </label>
+  <input
+    class="input "
+    id="first_name"
+    name="first_name"
+    required=""
+    type="text"
+  />
+  <label
+    class="label "
+    for="email"
+  >
+    Email
+  </label>
+  <input
+    class="input "
+    id="email"
+    name="email"
+    required=""
+    type="email"
+  />
+  <label
+    class="label "
+    for="password"
+  >
+    Password
+  </label>
+  <input
+    class="input "
+    id="password"
+    name="password"
+    required=""
+    type="password"
+  />
+  <label
+    class="label "
+    for="confirm_password"
+  >
+    Confirm Password
+  </label>
+  <input
+    class="input "
+    id="confirm_password"
+    name="confirm_password"
+    required=""
+    type="password"
+  />
+  <div
+    class="buttonContainer"
+  >
+    <button
+      class="button "
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      class="buttonDark registerButton"
+      loading="false"
+      type="submit"
+    >
+      Create Account
+    </button>
+  </div>
+</form>
+`;

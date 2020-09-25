@@ -2,27 +2,27 @@ import React from 'react';
 import styles from './Utils.module.css';
 
 export function ButtonLight({ className, ...props }) {
-    return <button className={`${styles.button} ${className}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
+    return <button className={`${styles.button} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
 }
 
 export function ButtonDark({ className, ...props }) {
-    return <button className={`${styles.buttonDark} ${className}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
+    return <button className={`${styles.buttonDark} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
 }
 
 export function Input({ className, ...props }) {
-    return <input className={`${styles.input} ${className}`} {...props} />
+    return <input className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
 }
 
 export function Label({ className, ...props }) {
-    return <label className={`${styles.label} ${className}`} {...props} />
+    return <label className={`${styles.label} ${className !== undefined ? className : ""}`} {...props} />
 }
 
 export function Textarea({ className, ...props }) {
-    return <textarea className={`${styles.input} ${className}`} {...props} />
+    return <textarea className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
 }
 
 export function Select({ className, ...props }) {
-    return <select className={`${styles.input} ${className}`} {...props} />
+    return <select className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
 }
 
 export function ProfilePicture({ className, ...props }) {
@@ -32,9 +32,9 @@ export function ProfilePicture({ className, ...props }) {
     const firstLetter = props.first_name.slice(0, 1);
     const letterIndex = letters.indexOf(firstLetter.toLowerCase());
     color = colorOptions[Math.floor(letterIndex/colorOptions.length)]
-    return <div className={`${styles.circle} ${color} ${className}`} {...props}>{firstLetter.toUpperCase()}</div>
+    return <div className={`${styles.circle} ${color} ${className !== undefined ? className : ""}`} {...props}>{firstLetter.toUpperCase()}</div>
 }
 
 export function Error ({ className, ...props }) {
-    return <div role="alert" className={`${styles.error} ${className}`} {...props}><i className="fas fa-exclamation-circle"></i> {props.message}</div>
+    return <div role="alert" className={`${styles.error} ${className !== undefined ? className : ""}`} {...props}><i className="fas fa-exclamation-circle"></i> {props.message}</div>
 }

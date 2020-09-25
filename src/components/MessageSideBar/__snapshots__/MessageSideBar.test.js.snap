@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageSideBar renders MessageSideBar component given mock context data 1`] = `
+<div
+  class="sideBar inactiveMobile"
+  id="side-bar"
+>
+  <div
+    class="heading"
+  >
+    <div
+      class="chatName"
+    >
+      Chats
+    </div>
+  </div>
+  <div
+    class="users"
+  >
+    <div
+      class="user active"
+    >
+      <div
+        class="circle indigo sidebarPic"
+        first_name="James"
+      >
+        J
+      </div>
+      <div
+        class="userInfo"
+      >
+        <div
+          class="name"
+        >
+          James
+        </div>
+        <div
+          class="lastMessage"
+        >
+          hey
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

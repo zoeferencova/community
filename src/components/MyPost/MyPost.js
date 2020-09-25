@@ -10,7 +10,7 @@ export default class MyPost extends Component {
     }
     render() {
         return (   
-        <Link className={styles.link} to={`/my-post/${this.props.id}`}><p className={styles.userPost}>{this.props.post_type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>} {this.capitalizeFirstLetter(this.props.post_type)} created {moment(this.props.date_created).fromNow()}</p></Link>
+            <Link className={styles.link} to={`/my-post/${this.props.id}`}><p className={styles.userPost}>{this.props.post_type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>} {this.capitalizeFirstLetter(this.props.post_type)} created {moment(this.props.date_created).fromNow()}</p></Link>
         )
     }
 }

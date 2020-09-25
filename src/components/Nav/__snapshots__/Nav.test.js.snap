@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav renders Nav component when logged in 1`] = `
+<nav
+  class="nav"
+>
+  <a
+    href="/home"
+  >
+    <img
+      alt="logo"
+      class="smallLogo"
+      src="small-logo.png"
+    />
+  </a>
+  <ul
+    class="navLinks mobile navLinks"
+  >
+    <a
+      href="/messages"
+    >
+      <li>
+        <i
+          class="fas fa-comment"
+        />
+      </li>
+    </a>
+    <a
+      href="/account"
+    >
+      <li>
+        <div
+          class="circle blue "
+          first_name="Zoe"
+        >
+          Z
+        </div>
+      </li>
+    </a>
+  </ul>
+  <ul
+    class="navLinks desktop"
+  >
+    <a
+      href="/home"
+    >
+      <li>
+        <i
+          class="fas fa-home"
+        />
+      </li>
+    </a>
+    <a
+      href="/messages"
+    >
+      <li>
+        <i
+          class="fas fa-comment"
+        />
+      </li>
+    </a>
+    <a
+      href="/account"
+    >
+      <li>
+        <div
+          class="circle blue profPic"
+          first_name="Zoe"
+        >
+          Z
+        </div>
+      </li>
+    </a>
+  </ul>
+</nav>
+`;
+
+exports[`Nav renders Nav component when not logged in 1`] = `
+<nav
+  class="nav"
+>
+  <a
+    aria-current="page"
+    class="active"
+    href="/"
+  >
+    <img
+      alt="logo"
+      class="bigLogo"
+      src="big-logo.png"
+    />
+  </a>
+  <ul
+    class="navLinks"
+  >
+    <a
+      href="/login"
+    >
+      <li
+        class="logIn"
+      >
+        Log in
+      </li>
+    </a>
+    <a
+      href="/register"
+    >
+      <li
+        class="signUp"
+      >
+        Sign up
+      </li>
+    </a>
+  </ul>
+</nav>
+`;

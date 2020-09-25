@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageInput renders MessageInput component 1`] = `
+<div
+  className="messageInput"
+>
+  <form
+    className="messageForm"
+    onSubmit={[Function]}
+  >
+    <input
+      autoComplete="off"
+      className="formControl"
+      id="message"
+      onChange={[Function]}
+      placeholder="Type a message..."
+      type="text"
+      value=""
+    />
+    <button
+      className="send"
+      disabled={true}
+      type="submit"
+    >
+      <img
+        className="sendIcon"
+        src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"
+      />
+    </button>
+  </form>
+</div>
+`;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`expect to render Post component 1`] = `
+exports[`Post renders Post component given mock context data 1`] = `
 <div
   class="post"
 >
@@ -15,7 +15,7 @@ exports[`expect to render Post component 1`] = `
           class="nameSection"
         >
           <div
-            class="circle indigo undefined"
+            class="circle indigo "
             first_name="James"
             user_name="Zoe"
           >
@@ -41,11 +41,6 @@ exports[`expect to render Post component 1`] = `
       <ul
         class="helpItems"
       >
-        <li
-          class="task errands"
-        >
-          Running errands
-        </li>
         <li
           class="task supplies"
         >

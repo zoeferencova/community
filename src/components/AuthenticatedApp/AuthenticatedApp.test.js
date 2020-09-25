@@ -1,7 +1,16 @@
 import React from "react";
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 import AuthenticatedApp from "./AuthenticatedApp";
 
-it("expect to render AuthenticatedApp component", () => {
-    expect(shallow(<AuthenticatedApp />)).toMatchSnapshot()
-})
+
+describe("AuthenticatedApp", () => {
+  it("renders AuthenticatedApp component", () => {
+    const wrapper = shallow(<AuthenticatedApp />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
+
+
+

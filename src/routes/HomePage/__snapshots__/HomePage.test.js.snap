@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`expect to render HomePage component 1`] = `
+exports[`renders HomePage component given mock context data 1`] = `
 <main
   class="main"
 >
@@ -61,7 +61,7 @@ exports[`expect to render HomePage component 1`] = `
               <i
                 class="fas fa-hand-paper hand"
               />
-               Request created a day ago
+               Request created 2 days ago
             </p>
           </a>
           <a
@@ -74,7 +74,7 @@ exports[`expect to render HomePage component 1`] = `
               <i
                 class="fas fa-heart heart"
               />
-               Offer created 6 hours ago
+               Offer created a day ago
             </p>
           </a>
         </div>
@@ -142,7 +142,7 @@ exports[`expect to render HomePage component 1`] = `
               class="nameSection"
             >
               <div
-                class="circle indigo undefined"
+                class="circle indigo "
                 first_name="James"
                 user_name="Zoe"
               >
@@ -200,7 +200,7 @@ exports[`expect to render HomePage component 1`] = `
               class="nameSection"
             >
               <div
-                class="circle red undefined"
+                class="circle red "
                 first_name="Anna"
                 user_name="Zoe"
               >

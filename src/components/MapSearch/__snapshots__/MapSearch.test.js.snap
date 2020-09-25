@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapSearch renders MapSearch component 1`] = `
+<div>
+  <input
+    className="input"
+    disabled={true}
+    onChange={[Function]}
+    placeholder="Enter an address"
+    value=""
+  />
+</div>
+`;

@@ -92,7 +92,41 @@ const mockContext = {
         }
     ],
     socket: {},
-    activeChat: null,
+    activeChat: {
+        id: 25,
+        messages: [
+            {
+                chat_id: 25,
+                id: 285,
+                message_content: "hi",
+                message_timestamp: "2020-09-17T18:22:47.088676",
+                sender_id: 1
+            },
+            {
+                chat_id: 25,
+                id: 286,
+                message_content: "hey",
+                message_timestamp: "2020-09-17T18:23:47.088676",
+                sender_id: 2
+            },
+        ],
+        post: {
+            date_created: "2020-09-23T20:33:01.817Z",
+            description: null,
+            id: 4,
+            post_type: "offer",
+            urgency: null,
+            user_id: 2
+        },
+        user1: {
+            first_name: "Zoe",
+            id: 1
+        },
+        user2: {
+            first_name: "James",
+            id: 2
+        }
+    },
     timeZone: "America/New_York",
     getAllPosts: jest.fn(),
     addNewPost: jest.fn(),

@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UnauthenticatedApp renders UnauthenticatedApp component 1`] = `
+<main
+  className="main"
+>
+  <Nav />
+  <ErrorBoundary
+    key="/"
+  >
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/login"
+      />
+      <Route
+        component={[Function]}
+        path="/register"
+      />
+      <Route
+        component={[Function]}
+        path="/deactivated"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </ErrorBoundary>
+</main>
+`;

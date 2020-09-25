@@ -54,24 +54,12 @@ export default class Messages extends Component {
             })
         }
     }
-
-    makeTypingUsers = () => {
-        const { typingUsers } = this.props;
-        return typingUsers.map(u => {
-            return (
-                <div key={u.first_name} className={styles.typingUser}>
-                    {`${u.first_name} is typing...`}
-                </div>
-            )
-        })
-    }
     
     render() {
         return (
             <div ref="container" className={styles.threadContainer}>
                 <div className={styles.thread}>
                     {this.makeMessages()}
-                    {/* {this.makeTypingUsers()} */}
                 </div>
             </div>
         )

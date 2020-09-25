@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonDark renders ButtonDark component with button text when not loading 1`] = `
+<button
+  className="buttonDark "
+  loading="false"
+>
+  Hello
+</button>
+`;
+
+exports[`ButtonDark renders ButtonDark component with loader icon when loading 1`] = `
+<button
+  className="buttonDark "
+  loading="true"
+>
+  <i
+    className="fa fa-spinner fa-spin spinner"
+  />
+</button>
+`;
+
+exports[`ButtonLight renders ButtonLight component with button text when not loading 1`] = `
+<button
+  className="button "
+  loading="false"
+>
+  Hello
+</button>
+`;
+
+exports[`ButtonLight renders ButtonLight component with loader icon when loading 1`] = `
+<button
+  className="button "
+  loading="true"
+>
+  <i
+    className="fa fa-spinner fa-spin spinner"
+  />
+</button>
+`;
+
+exports[`Error renders Error 1`] = `
+<div
+  className="error "
+  message="Error"
+  role="alert"
+>
+  <i
+    className="fas fa-exclamation-circle"
+  />
+   
+  Error
+</div>
+`;
+
+exports[`Input renders Input 1`] = `
+<input
+  className="input "
+/>
+`;
+
+exports[`Label renders Label 1`] = `
+<label
+  className="label "
+/>
+`;
+
+exports[`ProfilePicture renders ProfilePicture 1`] = `
+<div
+  className="circle blue "
+  first_name="Zoe"
+>
+  Z
+</div>
+`;
+
+exports[`Select renders Select 1`] = `
+<select
+  className="input "
+/>
+`;
+
+exports[`Textarea renders Textarea 1`] = `
+<textarea
+  className="input "
+/>
+`;

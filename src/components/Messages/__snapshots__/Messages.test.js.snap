@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Messages renders Messages component given mock context data 1`] = `
+<div
+  class="threadContainer"
+>
+  <div
+    class="thread"
+  >
+    <div
+      class="messageContainer false lastInThread"
+    >
+      <div
+        class="circle indigo messagePic"
+        first_name="James"
+      >
+        J
+      </div>
+      <div
+        class="data"
+      >
+        <div
+          class="message"
+        >
+          hi
+        </div>
+        <div
+          class="time"
+        >
+          2:22 PM
+        </div>
+      </div>
+    </div>
+    <div
+      class="messageContainer right lastInThread"
+    >
+      <div
+        class="circle indigo messagePic"
+        first_name="James"
+      >
+        J
+      </div>
+      <div
+        class="data"
+      >
+        <div
+          class="message"
+        >
+          hey
+        </div>
+        <div
+          class="time"
+        >
+          2:22 PM
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

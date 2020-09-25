@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageHeading renders MessageHeading component given mock context data 1`] = `
+<div
+  class="headerContainer"
+>
+  <div
+    class="chatHeader"
+  >
+    <div
+      class="userInfo"
+    >
+      <i
+        class="fas fa-chevron-left chatBackArrow"
+      />
+      <div
+        class="circle indigo headerPic"
+        first_name="James"
+      >
+        J
+      </div>
+      <div
+        class="userName"
+      >
+        James
+      </div>
+      <div
+        class="status"
+      >
+        <div
+          class="indicator"
+        />
+      </div>
+    </div>
+    <div
+      class="options"
+    >
+      <i
+        class="fas fa-info-circle"
+      />
+      <i
+        class="fas fa-times"
+      />
+    </div>
+  </div>
+</div>
+`;

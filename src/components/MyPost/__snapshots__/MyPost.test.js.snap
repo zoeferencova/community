@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPost renders MyPost component 1`] = `
+<a
+  class="link"
+  href="/my-post/40"
+>
+  <p
+    class="userPost"
+  >
+    <i
+      class="fas fa-hand-paper hand"
+    />
+     Request created 2 days ago
+  </p>
+</a>
+`;
