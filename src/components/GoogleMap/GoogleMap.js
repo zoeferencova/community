@@ -9,7 +9,7 @@ export default function GoogleMaps(props) {
     const defaultRadius = 1609.344;
     const defaultLocation = { lat: 40.7450271, lng: -73.8858674 }
     const radius = parseFloat(props.radius)*1609.344 || defaultRadius;
-    const location = props.location || defaultLocation;
+    const userLocation = props.userLocation || defaultLocation;
 
     const mapStyles = {
         height: "100%",
@@ -19,7 +19,7 @@ export default function GoogleMaps(props) {
     const createGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
             zoom: 14,
-            center: location,
+            center: userLocation,
             disableDefaultUI: true,
         });
     }
@@ -28,7 +28,7 @@ export default function GoogleMaps(props) {
     const createMarker = () => {
         props.displayMarker &&
         new window.google.maps.Marker({
-            position: location,
+            position: userLocation,
             map: googleMap.current
         });
     }
@@ -41,7 +41,7 @@ export default function GoogleMaps(props) {
             fillColor: '#84c4c1',
             fillOpacity: 0.35,
             map: googleMap.current,
-            center: location,
+            center: userLocation,
             radius: radius
         });
     }
@@ -60,7 +60,7 @@ export default function GoogleMaps(props) {
 }
 
 GoogleMaps.propTypes = {
-    location: PropTypes.objectOf(PropTypes.number),
+    userLocation: PropTypes.objectOf(PropTypes.number),
     radius: PropTypes.number,
     displayMarker: PropTypes.bool
 }

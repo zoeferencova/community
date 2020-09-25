@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditPostPage renders EditPostPage component given mock context data 1`] = `
+<main
+  class="main"
+>
+  <h3>
+    Edit 
+  </h3>
+  <form
+    class="form"
+  >
+    <div>
+      <label
+        class="label label"
+        for="categories"
+      >
+        What do you need help with?
+      </label>
+      <select
+        id="categories"
+        multiple=""
+      >
+        <option
+          class="supplies"
+          value="Picking up supplies"
+        >
+          Picking up supplies
+        </option>
+        <option
+          id="errands"
+          value="Running errands"
+        >
+          Running errands
+        </option>
+        <option
+          class="phone"
+          value="Phone call"
+        >
+          Phone call
+        </option>
+        <option
+          class="online"
+          value="Online chat"
+        >
+          Online chat
+        </option>
+        <option
+          class="dog"
+          value="Dog walking"
+        >
+          Dog walking
+        </option>
+        <option
+          class="other"
+          value="Other"
+        >
+          Other
+        </option>
+      </select>
+    </div>
+    <div>
+      <label
+        class="label label"
+        for="description"
+      >
+        Description (optional)
+      </label>
+      <textarea
+        class="input textarea"
+        id="description"
+        name="description"
+      />
+    </div>
+    <div
+      class="buttonContainer"
+    >
+      <button
+        class="button "
+        type="button"
+      >
+        Cancel
+      </button>
+      <button
+        class="buttonDark "
+        loading="false"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</main>
+`;

@@ -1,17 +1,17 @@
 import React from "react";
 import { render } from "enzyme";
-import HomePage from "./HomePage";
+import AccountPage from "./AccountPage";
 import { BrowserRouter } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 
 import mockContext from "../../contexts/mock-context";
 
-describe("HomePage", () => {
-    it("renders HomePage component given mock context data", () => {
+describe("AccountPage", () => {
+    it("renders AccountPage component given mock context data", () => {
         const wrapper = render(
             <CommUnityContext.Provider value={mockContext}>
                 <BrowserRouter>
-                    <HomePage />
+                    <AccountPage />
                 </BrowserRouter>
             </CommUnityContext.Provider>
         );

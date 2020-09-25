@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessagePage renders MessagePage component given mock context data 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="sideBar inactiveMobile"
+      id="side-bar"
+    >
+      <div
+        class="heading"
+      >
+        <div
+          class="chatName"
+        >
+          Chats
+        </div>
+      </div>
+      <div
+        class="users"
+      />
+    </div>
+    <div
+      class="chatRoomContainer inactiveMobile"
+    >
+      <div
+        class="chatRoom"
+      >
+        <div
+          class="headerContainer"
+        >
+          <div
+            class="chatHeader"
+          >
+            <div
+              class="userInfo"
+            >
+              <i
+                class="fas fa-chevron-left chatBackArrow"
+              />
+              <div
+                class="circle indigo headerPic"
+                first_name="James"
+              >
+                J
+              </div>
+              <div
+                class="userName"
+              >
+                James
+              </div>
+              <div
+                class="status"
+              >
+                <div
+                  class="indicator"
+                />
+              </div>
+            </div>
+            <div
+              class="options"
+            >
+              <i
+                class="fas fa-info-circle"
+              />
+              <i
+                class="fas fa-times"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="threadContainer"
+        >
+          <div
+            class="thread"
+          >
+            <div
+              class="messageContainer right lastInThread"
+            >
+              <div
+                class="circle blue messagePic"
+                first_name="Zoe"
+              >
+                Z
+              </div>
+              <div
+                class="data"
+              >
+                <div
+                  class="message"
+                >
+                  hi
+                </div>
+                <div
+                  class="time"
+                >
+                  2:22 PM
+                </div>
+              </div>
+            </div>
+            <div
+              class="messageContainer false lastInThread"
+            >
+              <div
+                class="circle indigo messagePic"
+                first_name="James"
+              >
+                J
+              </div>
+              <div
+                class="data"
+              >
+                <div
+                  class="message"
+                >
+                  hey
+                </div>
+                <div
+                  class="time"
+                >
+                  2:23 PM
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="messageInput"
+        >
+          <form
+            class="messageForm"
+          >
+            <input
+              autocomplete="off"
+              class="formControl"
+              id="message"
+              placeholder="Type a message..."
+              type="text"
+              value=""
+            />
+            <button
+              class="send"
+              disabled=""
+              type="submit"
+            >
+              <img
+                class="sendIcon"
+                src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"
+              />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

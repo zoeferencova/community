@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPostPage renders MyPostPage component given mock context data 1`] = `
+<main
+  class="main"
+>
+  <div
+    class="map"
+  >
+    <div
+      id="google-map"
+      style="height:100%;width:100%"
+    />
+  </div>
+  <div
+    class="postHeader"
+  >
+    <div>
+      <h3>
+        Your request
+      </h3>
+      <p
+        class="date"
+      >
+        Wednesday, September 23, 2020 4:33 PM EDT
+      </p>
+    </div>
+    <span
+      class="low urgency"
+    >
+      <i
+        class="fas fa-circle"
+      />
+       low urgency
+    </span>
+  </div>
+  <ul
+    class="tasks"
+  >
+    <li
+      class="task call"
+    >
+      Phone call
+    </li>
+  </ul>
+  <div
+    class="buttonSection"
+  >
+    <button
+      class="button "
+      type="button"
+    >
+      Back
+    </button>
+    <div
+      class="rightButtons"
+    >
+      <button
+        class="button delete"
+        loading="false"
+      >
+        Delete
+      </button>
+      <button
+        class="buttonDark "
+        type="button"
+      >
+        Edit
+      </button>
+    </div>
+  </div>
+</main>
+`;

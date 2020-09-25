@@ -7,18 +7,19 @@ import styles from "./LocationPage.module.css";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import MapSearch from "../../components/MapSearch/MapSearch";
 import MapErrorBoundary from "../../components/MapErrorBoundary/MapErrorBoundary";
+import { withRouter } from "react-router-dom";
 
-export default class LocationPage extends Component {
+class LocationPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        location: this.props.location,
+        userLocation: this.props.location,
         radius: parseFloat(this.props.radius),
         loading: false
     }
 
-    handleLocationChange = location => {
-        this.setState({ location });
+    handleLocationChange = userLocation => {
+        this.setState({ userLocation });
     }
 
     handleRadiusChange = e => {
@@ -30,11 +31,11 @@ export default class LocationPage extends Component {
 
         this.setState({...this.state, loading: true })
 
-        const pointLocation = UserDataService.locationToPoint(this.state.location);
+        const pointLocation = UserDataService.locationToPoint(this.state.userLocation);
         const meterRadius = UserDataService.milesToMeters(this.state.radius)
         UserDataService.patchUser({ location: pointLocation, radius: meterRadius }, this.context.user.id)
             .then(res => {
-                this.context.updateUser({ location: this.state.location, radius: this.state.radius })
+                this.context.updateUser({ location: this.state.userLocation, radius: this.state.radius })
             })
             .then(res => {
                 this.context.getAllPosts(this.context.user.id)
@@ -46,10 +47,10 @@ export default class LocationPage extends Component {
     render() {
         return (   
             <main className={styles.main}>
-                {this.state.location && <>
+                {this.state.userLocation && <>
                     <div className={styles.map}>
                         <MapErrorBoundary>
-                            <GoogleMap radius={this.state.radius} location={this.state.location} displayMarker={true} />
+                            <GoogleMap radius={this.state.radius} location={this.state.userLocation} displayMarker={true} />
                         </MapErrorBoundary>
                     </div>
                     <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
@@ -72,7 +73,9 @@ export default class LocationPage extends Component {
     }
 }
 
+export default withRouter(LocationPage)
+
 LocationPage.propTypes = {
-    location: PropTypes.objectOf(PropTypes.number),
+    userLocation: PropTypes.objectOf(PropTypes.number),
     radius: PropTypes.number
 }

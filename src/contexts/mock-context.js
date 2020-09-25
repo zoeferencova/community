@@ -88,7 +88,9 @@ const mockContext = {
                 post_type: "offer",
                 urgency: null,
                 user_id: 2
-            }
+            },
+            user1: {first_name: "Zoe", id: 1},
+            user2: {first_name: "James", id: 2}
         }
     ],
     socket: {},

@@ -39,27 +39,27 @@ class MyPostPage extends Component {
         return (   
             <main className={styles.main}>
                 {post && <>
-                <div className={styles.map}>
-                    <GoogleMap location={post.location} radius={parseFloat(post.radius)} displayMarker={true} />                
-                </div>
-                <div className={styles.postHeader}>
-                    <div>
-                        <h3>Your {post.post_type}</h3>
-                        <p className={styles.date}>{moment(post.date_created).tz(this.context.timeZone).format('LLLL z')}</p>
+                    <div className={styles.map}>
+                        <GoogleMap location={post.location} radius={parseFloat(post.radius)} displayMarker={true} />                
                     </div>
-                    {post.post_type === "request" && <span className={`${styles[post.urgency]} ${styles.urgency}`}><i className="fas fa-circle"></i> {post.urgency} urgency</span>}
-                </div>
-                <ul className={styles.tasks}>
-                    {post.categories.map(task => <Task key={task} task={task} />)}
-                </ul>
-                {post.description && <p className={styles.description}>{post.description}</p>}
-                <div className={styles.buttonSection}>
-                    <ButtonLight type="button" onClick={() => this.props.history.push("/home")}>Back</ButtonLight>
-                    <div className={styles.rightButtons}>
-                        <ButtonLight className={styles.delete} onClick={() => this.handleDelete(post.id)} loading={this.state.loading.toString()}>Delete</ButtonLight>
-                        <ButtonDark type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonDark>
+                    <div className={styles.postHeader}>
+                        <div>
+                            <h3>Your {post.post_type}</h3>
+                            <p className={styles.date}>{moment(post.date_created).tz(this.context.timeZone).format('LLLL z')}</p>
+                        </div>
+                        {post.post_type === "request" && <span className={`${styles[post.urgency]} ${styles.urgency}`}><i className="fas fa-circle"></i> {post.urgency} urgency</span>}
                     </div>
-                </div>
+                    <ul className={styles.tasks}>
+                        {post.categories.map(task => <Task key={task} task={task} />)}
+                    </ul>
+                    {post.description && <p className={styles.description}>{post.description}</p>}
+                    <div className={styles.buttonSection}>
+                        <ButtonLight type="button" onClick={() => this.props.history.push("/home")}>Back</ButtonLight>
+                        <div className={styles.rightButtons}>
+                            <ButtonLight className={styles.delete} onClick={() => this.handleDelete(post.id)} loading={this.state.loading.toString()}>Delete</ButtonLight>
+                            <ButtonDark type="button" onClick={() => this.props.history.push(`/edit-post/${post.id}`)}>Edit</ButtonDark>
+                        </div>
+                    </div>
                 </>}
             </main>
         )

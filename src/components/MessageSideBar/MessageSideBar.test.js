@@ -7,13 +7,7 @@ import mockContext from "../../contexts/mock-context";
 describe("MessageSideBar", () => {
     it("renders MessageSideBar component given mock context data", () => {     
         const mockProps = {
-            chats: [
-                {
-                    ...mockContext.chats[0], 
-                    user1: {first_name: "Zoe", id: 1},
-                    user2: {first_name: "James", id: 2}
-                }
-            ],
+            chats: mockContext.chats,
             activeChat: mockContext.activeChat,
             setActiveChat: jest.fn()
         }

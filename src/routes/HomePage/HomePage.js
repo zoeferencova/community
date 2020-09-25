@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import { ButtonLight } from "../../components/Utils/Utils";
 import MyPost from "../../components/MyPost/MyPost";
@@ -9,7 +9,7 @@ import MapErrorBoundary from "../../components/MapErrorBoundary/MapErrorBoundary
 import CommUnityContext from "../../contexts/context";
 import styles from "./HomePage.module.css";
 
-export default class HomePage extends Component {
+class HomePage extends Component {
     static contextType = CommUnityContext;
 
     state = {
@@ -74,6 +74,8 @@ export default class HomePage extends Component {
         )
     }
 }
+
+export default withRouter(HomePage);
 
 HomePage.propTypes = {
     loading: PropTypes.bool

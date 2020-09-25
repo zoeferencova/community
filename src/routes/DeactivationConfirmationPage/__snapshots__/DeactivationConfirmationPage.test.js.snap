@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeactivationConfirmationPage renders DeactivationConfirmationPage component given mock context data 1`] = `
+<div
+  class="main"
+>
+  <h3>
+    Deactivate Account
+  </h3>
+  <div
+    class="inner"
+  >
+    <h4>
+      We're sad to see you go 😔. Are you sure you want to deactivate your account?
+    </h4>
+    <div
+      class="buttonSection"
+    >
+      <button
+        class="buttonDark "
+        type="button"
+      >
+        Nevermind!
+      </button>
+      <button
+        class="button yesButton"
+        loading="false"
+        type="submit"
+      >
+        Yes
+      </button>
+    </div>
+  </div>
+</div>
+`;

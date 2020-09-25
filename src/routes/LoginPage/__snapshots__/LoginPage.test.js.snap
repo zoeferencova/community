@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage renders LoginPage component given mock context data 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="main"
+  >
+    <h1>
+      Sign in
+    </h1>
+    <div
+      class="form"
+    >
+      <form
+        class="form"
+      >
+        <label
+          class="label "
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          class="input "
+          id="email"
+          name="email"
+          required=""
+          type="text"
+        />
+        <label
+          class="label "
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          class="input "
+          id="password"
+          name="password"
+          required=""
+          type="password"
+        />
+        <div
+          class="buttonContainer"
+        >
+          <button
+            class="button "
+            type="button"
+          >
+            Cancel
+          </button>
+          <button
+            class="buttonDark "
+            loading="false"
+            type="submit"
+          >
+            Sign in
+          </button>
+        </div>
+      </form>
+      <p>
+        Don't have an account? 
+        <a
+          href="/register"
+        >
+          Sign up
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;

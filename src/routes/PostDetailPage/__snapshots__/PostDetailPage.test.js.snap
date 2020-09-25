@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostDetailPage renders PostDetailPage component given mock context data 1`] = `
+<main
+  class="main"
+>
+  <div
+    class="map"
+  >
+    <div
+      id="google-map"
+      style="height:100%;width:100%"
+    />
+  </div>
+  <div
+    class="postHeader"
+  >
+    <h3
+      class="postTitle"
+    >
+      Respond to James's offer
+    </h3>
+  </div>
+  <ul
+    class="tasks"
+  >
+    <li
+      class="task supplies"
+    >
+      Picking up supplies
+    </li>
+  </ul>
+  <div
+    class="messageSection"
+  >
+    <p
+      class="chatMessage"
+    >
+      You have a chat with James
+    </p>
+    <div
+      class="buttonSection"
+    >
+      <button
+        class="button "
+        type="button"
+      >
+        Back
+      </button>
+      <button
+        class="buttonDark "
+        type="button"
+      >
+        Go to chat
+      </button>
+    </div>
+  </div>
+</main>
+`;
