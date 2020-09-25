@@ -30,11 +30,6 @@ class Post extends Component {
                         </ul>
                         <p className={styles.description}>{this.props.description}</p>
                     </div>
-                    {/* <div className={styles.right}>
-                        
-                        {this.props.post_type === "request" && <span className={styles[this.props.urgency]}><i className="fas fa-circle"></i> {this.props.urgency} urgency</span>}
-                    </div> */}
-                    
                 </div>
                 <ButtonLight type="button" onClick={() => this.props.history.push(`/post/${this.props.id}`)} className={styles.buttonLink}>{this.props.post_type === "offer" ? "Accept offer" : "Offer to help"}</ButtonLight>
             </div>        

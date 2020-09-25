@@ -1,0 +1,254 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render HomePage component 1`] = `
+<main
+  class="main"
+>
+  <header
+    class="header"
+  >
+    <div
+      class="userInfo"
+    >
+      <h2>
+        Welcome, Zoe!
+      </h2>
+      <div
+        class="newPostButtons"
+      >
+        <button
+          class="button requestButton"
+        >
+          <i
+            class="fas fa-hand-paper hand"
+          />
+           Request
+        </button>
+        <button
+          class="button newPostButton"
+        >
+          <i
+            class="fas fa-heart heart"
+          />
+           Offer
+        </button>
+      </div>
+      <div
+        class="yourPosts"
+      >
+        <div
+          class="infoTitle"
+        >
+          <h3>
+            Your Posts
+          </h3>
+          <p
+            class="plus unrotate false"
+          >
+            +
+          </p>
+        </div>
+        <div
+          class="infoBody hide"
+        >
+          <a
+            class="link"
+            href="/my-post/1"
+          >
+            <p
+              class="userPost"
+            >
+              <i
+                class="fas fa-hand-paper hand"
+              />
+               Request created a day ago
+            </p>
+          </a>
+          <a
+            class="link"
+            href="/my-post/1"
+          >
+            <p
+              class="userPost"
+            >
+              <i
+                class="fas fa-heart heart"
+              />
+               Offer created 6 hours ago
+            </p>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mapSection"
+    >
+      <div
+        class="infoTitle"
+      >
+        <h3
+          class="mapTitle"
+        >
+          Your Location
+        </h3>
+        <p
+          class="plus unrotate false"
+        >
+          +
+        </p>
+      </div>
+      <div
+        class="infoBody infoBodyMap hide"
+      >
+        <div
+          id="google-map"
+          style="height:100%;width:100%"
+        />
+        <p
+          class="mapSubtitle"
+        >
+          Results are being shown for this area. 
+          <a
+            class="mapSubLink"
+            href="/location"
+          >
+            Change location?
+          </a>
+        </p>
+      </div>
+    </div>
+  </header>
+  <section
+    class="feed"
+  >
+    <div
+      class="feedHeader"
+    >
+      <h3>
+        There are 2 posts in your area
+      </h3>
+    </div>
+    <div
+      class="post"
+    >
+      <div
+        class="details"
+      >
+        <div>
+          <div
+            class="postHeader"
+          >
+            <div
+              class="nameSection"
+            >
+              <div
+                class="circle indigo undefined"
+                first_name="James"
+                user_name="Zoe"
+              >
+                J
+              </div>
+              <h4>
+                James offered to help
+              </h4>
+            </div>
+            <div>
+              <span>
+                <i
+                  class="fas fa-heart heart"
+                />
+              </span>
+              <span
+                class="distance"
+              >
+                0.6 mi
+              </span>
+            </div>
+          </div>
+          <ul
+            class="helpItems"
+          >
+            <li
+              class="task supplies"
+            >
+              Picking up supplies
+            </li>
+          </ul>
+          <p
+            class="description"
+          />
+        </div>
+      </div>
+      <button
+        class="button buttonLink"
+        type="button"
+      >
+        Accept offer
+      </button>
+    </div>
+    <div
+      class="post"
+    >
+      <div
+        class="details"
+      >
+        <div>
+          <div
+            class="postHeader"
+          >
+            <div
+              class="nameSection"
+            >
+              <div
+                class="circle red undefined"
+                first_name="Anna"
+                user_name="Zoe"
+              >
+                A
+              </div>
+              <h4>
+                Anna requested help
+              </h4>
+            </div>
+            <div>
+              <span>
+                <i
+                  class="fas fa-hand-paper hand"
+                />
+              </span>
+              <span
+                class="distance"
+              >
+                1.4 mi
+              </span>
+            </div>
+          </div>
+          <ul
+            class="helpItems"
+          >
+            <li
+              class="task dog"
+            >
+              Dog walking
+            </li>
+            <li
+              class="task errands"
+            >
+              Running errands
+            </li>
+          </ul>
+          <p
+            class="description"
+          />
+        </div>
+      </div>
+      <button
+        class="button buttonLink"
+        type="button"
+      >
+        Offer to help
+      </button>
+    </div>
+  </section>
+</main>
+`;

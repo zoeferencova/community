@@ -14,7 +14,6 @@ export default class Nav extends Component {
     }
 
     render() {
-        console.log(this.context.user)
         return (   
             <nav className={styles.nav}>
                 {this.props.isLoggedIn ?

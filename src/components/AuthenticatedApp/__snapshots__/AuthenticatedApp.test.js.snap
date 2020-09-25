@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render AuthenticatedApp component 1`] = `
+<main>
+  <ContextProvider
+    value={
+      Object {
+        "activeChat": null,
+        "addNewChat": [Function],
+        "addNewMessage": [Function],
+        "addNewPost": [Function],
+        "chats": Array [],
+        "getAllPosts": [Function],
+        "loading": true,
+        "logout": [Function],
+        "neighborhood_posts": Array [],
+        "removeChat": [Function],
+        "removePost": [Function],
+        "socket": null,
+        "timeZone": "America/New_York",
+        "updateActiveChat": [Function],
+        "updatePost": [Function],
+        "updateUser": [Function],
+        "user": Object {},
+        "user_posts": Array [],
+      }
+    }
+  >
+    <div
+      className="main"
+    >
+      <ErrorBoundary
+        key="/"
+      >
+        <Switch>
+          <Route
+            component={[Function]}
+            path="/home"
+          />
+          <Route
+            component={[Function]}
+            path="/account"
+          />
+          <Route
+            component={[Function]}
+            path="/change-password"
+          />
+          <Route
+            component={[Function]}
+            path="/messages"
+          />
+          <Route
+            component={[Function]}
+            path="/post/:id"
+          />
+          <Route
+            component={[Function]}
+            path="/new-post/:type"
+          />
+          <Route
+            component={[Function]}
+            path="/my-post/:id"
+          />
+          <Route
+            component={[Function]}
+            path="/edit-post/:id"
+          />
+          <Route
+            component={[Function]}
+            path="/confirm-deactivation"
+          />
+          <Route
+            component={[Function]}
+          />
+        </Switch>
+      </ErrorBoundary>
+    </div>
+  </ContextProvider>
+</main>
+`;

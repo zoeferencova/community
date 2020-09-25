@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect to render Post component 1`] = `
+<div
+  class="post"
+>
+  <div
+    class="details"
+  >
+    <div>
+      <div
+        class="postHeader"
+      >
+        <div
+          class="nameSection"
+        >
+          <div
+            class="circle indigo undefined"
+            first_name="James"
+            user_name="Zoe"
+          >
+            J
+          </div>
+          <h4>
+            James requested help
+          </h4>
+        </div>
+        <div>
+          <span>
+            <i
+              class="fas fa-hand-paper hand"
+            />
+          </span>
+          <span
+            class="distance"
+          >
+            NaN mi
+          </span>
+        </div>
+      </div>
+      <ul
+        class="helpItems"
+      >
+        <li
+          class="task errands"
+        >
+          Running errands
+        </li>
+        <li
+          class="task supplies"
+        >
+          Picking up supplies
+        </li>
+      </ul>
+      <p
+        class="description"
+      />
+    </div>
+  </div>
+  <button
+    class="button buttonLink"
+    type="button"
+  >
+    Offer to help
+  </button>
+</div>
+`;
