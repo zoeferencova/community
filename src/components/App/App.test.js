@@ -35,11 +35,16 @@ describe("App", () => {
   });
 
   it("passing false to setLoggedIn updates the isLoggedIn state to false", () => {
+    wrapper.find("App").setState({ isLoggedIn: true });
+    expect(wrapper.find("App").state().isLoggedIn).toEqual(true);
+
     wrapper.find("App").instance().setLoggedIn(false);
     expect(wrapper.find("App").state().isLoggedIn).toEqual(false);
   });
 
   it("passing true to setLoggedIn updates the isLoggedIn state to true", () => {
+    expect(wrapper.find("App").state().isLoggedIn).toEqual(false);
+
     wrapper.find("App").instance().setLoggedIn(true);
     expect(wrapper.find("App").state().isLoggedIn).toEqual(true);
   });
