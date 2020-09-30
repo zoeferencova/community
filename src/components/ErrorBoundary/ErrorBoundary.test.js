@@ -17,5 +17,5 @@ describe("ErrorBoundary", () => {
     wrapper.find(Something).simulateError(error);
 
     expect(wrapper.state('error')).toEqual(error);
-  })
-})
+  });
+});

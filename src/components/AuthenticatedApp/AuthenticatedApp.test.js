@@ -5,18 +5,13 @@ import { BrowserRouter } from "react-router-dom";
 
 
 describe("AuthenticatedApp", () => {
-    let wrapper;
-
-    beforeEach(() => {
-        wrapper = shallow(<AuthenticatedApp  />);
-    });
-
     it("renders AuthenticatedApp component", () => {
+        const wrapper = shallow(<AuthenticatedApp  />);
         expect(wrapper).toMatchSnapshot();
     });
 
     it("only renders the Nav component when the logged in user has a first_name value", () => {
-        wrapper = mount(
+        const wrapper = mount(
             <BrowserRouter>
                 <AuthenticatedApp />
             </BrowserRouter>

@@ -1,51 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm renders LoginForm component 1`] = `
-<form
-  class="form"
->
-  <label
-    class="label "
-    for="email"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    Email
-  </label>
-  <input
-    class="input "
-    id="email"
-    name="email"
-    required=""
-    type="text"
-  />
-  <label
-    class="label "
-    for="password"
-  >
-    Password
-  </label>
-  <input
-    class="input "
-    id="password"
-    name="password"
-    required=""
-    type="password"
-  />
-  <div
-    class="buttonContainer"
-  >
-    <button
-      class="button "
-      type="button"
-    >
-      Cancel
-    </button>
-    <button
-      class="buttonDark "
-      loading="false"
-      type="submit"
-    >
-      Sign in
-    </button>
-  </div>
-</form>
+    <withRouter(LoginForm)>
+      <LoginForm
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+        location={
+          Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          }
+        }
+        match={
+          Object {
+            "isExact": true,
+            "params": Object {},
+            "path": "/",
+            "url": "/",
+          }
+        }
+      >
+        <form
+          className="form"
+          onSubmit={[Function]}
+        >
+          <Label
+            htmlFor="email"
+          >
+            <label
+              className="label "
+              htmlFor="email"
+            >
+              Email
+            </label>
+          </Label>
+          <Input
+            id="email"
+            name="email"
+            required={true}
+            type="text"
+          >
+            <input
+              className="input "
+              id="email"
+              name="email"
+              required={true}
+              type="text"
+            />
+          </Input>
+          <Label
+            htmlFor="password"
+          >
+            <label
+              className="label "
+              htmlFor="password"
+            >
+              Password
+            </label>
+          </Label>
+          <Input
+            id="password"
+            name="password"
+            required={true}
+            type="password"
+          >
+            <input
+              className="input "
+              id="password"
+              name="password"
+              required={true}
+              type="password"
+            />
+          </Input>
+          <div
+            className="buttonContainer"
+          >
+            <ButtonLight
+              onClick={[Function]}
+              type="button"
+            >
+              <button
+                className="button "
+                onClick={[Function]}
+                type="button"
+              >
+                Cancel
+              </button>
+            </ButtonLight>
+            <ButtonDark
+              loading="false"
+              type="submit"
+            >
+              <button
+                className="buttonDark "
+                loading="false"
+                type="submit"
+              >
+                Sign in
+              </button>
+            </ButtonDark>
+          </div>
+        </form>
+      </LoginForm>
+    </withRouter(LoginForm)>
+  </Router>
+</BrowserRouter>
 `;

@@ -49,7 +49,6 @@ exports[`Error renders Error 1`] = `
   <i
     className="fas fa-exclamation-circle"
   />
-   
   Error
 </div>
 `;

@@ -36,5 +36,5 @@ export function ProfilePicture({ className, ...props }) {
 }
 
 export function Error ({ className, ...props }) {
-    return <div role="alert" className={`${styles.error} ${className !== undefined ? className : ""}`} {...props}><i className="fas fa-exclamation-circle"></i> {props.message}</div>
+    return <div role="alert" className={`${styles.error} ${className !== undefined ? className : ""}`} {...props}><i className="fas fa-exclamation-circle"></i>{props.message}</div>
 }
