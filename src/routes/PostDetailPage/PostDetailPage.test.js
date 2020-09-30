@@ -8,13 +8,7 @@ import mockContext from "../../contexts/mock-context";
 
 describe("PostDetailPage", () => {
     const mockProps = {
-        chats: [
-            {
-                ...mockContext.chats[0], 
-                user1: {first_name: "Zoe", id: 1},
-                user2: {first_name: "James", id: 2}
-            }
-        ],
+        chats: mockContext.chats,
         activeChat: mockContext.activeChat,
         setActiveChat: jest.fn()
     }

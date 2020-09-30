@@ -9,7 +9,7 @@ import { withRouter } from "react-router-dom";
 
 class App extends Component {
   state = {
-    isLoggedIn: TokenService.hasAuthToken() ? true : false,
+    isLoggedIn: TokenService.hasAuthToken() ? true : false
   }
 
   setLoggedIn = (status) => {
