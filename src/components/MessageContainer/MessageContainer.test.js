@@ -3,9 +3,6 @@ import { mount } from "enzyme";
 import MessageContainer from "./MessageContainer";
 import CommUnityContext from "../../contexts/context";
 import mockContext from "../../contexts/mock-context";
-import chatService from "../../services/chat-service";
-import { fetch } from "node-fetch";
-import config from "../../config";
 
 describe("MessageContainer", () => {
     let wrapper;
