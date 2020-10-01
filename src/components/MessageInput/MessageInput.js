@@ -7,14 +7,9 @@ export default class MessageInput extends Component {
         message: "",
     }
 
-    handleSubmit = e => {
-        e.preventDefault();
-        this.sendMessage();
-        this.setState({ message: "" })
-    }
-
-    sendMessage = () => {
+    handleSubmit = () => {
         this.props.sendMessage(this.state.message)
+        this.setState({ message: "" })
     }
     
     render() {
