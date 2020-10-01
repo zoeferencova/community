@@ -8,46 +8,29 @@ import styles from "./LoginForm.module.css";
 
 class LoginForm extends Component {
     state = { 
-        error: null,
-        loading: false
+        email: "",
+        password: ""
     }
 
     handleSubmit(e) {
         e.preventDefault();
+        const { email, password } = this.state;
 
-        this.setState({...this.state, loading: true })
-
-        const { email, password } = e.target;
-
-        AuthApiService.postLogin({
-            email: email.value,
-            password: password.value,
-        })
-            .then(user => {
-                email.value = "";
-                password.value = "";
-                this.setState({...this.state, loading: false })
-                this.props.setLoggedIn(true)
-                !user.location ? this.props.history.push("/location") : this.props.history.push("/home");
-            })
-            .catch(res => {
-                this.setState({ loading: false, error: res.error })
-            })
+        this.props.logIn(email, password);
     }
     
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)} className={styles.form}>
-                {this.state.error && <Error message={this.state.error} />}                
+                {this.props.error !== null && <Error message={this.props.error} />}              
                 <Label htmlFor="email">Email</Label>
-                <Input required type="text" name="email" id="email" />
+                <Input required type="text" name="email" id="email" value={this.state.email} onChange={e => this.setState({ ...this.state, email: e.target.value })} />
                 <Label htmlFor="password">Password</Label>
-                <Input required type="password" name="password" id="password" />
+                <Input required type="password" name="password" id="password" value={this.state.password} onChange={e => this.setState({ ...this.state, password: e.target.value })} />
                 <div className={styles.buttonContainer}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/")}>Cancel</ButtonLight>
-                    <ButtonDark type="submit" loading={this.state.loading.toString()}>Sign in</ButtonDark>
-                </div>
-                
+                    <ButtonDark type="submit" loading={this.props.loading.toString()}>Sign in</ButtonDark>
+                </div>             
             </form>
         )
     }
@@ -56,5 +39,6 @@ class LoginForm extends Component {
 export default withRouter(LoginForm)
 
 LoginForm.propTypes = {
-    setLoggedIn: PropTypes.func
+    logIn: PropTypes.func,
+    loading: PropTypes.bool
 }

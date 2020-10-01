@@ -28,6 +28,7 @@ exports[`LoginPage renders LoginPage component given mock context data 1`] = `
           name="email"
           required=""
           type="text"
+          value=""
         />
         <label
           class="label "
@@ -41,6 +42,7 @@ exports[`LoginPage renders LoginPage component given mock context data 1`] = `
           name="password"
           required=""
           type="password"
+          value=""
         />
         <div
           class="buttonContainer"

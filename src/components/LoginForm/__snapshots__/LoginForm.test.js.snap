@@ -24,8 +24,13 @@ exports[`LoginForm renders LoginForm component 1`] = `
       }
     }
   >
-    <withRouter(LoginForm)>
+    <withRouter(LoginForm)
+      error={null}
+      loading={false}
+      logIn={[MockFunction]}
+    >
       <LoginForm
+        error={null}
         history={
           Object {
             "action": "POP",
@@ -46,6 +51,7 @@ exports[`LoginForm renders LoginForm component 1`] = `
             "replace": [Function],
           }
         }
+        loading={false}
         location={
           Object {
             "hash": "",
@@ -54,6 +60,7 @@ exports[`LoginForm renders LoginForm component 1`] = `
             "state": undefined,
           }
         }
+        logIn={[MockFunction]}
         match={
           Object {
             "isExact": true,
@@ -80,15 +87,19 @@ exports[`LoginForm renders LoginForm component 1`] = `
           <Input
             id="email"
             name="email"
+            onChange={[Function]}
             required={true}
             type="text"
+            value=""
           >
             <input
               className="input "
               id="email"
               name="email"
+              onChange={[Function]}
               required={true}
               type="text"
+              value=""
             />
           </Input>
           <Label
@@ -104,15 +115,19 @@ exports[`LoginForm renders LoginForm component 1`] = `
           <Input
             id="password"
             name="password"
+            onChange={[Function]}
             required={true}
             type="password"
+            value=""
           >
             <input
               className="input "
               id="password"
               name="password"
+              onChange={[Function]}
               required={true}
               type="password"
+              value=""
             />
           </Input>
           <div
