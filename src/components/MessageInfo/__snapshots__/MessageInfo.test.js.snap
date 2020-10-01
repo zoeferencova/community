@@ -1,33 +1,146 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessageInfo renders MessageInfo component given mock context data 1`] = `
-<div
-  class="container"
->
-  <p>
-    James offered to help you
-    <span>
-      <i
-        class="fas fa-heart heart"
-      />
-    </span>
-  </p>
-  <div
-    class="buttons"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    <button
-      class="buttonDark "
-      type="button"
+    <withRouter(MessageInfo)
+      deleteChat={[MockFunction]}
+      loading={false}
+      user={
+        Object {
+          "email": "james@gmail.com",
+          "first_name": "James",
+          "id": 2,
+          "location": Object {
+            "lat": 40.748225,
+            "lng": -73.89698620000001,
+          },
+          "radius": "3.00",
+        }
+      }
     >
-      Go to post
-    </button>
-    <button
-      class="button deleteButton"
-      loading="false"
-      type="button"
-    >
-      Delete chat
-    </button>
-  </div>
-</div>
+      <MessageInfo
+        deleteChat={[MockFunction]}
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+        loading={false}
+        location={
+          Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          }
+        }
+        match={
+          Object {
+            "isExact": true,
+            "params": Object {},
+            "path": "/",
+            "url": "/",
+          }
+        }
+        user={
+          Object {
+            "email": "james@gmail.com",
+            "first_name": "James",
+            "id": 2,
+            "location": Object {
+              "lat": 40.748225,
+              "lng": -73.89698620000001,
+            },
+            "radius": "3.00",
+          }
+        }
+      >
+        <div
+          className="container"
+        >
+          <p>
+            James offered to help you
+            <span>
+              <i
+                className="fas fa-heart heart"
+              />
+            </span>
+          </p>
+          <div
+            className="buttons"
+          >
+            <ButtonDark
+              id="post-button"
+              onClick={[Function]}
+              type="button"
+            >
+              <button
+                className="buttonDark "
+                id="post-button"
+                onClick={[Function]}
+                type="button"
+              >
+                Go to post
+              </button>
+            </ButtonDark>
+            <ButtonLight
+              className="deleteButton"
+              id="delete-button"
+              loading="false"
+              onClick={[Function]}
+              type="button"
+            >
+              <button
+                className="button deleteButton"
+                id="delete-button"
+                loading="false"
+                onClick={[Function]}
+                type="button"
+              >
+                Delete chat
+              </button>
+            </ButtonLight>
+          </div>
+        </div>
+      </MessageInfo>
+    </withRouter(MessageInfo)>
+  </Router>
+</BrowserRouter>
 `;
