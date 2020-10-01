@@ -3,9 +3,13 @@ import { shallow } from "enzyme";
 import MapSearch from "./MapSearch";
 
 describe("MapSearch", () => {
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<MapSearch />);
+    })
+
     it("renders MapSearch component", () => {
-        const wrapper = shallow(<MapSearch />);
-        
         expect(wrapper).toMatchSnapshot();
     });
 });

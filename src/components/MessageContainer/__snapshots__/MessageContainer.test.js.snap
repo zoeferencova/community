@@ -1,158 +1,362 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessageContainer renders MessageContainer component given mock context data 1`] = `
-<div
-  class="container"
->
+<MessageContainer>
   <div
-    class="sideBar inactiveMobile"
-    id="side-bar"
+    className="container"
   >
-    <div
-      class="heading"
+    <MessageSideBar
+      activeChat={
+        Object {
+          "id": 25,
+          "messages": Array [
+            Object {
+              "chat_id": 25,
+              "id": 285,
+              "message_content": "hi",
+              "message_timestamp": "2020-09-17T18:22:47.088676",
+              "sender_id": 1,
+            },
+            Object {
+              "chat_id": 25,
+              "id": 286,
+              "message_content": "hey",
+              "message_timestamp": "2020-09-17T18:23:47.088676",
+              "sender_id": 2,
+            },
+          ],
+          "post": Object {
+            "date_created": "2020-09-23T20:33:01.817Z",
+            "description": null,
+            "id": 4,
+            "post_type": "offer",
+            "urgency": null,
+            "user_id": 2,
+          },
+          "user1": Object {
+            "first_name": "Zoe",
+            "id": 1,
+          },
+          "user2": Object {
+            "first_name": "James",
+            "id": 2,
+          },
+        }
+      }
+      chats={
+        Array [
+          Object {
+            "id": 25,
+            "messages": Array [
+              Object {
+                "chat_id": 25,
+                "id": 285,
+                "message_content": "hi",
+                "message_timestamp": "2020-09-17T18:22:47.088676",
+                "sender_id": 1,
+              },
+              Object {
+                "chat_id": 25,
+                "id": 286,
+                "message_content": "hey",
+                "message_timestamp": "2020-09-17T18:23:47.088676",
+                "sender_id": 2,
+              },
+            ],
+            "post": Object {
+              "date_created": "2020-09-23T20:33:01.817Z",
+              "description": null,
+              "id": 4,
+              "post_type": "offer",
+              "urgency": null,
+              "user_id": 2,
+            },
+            "user1": Object {
+              "first_name": "Zoe",
+              "id": 1,
+            },
+            "user2": Object {
+              "first_name": "James",
+              "id": 2,
+            },
+          },
+        ]
+      }
+      mobileDisplay={false}
+      setActiveChat={[Function]}
+      user={
+        Object {
+          "email": "zoe@gmail.com",
+          "first_name": "Zoe",
+          "id": 1,
+          "location": Object {
+            "lat": 40.748225,
+            "lng": -73.89698620000001,
+          },
+          "radius": "3.00",
+        }
+      }
     >
       <div
-        class="chatName"
-      >
-        Chats
-      </div>
-    </div>
-    <div
-      class="users"
-    />
-  </div>
-  <div
-    class="chatRoomContainer inactiveMobile"
-  >
-    <div
-      class="chatRoom"
-    >
-      <div
-        class="headerContainer"
+        className="sideBar inactiveMobile"
+        id="side-bar"
       >
         <div
-          class="chatHeader"
+          className="heading"
         >
           <div
-            class="userInfo"
+            className="chatName"
           >
-            <i
-              class="fas fa-chevron-left chatBackArrow"
-            />
-            <div
-              class="circle indigo headerPic"
-              first_name="James"
-            >
-              J
-            </div>
-            <div
-              class="userName"
-            >
-              James
-            </div>
-            <div
-              class="status"
-            >
-              <div
-                class="indicator"
-              />
-            </div>
-          </div>
-          <div
-            class="options"
-          >
-            <i
-              class="fas fa-info-circle"
-            />
-            <i
-              class="fas fa-times"
-            />
+            Chats
           </div>
         </div>
-      </div>
-      <div
-        class="threadContainer"
-      >
         <div
-          class="thread"
+          className="users"
+          onClick={[Function]}
         >
           <div
-            class="messageContainer right lastInThread"
+            className="user active"
+            key="25"
+            onClick={[Function]}
           >
-            <div
-              class="circle blue messagePic"
-              first_name="Zoe"
-            >
-              Z
-            </div>
-            <div
-              class="data"
-            >
-              <div
-                class="message"
-              >
-                hi
-              </div>
-              <div
-                class="time"
-              >
-                2:22 PM
-              </div>
-            </div>
-          </div>
-          <div
-            class="messageContainer false lastInThread"
-          >
-            <div
-              class="circle indigo messagePic"
+            <ProfilePicture
+              className="sidebarPic"
               first_name="James"
             >
-              J
-            </div>
+              <div
+                className="circle indigo sidebarPic"
+                first_name="James"
+              >
+                J
+              </div>
+            </ProfilePicture>
             <div
-              class="data"
+              className="userInfo"
             >
               <div
-                class="message"
+                className="name"
+              >
+                James
+              </div>
+              <div
+                className="lastMessage"
               >
                 hey
               </div>
-              <div
-                class="time"
-              >
-                2:23 PM
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </MessageSideBar>
+    <div
+      className="chatRoomContainer activeMobile"
+    >
       <div
-        class="messageInput"
+        className="chatRoom"
       >
-        <form
-          class="messageForm"
+        <MessageHeading
+          chatId={25}
+          mobileDisplayContacts={[Function]}
+          receiver={
+            Object {
+              "first_name": "James",
+              "id": 2,
+            }
+          }
         >
-          <input
-            autocomplete="off"
-            class="formControl"
-            id="message"
-            placeholder="Type a message..."
-            type="text"
-            value=""
-          />
-          <button
-            class="send"
-            disabled=""
-            type="submit"
+          <div
+            className="headerContainer"
           >
-            <img
-              class="sendIcon"
-              src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"
-            />
-          </button>
-        </form>
+            <div
+              className="chatHeader"
+            >
+              <div
+                className="userInfo"
+              >
+                <i
+                  className="fas fa-chevron-left chatBackArrow"
+                  onClick={[Function]}
+                />
+                <ProfilePicture
+                  className="headerPic"
+                  first_name="James"
+                >
+                  <div
+                    className="circle indigo headerPic"
+                    first_name="James"
+                  >
+                    J
+                  </div>
+                </ProfilePicture>
+                <div
+                  className="userName"
+                >
+                  James
+                </div>
+                <div
+                  className="status"
+                >
+                  <div
+                    className="indicator"
+                  />
+                </div>
+              </div>
+              <div
+                className="options"
+              >
+                <i
+                  className="fas fa-info-circle"
+                  onClick={[Function]}
+                />
+                <i
+                  className="fas fa-times"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </MessageHeading>
+        <Messages
+          messages={
+            Array [
+              Object {
+                "chat_id": 25,
+                "id": 285,
+                "message_content": "hi",
+                "message_timestamp": "2020-09-17T18:22:47.088676",
+                "sender_id": 1,
+              },
+              Object {
+                "chat_id": 25,
+                "id": 286,
+                "message_content": "hey",
+                "message_timestamp": "2020-09-17T18:23:47.088676",
+                "sender_id": 2,
+              },
+            ]
+          }
+          receiver={
+            Object {
+              "first_name": "James",
+              "id": 2,
+            }
+          }
+          user={
+            Object {
+              "email": "zoe@gmail.com",
+              "first_name": "Zoe",
+              "id": 1,
+              "location": Object {
+                "lat": 40.748225,
+                "lng": -73.89698620000001,
+              },
+              "radius": "3.00",
+            }
+          }
+        >
+          <div
+            className="threadContainer"
+          >
+            <div
+              className="thread"
+            >
+              <div
+                className="messageContainer right lastInThread"
+                key="285"
+              >
+                <ProfilePicture
+                  className="messagePic"
+                  first_name="Zoe"
+                >
+                  <div
+                    className="circle blue messagePic"
+                    first_name="Zoe"
+                  >
+                    Z
+                  </div>
+                </ProfilePicture>
+                <div
+                  className="data"
+                >
+                  <div
+                    className="message"
+                  >
+                    hi
+                  </div>
+                  <div
+                    className="time"
+                  >
+                    2:22 PM
+                  </div>
+                </div>
+              </div>
+              <div
+                className="messageContainer false lastInThread"
+                key="286"
+              >
+                <ProfilePicture
+                  className="messagePic"
+                  first_name="James"
+                >
+                  <div
+                    className="circle indigo messagePic"
+                    first_name="James"
+                  >
+                    J
+                  </div>
+                </ProfilePicture>
+                <div
+                  className="data"
+                >
+                  <div
+                    className="message"
+                  >
+                    hey
+                  </div>
+                  <div
+                    className="time"
+                  >
+                    2:23 PM
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Messages>
+        <MessageInput
+          sendMessage={[Function]}
+        >
+          <div
+            className="messageInput"
+          >
+            <form
+              className="messageForm"
+              onSubmit={[Function]}
+            >
+              <input
+                autoComplete="off"
+                className="formControl"
+                id="message"
+                onChange={[Function]}
+                placeholder="Type a message..."
+                type="text"
+                value=""
+              />
+              <button
+                className="send"
+                disabled={true}
+                type="submit"
+              >
+                <img
+                  className="sendIcon"
+                  src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"
+                />
+              </button>
+            </form>
+          </div>
+        </MessageInput>
       </div>
     </div>
   </div>
-</div>
+</MessageContainer>
 `;

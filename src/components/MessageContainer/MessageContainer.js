@@ -5,7 +5,7 @@ import MessageSideBar from "../MessageSideBar/MessageSideBar";
 import MessageHeading from "../MessageHeading/MessageHeading";
 import MessageInput from "../MessageInput/MessageInput";
 import Messages from "../Messages/Messages";
-import { MESSAGE_SENT, TYPING } from "../../message-utils/events";
+import { MESSAGE_SENT } from "../../message-utils/events";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 export default class MessageContainer extends Component {
@@ -29,28 +29,6 @@ export default class MessageContainer extends Component {
         this._isMounted = false;
     }
 
-    updateTypingInChat = (chatId) =>{
-		return ({isTyping, user})=>{
-			if (user.id !== this.context.user.id) {
-
-				const { chats } = this.state
-
-				let newChats = chats.map((chat) => {
-					if (chat.id === chatId) {
-                        const userIds = chat.typingUsers.map(typingUser => typingUser.id)
-						if (isTyping && !userIds.includes(user.id)) {
-							chat.typingUsers.push(user)
-						} else if(!isTyping && userIds.includes(user.id)) {
-							chat.typingUsers = chat.typingUsers.filter(u => u.id !== user.id)
-						}
-					}
-					return chat
-				})
-				this._isMounted && this.setState({ chats: newChats })
-			}
-		}
-	}
-
     setActiveChat = activeChat => {
         this.context.updateActiveChat(activeChat.id)
     }
@@ -70,11 +48,6 @@ export default class MessageContainer extends Component {
                 this.context.socket.emit(MESSAGE_SENT, { sender: user, receiverId: receiver.id, message: msg })
             })
     }
-
-    sendTyping = (chatId, isTyping) => {
-        const { socket } = this.context;
-        socket.emit(TYPING, { chatId, isTyping })
-    }
     
     render() {
         const { user, activeChat } = this.context;
@@ -83,22 +56,22 @@ export default class MessageContainer extends Component {
         return (
             <div className={styles.container}>
                 {(this.state.chats) && <>
-                <MessageSideBar mobileDisplay={this.state.mobileDisplay === "contacts" ? true : false} chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
-                <div className={`${styles.chatRoomContainer} ${this.state.mobileDisplay === "chats" ? styles.activeMobile : styles.inactiveMobile}`}>
-                    {
-                        activeChat !== null ? (
-                            <div className={styles.chatRoom}>
-                                <MessageHeading mobileDisplayContacts={this.mobileDisplayContacts} chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
-                                <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} typingUsers={activeChat.typingUsers} />
-                                <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} sendTyping={isTyping => this.sendTyping(activeChat.id, isTyping)} />
+                    <MessageSideBar mobileDisplay={this.state.mobileDisplay === "contacts" ? true : false} chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
+                    <div className={`${styles.chatRoomContainer} ${this.state.mobileDisplay === "chats" ? styles.activeMobile : styles.inactiveMobile}`}>
+                        {
+                            activeChat !== null ? (
+                                <div className={styles.chatRoom}>
+                                    <MessageHeading mobileDisplayContacts={this.mobileDisplayContacts} chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
+                                    <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} />
+                                    <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} />
+                                </div>
+                            )
+                            : 
+                            <div className={`${styles.chatRoom} ${styles.choose}`}>
+                                <h3><i className="fas fa-arrow-left"></i> Choose a chat!</h3>
                             </div>
-                        )
-                        : 
-                        <div className={`${styles.chatRoom} ${styles.choose}`}>
-                            <h3><i className="fas fa-arrow-left"></i> Choose a chat!</h3>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
                 </>}
             </div>
         )
