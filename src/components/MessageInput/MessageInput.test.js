@@ -19,7 +19,9 @@ describe("MessageInput", () => {
 
     it("calls sendMessage function and clears message value when message input form is submitted", () => {
         wrapper.setState({ message: "test" })
-        wrapper.find(".messageForm").simulate("submit")
+        wrapper.find(".messageForm").simulate("submit", {
+            preventDefault: () => {}
+        })
 
         expect(mockProps.sendMessage).toHaveBeenCalledTimes(1)
         expect(wrapper.find("#message").prop("value")).toEqual("");

@@ -5,7 +5,6 @@ import styles from "../MessageLayout/MessageLayout.module.css";
 export default class MessageInput extends Component {
     state = {
         message: "",
-        isTyping: false
     }
 
     handleSubmit = e => {
