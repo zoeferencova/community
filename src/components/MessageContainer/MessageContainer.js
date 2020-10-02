@@ -56,22 +56,22 @@ export default class MessageContainer extends Component {
         return (
             <div className={styles.container}>
                 {(this.state.chats) && <>
-                    <MessageSideBar mobileDisplay={this.state.mobileDisplay === "contacts" ? true : false} chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
-                    <div className={`${styles.chatRoomContainer} ${this.state.mobileDisplay === "chats" ? styles.activeMobile : styles.inactiveMobile}`}>
-                        {
-                            activeChat !== null ? (
-                                <div className={styles.chatRoom}>
-                                    <MessageHeading mobileDisplayContacts={this.mobileDisplayContacts} chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
-                                    <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} />
-                                    <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} />
-                                </div>
-                            )
-                            : 
-                            <div className={`${styles.chatRoom} ${styles.choose}`}>
-                                <h3><i className="fas fa-arrow-left"></i> Choose a chat!</h3>
+                <MessageSideBar mobileDisplay={this.state.mobileDisplay === "contacts" ? true : false} chats={chats} user={user} activeChat={activeChat} setActiveChat={this.setActiveChat} />
+                <div className={`${styles.chatRoomContainer} ${this.state.mobileDisplay === "chats" ? styles.activeMobile : styles.inactiveMobile}`}>
+                    {
+                        activeChat !== null ? (
+                            <div className={styles.chatRoom}>
+                                <MessageHeading mobileDisplayContacts={this.mobileDisplayContacts} chatId={activeChat.id} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1}/>
+                                <Messages messages={activeChat.messages} receiver={activeChat.user1.id === user.id ? activeChat.user2 : activeChat.user1} user={user} />
+                                <MessageInput sendMessage={message => this.sendMessage(activeChat.id, message)} />
                             </div>
-                        }
-                    </div>
+                        )
+                        : 
+                        <div className={`${styles.chatRoom} ${styles.choose}`}>
+                            <h3><i className="fas fa-arrow-left"></i> Choose a chat!</h3>
+                        </div>
+                    }
+                </div>
                 </>}
             </div>
         )

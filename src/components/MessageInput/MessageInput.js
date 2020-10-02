@@ -5,9 +5,11 @@ import styles from "../MessageLayout/MessageLayout.module.css";
 export default class MessageInput extends Component {
     state = {
         message: "",
+        isTyping: false
     }
 
-    handleSubmit = () => {
+    handleSubmit = e => {
+        e.preventDefault();
         this.props.sendMessage(this.state.message)
         this.setState({ message: "" })
     }
@@ -34,5 +36,5 @@ export default class MessageInput extends Component {
 }
 
 MessageInput.propTypes = {
-    sendMessage: PropTypes.func
+    sendMessage: PropTypes.func,
 }
