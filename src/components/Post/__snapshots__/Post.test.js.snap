@@ -34,7 +34,7 @@ exports[`Post renders Post component given mock context data 1`] = `
           <span
             class="distance"
           >
-            NaN mi
+            0.6 mi
           </span>
         </div>
       </div>
