@@ -116,6 +116,7 @@ exports[`MessageContainer renders MessageContainer component given mock context 
         >
           <div
             className="user active"
+            id="chat25"
             key="25"
             onClick={[Function]}
           >

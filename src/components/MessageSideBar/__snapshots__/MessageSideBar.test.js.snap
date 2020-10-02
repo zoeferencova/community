@@ -1,46 +1,135 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MessageSideBar renders MessageSideBar component given mock context data 1`] = `
-<div
-  class="sideBar inactiveMobile"
-  id="side-bar"
+<MessageSideBar
+  activeChat={
+    Object {
+      "id": 25,
+      "messages": Array [
+        Object {
+          "chat_id": 25,
+          "id": 285,
+          "message_content": "hi",
+          "message_timestamp": "2020-09-17T18:22:47.088676",
+          "sender_id": 1,
+        },
+        Object {
+          "chat_id": 25,
+          "id": 286,
+          "message_content": "hey",
+          "message_timestamp": "2020-09-17T18:23:47.088676",
+          "sender_id": 2,
+        },
+      ],
+      "post": Object {
+        "date_created": "2020-09-23T20:33:01.817Z",
+        "description": null,
+        "id": 4,
+        "post_type": "offer",
+        "urgency": null,
+        "user_id": 2,
+      },
+      "user1": Object {
+        "first_name": "Zoe",
+        "id": 1,
+      },
+      "user2": Object {
+        "first_name": "James",
+        "id": 2,
+      },
+    }
+  }
+  chats={
+    Array [
+      Object {
+        "id": 25,
+        "messages": Array [
+          Object {
+            "chat_id": 25,
+            "id": 285,
+            "message_content": "hi",
+            "message_timestamp": "2020-09-17T18:22:47.088676",
+            "sender_id": 1,
+          },
+          Object {
+            "chat_id": 25,
+            "id": 286,
+            "message_content": "hey",
+            "message_timestamp": "2020-09-17T18:23:47.088676",
+            "sender_id": 2,
+          },
+        ],
+        "post": Object {
+          "date_created": "2020-09-23T20:33:01.817Z",
+          "description": null,
+          "id": 4,
+          "post_type": "offer",
+          "urgency": null,
+          "user_id": 2,
+        },
+        "user1": Object {
+          "first_name": "Zoe",
+          "id": 1,
+        },
+        "user2": Object {
+          "first_name": "James",
+          "id": 2,
+        },
+      },
+    ]
+  }
+  setActiveChat={[MockFunction]}
 >
   <div
-    class="heading"
+    className="sideBar inactiveMobile"
+    id="side-bar"
   >
     <div
-      class="chatName"
+      className="heading"
     >
-      Chats
+      <div
+        className="chatName"
+      >
+        Chats
+      </div>
     </div>
-  </div>
-  <div
-    class="users"
-  >
     <div
-      class="user active"
+      className="users"
+      onClick={[Function]}
     >
       <div
-        class="circle indigo sidebarPic"
-        first_name="James"
+        className="user active"
+        id="chat25"
+        key="25"
+        onClick={[Function]}
       >
-        J
-      </div>
-      <div
-        class="userInfo"
-      >
-        <div
-          class="name"
+        <ProfilePicture
+          className="sidebarPic"
+          first_name="James"
         >
-          James
-        </div>
+          <div
+            className="circle indigo sidebarPic"
+            first_name="James"
+          >
+            J
+          </div>
+        </ProfilePicture>
         <div
-          class="lastMessage"
+          className="userInfo"
         >
-          hey
+          <div
+            className="name"
+          >
+            James
+          </div>
+          <div
+            className="lastMessage"
+          >
+            hey
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</MessageSideBar>
 `;

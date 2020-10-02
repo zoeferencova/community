@@ -26,7 +26,7 @@ export default class MessageSideBar extends Component {
             const user = chat.user1.id === this.context.user.id ? chat.user2 : chat.user1;
             const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
             return (
-                <div key={chat.id} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
+                <div key={chat.id} id={`chat${chat.id}`} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
                     <ProfilePicture className={styles.sidebarPic} first_name={user.first_name} />
                     <div className={styles.userInfo}>
                         <div className={styles.name}>{user.first_name}</div>
