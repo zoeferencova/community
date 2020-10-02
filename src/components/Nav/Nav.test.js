@@ -16,6 +16,8 @@ describe("Nav", () => {
     );
     
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find("#loggedOut").length).toBe(2);
+    expect(wrapper.find("#loggedIn").length).toBe(0);
   });
 
   it("renders Nav component when logged in", () => {
@@ -31,6 +33,8 @@ describe("Nav", () => {
     );
     
     expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find("#loggedIn").length).toBe(2);
+    expect(wrapper.find("#loggedOut").length).toBe(0);
   });
 });
 

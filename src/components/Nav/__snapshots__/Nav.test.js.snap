@@ -6,6 +6,7 @@ exports[`Nav renders Nav component when logged in 1`] = `
 >
   <a
     href="/home"
+    id="loggedIn"
   >
     <img
       alt="logo"
@@ -13,65 +14,69 @@ exports[`Nav renders Nav component when logged in 1`] = `
       src="small-logo.png"
     />
   </a>
-  <ul
-    class="navLinks mobile navLinks"
+  <div
+    id="loggedIn"
   >
-    <a
-      href="/messages"
+    <ul
+      class="navLinks mobile navLinks"
     >
-      <li>
-        <i
-          class="fas fa-comment"
-        />
-      </li>
-    </a>
-    <a
-      href="/account"
+      <a
+        href="/messages"
+      >
+        <li>
+          <i
+            class="fas fa-comment"
+          />
+        </li>
+      </a>
+      <a
+        href="/account"
+      >
+        <li>
+          <div
+            class="circle blue "
+            first_name="Zoe"
+          >
+            Z
+          </div>
+        </li>
+      </a>
+    </ul>
+    <ul
+      class="navLinks desktop"
     >
-      <li>
-        <div
-          class="circle blue "
-          first_name="Zoe"
-        >
-          Z
-        </div>
-      </li>
-    </a>
-  </ul>
-  <ul
-    class="navLinks desktop"
-  >
-    <a
-      href="/home"
-    >
-      <li>
-        <i
-          class="fas fa-home"
-        />
-      </li>
-    </a>
-    <a
-      href="/messages"
-    >
-      <li>
-        <i
-          class="fas fa-comment"
-        />
-      </li>
-    </a>
-    <a
-      href="/account"
-    >
-      <li>
-        <div
-          class="circle blue profPic"
-          first_name="Zoe"
-        >
-          Z
-        </div>
-      </li>
-    </a>
-  </ul>
+      <a
+        href="/home"
+      >
+        <li>
+          <i
+            class="fas fa-home"
+          />
+        </li>
+      </a>
+      <a
+        href="/messages"
+      >
+        <li>
+          <i
+            class="fas fa-comment"
+          />
+        </li>
+      </a>
+      <a
+        href="/account"
+      >
+        <li>
+          <div
+            class="circle blue profPic"
+            first_name="Zoe"
+          >
+            Z
+          </div>
+        </li>
+      </a>
+    </ul>
+  </div>
 </nav>
 `;
 
@@ -83,6 +88,7 @@ exports[`Nav renders Nav component when not logged in 1`] = `
     aria-current="page"
     class="active"
     href="/"
+    id="loggedOut"
   >
     <img
       alt="logo"
@@ -92,6 +98,7 @@ exports[`Nav renders Nav component when not logged in 1`] = `
   </a>
   <ul
     class="navLinks"
+    id="loggedOut"
   >
     <a
       href="/login"

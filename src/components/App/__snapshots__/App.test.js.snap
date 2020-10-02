@@ -100,11 +100,13 @@ exports[`App renders App component 1`] = `
                   className="nav"
                 >
                   <NavLink
+                    id="loggedOut"
                     to="/"
                   >
                     <Link
                       aria-current="page"
                       className="active"
+                      id="loggedOut"
                       style={Object {}}
                       to={
                         Object {
@@ -119,6 +121,7 @@ exports[`App renders App component 1`] = `
                         aria-current="page"
                         className="active"
                         href="/"
+                        id="loggedOut"
                         navigate={[Function]}
                         style={Object {}}
                       >
@@ -126,6 +129,7 @@ exports[`App renders App component 1`] = `
                           aria-current="page"
                           className="active"
                           href="/"
+                          id="loggedOut"
                           onClick={[Function]}
                           style={Object {}}
                         >
@@ -140,6 +144,7 @@ exports[`App renders App component 1`] = `
                   </NavLink>
                   <ul
                     className="navLinks"
+                    id="loggedOut"
                   >
                     <NavLink
                       to="/login"

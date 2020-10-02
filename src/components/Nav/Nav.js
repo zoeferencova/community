@@ -17,12 +17,12 @@ export default class Nav extends Component {
         return (   
             <nav className={styles.nav}>
                 {this.props.isLoggedIn ?
-                    <NavLink to={"/home"} onClick={e => this.handleClick(e)}><img src={require("../../images/small-logo.png")} alt="logo" className={styles.smallLogo} /></NavLink>
+                    <NavLink to={"/home"} id="loggedIn" onClick={e => this.handleClick(e)}><img src={require("../../images/small-logo.png")} alt="logo" className={styles.smallLogo} /></NavLink>
                 :
-                    <NavLink to={"/"}><img src={require("../../images/big-logo.png")} alt="logo" className={styles.bigLogo} /></NavLink>
+                    <NavLink to={"/"} id="loggedOut"><img src={require("../../images/big-logo.png")} alt="logo" className={styles.bigLogo} /></NavLink>
                 }
                 {this.props.isLoggedIn ? 
-                    <>
+                    <div id="loggedIn">
                         <ul className={`${styles.navLinks} ${styles.mobile} navLinks`}>
                             <NavLink to="/messages" onClick={e => this.handleClick(e)}><li><i className="fas fa-comment"></i></li></NavLink>
                             <NavLink to="/account" onClick={e => this.handleClick(e)}><li><ProfilePicture first_name={this.props.first_name} /></li></NavLink>
@@ -32,9 +32,9 @@ export default class Nav extends Component {
                             <NavLink to="/messages" onClick={e => this.handleClick(e)}><li><i className="fas fa-comment"></i></li></NavLink>
                             <NavLink to="/account" onClick={e => this.handleClick(e)}><li><ProfilePicture className={styles.profPic} first_name={this.props.first_name} /></li></NavLink>
                         </ul>
-                    </>
+                    </div>
                 :
-                    <ul className={styles.navLinks}>
+                    <ul className={styles.navLinks} id="loggedOut">
                         <NavLink to="/login"><li className={styles.logIn}>Log in</li></NavLink>
                         <NavLink to="/register"><li className={styles.signUp}>Sign up</li></NavLink>
                     </ul>
