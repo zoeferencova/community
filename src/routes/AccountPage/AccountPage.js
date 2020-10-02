@@ -40,8 +40,8 @@ class AccountPage extends Component {
 
         UserDataService.patchUser(userInfo, userId)
             .then(res => {
-                this.context.updateUser(userInfo)
                 this.setState({...this.state, loading: false })
+                this.context.updateUser(userInfo)
             })
             .catch(res => {
                 this.setState({...this.state, error: res.error, loading: false })

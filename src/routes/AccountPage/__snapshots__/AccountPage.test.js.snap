@@ -1,99 +1,242 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccountPage renders AccountPage component given mock context data 1`] = `
-<main
-  class="main"
->
-  <button
-    class="backButton"
-    type="button"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    <i
-      class="fas fa-arrow-left"
-    />
-  </button>
-  <form
-    class="form"
-  >
-    <div
-      class="circle blue profPic"
-      first_name="Zoe"
-    >
-      Z
-    </div>
-    <label
-      class="label "
-      for="first_name"
-    >
-      First Name
-    </label>
-    <input
-      class="input "
-      id="first_name"
-      name="first_name"
-      required=""
-      type="text"
-      value="Zoe"
-    />
-    <label
-      class="label "
-      for="email"
-    >
-      Email
-    </label>
-    <input
-      class="input "
-      id="email"
-      name="email"
-      required=""
-      type="email"
-      value="zoe@gmail.com"
-    />
-    <div
-      class="buttonContainer"
-    >
-      <button
-        class="button logoutButton"
-        type="button"
+    <withRouter(AccountPage)>
+      <AccountPage
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+        location={
+          Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          }
+        }
+        match={
+          Object {
+            "isExact": true,
+            "params": Object {},
+            "path": "/",
+            "url": "/",
+          }
+        }
       >
-        Log out
-      </button>
-      <button
-        class="buttonDark "
-        loading="false"
-        type="submit"
-      >
-        Update
-      </button>
-    </div>
-    <div
-      class="links"
-    >
-      <a
-        href="/change-password"
-      >
-        <i
-          class="fas fa-key"
-        />
-         Change password
-      </a>
-      <a
-        href="/location"
-      >
-        <i
-          class="fas fa-map-marker-alt"
-        />
-         Change location
-      </a>
-      <a
-        href="/confirm-deactivation"
-      >
-        <i
-          class="fas fa-ban"
-        />
-         Deactivate account
-      </a>
-    </div>
-  </form>
-</main>
+        <main
+          className="main"
+        >
+          <button
+            className="backButton"
+            onClick={[Function]}
+            type="button"
+          >
+            <i
+              className="fas fa-arrow-left"
+            />
+          </button>
+          <form
+            className="form"
+            onSubmit={[Function]}
+          >
+            <ProfilePicture
+              className="profPic"
+              first_name="Zoe"
+            >
+              <div
+                className="circle blue profPic"
+                first_name="Zoe"
+              >
+                Z
+              </div>
+            </ProfilePicture>
+            <Label
+              htmlFor="first_name"
+            >
+              <label
+                className="label "
+                htmlFor="first_name"
+              >
+                First Name
+              </label>
+            </Label>
+            <Input
+              id="first_name"
+              name="first_name"
+              onChange={[Function]}
+              required={true}
+              type="text"
+              value="Zoe"
+            >
+              <input
+                className="input "
+                id="first_name"
+                name="first_name"
+                onChange={[Function]}
+                required={true}
+                type="text"
+                value="Zoe"
+              />
+            </Input>
+            <Label
+              htmlFor="email"
+            >
+              <label
+                className="label "
+                htmlFor="email"
+              >
+                Email
+              </label>
+            </Label>
+            <Input
+              id="email"
+              name="email"
+              onChange={[Function]}
+              required={true}
+              type="email"
+              value="zoe@gmail.com"
+            >
+              <input
+                className="input "
+                id="email"
+                name="email"
+                onChange={[Function]}
+                required={true}
+                type="email"
+                value="zoe@gmail.com"
+              />
+            </Input>
+            <div
+              className="buttonContainer"
+            >
+              <ButtonLight
+                className="logoutButton"
+                onClick={[Function]}
+                type="button"
+              >
+                <button
+                  className="button logoutButton"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Log out
+                </button>
+              </ButtonLight>
+              <ButtonDark
+                loading="false"
+                type="submit"
+              >
+                <button
+                  className="buttonDark "
+                  loading="false"
+                  type="submit"
+                >
+                  Update
+                </button>
+              </ButtonDark>
+            </div>
+            <div
+              className="links"
+            >
+              <Link
+                to="/change-password"
+              >
+                <LinkAnchor
+                  href="/change-password"
+                  navigate={[Function]}
+                >
+                  <a
+                    href="/change-password"
+                    onClick={[Function]}
+                  >
+                    <i
+                      className="fas fa-key"
+                    />
+                     Change password
+                  </a>
+                </LinkAnchor>
+              </Link>
+              <Link
+                to="/location"
+              >
+                <LinkAnchor
+                  href="/location"
+                  navigate={[Function]}
+                >
+                  <a
+                    href="/location"
+                    onClick={[Function]}
+                  >
+                    <i
+                      className="fas fa-map-marker-alt"
+                    />
+                     Change location
+                  </a>
+                </LinkAnchor>
+              </Link>
+              <Link
+                to="/confirm-deactivation"
+              >
+                <LinkAnchor
+                  href="/confirm-deactivation"
+                  navigate={[Function]}
+                >
+                  <a
+                    href="/confirm-deactivation"
+                    onClick={[Function]}
+                  >
+                    <i
+                      className="fas fa-ban"
+                    />
+                     Deactivate account
+                  </a>
+                </LinkAnchor>
+              </Link>
+            </div>
+          </form>
+        </main>
+      </AccountPage>
+    </withRouter(AccountPage)>
+  </Router>
+</BrowserRouter>
 `;
