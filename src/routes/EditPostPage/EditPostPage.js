@@ -73,11 +73,11 @@ class EditPostPage extends Component {
             const post_type = this.state.post.post_type;
             let category_ids = [], option;
             for (let i = 0; i < e.target.categories.length; i++) {
-            option = e.target.categories[i];
-        
-            if (option.selected) {
-                category_ids.push(i+1);
-            }
+                option = e.target.categories[i];
+            
+                if (option.selected) {
+                    category_ids.push(i+1);
+                }
             }
             
             const post = { post_type, category_ids }
