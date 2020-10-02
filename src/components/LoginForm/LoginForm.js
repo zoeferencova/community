@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import { ButtonLight, ButtonDark, Input, Label, Error } from "../Utils/Utils";
-import AuthApiService from "../../services/auth-api-service";
 
 import styles from "./LoginForm.module.css";
 

@@ -3,8 +3,6 @@ import { withRouter } from "react-router-dom";
 import { ButtonLight, ButtonDark, Input, Label, Error } from "../Utils/Utils";
 import styles from "../LoginForm/LoginForm.module.css"
 
-import AuthApiService from "../../services/auth-api-service";
-
 class RegistrationForm extends Component {    
     state = { 
         first_name: "",

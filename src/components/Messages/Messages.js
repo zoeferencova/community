@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import moment from "moment";
-import tz from "moment-timezone";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import styles from "../MessageLayout/MessageLayout.module.css";
 import { ProfilePicture } from "../Utils/Utils";
+
+const moment = require('moment-timezone');
 
 export default class Messages extends Component {
     static contextType = CommUnityContext;

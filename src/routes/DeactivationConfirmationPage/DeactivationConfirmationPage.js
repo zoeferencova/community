@@ -31,7 +31,7 @@ class DeactivationConfirmationPage extends Component {
             <div className={styles.main}>
                 <h3>Deactivate Account</h3>
                 <div className={styles.inner}>
-                    <h4>We're sad to see you go 😔. Are you sure you want to deactivate your account?</h4>
+                    <h4>We're sad to see you go <span role="img" aria-label="sad face emoji">😔</span>. Are you sure you want to deactivate your account?</h4>
                     <div className={styles.buttonSection}>
                         <ButtonDark type="button" onClick={() => this.props.history.push("/account")}>Nevermind!</ButtonDark>
                         <ButtonLight className={styles.yesButton} type="submit" onClick={this.handleDeactivation} loading={this.state.loading.toString()}>Yes</ButtonLight>

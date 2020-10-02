@@ -92,8 +92,8 @@ class LandingPage extends Component {
                 <footer className={styles.footer}>
                     <div className={styles.footerDetails}>
                         <p>Made by Zoe Ferencova</p>
-                        <a href="https://github.com/zoeferencova/" target="_blank"><i className="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/zoeferencova/" target="_blank"><i className="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/zoeferencova/" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/zoeferencova/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
                     </div>
                     <img className={styles.securityMockup} src={require("../../images/light-logo.png")} alt="small logo" />
                 </footer>

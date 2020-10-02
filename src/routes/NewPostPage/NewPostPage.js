@@ -5,7 +5,7 @@ import CommUnityContext from "../../contexts/context";
 import styles from "./NewPostPage.module.css";
 import UserDataService from "../../services/user-data-service";
 import '../../components/Utils/slim.scss';
-import { ButtonLight, ButtonDark, Label, Textarea, Select } from "../../components/Utils/Utils";
+import { ButtonLight, ButtonDark, Label, Textarea } from "../../components/Utils/Utils";
 
 class NewPostPage extends Component {
     static contextType = CommUnityContext;

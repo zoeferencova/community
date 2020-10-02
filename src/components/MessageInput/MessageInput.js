@@ -27,7 +27,7 @@ export default class MessageInput extends Component {
                         autoComplete={"off"} 
                         placeholder = "Type a message..." 
                         onChange={({target}) => {this.setState({ message: target.value })}}></input>
-                    <button disabled={message.length < 1} type="submit" className={styles.send}><img className={styles.sendIcon} src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"/></button>
+                    <button disabled={message.length < 1} type="submit" className={styles.send}><img className={styles.sendIcon} src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png" alt="send icon" /></button>
                 </form>
             </div>
         )

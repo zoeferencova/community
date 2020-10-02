@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import moment from "moment";
-import tz from "moment-timezone";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import Task from "../../components/Task/Task"
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import { ButtonLight, ButtonDark } from "../../components/Utils/Utils";
 import styles from "./MyPostPage.module.css";
+
+const moment = require('moment-timezone');
+
 
 class MyPostPage extends Component {
     static contextType = CommUnityContext;
