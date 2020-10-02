@@ -1,75 +1,222 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RegistrationForm renders RegistrationForm component 1`] = `
-<form>
-  <label
-    class="label "
-    for="first_name"
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    First name
-  </label>
-  <input
-    class="input "
-    id="first_name"
-    name="first_name"
-    required=""
-    type="text"
-  />
-  <label
-    class="label "
-    for="email"
-  >
-    Email
-  </label>
-  <input
-    class="input "
-    id="email"
-    name="email"
-    required=""
-    type="email"
-  />
-  <label
-    class="label "
-    for="password"
-  >
-    Password
-  </label>
-  <input
-    class="input "
-    id="password"
-    name="password"
-    required=""
-    type="password"
-  />
-  <label
-    class="label "
-    for="confirm_password"
-  >
-    Confirm Password
-  </label>
-  <input
-    class="input "
-    id="confirm_password"
-    name="confirm_password"
-    required=""
-    type="password"
-  />
-  <div
-    class="buttonContainer"
-  >
-    <button
-      class="button "
-      type="button"
+    <withRouter(RegistrationForm)
+      error={null}
+      loading={false}
+      register={[MockFunction]}
     >
-      Cancel
-    </button>
-    <button
-      class="buttonDark registerButton"
-      loading="false"
-      type="submit"
-    >
-      Create Account
-    </button>
-  </div>
-</form>
+      <RegistrationForm
+        error={null}
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+        loading={false}
+        location={
+          Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          }
+        }
+        match={
+          Object {
+            "isExact": true,
+            "params": Object {},
+            "path": "/",
+            "url": "/",
+          }
+        }
+        register={[MockFunction]}
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <Label
+            htmlFor="first_name"
+          >
+            <label
+              className="label "
+              htmlFor="first_name"
+            >
+              First name
+            </label>
+          </Label>
+          <Input
+            id="first_name"
+            name="first_name"
+            onChange={[Function]}
+            required={true}
+            type="text"
+            value=""
+          >
+            <input
+              className="input "
+              id="first_name"
+              name="first_name"
+              onChange={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+          </Input>
+          <Label
+            htmlFor="email"
+          >
+            <label
+              className="label "
+              htmlFor="email"
+            >
+              Email
+            </label>
+          </Label>
+          <Input
+            id="email"
+            name="email"
+            onChange={[Function]}
+            required={true}
+            type="email"
+            value=""
+          >
+            <input
+              className="input "
+              id="email"
+              name="email"
+              onChange={[Function]}
+              required={true}
+              type="email"
+              value=""
+            />
+          </Input>
+          <Label
+            htmlFor="password"
+          >
+            <label
+              className="label "
+              htmlFor="password"
+            >
+              Password
+            </label>
+          </Label>
+          <Input
+            id="password"
+            name="password"
+            onChange={[Function]}
+            required={true}
+            type="password"
+            value=""
+          >
+            <input
+              className="input "
+              id="password"
+              name="password"
+              onChange={[Function]}
+              required={true}
+              type="password"
+              value=""
+            />
+          </Input>
+          <Label
+            htmlFor="confirm_password"
+          >
+            <label
+              className="label "
+              htmlFor="confirm_password"
+            >
+              Confirm Password
+            </label>
+          </Label>
+          <Input
+            id="confirm_password"
+            name="confirm_password"
+            onChange={[Function]}
+            required={true}
+            type="password"
+            value=""
+          >
+            <input
+              className="input "
+              id="confirm_password"
+              name="confirm_password"
+              onChange={[Function]}
+              required={true}
+              type="password"
+              value=""
+            />
+          </Input>
+          <div
+            className="buttonContainer"
+          >
+            <ButtonLight
+              onClick={[Function]}
+              type="button"
+            >
+              <button
+                className="button "
+                onClick={[Function]}
+                type="button"
+              >
+                Cancel
+              </button>
+            </ButtonLight>
+            <ButtonDark
+              className="registerButton"
+              loading="false"
+              type="submit"
+            >
+              <button
+                className="buttonDark registerButton"
+                loading="false"
+                type="submit"
+              >
+                Create account
+              </button>
+            </ButtonDark>
+          </div>
+        </form>
+      </RegistrationForm>
+    </withRouter(RegistrationForm)>
+  </Router>
+</BrowserRouter>
 `;

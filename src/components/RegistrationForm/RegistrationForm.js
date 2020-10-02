@@ -7,50 +7,34 @@ import AuthApiService from "../../services/auth-api-service";
 
 class RegistrationForm extends Component {    
     state = { 
-        error: null,
-        loading: false 
+        first_name: "",
+        email: "",
+        password: "",
+        confirm_password: "" 
     };
     
-    handleSubmit = e => {
+    handleSubmit(e) {
         e.preventDefault();
-        this.setState({...this.state, loading: true })
 
-        const { first_name, email, password, confirm_password } = e.target;
-        password.value !== confirm_password.value
-            ? this.setState({ error: "Passwords do not match", loading: false })
-            : AuthApiService.postUser({
-                first_name: first_name.value,
-                email: email.value,
-                password: password.value
-            })
-                .then(user => {
-                    first_name.value = "";
-                    email.value = "";
-                    password.value = "";
-                    confirm_password.value = "";
-                    this.setState({...this.state, loading: false })
-                    this.props.history.push("/login");
-                })
-                .catch(res => 
-                    this.setState({ error: res.error, loading: false })
-                )
+        const { first_name, email, password, confirm_password } = this.state;
+        this.props.register(first_name, email, password, confirm_password);
     }
     
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)}>
-                {this.state.error && <Error message={this.state.error} />}                
+                {this.props.error && <Error message={this.props.error} />}                
                 <Label htmlFor="first_name">First name</Label>
-                <Input required type="text" name="first_name" id="first_name" />
+                <Input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={e => this.setState({ ...this.state, first_name: e.target.value })} />
                 <Label htmlFor="email">Email</Label>
-                <Input required type="email" name="email" id="email" />
+                <Input required type="email" name="email" id="email" value={this.state.email} onChange={e => this.setState({ ...this.state, email: e.target.value })} />
                 <Label htmlFor="password">Password</Label>
-                <Input required type="password" name="password" id="password" />
+                <Input required type="password" name="password" id="password" value={this.state.password} onChange={e => this.setState({ ...this.state, password: e.target.value })} />
                 <Label htmlFor="confirm_password">Confirm Password</Label>
-                <Input required type="password" name="confirm_password" id="confirm_password" />
+                <Input required type="password" name="confirm_password" id="confirm_password" value={this.state.confirm_password} onChange={e => this.setState({ ...this.state, confirm_password: e.target.value })} />
                 <div className={styles.buttonContainer}>
                     <ButtonLight type="button" onClick={() => this.props.history.push("/")}>Cancel</ButtonLight>
-                    <ButtonDark type="submit" className={styles.registerButton} loading={this.state.loading.toString()}>Create Account</ButtonDark>
+                    <ButtonDark type="submit" className={styles.registerButton} loading={this.props.loading.toString()}>Create account</ButtonDark>
                 </div>
                 
             </form>
