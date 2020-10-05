@@ -20,12 +20,16 @@ export default class RegistrationPage extends Component {
                 password: password
             })
                 .then(user => {
-                    this.setState({...this.state, loading: false })
-                    this.props.history.push("/login");
+                    this.setState({...this.state, loading: false });
+                    this.props.history.push({
+                        pathname: "/login",
+                        success: true
+                    });
                 })
                 .catch(res => 
                     this.setState({ error: res.error, loading: false })
                 )
+
     }
     
     render() {
@@ -34,7 +38,7 @@ export default class RegistrationPage extends Component {
                 <div className={styles.main}>
                     <h1>Sign up</h1>
                     <div className={styles.form}>
-                        <RegistrationForm loading={this.state.loading} error={this.state.error} register={this.register} />
+                        <RegistrationForm loading={this.state.loading} error={this.state.error} register={this.register} updateSuccess={this.props.updateSuccess} />
                         <p>Already have an account? <Link to="/login">Sign in</Link></p>
                     </div>
                 </div>     

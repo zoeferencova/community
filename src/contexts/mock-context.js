@@ -139,8 +139,10 @@ const mockContext = {
     addNewChat: jest.fn(),
     removeChat: jest.fn(),
     updateActiveChat: jest.fn(),
+    updateSuccessMessage: jest.fn(),
     logout: jest.fn(),
-    loading: false
+    loading: false,
+    succcess: null
 }
 
 export default mockContext;

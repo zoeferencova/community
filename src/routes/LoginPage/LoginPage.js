@@ -34,7 +34,7 @@ class LoginPage extends Component {
                 <div className={styles.main}>
                     <h1>Sign in</h1>
                     <div className={styles.form}>
-                        <LoginForm logIn={this.logIn} loading={this.state.loading} error={this.state.error} />
+                        <LoginForm logIn={this.logIn} loading={this.state.loading} error={this.state.error} success={this.props.location.success} />
                         <p>Don't have an account? <Link to="/register">Sign up</Link></p>
                     </div>
                 </div>

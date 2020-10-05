@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { ButtonLight, ButtonDark, Input, Label, Textarea, ProfilePicture, Select, Error } from "./Utils";
+import { ButtonLight, ButtonDark, Input, Label, Textarea, ProfilePicture, Select, Error, Success } from "./Utils";
 
 
 describe("ButtonLight", () => {
@@ -82,6 +82,18 @@ describe("Error", () => {
 
     it("renders Error", () => {
         const wrapper = shallow(<Error {...mockProps} />);
+
+        expect(wrapper).toMatchSnapshot();
+    });
+});
+
+describe("Success", () => {
+    const mockProps = {
+        message: "Success"
+    }
+
+    it("renders Success", () => {
+        const wrapper = shallow(<Success {...mockProps} />);
 
         expect(wrapper).toMatchSnapshot();
     });

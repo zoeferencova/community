@@ -11,7 +11,14 @@ exports[`DeactivationConfirmationPage renders DeactivationConfirmationPage compo
     class="inner"
   >
     <h4>
-      We're sad to see you go 😔. Are you sure you want to deactivate your account?
+      We're sad to see you go 
+      <span
+        aria-label="sad face emoji"
+        role="img"
+      >
+        😔
+      </span>
+      . Are you sure you want to deactivate your account?
     </h4>
     <div
       class="buttonSection"

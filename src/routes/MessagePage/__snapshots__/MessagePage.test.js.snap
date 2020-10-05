@@ -149,6 +149,7 @@ exports[`MessagePage renders MessagePage component given mock context data 1`] =
               type="submit"
             >
               <img
+                alt="send icon"
                 class="sendIcon"
                 src="https://img.icons8.com/ios-glyphs/96/89a1fc/paper-plane.png"
               />

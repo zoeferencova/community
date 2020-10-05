@@ -80,6 +80,19 @@ exports[`Select renders Select 1`] = `
 />
 `;
 
+exports[`Success renders Success 1`] = `
+<div
+  className="success "
+  message="Success"
+  role="alert"
+>
+  <i
+    class="far fa-check-circle"
+  />
+  Success
+</div>
+`;
+
 exports[`Textarea renders Textarea 1`] = `
 <textarea
   className="input "

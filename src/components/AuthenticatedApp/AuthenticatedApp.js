@@ -46,8 +46,10 @@ export default class AuthenticatedApp extends Component {
       addNewChat: this.addNewChat,
       removeChat: this.removeChat,
       updateActiveChat: this.updateActiveChat,
+      updateSuccessMessage: this.updateSuccessMessage,
       logout: this.logout,
       loading: true,
+      success: null
     }
     this._isMounted = false;
   }
@@ -134,7 +136,8 @@ export default class AuthenticatedApp extends Component {
   }
 
   updateUser = updateValues => {
-    this.setState({ user: {...this.state.user, ...updateValues} })
+    this.setState({ ...this.state, user: {...this.state.user, ...updateValues} })
+    this.updateSuccessMessage("Account information updated")
   }
 
   addNewMessage = (message, chatId) => {
@@ -167,6 +170,10 @@ export default class AuthenticatedApp extends Component {
     }
   }
 
+  updateSuccessMessage = message => {
+    this.setState({ success: message })
+  }
+
   logout = () => {
     const { socket } = this.state;
     socket && socket.emit(LOGOUT);
@@ -187,7 +194,7 @@ export default class AuthenticatedApp extends Component {
             <ErrorBoundary key={window.location.pathname}>
               <Switch>
                 <Route path="/home" component={() => <HomePage loading={this.state.loading} />} />
-                <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} />} />
+                <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
                 <Route path="/change-password" component={ChangePasswordPage} />
                 <Route path="/messages" component={() => <MessagePage user={this.state.user} />} />
                 {this.state.user.first_name && <Route path="/location" component={() => <LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 } } radius={this.state.user.radius ? parseFloat(this.state.user.radius) : parseFloat(1609.344)} history={this.props.history} />} />}

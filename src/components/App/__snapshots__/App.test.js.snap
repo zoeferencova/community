@@ -555,6 +555,7 @@ exports[`App renders App component 1`] = `
                                 </p>
                                 <a
                                   href="https://github.com/zoeferencova/"
+                                  rel="noopener noreferrer"
                                   target="_blank"
                                 >
                                   <i
@@ -563,6 +564,7 @@ exports[`App renders App component 1`] = `
                                 </a>
                                 <a
                                   href="https://www.linkedin.com/in/zoeferencova/"
+                                  rel="noopener noreferrer"
                                   target="_blank"
                                 >
                                   <i

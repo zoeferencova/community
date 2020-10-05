@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
-import {Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error} from "../../components/Utils/Utils";
+import { Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error, Success } from "../../components/Utils/Utils";
 
 class AccountPage extends Component {
     static contextType = CommUnityContext;
@@ -17,11 +17,11 @@ class AccountPage extends Component {
     }
 
     handleChangeName = e => {
-        this.setState({ first_name: e.target.value })
+        this.setState({ ...this.state, first_name: e.target.value })
     }
 
     handleChangeEmail = e => {
-        this.setState({ email: e.target.value })
+        this.setState({ ...this.state, email: e.target.value })
     }
 
     handleLogout = e => {
@@ -55,6 +55,7 @@ class AccountPage extends Component {
                 {this.context.user.first_name && <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
                     <ProfilePicture className={styles.profPic} first_name={this.context.user.first_name} />
                     {this.state.error && <Error message={this.state.error} />}
+                    {this.props.success && <Success message={this.props.success} />}
                     <Label htmlFor="first_name">First Name</Label>
                     <Input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChangeName} />
                     <Label htmlFor="email">Email</Label>

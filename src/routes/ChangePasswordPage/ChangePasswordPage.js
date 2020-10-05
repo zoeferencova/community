@@ -34,6 +34,7 @@ class ChangePasswordPage extends Component {
                     UserDataService.patchUser({ password: new_password.value }, user.id)
                         .then(res => {
                             this.setState({...this.state, loading: false})
+                            this.context.updateSuccessMessage("Password successfully updated")
                             return this.props.history.push("/account")
                         })
                         .catch(res => this.setState({ error: res.error, loading: false }))

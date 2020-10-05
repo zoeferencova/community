@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { PropTypes } from 'prop-types';
-import { ButtonLight, ButtonDark, Input, Label, Error } from "../Utils/Utils";
+import { ButtonLight, ButtonDark, Input, Label, Error, Success } from "../Utils/Utils";
 
 import styles from "./LoginForm.module.css";
 
 class LoginForm extends Component {
     state = { 
         email: "",
-        password: ""
+        password: "",
     }
 
     handleSubmit(e) {
@@ -21,7 +21,8 @@ class LoginForm extends Component {
     render() {
         return (
             <form onSubmit={e => this.handleSubmit(e)} className={styles.form}>
-                {this.props.error !== null && <Error message={this.props.error} />}              
+                {this.props.success && <Success message="Account created. Please sign in." />}         
+                {this.props.error !== null && <Error message={this.props.error} />}       
                 <Label htmlFor="email">Email</Label>
                 <Input required type="text" name="email" id="email" value={this.state.email} onChange={e => this.setState({ ...this.state, email: e.target.value })} />
                 <Label htmlFor="password">Password</Label>

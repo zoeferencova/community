@@ -107,3 +107,9 @@
 .error i {
     margin-right: 8px;
 }
+
+.success {
+    composes: error;
+    color: #0b4218;
+    background-color: #d8e6db;
+}
