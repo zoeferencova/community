@@ -87,7 +87,7 @@ exports[`Success renders Success 1`] = `
   role="alert"
 >
   <i
-    class="far fa-check-circle"
+    className="fas fa-check-circle"
   />
   Success
 </div>

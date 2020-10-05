@@ -230,6 +230,7 @@ exports[`LandingPage renders LandingPage component given mock context data 1`] =
       </p>
       <a
         href="https://github.com/zoeferencova/"
+        rel="noopener noreferrer"
         target="_blank"
       >
         <i
@@ -238,6 +239,7 @@ exports[`LandingPage renders LandingPage component given mock context data 1`] =
       </a>
       <a
         href="https://www.linkedin.com/in/zoeferencova/"
+        rel="noopener noreferrer"
         target="_blank"
       >
         <i

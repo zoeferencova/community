@@ -11,7 +11,7 @@ exports[`MyPost renders MyPost component 1`] = `
     <i
       class="fas fa-hand-paper hand"
     />
-     Request created 9 days ago
+     Request created 12 days ago
   </p>
 </a>
 `;
