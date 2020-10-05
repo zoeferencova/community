@@ -43,7 +43,6 @@ class LocationPage extends Component {
     }
     
     render() {
-        console.log(this.state.userLocation)
         return (   
             <main className={styles.main}>
                 {this.state.userLocation && <>
