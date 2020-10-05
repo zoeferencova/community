@@ -10,7 +10,7 @@ export default class RegistrationPage extends Component {
         error: null
     }
 
-    register(first_name, email, password, confirm_password) {
+    register = (first_name, email, password, confirm_password) => {
         this.setState({...this.state, loading: true });
         password !== confirm_password
             ? this.setState({ error: "Passwords do not match", loading: false })

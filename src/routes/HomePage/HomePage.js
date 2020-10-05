@@ -57,7 +57,7 @@ class HomePage extends Component {
                         </div>
                         <div className={`${styles.infoBody} ${styles.infoBodyMap} ${!this.state.showLocation && styles.hide}`}>
                             <MapErrorBoundary>
-                                <GoogleMap className={styles.map} radius={parseInt(this.context.user.radius)} location={this.context.user.location} displayMarker={true} />
+                                <GoogleMap className={styles.map} radius={parseInt(this.context.user.radius)} userLocation={this.context.user.location} displayMarker={true} />
                             </MapErrorBoundary>
                             <p className={styles.mapSubtitle}>Results are being shown for this area. <Link to="/location" className={styles.mapSubLink}>Change location?</Link></p>
                         </div>

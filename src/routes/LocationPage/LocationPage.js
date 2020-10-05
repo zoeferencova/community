@@ -13,7 +13,7 @@ class LocationPage extends Component {
     static contextType = CommUnityContext;
 
     state = {
-        userLocation: this.props.location,
+        userLocation: this.props.userLocation,
         radius: parseFloat(this.props.radius),
         loading: false
     }
@@ -35,22 +35,21 @@ class LocationPage extends Component {
         const meterRadius = UserDataService.milesToMeters(this.state.radius)
         UserDataService.patchUser({ location: pointLocation, radius: meterRadius }, this.context.user.id)
             .then(res => {
-                this.context.updateUser({ location: this.state.userLocation, radius: this.state.radius })
-            })
-            .then(res => {
-                this.context.getAllPosts(this.context.user.id)
                 this.setState({...this.state, loading: false })
+                this.context.updateUser({ location: this.state.userLocation, radius: this.state.radius })
+                this.context.getAllPosts(this.context.user.id)
                 this.props.history.push("/home")
             })
     }
     
     render() {
+        console.log(this.state.userLocation)
         return (   
             <main className={styles.main}>
                 {this.state.userLocation && <>
                     <div className={styles.map}>
                         <MapErrorBoundary>
-                            <GoogleMap radius={this.state.radius} location={this.state.userLocation} displayMarker={true} />
+                            <GoogleMap radius={this.state.radius} userLocation={this.state.userLocation} displayMarker={true} />
                         </MapErrorBoundary>
                     </div>
                     <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
