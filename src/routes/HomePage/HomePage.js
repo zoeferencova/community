@@ -64,10 +64,16 @@ class HomePage extends Component {
                     </div>
                 </header>
                 <section className={styles.feed}>
-                    <div className={styles.feedHeader}>
+                    {this.context.neighborhood_posts.length ? <div className={styles.feedHeader}>
                         <h3>There are {this.context.neighborhood_posts.length} posts in your area</h3>
-                    </div> 
-                    {this.context.user.location ? this.makeAllPosts() : "Please save your current location to view posts in your area"}
+                    </div> : ""}
+                    {this.makeAllPosts()}
+                    {!this.context.neighborhood_posts.length && 
+                        <div className={styles.noPosts}>
+                            <img src={require("../../images/neighborhood.png")} alt="neighborhood" className={styles.noPostImage}></img>
+                            <p>There are no posts in your area.<br></br><span className={styles.noPostTip}>Try <Link to="/location">increasing your radius</Link> to see more posts.</span></p>
+                        </div>
+                    }
                 </section>
                 </>}
             </main>

@@ -173,6 +173,29 @@
     margin: 0px auto;
 }
 
+.noPostImage {
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.noPosts {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+.noPostTip {
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
 @media only screen and (min-width: 830px) {
     .mapSection {
         width: 90%;
@@ -237,6 +260,12 @@
 
     .newPostButtons {
         margin-top: 40px;
+    }
+
+    .noPosts {
+        margin-top: 0px;
+        width: 50%;
+        margin-left: -50px;
     }
 }
 
