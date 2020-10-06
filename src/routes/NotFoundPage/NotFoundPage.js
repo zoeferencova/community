@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { ButtonDark } from "../../components/Utils/Utils"
+import { ButtonLight } from "../../components/Utils/Utils"
 import { PropTypes } from 'prop-types';
 
 import styles from "./NotFoundPage.module.css"
@@ -14,9 +14,9 @@ class NotFoundPage extends Component {
         return (   
             <>
                 <div className={(window.location.pathname === "/location" && this.props.isLoggedIn) ? styles.hide : styles.notFound}>
-                    <img src={require("../../images/not-found.png")} className={styles.image}></img>
+                    <img src={require("../../images/not-found.png")} alt="Not found error" className={styles.image}></img>
                     <h1 className={styles.title}>Sorry, that page couldn't be found</h1>
-                    <ButtonDark onClick={this.redirect}>Take me home</ButtonDark>
+                    <ButtonLight onClick={this.redirect}>Take me home</ButtonLight>
                 </div>
             </>
             

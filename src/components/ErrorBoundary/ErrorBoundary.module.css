@@ -1,0 +1,16 @@
+.errorBoundary {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.image {
+    height: 400px;
+}
+
+.title {
+    font-size: 28px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
