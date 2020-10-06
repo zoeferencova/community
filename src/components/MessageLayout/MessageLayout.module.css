@@ -250,6 +250,7 @@
     justify-content:flex-end;
     color:black;
     background:#fffefc;
+    margin-top: 20px;
 }
 
 .messageContainer {
@@ -279,6 +280,9 @@
     text-align:right;
     color: #83889c;
 }
+
+
+
 
 .messageContainer.right .time {
     text-align: left;
@@ -528,4 +532,13 @@
         cursor: pointer;
     }
 
+}
+
+
+.messageContainer:last-child .time {
+    margin-bottom: 5px !important;
+}
+
+.messageContainer:last-child .messagePic {
+    margin-bottom: 13px;
 }
