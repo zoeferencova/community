@@ -1,18 +1,30 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { ButtonDark } from "../../components/Utils/Utils"
 import { PropTypes } from 'prop-types';
 
 import styles from "./NotFoundPage.module.css"
 
-export default class NotFoundPage extends Component {
+class NotFoundPage extends Component {
+    redirect = () => {
+        this.props.isLoggedIn ? this.props.history.push("/home") : this.props.history.push("/");
+    }
+    
     render() {
         return (   
             <>
-                <h1 className={(window.location.pathname === "/location" && this.props.isLoggedIn) ? styles.hide : ""}>NotFoundPage</h1>
+                <div className={(window.location.pathname === "/location" && this.props.isLoggedIn) ? styles.hide : styles.notFound}>
+                    <img src={require("../../images/not-found.png")} className={styles.image}></img>
+                    <h1 className={styles.title}>Sorry, that page couldn't be found</h1>
+                    <ButtonDark onClick={this.redirect}>Take me home</ButtonDark>
+                </div>
             </>
             
         )
     }
 }
+
+export default withRouter(NotFoundPage)
 
 NotFoundPage.propTypes = {
     isLoggedIn: PropTypes.bool

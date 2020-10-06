@@ -1,11 +1,93 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NotFoundPage renders NotFoundPage component 1`] = `
-<Fragment>
-  <h1
-    className=""
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    NotFoundPage
-  </h1>
-</Fragment>
+    <withRouter(NotFoundPage)>
+      <NotFoundPage
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+        location={
+          Object {
+            "hash": "",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          }
+        }
+        match={
+          Object {
+            "isExact": true,
+            "params": Object {},
+            "path": "/",
+            "url": "/",
+          }
+        }
+      >
+        <div
+          className="notFound"
+        >
+          <img
+            className="image"
+            src="not-found.png"
+          />
+          <h1
+            className="title"
+          >
+            Sorry, that page couldn't be found
+          </h1>
+          <ButtonDark
+            onClick={[Function]}
+          >
+            <button
+              className="buttonDark "
+              onClick={[Function]}
+            >
+              Take me home
+            </button>
+          </ButtonDark>
+        </div>
+      </NotFoundPage>
+    </withRouter(NotFoundPage)>
+  </Router>
+</BrowserRouter>
 `;
