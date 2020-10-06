@@ -46,18 +46,11 @@ const MapSearch = (props) => {
   };
 
   const renderSuggestions = () =>
-    data.map(suggestion => {
-      const {
-        id,
-        structured_formatting: { main_text, secondary_text }
-      } = suggestion;
+    data.map((suggestion, i )=> {
+      const { structured_formatting: { main_text, secondary_text } } = suggestion;
 
       return (
-        <li
-          key={id}
-          onClick={handleSelect(suggestion)}
-          className={styles.suggestion}
-        >
+        <li key={i} onClick={handleSelect(suggestion)} className={styles.suggestion}>
           <i className="fas fa-map-marker-alt"></i><strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
       );
@@ -75,11 +68,7 @@ const MapSearch = (props) => {
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === 'OK' && <ul className={styles.suggestionList}>
         {renderSuggestions()}
-          <img
-            src="https://developers.google.com/maps/documentation/images/powered_by_google_on_white.png"
-            alt="Powered by Google"
-            className={styles.googleImage}
-          />
+          <img src="https://developers.google.com/maps/documentation/images/powered_by_google_on_white.png" alt="Powered by Google" className={styles.googleImage} />
       </ul>}
     </div>
   );
