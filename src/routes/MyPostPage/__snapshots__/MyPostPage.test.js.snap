@@ -22,7 +22,7 @@ exports[`MyPostPage renders MyPostPage component given mock context data 1`] = `
       <p
         class="date"
       >
-        Wednesday, September 23, 2020 4:33 PM EDT
+        Tuesday, October 6, 2020 10:46 AM EDT
       </p>
     </div>
     <span

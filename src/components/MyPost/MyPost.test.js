@@ -1,12 +1,13 @@
 import React from "react";
 import { render } from "enzyme";
+import moment from "moment";
 import MyPost from "./MyPost";
 import { BrowserRouter } from "react-router-dom";
 
 describe("MyPost", () => {
   it("renders MyPost component", () => {
     const mockProps = {
-        date_created: "2020-09-23T20:33:19.724Z",
+        date_created: moment().format(),
         id: 40,
         post_type: "request"
     }
