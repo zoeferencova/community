@@ -5,6 +5,7 @@ import moment from "moment";
 import styles from "./MyPost.module.css";
 
 export default class MyPost extends Component {
+    // Capitalizes first letter of a string
     capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }

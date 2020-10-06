@@ -16,6 +16,8 @@ class EditPostPage extends Component {
         loading: false
     }
 
+    // Fetches post information from server and sets to state so it can be used as the value for the inputs
+    // Creates SlimSelect instances for the category and urgency inputs which are applied to the divs by id value
     componentDidMount() {
         const postId = parseInt(this.props.match.params.id);
         fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
@@ -41,14 +43,18 @@ class EditPostPage extends Component {
         
     }
 
+    // Changes description value in state on form change
     handleDescriptionChange = e => {
         this.setState({ post: {...this.state.post, description: e.target.value} });
     }
 
+    // Changes urgency value in state on form change
     handleUrgencyChange = e => {
         this.setState({ post: {...this.state.post, urgency: e.target.value} });
     }
 
+    // Changes task values in state on form change
+    // Goes through each of the options on the form and pushes to opts array if selected
     handleTaskChange = e => {
         let opts = [], opt;
     
@@ -62,6 +68,9 @@ class EditPostPage extends Component {
         this.setState({ post: {...this.state.post, categories: opts} });
     }
 
+    // Handles form sumission using values saved in state
+    // Throws error if no categories are selected
+    // Updates post values in context and pushes location back to the post
     handleSubmit = e => {
         e.preventDefault();
 
@@ -99,9 +108,7 @@ class EditPostPage extends Component {
                 .catch(err => {
                     this.setState({...this.state, error: "Please select one or more categories", loading: false })
                 })
-        }
-
-        
+        } 
     }
     
     render() {

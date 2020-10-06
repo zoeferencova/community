@@ -12,6 +12,8 @@ class LoginPage extends Component {
         error: null
     }
 
+    // Submits post request to server to log user in
+    // Pushes user's location to the location page if it is their first login and no locaiton is set, otherwise pushes to home page
     logIn = (email, password) => {
         this.setState({...this.state, loading: true })
 

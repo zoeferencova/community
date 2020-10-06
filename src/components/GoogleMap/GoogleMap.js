@@ -16,6 +16,7 @@ export default function GoogleMaps(props) {
         width: "100%",
     };
 
+    // Creates Google map and setting to googleMapRef
     const createGoogleMap = () => {
         return new window.google.maps.Map(googleMapRef.current, {
             zoom: 14,
@@ -24,7 +25,8 @@ export default function GoogleMaps(props) {
         });
     }
         
-
+    // Creates Google map marker and positions to user's location if displayMarker is true
+    // Marker should only be displayed when the map is showing the user's location, not other user's maps
     const createMarker = () => {
         props.displayMarker &&
         new window.google.maps.Marker({
@@ -33,6 +35,7 @@ export default function GoogleMaps(props) {
         });
     }
         
+    // Creates Google map radius circle 
     const createCircle = () => {
         return new window.google.maps.Circle({
             strokeColor: '#4d9e9a',
@@ -46,7 +49,7 @@ export default function GoogleMaps(props) {
         });
     }
         
-
+    // Calls all map element create functions to display map
     useEffect(() => {
         googleMap.current = createGoogleMap();
         marker.current = createMarker();

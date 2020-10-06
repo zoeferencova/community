@@ -18,14 +18,20 @@ class LocationPage extends Component {
         loading: false
     }
 
+    // Changes location in state on form input change
     handleLocationChange = userLocation => {
         this.setState({ userLocation });
     }
 
+    // Changes radius in state on form input change
     handleRadiusChange = e => {
         this.setState({ radius: parseFloat(e.target.value) });
     }
 
+    // Handles location form submission 
+    // Converts form values to location point and meters
+    // Submits patch request to server and updates the user information and posts based on the new location
+    // Pushes user location back to home page
     handleSubmit = e => {
         e.preventDefault();
 

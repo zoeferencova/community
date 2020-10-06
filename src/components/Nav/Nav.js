@@ -9,6 +9,8 @@ import styles from "./Nav.module.css";
 export default class Nav extends Component {
     static contextType = CommUnityContext;
 
+    // Used to disable the user's ability to click on nav links when the user is initially sent to the location page after creating an account and logging in
+    // This is done to avoid having the user go to the home page where none of the content would be rendered correctly if the user doesn't have a location saved
     handleClick(e) {
         return (window.location.pathname === "/location" && !this.context.user.location.lat) ? this.props.isLoggedIn && e.preventDefault() : ""
     }
@@ -16,6 +18,7 @@ export default class Nav extends Component {
     render() {
         return (   
             <nav className={styles.nav}>
+                {/* Conditionally renders logged in nav bar or logged out nav bar based on isLoggedIn value from props */}
                 {this.props.isLoggedIn ?
                     <NavLink to={"/home"} id="loggedIn" onClick={e => this.handleClick(e)}><img src={require("../../images/small-logo.png")} alt="logo" className={styles.smallLogo} /></NavLink>
                 :

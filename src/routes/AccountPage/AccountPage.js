@@ -16,19 +16,24 @@ class AccountPage extends Component {
         loading: false,
     }
 
+    // Sets updated value to state when first_name input value is changed
     handleChangeName = e => {
         this.setState({ ...this.state, first_name: e.target.value })
     }
 
+    // Sets updated value to state when email input value is changed
     handleChangeEmail = e => {
         this.setState({ ...this.state, email: e.target.value })
     }
 
+    // Calls logout function in context
     handleLogout = e => {
         e.preventDefault();
         this.context.logout();
     }
 
+    // Handles form submission, updating the user's name and email information in state
+    // Sends patch request to server to update user information
     handleSubmit = e => {
         e.preventDefault();
 

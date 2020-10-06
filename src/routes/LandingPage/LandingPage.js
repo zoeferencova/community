@@ -10,6 +10,7 @@ class LandingPage extends Component {
         loading: false
     }
 
+    // Logs in "demo user" basically just passing in login information to avoid the need for demo login info to be entered manually
     demoLogin() {
         this.setState({ loading: true })
         AuthApiService.postLogin({ email: "demo@email.com", password: "DemoPass33!" })

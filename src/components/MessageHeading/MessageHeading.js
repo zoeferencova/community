@@ -15,6 +15,10 @@ export default class MessageHeading extends Component {
         loading: false
     }
     
+    // Displays a window popup confirming that chat is to be deleted
+    // Deletes chat that is currently set to activeChat if confirmed
+    // Removes chat in context and emits CHAT_DELETED event to socket which pushes chat deletion to the other member of the chat
+    // Sets activeChat in context to null
     handleDelete = e => {
         e.preventDefault()
 
@@ -34,11 +38,13 @@ export default class MessageHeading extends Component {
         }
     }
 
+    // Sets activeChat in context to null which closes the currently opened chat
     handleClose(e) {
         e.preventDefault()
         this.context.updateActiveChat(null)
     }
 
+    // Toggles the message info display
     toggleInfo = () => {
         this.state.infoOpen ? this.setState({ infoOpen: false }) : this.setState({ infoOpen: true })
     }

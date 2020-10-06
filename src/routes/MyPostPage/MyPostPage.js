@@ -17,12 +17,15 @@ class MyPostPage extends Component {
         loading: false,
     }
     
+    // Finds post by post id value in url parameter
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
         const post = this.context.user_posts.find(post => post.id === postId)
         return post;
     }
 
+    // Displays alert confirming whether or not a user wants to delete the post
+    // If confirmed, sends delete request to server to delete post and removes post in context, pushing user back to home page
     handleDelete(postId) {
         if (window.confirm("Are you sure you want to delete this post?")) {
             this.setState({ loading: true })

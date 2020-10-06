@@ -10,6 +10,9 @@ export default class RegistrationPage extends Component {
         error: null
     }
 
+    // Displays error if password and confirm_password don't match
+    // Otherwise submits post request to post new user to server
+    // Pushes location to login page and passes success prop to display success message on login form
     register = (first_name, email, password, confirm_password) => {
         this.setState({...this.state, loading: true });
         password !== confirm_password

@@ -14,6 +14,11 @@ class ChangePasswordPage extends Component {
         loading: false
     }
     
+    // Handles password form submission
+    // Compares new_password value and confirm_password value and returns form error if not matching
+    // Checks if old_password value is correct using checkPassword function from the Auth API service and returns form error if not
+    // If old password and conirm password check out, patch request is sent to the server for the password
+    // Success message passed to context which allows it to be displayed on AccountPage after page is redirected there
     handleSubmit = e => {
         e.preventDefault();
 

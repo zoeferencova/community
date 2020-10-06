@@ -7,6 +7,7 @@ export default class MessageInput extends Component {
         message: "",
     }
 
+    // Calls sendMessage function with message value and clears message input
     handleSubmit = e => {
         e.preventDefault();
         this.props.sendMessage(this.state.message)

@@ -12,18 +12,16 @@ class ErrorBoundary extends Component {
     static getDerivedStateFromError(error) {
         return { error: error };
     }
-
-    redirect = () => {
-        this.props.history.goBack()
-    }
-  
+    
+    // Renders error boundary if error is present and regular content if not
+    // Used to catch errors that prevent the displaying of each individual route in AuthenticatedApp and UnauthenticatedApp components
     render() {
         if (this.state.error) {
             return (
                 <div className={styles.errorBoundary}>
                     <img src={require("../../images/error-boundary.png")} alt="Error" className={styles.image}></img>
                     <h1 className={styles.title}>Oops, something broke</h1>
-                    <ButtonLight onClick={this.redirect}>Go back</ButtonLight>
+                    <ButtonLight onClick={this.props.history.goBack()}>Go back</ButtonLight>
                 </div>
             );
         }

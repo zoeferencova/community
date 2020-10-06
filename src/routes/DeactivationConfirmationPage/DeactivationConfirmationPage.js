@@ -14,6 +14,9 @@ class DeactivationConfirmationPage extends Component {
         loading: false
     }
 
+    // Deactivates user by sending delete request to server
+    // Clears auth token and logs user out 
+    // Pushes location to the deactivation success page
     handleDeactivation = () => {
         this.setState({ loading: true })
         const userId = this.context.user.id;

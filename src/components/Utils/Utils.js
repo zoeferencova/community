@@ -25,6 +25,7 @@ export function Select({ className, ...props }) {
     return <select className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
 }
 
+// Assigns a color to the profile picture based on the first letter of the user's name
 export function ProfilePicture({ className, ...props }) {
     let color;
     const colorOptions = ["red", "indigo", "green", "teal", "blue", "purple"]

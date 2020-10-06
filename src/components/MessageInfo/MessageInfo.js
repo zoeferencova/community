@@ -8,6 +8,7 @@ import styles from "./MessageInfo.module.css";
 class MessageInfo extends Component {
     static contextType = CommUnityContext;
 
+    // Redirects user to the post that originated the chat
     handleGoToPost(e, post) {
         e.preventDefault();
         if (post.user_id === this.context.user.id) {
@@ -18,6 +19,7 @@ class MessageInfo extends Component {
         
     }
 
+    // Formats information sentence based on type of post and whether the post was written by the current user or the other user in the chat
     formatSentence(post, user) {
         if (post.user_id === this.context.user.id) {
             if (post.post_type === "offer") {

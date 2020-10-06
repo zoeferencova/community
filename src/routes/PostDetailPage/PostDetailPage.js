@@ -19,11 +19,15 @@ class PostDetailPage extends Component {
         loading: false
     }
     
+    // Finds post based on id provided in URL parameter
     findPost() {
         const postId = parseFloat(this.props.match.params.id);
         return this.context.neighborhood_posts.find(post => post.id === postId)
     }
 
+    // Handles form submission, throwing error if there is no message present
+    // Sends post request to server to post new chat
+    // Fires CHAT_STARTED event to socket which pushes new chat to receiver
     handleSubmit(e) {
         e.preventDefault();
 
@@ -53,6 +57,8 @@ class PostDetailPage extends Component {
         }
     }
 
+    // Updates the activeChat to the chat associated with the post
+    // Pushes the location to the messages page
     goToMessages = chat => {
         this.context.updateActiveChat(chat.id)
         this.props.history.push("/messages")

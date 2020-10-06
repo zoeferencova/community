@@ -7,6 +7,7 @@ import styles from "../MessageLayout/MessageLayout.module.css";
 export default class MessageSideBar extends Component {
     static contextType = CommUnityContext;
 
+    // Formats and creates values for the side bar, sorting chats by the most recent message and displaying the most recent message for each
     makeChats = () => {
         const { chats, activeChat, setActiveChat } = this.props;
         const sortedChats = chats.sort((a, b) => {

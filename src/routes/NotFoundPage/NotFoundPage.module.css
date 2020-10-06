@@ -10,11 +10,16 @@
 }
 
 .image {
-    height: 400px;
+    height: 350px;
 }
 
 .title {
-    font-size: 28px;
+    font-size: 25px;
     margin-top: 0px;
+    margin-bottom: 40px;
+    max-width: 80%;
+}
+
+.notFound button {
     margin-bottom: 40px;
 }

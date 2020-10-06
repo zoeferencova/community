@@ -11,6 +11,7 @@ class LoginForm extends Component {
         password: "",
     }
 
+    // Handles form submission and calls LoginPage's logIn function with supplied email and password
     handleSubmit(e) {
         e.preventDefault();
         const { email, password } = this.state;

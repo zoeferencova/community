@@ -14,6 +14,7 @@ export default class Messages extends Component {
         this.scrollDown = this.scrollDown.bind(this)
     }
 
+    // Automatically scrolls to the bottom of the chat when component is mounted or updated
     scrollDown() {
         const { container } = this.refs;
         container.scrollTop = container.scrollHeight;
@@ -27,6 +28,8 @@ export default class Messages extends Component {
         this.scrollDown()
     }
 
+    // Finds the last message in a thread of messages by a single user 
+    // Time of the message and user's profile picture is then displayed only on last message in thread
     findLastThreadMsg(messages, msg, i) {
         if (i === messages.length-1) {
             return true;
@@ -37,10 +40,12 @@ export default class Messages extends Component {
         }
     }
 
+    // Creates messages and applies styles to show who is sending which messages
     makeMessages = () => {
         const { messages, user, receiver } = this.props;
         if (messages !== undefined) {
             return messages.map((msg, i)=> {
+                // Uses moment library to make sure that timestamp is shown in user's timezone
                 const timezoneTimestamp = moment.tz(msg.message_timestamp, 'UTC').clone().tz(this.context.timeZone)
                 return (
                     <div key={msg.id} className={`${styles.messageContainer} ${msg.sender_id === user.id && styles.right} ${this.findLastThreadMsg(messages, msg, i) === true && styles.lastInThread}`}>

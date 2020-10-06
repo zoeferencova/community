@@ -6,6 +6,8 @@ import { PropTypes } from 'prop-types';
 import styles from "./NotFoundPage.module.css"
 
 class NotFoundPage extends Component {
+    
+    // Redirects user to HomePage or LandingPage based on whether or not the user is logged in
     redirect = () => {
         this.props.isLoggedIn ? this.props.history.push("/home") : this.props.history.push("/");
     }

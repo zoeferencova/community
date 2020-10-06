@@ -17,14 +17,17 @@ class HomePage extends Component {
         showLocation: false,
     }
 
+    // Creates user posts by looping through user_posts array in context
     makeUserPosts() {
         return this.context.user_posts.map(post => <MyPost key={post.id} id={post.id} post_type={post.post_type} date_created={post.date_created} />)
     }
 
+    // Creates neighborhood posts by looping through neighborhood_posts array in context
     makeAllPosts() {
         return this.context.neighborhood_posts.map(post => <Post key={post.id} id={post.id} post_type={post.post_type} first_name={post.first_name} categories={post.categories} description={post.description} urgency={post.urgency} date_created={post.date_created} location={post.location} distance_from_user={post.distance_from_user} />)
     }
 
+    // Redirects user to request or offer form based on type argument
     goToNewPost = type => {
         this.props.history.push(`/new-post/${type}`)
     }

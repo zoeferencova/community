@@ -57,20 +57,25 @@ export default class AuthenticatedApp extends Component {
   componentDidMount() {
     this._isMounted = true;
     
+    // Setting time zone in state and context using jstz library
     const tz = jstz.determine().name();
     this.setState({ timeZone: tz });
 
+    // Getting user information and setting to state and context
     UserDataService.getUser()
       .then(user => {
         this.setState({ user })
 
+        // Initiating web socket
         this.initSocket()
 
+        // Getting posts in user's location if the user has a location and valid radius saved
         if (user.location && parseInt(user.radius) !== 0) {
           this.getAllPosts(user.id)
         }
       })
 
+    // Getting user's chats and setting to state and context
     ChatService.getUserChats()
       .then(chats => this.setState({ chats }))
   }
@@ -79,17 +84,21 @@ export default class AuthenticatedApp extends Component {
     this._isMounted = false;
   }
 
+  // Initiating web socket and establishing web socket events
   initSocket = () => {
     const socket = io(config.SOCKET_URL)
     socket.on("connect", () => {
       console.log("connected")
     })
 
+    // Reconnecting user and re-fetching the chats if user disconnects from socket
     socket.on("reconnect", () => {
       socket.emit(USER_CONNECTED, this.state.user)
       
       ChatService.getUserChats()
         .then(chats => {
+          // If a chat is already opened and set as activeChat in state, checking to see if the newly fetched chat 
+          // after reconnection had messages sent while user was disconnected and displaying new messages if so
           if (this.state.activeChat) {
             const currentChat = this.state.chats.find(chat => chat.id === this.state.activeChat.id)
             const activeChat = chats.find(chat => chat.id === this.state.activeChat.id)
@@ -102,6 +111,7 @@ export default class AuthenticatedApp extends Component {
         })
     })
 
+    // Setting events for web socket and adding web socket to state and context
     socket.emit(USER_CONNECTED, this.state.user);
     socket.on(PRIVATE_MESSAGE, message => this.addNewMessage(message, message.chat_id))
     socket.on(NEW_CHAT, chat => this.addNewChat(chat))
@@ -109,6 +119,8 @@ export default class AuthenticatedApp extends Component {
     this.setState({ socket })
   }
 
+  // Returns all posts associated with current user if the user has a location and radius saved
+  // Fetched posts that belong to current user are saved as user_posts and all posts from other users are saved as neighborhood_posts
   getAllPosts = userId => {
     this.state.user.location && this.state.user.radius && UserDataService.getPosts()
       .then(posts => {
@@ -119,10 +131,12 @@ export default class AuthenticatedApp extends Component {
       })
   }
 
+  // Adds a new post to state and context when created by user
   addNewPost = post => {
     this.setState({ user_posts: [...this.state.user_posts, post] })
   }
 
+  // Takes updated post values and replaces post with matching ID with new values, setting new user_posts values to state
   updatePost = updatedPost => {
     const newPosts = this.state.user_posts.map(post => {
       return post.id === updatedPost.id ? updatedPost : post
@@ -130,16 +144,22 @@ export default class AuthenticatedApp extends Component {
     this.setState({ user_posts: newPosts })
   }
 
+  // Filters out post with id matching the postId argument and sets remaining posts to user_posts in state
   removePost = postId => {
     const newPosts = this.state.user_posts.filter(post => Number(postId) !== Number(post.id))
     this.setState({ user_posts: newPosts })
   }
 
+  // Takes in object of user info values to update and updates user object, setting new object to state
+  // Calls updateSuccessMessage method after update which displays success message in AccountPage component
   updateUser = updateValues => {
     this.setState({ ...this.state, user: {...this.state.user, ...updateValues} })
     this.updateSuccessMessage("Account information updated")
   }
 
+  // Finds correct chat and adds new message into chat specified by chatId argument
+  // Sets new chats array with updated message value to state
+  // Makes chat with new message the activeChat in state
   addNewMessage = (message, chatId) => {
     const chat = this.state.chats.find(chat => chat.id === chatId)
     const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
@@ -151,16 +171,20 @@ export default class AuthenticatedApp extends Component {
     }
   }
 
+  // Adds new chat to chats array in state
   addNewChat = chat => {
     this.setState({ chats: [...this.state.chats, chat], activeChat: chat })
   }
 
+  // Filters out deleted chat using chatId argument and sets remaining chats to state
+  // Sets activeChat to null in state since the deleted chat would be set to activeChat before it is deleted
   removeChat = chatId => {
     const newChats = this.state.chats.filter(chat => Number(chatId) !== Number(chat.id))
     this.setState({ chats: newChats })
     this.setState({ activeChat: null })
   }
 
+  // Sets activeChat value in state to either null or a certain chat depending on whether null or a chatId value is passed in
   updateActiveChat = chatId => {
     if (chatId === null) {
       this.setState({ activeChat: null })
@@ -170,10 +194,15 @@ export default class AuthenticatedApp extends Component {
     }
   }
 
+  // Updates success message in state - used for the AccountPage to display success messages after user info change or password change
   updateSuccessMessage = message => {
     this.setState({ success: message })
   }
 
+  // Fires LOGOUT event for web socket which disconnects the socket
+  // Clears auth token in localStorage using clearAuthToken method
+  // Changes App's setLoggedIn value to false
+  // Pushes user's location back to the LandingPage route
   logout = () => {
     const { socket } = this.state;
     socket && socket.emit(LOGOUT);

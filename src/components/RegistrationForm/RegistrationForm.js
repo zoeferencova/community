@@ -11,6 +11,7 @@ class RegistrationForm extends Component {
         confirm_password: "" 
     };
     
+    // Handles form submission and passes form values to RegistrationPage component's register function
     handleSubmit(e) {
         e.preventDefault();
 

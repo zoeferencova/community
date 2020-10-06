@@ -15,6 +15,9 @@ class NewPostPage extends Component {
         loading: false
     }
     
+    // Handles form submission
+    // Submits post request to server for new post and adds post to context
+    // Throws error if no categories are selected
     handleSubmit(e) {
         e.preventDefault();
 
@@ -51,6 +54,7 @@ class NewPostPage extends Component {
             })
     }
 
+    // Creates instances of SlimSelect when component is mounted which are bound to inputs by id value
     componentDidMount() {
         new SlimSelect({
             select: "#categories",

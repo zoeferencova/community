@@ -29,15 +29,19 @@ export default class MessageContainer extends Component {
         this._isMounted = false;
     }
 
+    // Updates active chat when chat is clicked
     setActiveChat = activeChat => {
         this.context.updateActiveChat(activeChat.id)
     }
 
+    // Changes mobileDisplay to "contacts" in state which applies a class that only shows the contacts screen for mobile screen sizes
+    // Makes activeChat null because no chat is being displayed
     mobileDisplayContacts = () => {
         this.setState({ mobileDisplay: "contacts" })
         this.context.updateActiveChat(null)
     }
 
+    // Posts new message to server and emits MESSAGE_SENT event to web socket which pushes new message to receiver
     sendMessage = (chatId, messageContent) => {
         const message = { chat_id: chatId, sender_id: this.context.user.id, message_content: messageContent }
         const { activeChat, user } = this.context;
