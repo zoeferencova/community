@@ -46,4 +46,4 @@ To access the demo account, click on the "See a demo" button on the landing page
 
 ## API
 
-Server side repository can be found (here)[https://github.com/zoeferencova/community-api].
+Server side repository can be found [here](https://github.com/zoeferencova/community-api).
