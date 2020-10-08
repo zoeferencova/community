@@ -43,3 +43,7 @@ Users can post offers to help or requests for help across a number of categories
 ## Demo Account
 
 To access the demo account, click on the "See a demo" button on the landing page. You will be automatically logged in as a demo user and able to use the app as a regular user.
+
+## API
+
+Server side repository can be found (here)[https://github.com/zoeferencova/community-api].
