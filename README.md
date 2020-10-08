@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CommUnity
+Bringing communities together in a time of need
 
-## Available Scripts
+Live app: https://comm-unity.now.sh/
 
-In the project directory, you can run:
+## Summary
 
-### `npm start`
+Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Living in Woodside, Queens, one of the epicenters of the pandemic in the US, I have experienced the immense impact of the virus first hand. While it is heartbreaking to see the damage and loss that has been caused, it has been great to see my community come together to support each other. I started to see a lot of hand written signs around my apartment building and on the streets offering help to those who are in high risk categories. This inspired me to create an app that simplifies the process of getting in touch with neighbors to offer a hand or request help.  
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Users can post offers to help or requests for help across a number of categories such as picking up supplies, dog walking, running errands, or a friendly chat. Each user sets their location and radius and can view and respond to posts from other users in their area. This initiates a private chat where the users can work out the details.
 
-### `npm test`
+## Screenshots
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Home Page:
 
-### `npm run build`
+![Home Page](src/images/home-screenshot.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Post Detail Page:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Post Detail Page](src/images/post-screenshot.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Location Page:
 
-### `npm run eject`
+![Location Page](src/images/location-screenshot.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Chat Page:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Chat Page](src/images/chat-screenshot.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Account Page:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![Account Page](src/images/account-screenshot.png)
 
-## Learn More
+## Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* React with CSS Modules, Context API, and React Router
+* Socket.io for live chat web sockets
+* Google Maps API for maps
+* Jest and Enzyme for frontend testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Demo Account
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+To access the demo account, click on the "See a demo" button on the landing page. You will be automatically logged in as a demo user and able to use the app as a regular user.
