@@ -31,7 +31,7 @@ exports[`AuthenticatedApp renders AuthenticatedApp component 1`] = `
     <div
       className="main"
     >
-      <ErrorBoundary
+      <withRouter(ErrorBoundary)
         key="/"
       >
         <Switch>
@@ -75,7 +75,7 @@ exports[`AuthenticatedApp renders AuthenticatedApp component 1`] = `
             component={[Function]}
           />
         </Switch>
-      </ErrorBoundary>
+      </withRouter(ErrorBoundary)>
     </div>
   </ContextProvider>
 </main>

@@ -11,7 +11,7 @@ const mockContext = {
     user_posts: [
         {
             categories: ["Phone call"],
-            date_created: moment().format(),
+            date_created: new Date(Date.now() - 3 * 60000).toISOString(),
             description: null,
             distance_from_user: "0",
             first_name: "Zoe",
@@ -24,7 +24,7 @@ const mockContext = {
         },
         {
             categories: ["Online chat"],
-            date_created: moment().format(),
+            date_created: new Date(Date.now() - 3 * 60000).toISOString(),
             description: null,
             distance_from_user: "0",
             first_name: "Zoe",
@@ -39,7 +39,7 @@ const mockContext = {
     neighborhood_posts: [
         {
             categories: ["Picking up supplies"],
-            date_created: moment().format(),
+            date_created: "2020-10-08T16:36:52-04:00",
             description: null,
             distance_from_user: "1007",
             first_name: "James",
@@ -52,7 +52,7 @@ const mockContext = {
         },
         {
             categories: ["Dog walking", "Running errands"],
-            date_created: moment().format(),
+            date_created: "2020-10-08T16:36:52-04:00",
             description: null,
             distance_from_user: "2254",
             first_name: "Anna",
@@ -72,19 +72,19 @@ const mockContext = {
                     chat_id: 25,
                     id: 285,
                     message_content: "hi",
-                    message_timestamp: moment().format(),
+                    message_timestamp: "2020-10-08T16:36:52-04:00",
                     sender_id: 1
                 },
                 {
                     chat_id: 25,
                     id: 286,
                     message_content: "hey",
-                    message_timestamp: moment().format(),
+                    message_timestamp: "2020-10-08T16:36:52-04:00",
                     sender_id: 2
                 },
             ],
             post: {
-                date_created: moment().format(),
+                date_created: "2020-10-08T16:36:52-04:00",
                 description: null,
                 id: 4,
                 post_type: "offer",
@@ -103,19 +103,19 @@ const mockContext = {
                 chat_id: 25,
                 id: 285,
                 message_content: "hi",
-                message_timestamp: moment().format(),
+                message_timestamp: "2020-10-08T16:36:52-04:00",
                 sender_id: 1
             },
             {
                 chat_id: 25,
                 id: 286,
                 message_content: "hey",
-                message_timestamp: moment().format(),
+                message_timestamp: "2020-10-08T16:36:52-04:00",
                 sender_id: 2
             },
         ],
         post: {
-            date_created: moment().format(),
+            date_created: "2020-10-08T16:36:52-04:00",
             description: null,
             id: 4,
             post_type: "offer",

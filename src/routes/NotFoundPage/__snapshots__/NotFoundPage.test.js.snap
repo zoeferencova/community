@@ -67,6 +67,7 @@ exports[`NotFoundPage renders NotFoundPage component 1`] = `
           className="notFound"
         >
           <img
+            alt="Not found error"
             className="image"
             src="not-found.png"
           />
@@ -75,16 +76,16 @@ exports[`NotFoundPage renders NotFoundPage component 1`] = `
           >
             Sorry, that page couldn't be found
           </h1>
-          <ButtonDark
+          <ButtonLight
             onClick={[Function]}
           >
             <button
-              className="buttonDark "
+              className="button "
               onClick={[Function]}
             >
               Take me home
             </button>
-          </ButtonDark>
+          </ButtonLight>
         </div>
       </NotFoundPage>
     </withRouter(NotFoundPage)>

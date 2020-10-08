@@ -215,52 +215,59 @@ exports[`App renders App component 1`] = `
                   </ul>
                 </nav>
               </Nav>
-              <ErrorBoundary
+              <withRouter(ErrorBoundary)
                 key="/"
               >
-                <Switch>
-                  <Route
-                    component={[Function]}
-                    computedMatch={
-                      Object {
-                        "isExact": true,
-                        "params": Object {},
-                        "path": "/",
-                        "url": "/",
-                      }
-                    }
-                    exact={true}
-                    location={
-                      Object {
+                <ErrorBoundary
+                  history={
+                    Object {
+                      "action": "POP",
+                      "block": [Function],
+                      "createHref": [Function],
+                      "go": [Function],
+                      "goBack": [Function],
+                      "goForward": [Function],
+                      "length": 1,
+                      "listen": [Function],
+                      "location": Object {
                         "hash": "",
                         "pathname": "/",
                         "search": "",
                         "state": undefined,
-                      }
+                      },
+                      "push": [Function],
+                      "replace": [Function],
                     }
-                    path="/"
-                  >
-                    <component
-                      history={
+                  }
+                  location={
+                    Object {
+                      "hash": "",
+                      "pathname": "/",
+                      "search": "",
+                      "state": undefined,
+                    }
+                  }
+                  match={
+                    Object {
+                      "isExact": true,
+                      "params": Object {},
+                      "path": "/",
+                      "url": "/",
+                    }
+                  }
+                >
+                  <Switch>
+                    <Route
+                      component={[Function]}
+                      computedMatch={
                         Object {
-                          "action": "POP",
-                          "block": [Function],
-                          "createHref": [Function],
-                          "go": [Function],
-                          "goBack": [Function],
-                          "goForward": [Function],
-                          "length": 1,
-                          "listen": [Function],
-                          "location": Object {
-                            "hash": "",
-                            "pathname": "/",
-                            "search": "",
-                            "state": undefined,
-                          },
-                          "push": [Function],
-                          "replace": [Function],
+                          "isExact": true,
+                          "params": Object {},
+                          "path": "/",
+                          "url": "/",
                         }
                       }
+                      exact={true}
                       location={
                         Object {
                           "hash": "",
@@ -269,78 +276,293 @@ exports[`App renders App component 1`] = `
                           "state": undefined,
                         }
                       }
-                      match={
-                        Object {
-                          "isExact": true,
-                          "params": Object {},
-                          "path": "/",
-                          "url": "/",
-                        }
-                      }
+                      path="/"
                     >
-                      <withRouter(LandingPage)
-                        isLoggedIn={false}
-                        setLoggedIn={[Function]}
-                      >
-                        <LandingPage
-                          history={
-                            Object {
-                              "action": "POP",
-                              "block": [Function],
-                              "createHref": [Function],
-                              "go": [Function],
-                              "goBack": [Function],
-                              "goForward": [Function],
-                              "length": 1,
-                              "listen": [Function],
-                              "location": Object {
-                                "hash": "",
-                                "pathname": "/",
-                                "search": "",
-                                "state": undefined,
-                              },
-                              "push": [Function],
-                              "replace": [Function],
-                            }
-                          }
-                          isLoggedIn={false}
-                          location={
-                            Object {
+                      <component
+                        history={
+                          Object {
+                            "action": "POP",
+                            "block": [Function],
+                            "createHref": [Function],
+                            "go": [Function],
+                            "goBack": [Function],
+                            "goForward": [Function],
+                            "length": 1,
+                            "listen": [Function],
+                            "location": Object {
                               "hash": "",
                               "pathname": "/",
                               "search": "",
                               "state": undefined,
-                            }
+                            },
+                            "push": [Function],
+                            "replace": [Function],
                           }
-                          match={
-                            Object {
-                              "isExact": true,
-                              "params": Object {},
-                              "path": "/",
-                              "url": "/",
-                            }
+                        }
+                        location={
+                          Object {
+                            "hash": "",
+                            "pathname": "/",
+                            "search": "",
+                            "state": undefined,
                           }
+                        }
+                        match={
+                          Object {
+                            "isExact": true,
+                            "params": Object {},
+                            "path": "/",
+                            "url": "/",
+                          }
+                        }
+                      >
+                        <withRouter(LandingPage)
+                          isLoggedIn={false}
                           setLoggedIn={[Function]}
                         >
-                          <main
-                            className="main"
+                          <LandingPage
+                            history={
+                              Object {
+                                "action": "POP",
+                                "block": [Function],
+                                "createHref": [Function],
+                                "go": [Function],
+                                "goBack": [Function],
+                                "goForward": [Function],
+                                "length": 1,
+                                "listen": [Function],
+                                "location": Object {
+                                  "hash": "",
+                                  "pathname": "/",
+                                  "search": "",
+                                  "state": undefined,
+                                },
+                                "push": [Function],
+                                "replace": [Function],
+                              }
+                            }
+                            isLoggedIn={false}
+                            location={
+                              Object {
+                                "hash": "",
+                                "pathname": "/",
+                                "search": "",
+                                "state": undefined,
+                              }
+                            }
+                            match={
+                              Object {
+                                "isExact": true,
+                                "params": Object {},
+                                "path": "/",
+                                "url": "/",
+                              }
+                            }
+                            setLoggedIn={[Function]}
                           >
-                            <header
-                              className="header"
+                            <main
+                              className="main"
                             >
-                              <div
-                                className="left"
+                              <header
+                                className="header"
                               >
-                                <h1
+                                <div
+                                  className="left"
+                                >
+                                  <h1
+                                    className="heading"
+                                  >
+                                    Coming together in a time of need
+                                  </h1>
+                                  <p
+                                    className="subheading"
+                                  >
+                                    Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.
+                                  </p>
+                                  <div
+                                    className="buttonSection"
+                                  >
+                                    <button
+                                      className="signupButton"
+                                      onClick={[Function]}
+                                      type="button"
+                                    >
+                                      Start now
+                                    </button>
+                                    <button
+                                      className="demoButton"
+                                      onClick={[Function]}
+                                      type="button"
+                                    >
+                                      See a demo
+                                    </button>
+                                  </div>
+                                </div>
+                                <div
+                                  className="right"
+                                >
+                                  <img
+                                    alt="grocery delivery"
+                                    className="banner desktop"
+                                    src="banner.jpeg"
+                                  />
+                                </div>
+                              </header>
+                              <section
+                                className="section first"
+                              >
+                                <div
+                                  className="left"
+                                >
+                                  <h2
+                                    className="heading"
+                                  >
+                                    How does it work?
+                                  </h2>
+                                  <p
+                                    className="subheading"
+                                  >
+                                    Post offers or requests for help and see other active postings in your neighborhood. 
+                                    <br />
+                                    <br />
+                                     Other members of your community can then offer to help or accept your offer, initiating a private chat where you can securely work out the details.
+                                  </p>
+                                </div>
+                                <div
+                                  className="right"
+                                >
+                                  <img
+                                    alt="mockup of application on desktop browser"
+                                    className="mockupDesktop"
+                                    src="mockup1.png"
+                                  />
+                                </div>
+                              </section>
+                              <section
+                                className="section icons"
+                              >
+                                <h2>
+                                  What our helpers can do for you
+                                </h2>
+                                <div
+                                  className="iconList"
+                                >
+                                  <div
+                                    className="iconSection"
+                                  >
+                                    <img
+                                      alt="man handing supplies to older couple"
+                                      className="iconImage"
+                                      src="supplies.jpg"
+                                    />
+                                    <div
+                                      className="iconColumn"
+                                    >
+                                      <h3
+                                        className="iconHeading"
+                                      >
+                                        Pick up supplies
+                                      </h3>
+                                      <p
+                                        className="iconSubheading"
+                                      >
+                                        Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop it off at your doorstep.
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div
+                                    className="iconSection"
+                                  >
+                                    <img
+                                      alt="woman walking dog wearing a face mask"
+                                      className="iconImage"
+                                      src="dog.jpg"
+                                    />
+                                    <div
+                                      className="iconColumn"
+                                    >
+                                      <h3
+                                        className="iconHeading"
+                                      >
+                                        Walk your dog
+                                      </h3>
+                                      <p
+                                        className="iconSubheading"
+                                      >
+                                        Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div
+                                    className="iconSection"
+                                  >
+                                    <img
+                                      alt="decorative shape"
+                                      className="shape1"
+                                      src="shape1.png"
+                                    />
+                                    <img
+                                      alt="decorative shape"
+                                      className="shape2"
+                                      src="shape2.png"
+                                    />
+                                    <img
+                                      alt="woman talking on the phone looking at laptop"
+                                      className="iconImage"
+                                      src="phone.jpg"
+                                    />
+                                    <div
+                                      className="iconColumn"
+                                    >
+                                      <h3
+                                        className="iconHeading"
+                                      >
+                                        Friendly chat
+                                      </h3>
+                                      <p
+                                        className="iconSubheading"
+                                      >
+                                        We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </section>
+                              <section
+                                className="section security"
+                              >
+                                <div
+                                  className="left"
+                                >
+                                  <img
+                                    alt="mockup of chat functionality and post detail page"
+                                    className="securityMockup"
+                                    src="security-mockups.png"
+                                  />
+                                </div>
+                                <div
+                                  className="right"
+                                >
+                                  <h2
+                                    className="heading"
+                                  >
+                                    Your safety and security are important to us
+                                  </h2>
+                                  <p
+                                    className="subheading"
+                                  >
+                                    We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location), so the amount of information that you share in the chat is 100% your call.
+                                  </p>
+                                </div>
+                              </section>
+                              <section
+                                className="section last"
+                              >
+                                <h2
                                   className="heading"
                                 >
-                                  Coming together in a time of need
-                                </h1>
-                                <p
-                                  className="subheading"
-                                >
-                                  Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.
-                                </p>
+                                  Ready to make a difference in your community?
+                                </h2>
                                 <div
                                   className="buttonSection"
                                 >
@@ -359,232 +581,49 @@ exports[`App renders App component 1`] = `
                                     See a demo
                                   </button>
                                 </div>
-                              </div>
-                              <div
-                                className="right"
-                              >
-                                <img
-                                  alt="grocery delivery"
-                                  className="banner desktop"
-                                  src="banner.jpeg"
-                                />
-                              </div>
-                            </header>
-                            <section
-                              className="section first"
-                            >
-                              <div
-                                className="left"
-                              >
-                                <h2
-                                  className="heading"
-                                >
-                                  How does it work?
-                                </h2>
-                                <p
-                                  className="subheading"
-                                >
-                                  Post offers or requests for help and see other active postings in your neighborhood. 
-                                  <br />
-                                  <br />
-                                   Other members of your community can then offer to help or accept your offer, initiating a private chat where you can securely work out the details.
-                                </p>
-                              </div>
-                              <div
-                                className="right"
-                              >
-                                <img
-                                  alt="mockup of application on desktop browser"
-                                  className="mockupDesktop"
-                                  src="mockup1.png"
-                                />
-                              </div>
-                            </section>
-                            <section
-                              className="section icons"
-                            >
-                              <h2>
-                                What our helpers can do for you
-                              </h2>
-                              <div
-                                className="iconList"
+                              </section>
+                              <footer
+                                className="footer"
                               >
                                 <div
-                                  className="iconSection"
+                                  className="footerDetails"
                                 >
-                                  <img
-                                    alt="man handing supplies to older couple"
-                                    className="iconImage"
-                                    src="supplies.jpg"
-                                  />
-                                  <div
-                                    className="iconColumn"
+                                  <p>
+                                    Made by Zoe Ferencova
+                                  </p>
+                                  <a
+                                    href="https://github.com/zoeferencova/"
+                                    rel="noopener noreferrer"
+                                    target="_blank"
                                   >
-                                    <h3
-                                      className="iconHeading"
-                                    >
-                                      Pick up supplies
-                                    </h3>
-                                    <p
-                                      className="iconSubheading"
-                                    >
-                                      Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop it off at your doorstep.
-                                    </p>
-                                  </div>
-                                </div>
-                                <div
-                                  className="iconSection"
-                                >
-                                  <img
-                                    alt="woman walking dog wearing a face mask"
-                                    className="iconImage"
-                                    src="dog.jpg"
-                                  />
-                                  <div
-                                    className="iconColumn"
+                                    <i
+                                      className="fab fa-github"
+                                    />
+                                  </a>
+                                  <a
+                                    href="https://www.linkedin.com/in/zoeferencova/"
+                                    rel="noopener noreferrer"
+                                    target="_blank"
                                   >
-                                    <h3
-                                      className="iconHeading"
-                                    >
-                                      Walk your dog
-                                    </h3>
-                                    <p
-                                      className="iconSubheading"
-                                    >
-                                      Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.
-                                    </p>
-                                  </div>
+                                    <i
+                                      className="fab fa-linkedin"
+                                    />
+                                  </a>
                                 </div>
-                                <div
-                                  className="iconSection"
-                                >
-                                  <img
-                                    alt="decorative shape"
-                                    className="shape1"
-                                    src="shape1.png"
-                                  />
-                                  <img
-                                    alt="decorative shape"
-                                    className="shape2"
-                                    src="shape2.png"
-                                  />
-                                  <img
-                                    alt="woman talking on the phone looking at laptop"
-                                    className="iconImage"
-                                    src="phone.jpg"
-                                  />
-                                  <div
-                                    className="iconColumn"
-                                  >
-                                    <h3
-                                      className="iconHeading"
-                                    >
-                                      Friendly chat
-                                    </h3>
-                                    <p
-                                      className="iconSubheading"
-                                    >
-                                      We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </section>
-                            <section
-                              className="section security"
-                            >
-                              <div
-                                className="left"
-                              >
                                 <img
-                                  alt="mockup of chat functionality and post detail page"
+                                  alt="small logo"
                                   className="securityMockup"
-                                  src="security-mockups.png"
+                                  src="light-logo.png"
                                 />
-                              </div>
-                              <div
-                                className="right"
-                              >
-                                <h2
-                                  className="heading"
-                                >
-                                  Your safety and security are important to us
-                                </h2>
-                                <p
-                                  className="subheading"
-                                >
-                                  We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location), so the amount of information that you share in the chat is 100% your call.
-                                </p>
-                              </div>
-                            </section>
-                            <section
-                              className="section last"
-                            >
-                              <h2
-                                className="heading"
-                              >
-                                Ready to make a difference in your community?
-                              </h2>
-                              <div
-                                className="buttonSection"
-                              >
-                                <button
-                                  className="signupButton"
-                                  onClick={[Function]}
-                                  type="button"
-                                >
-                                  Start now
-                                </button>
-                                <button
-                                  className="demoButton"
-                                  onClick={[Function]}
-                                  type="button"
-                                >
-                                  See a demo
-                                </button>
-                              </div>
-                            </section>
-                            <footer
-                              className="footer"
-                            >
-                              <div
-                                className="footerDetails"
-                              >
-                                <p>
-                                  Made by Zoe Ferencova
-                                </p>
-                                <a
-                                  href="https://github.com/zoeferencova/"
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                >
-                                  <i
-                                    className="fab fa-github"
-                                  />
-                                </a>
-                                <a
-                                  href="https://www.linkedin.com/in/zoeferencova/"
-                                  rel="noopener noreferrer"
-                                  target="_blank"
-                                >
-                                  <i
-                                    className="fab fa-linkedin"
-                                  />
-                                </a>
-                              </div>
-                              <img
-                                alt="small logo"
-                                className="securityMockup"
-                                src="light-logo.png"
-                              />
-                            </footer>
-                          </main>
-                        </LandingPage>
-                      </withRouter(LandingPage)>
-                    </component>
-                  </Route>
-                </Switch>
-              </ErrorBoundary>
+                              </footer>
+                            </main>
+                          </LandingPage>
+                        </withRouter(LandingPage)>
+                      </component>
+                    </Route>
+                  </Switch>
+                </ErrorBoundary>
+              </withRouter(ErrorBoundary)>
             </main>
           </UnauthenticatedApp>
         </main>
