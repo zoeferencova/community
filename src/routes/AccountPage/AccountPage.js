@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import UserDataService from "../../services/user-data-service";
+import AuthApiService from "../../services/auth-api-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
 import { Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error, Success } from "../../components/Utils/Utils";
@@ -42,6 +43,11 @@ class AccountPage extends Component {
         const { first_name, email } = this.state;
         const userInfo = { first_name, email };
         const userId = this.context.user.id;
+
+        // Updates JWT token if user email changes
+        if (email !== this.context.user.email) {
+            AuthApiService.updateAuthToken({ email, userId})
+        }
 
         UserDataService.patchUser(userInfo, userId)
             .then(res => {

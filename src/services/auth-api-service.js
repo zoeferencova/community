@@ -34,6 +34,24 @@ const AuthApiService = {
                 return res.user
             })    
     },
+    updateAuthToken({ email, userId }) {
+        return fetch(`${config.API_ENDPOINT}/auth/update-jwt`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({ email, userId }),
+        })
+            .then(res =>
+                (!res.ok)
+                    ? res.json().then(e => Promise.reject(e))
+                    : res.json()    
+            )
+            .then(res => {
+                TokenService.saveAuthToken(res.authToken)
+            })    
+            .catch(err => console.log(err))
+    },
     checkPassword(password) {
         return fetch(`${config.API_ENDPOINT}/auth/confirm-password`, {
             method: "POST",
