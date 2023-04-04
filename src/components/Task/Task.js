@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { PropTypes } from 'prop-types';
 
 import styles from "./Task.module.css";
@@ -12,14 +12,10 @@ const classNames = {
     "Other": "other"
 }
 
-export default class Task extends Component {
-    render() {
-        return (   
-            <li className={`${styles.task} ${styles[classNames[this.props.task]]}`}>{this.props.task}</li>        
-        )
-    }
-}
+const Task = ({ task }) => <li className={`${styles.task} ${styles[classNames[task]]}`}>{task}</li>
 
 Task.propTypes = {
     task: PropTypes.string
 }
+
+export default Task;

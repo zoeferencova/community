@@ -8,19 +8,20 @@ const CommUnityContext = React.createContext({
     socket: null,
     activeChat: null,
     timeZone: null,
-    getAllPosts: () => {},
-    addNewPost: () => {},
-    updatePost: () => {},
-    removePost: () => {},
-    updateUser: () => {},
-    addNewMessage: () => {},
-    addNewChat: () => {},
-    removeChat: () => {},
-    updateActiveChat: () => {},
-    updateSuccessMessage: () => {},
-    logout: () => {},
+    getAllPosts: () => { },
+    addNewPost: () => { },
+    updatePost: () => { },
+    removePost: () => { },
+    updateUser: () => { },
+    addNewMessage: () => { },
+    addNewChat: () => { },
+    removeChat: () => { },
+    updateActiveChat: () => { },
+    updateSuccessMessage: () => { },
+    logout: () => { },
     loading: null,
-    success: null
+    success: null,
+    isLoaded: null
 })
 
 export default CommUnityContext;

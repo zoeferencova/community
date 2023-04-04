@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import UserDataService from "../../services/user-data-service";
 import AuthApiService from "../../services/auth-api-service";
@@ -7,83 +7,78 @@ import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
 import { Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error, Success } from "../../components/Utils/Utils";
 
-class AccountPage extends Component {
-    static contextType = CommUnityContext;
+const AccountPage = ({ success }) => {
+    const communityContext = useContext(CommUnityContext);
 
-    state = {
-        first_name: this.context.user.first_name,
-        email: this.context.user.email,
-        error: null,
-        loading: false,
-    }
+    const [firstName, setFirstName] = useState(communityContext.user.first_name);
+    const [email, setEmail] = useState(communityContext.user.email);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-    // Sets updated value to state when first_name input value is changed
-    handleChangeName = e => {
-        this.setState({ ...this.state, first_name: e.target.value })
-    }
-
-    // Sets updated value to state when email input value is changed
-    handleChangeEmail = e => {
-        this.setState({ ...this.state, email: e.target.value })
-    }
+    const navigate = useNavigate();
 
     // Calls logout function in context
-    handleLogout = e => {
+    const handleLogout = e => {
         e.preventDefault();
-        this.context.logout();
+        communityContext.logout();
     }
 
     // Handles form submission, updating the user's name and email information in state
     // Sends patch request to server to update user information
-    handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
 
-        this.setState({...this.state, loading: true })
+        setLoading(true)
 
-        const { first_name, email } = this.state;
-        const userInfo = { first_name, email };
-        const userId = this.context.user.id;
+        const userInfo = { firstName, email };
+        const userId = communityContext.user.id;
 
         // Updates JWT token if user email changes
-        if (email !== this.context.user.email) {
-            AuthApiService.updateAuthToken({ email, userId})
+        if (email !== communityContext.user.email) {
+            AuthApiService.updateAuthToken({ email, userId })
         }
 
         UserDataService.patchUser(userInfo, userId)
             .then(res => {
-                this.setState({...this.state, loading: false })
-                this.context.updateUser(userInfo)
+                setLoading(false)
+                communityContext.updateUser(userInfo)
             })
             .catch(res => {
-                this.setState({...this.state, error: res.error, loading: false })
+                setError(res.error)
+                setLoading(false)
             })
     }
 
-    render() {
-        return (   
-            <main className={styles.main}>
-                <button className={styles.backButton} type="button" onClick={() => this.props.history.push("/home")}><i className="fas fa-arrow-left"></i></button>
-                {this.context.user.first_name && <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
-                    <ProfilePicture className={styles.profPic} first_name={this.context.user.first_name} />
-                    {this.state.error && <Error message={this.state.error} />}
-                    {this.props.success && <Success message={this.props.success} />}
+    return (
+        <main className={styles.main}>
+            <button className={styles.backButton} type="button" onClick={() => navigate("/home")}><i className="fas fa-arrow-left"></i></button>
+            {communityContext.user.first_name &&
+                <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+                    <ProfilePicture className={styles.profPic} first_name={communityContext.user.first_name} />
+
+                    {error && <Error message={error} />}
+                    {success && <Success message={success} />}
+
                     <Label htmlFor="first_name">First Name</Label>
-                    <Input required type="text" name="first_name" id="first_name" value={this.state.first_name} onChange={this.handleChangeName} />
+                    <Input required type="text" name="first_name" id="first_name" value={firstName} onChange={e => setFirstName(e.target.value)} />
+
                     <Label htmlFor="email">Email</Label>
-                    <Input required type="email" name="email" id="email" value={this.state.email} onChange={this.handleChangeEmail} />
+                    <Input required type="email" name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
+
                     <div className={styles.buttonContainer}>
-                        <ButtonLight className={styles.logoutButton} type="button" onClick={this.handleLogout}>Log out</ButtonLight>
-                        <ButtonDark type="submit" loading={this.state.loading.toString()}>Update</ButtonDark>
+                        <ButtonLight className={styles.logoutButton} type="button" onClick={handleLogout}>Log out</ButtonLight>
+                        <ButtonDark type="submit" loading={loading.toString()}>Update</ButtonDark>
                     </div>
+
                     <div className={styles.links}>
                         <Link to="/change-password"><i className="fas fa-key"></i> Change password</Link>
                         <Link to="/location"><i className="fas fa-map-marker-alt"></i> Change location</Link>
                         <Link to="/confirm-deactivation"><i className="fas fa-ban"></i> Deactivate account</Link>
                     </div>
-                </form>}
-            </main>
-        )
-    }
+                </form>
+            }
+        </main>
+    )
 }
 
-export default withRouter(AccountPage);
+export default AccountPage;

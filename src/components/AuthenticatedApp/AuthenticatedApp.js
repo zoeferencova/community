@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import io from "socket.io-client";
 import jstz from "jstimezonedetect";
@@ -49,14 +49,15 @@ export default class AuthenticatedApp extends Component {
       updateSuccessMessage: this.updateSuccessMessage,
       logout: this.logout,
       loading: true,
-      success: null
+      success: null,
     }
+
     this._isMounted = false;
   }
 
   componentDidMount() {
     this._isMounted = true;
-    
+
     // Setting time zone in state and context using jstz library
     const tz = jstz.determine().name();
     this.setState({ timeZone: tz });
@@ -67,10 +68,10 @@ export default class AuthenticatedApp extends Component {
         this.setState({ user })
 
         // Initiating web socket
-        this.initSocket()
+        this.initSocket(user)
 
         // Getting posts in user's location if the user has a location and valid radius saved
-        if (user.location && parseInt(user.radius) !== 0) {
+        if (user.location && +user.radius !== 0) {
           this.getAllPosts(user.id)
         }
       })
@@ -85,7 +86,7 @@ export default class AuthenticatedApp extends Component {
   }
 
   // Initiating web socket and establishing web socket events
-  initSocket = () => {
+  initSocket = user => {
     const socket = io(config.SOCKET_URL)
     socket.on("connect", () => {
       console.log("connected")
@@ -93,8 +94,8 @@ export default class AuthenticatedApp extends Component {
 
     // Reconnecting user and re-fetching the chats if user disconnects from socket
     socket.on("reconnect", () => {
-      socket.emit(USER_CONNECTED, this.state.user)
-      
+      socket.emit(USER_CONNECTED, user)
+
       ChatService.getUserChats()
         .then(chats => {
           // If a chat is already opened and set as activeChat in state, checking to see if the newly fetched chat 
@@ -112,17 +113,18 @@ export default class AuthenticatedApp extends Component {
     })
 
     // Setting events for web socket and adding web socket to state and context
-    socket.emit(USER_CONNECTED, this.state.user);
+    socket.emit(USER_CONNECTED, user);
     socket.on(PRIVATE_MESSAGE, message => this.addNewMessage(message, message.chat_id))
     socket.on(NEW_CHAT, chat => this.addNewChat(chat))
     socket.on(CHAT_TO_REMOVE, chatId => this.removeChat(chatId))
     this.setState({ socket })
+
   }
 
   // Returns all posts associated with current user if the user has a location and radius saved
   // Fetched posts that belong to current user are saved as user_posts and all posts from other users are saved as neighborhood_posts
   getAllPosts = userId => {
-    this.state.user.location && this.state.user.radius && UserDataService.getPosts()
+    UserDataService.getPosts()
       .then(posts => {
         const user_posts = posts.filter(post => post.user_id === userId)
         const neighborhood_posts = posts.filter(post => post.user_id !== userId)
@@ -138,6 +140,7 @@ export default class AuthenticatedApp extends Component {
 
   // Takes updated post values and replaces post with matching ID with new values, setting new user_posts values to state
   updatePost = updatedPost => {
+    console.log(updatedPost)
     const newPosts = this.state.user_posts.map(post => {
       return post.id === updatedPost.id ? updatedPost : post
     })
@@ -153,7 +156,7 @@ export default class AuthenticatedApp extends Component {
   // Takes in object of user info values to update and updates user object, setting new object to state
   // Calls updateSuccessMessage method after update which displays success message in AccountPage component
   updateUser = updateValues => {
-    this.setState({ ...this.state, user: {...this.state.user, ...updateValues} })
+    this.setState({ ...this.state, user: { ...this.state.user, ...updateValues } })
     this.updateSuccessMessage("Account information updated")
   }
 
@@ -161,9 +164,10 @@ export default class AuthenticatedApp extends Component {
   // Sets new chats array with updated message value to state
   // Makes chat with new message the activeChat in state
   addNewMessage = (message, chatId) => {
+    console.log(message)
     const chat = this.state.chats.find(chat => chat.id === chatId)
     const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
-    const newChat = chat.messages ? { ...chat, messages: [...chat.messages, message]} : {...chat, messages: [message]}
+    const newChat = chat.messages ? { ...chat, messages: [...chat.messages, message] } : { ...chat, messages: [message] }
     const newChats = chat.messages ? [newChat, ...filteredChats] : [newChat, ...filteredChats]
     this._isMounted && this.setState({ chats: newChats })
     if (this.state.activeChat) {
@@ -215,25 +219,25 @@ export default class AuthenticatedApp extends Component {
   //Setting context values using AuthenticatedApp's states, providing those context values to all children
   render() {
     const value = { ...this.state }
-    return ( 
+    return (
       <main >
         <CommUnityContext.Provider value={value} >
           <div className={styles.main}>
             {this.state.user.first_name && <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />}
             <ErrorBoundary key={window.location.pathname}>
-              <Switch>
-                <Route path="/home" component={() => <HomePage loading={this.state.loading} />} />
-                <Route path="/account" component={() => <AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
-                <Route path="/change-password" component={ChangePasswordPage} />
-                <Route path="/messages" component={() => <MessagePage user={this.state.user} />} />
-                {this.state.user.first_name && <Route path="/location" component={() => <LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 } } radius={this.state.user.radius ? parseFloat(this.state.user.radius) : parseFloat(1609.344)} history={this.props.history} />} />}
-                <Route path="/post/:id" component={PostDetailPage} />
-                <Route path="/new-post/:type" component={NewPostPage} />
-                <Route path="/my-post/:id" component={MyPostPage} />
-                <Route path="/edit-post/:id" component={EditPostPage} />
-                <Route path="/confirm-deactivation" component={() => <DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
-                <Route component={() => <NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
-              </Switch>
+              <Routes>
+                <Route path="/home" element={<HomePage loading={this.state.loading} />} />
+                <Route path="/account" element={<AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
+                <Route path="/change-password" element={<ChangePasswordPage />} />
+                <Route path="/messages" element={<MessagePage user={this.state.user} />} />
+                {this.state.user.first_name && <Route path="/location" element={<LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 }} radius={this.state.user.radius ? parseFloat(this.state.user.radius) : parseFloat(1609.344)} history={this.props.history} />} />}
+                <Route path="/post/:id" element={<PostDetailPage />} />
+                <Route path="/new-post/:type" element={<NewPostPage />} />
+                <Route path="/my-post/:id" element={<MyPostPage />} />
+                <Route path="/edit-post/:id" element={<EditPostPage />} />
+                <Route path="/confirm-deactivation" element={<DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
+                <Route element={<NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
+              </Routes>
             </ErrorBoundary>
           </div>
         </CommUnityContext.Provider>

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import Nav from "../Nav/Nav";
 import LandingPage from "../../routes/LandingPage/LandingPage";
@@ -11,24 +11,22 @@ import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 import styles from "./UnauthenticatedApp.module.css";
 
-export default class UnauthenticatedApp extends Component {
-  render() {
-    return ( 
-        <main className={styles.main}>
-          <Nav isLoggedIn={this.props.isLoggedIn} />
-          <ErrorBoundary key={window.location.pathname}>
-            <Switch>
-              <Route exact path="/"  component={() => <LandingPage setLoggedIn={this.props.setLoggedIn} isLoggedIn={this.props.isLoggedIn} />}  />
-              <Route path="/login" component={() => <LoginPage setLoggedIn={this.props.setLoggedIn} isLoggedIn={this.props.isLoggedIn} />} />
-              <Route path="/register" component={RegistrationPage} />
-              <Route path="/deactivated" component={DeactivationSuccessPage} />
-              <Route component={() => <NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
-            </Switch>
-          </ErrorBoundary>
-        </main>
-    );
-  }
-}
+const UnauthenticatedApp = ({ isLoggedIn, setLoggedIn }) => (
+  <main className={styles.main}>
+    <Nav isLoggedIn={isLoggedIn} />
+    <ErrorBoundary key={window.location.pathname}>
+      <Routes>
+        <Route exact path="/" element={<LandingPage setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn} />} />
+        <Route path="/login" element={<LoginPage setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn} />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/deactivated" element={<DeactivationSuccessPage />} />
+        <Route element={<NotFoundPage isLoggedIn={isLoggedIn} />} />
+      </Routes>
+    </ErrorBoundary>
+  </main>
+)
+
+export default UnauthenticatedApp;
 
 UnauthenticatedApp.propTypes = {
   isLoggedIn: PropTypes.bool,

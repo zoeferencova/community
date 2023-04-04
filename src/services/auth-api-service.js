@@ -2,70 +2,64 @@ import config from "../config";
 import TokenService from "./token-service";
 
 const AuthApiService = {
-    postUser(user) {
-        return fetch(`${config.API_ENDPOINT}/users`, {
+    async postUser(user) {
+        const res = await fetch(`${config.API_ENDPOINT}/users`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
             body: JSON.stringify(user),
-        })
-            .then(res =>
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()    
-            )
+        });
+        return await (
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json());
     },
-    postLogin({ email, password }) {
-        return fetch(`${config.API_ENDPOINT}/auth/login`, {
+    async postLogin({ email, password }) {
+        const res = await fetch(`${config.API_ENDPOINT}/auth/login`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
             },
             body: JSON.stringify({ email, password }),
-        })
-            .then(res =>
+        });
+        const res_1 = await (
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json());
+        TokenService.saveAuthToken(res_1.authToken);
+        return res_1.user;
+    },
+    async updateAuthToken({ email, userId }) {
+        try {
+            const res = await fetch(`${config.API_ENDPOINT}/auth/update-jwt`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({ email, userId }),
+            });
+            const res_1 = await (
                 (!res.ok)
                     ? res.json().then(e => Promise.reject(e))
-                    : res.json()    
-            )
-            .then(res => {
-                TokenService.saveAuthToken(res.authToken)
-                return res.user
-            })    
+                    : res.json());
+            TokenService.saveAuthToken(res_1.authToken);
+        } catch (err) {
+            return console.log(err);
+        }
     },
-    updateAuthToken({ email, userId }) {
-        return fetch(`${config.API_ENDPOINT}/auth/update-jwt`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify({ email, userId }),
-        })
-            .then(res =>
-                (!res.ok)
-                    ? res.json().then(e => Promise.reject(e))
-                    : res.json()    
-            )
-            .then(res => {
-                TokenService.saveAuthToken(res.authToken)
-            })    
-            .catch(err => console.log(err))
-    },
-    checkPassword(password) {
-        return fetch(`${config.API_ENDPOINT}/auth/confirm-password`, {
+    async checkPassword(password) {
+        const res = await fetch(`${config.API_ENDPOINT}/auth/confirm-password`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
                 'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
             },
             body: JSON.stringify(password),
-        })
-            .then(res => 
-                (!res.ok)
-                    ? res.json()
-                    : res.body
-            )
+        });
+        return (!res.ok)
+            ? res.json()
+            : res.body;
     }
 }
 

@@ -1,157 +1,121 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import config from "../../config";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
-import { ButtonDark, ButtonLight, Textarea, Label } from "../../components/Utils/Utils";
-import SlimSelect from "slim-select";
+import { ButtonDark, ButtonLight, Textarea, Label, CategoryMultiSelect, UrgencySelect } from "../../components/Utils/Utils";
 import styles from "../NewPostPage/NewPostPage.module.css";
 
-class EditPostPage extends Component {
-    static contextType = CommUnityContext;
+const cats = ['Picking up supplies', 'Running errands', 'Phone call', 'Online chat', 'Dog walking', 'Other']
 
-    state = { 
-        error: null,
-        post: {},
-        loading: false
-    }
+const EditPostPage = props => {
+    const communityContext = useContext(CommUnityContext);
+
+    const [error, setError] = useState(null);
+    const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
+
+    const { id } = useParams();
 
     // Fetches post information from server and sets to state so it can be used as the value for the inputs
     // Creates SlimSelect instances for the category and urgency inputs which are applied to the divs by id value
-    componentDidMount() {
-        const postId = parseInt(this.props.match.params.id);
+    useEffect(() => {
+        const postId = parseInt(id);
         fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${window.localStorage.getItem(config.TOKEN_KEY)}`
+                'Authorization': `Bearer ${localStorage.getItem(config.TOKEN_KEY)}`
             }
         })
             .then(res => res.json())
-            .then(resJson => this.setState({ post: resJson }))
-            .then(res => {
-                new SlimSelect({
-                    select: "#categories",
-                    showSearch: false
-                })
-        
-                this.state.post.post_type === "request" && new SlimSelect({
-                    select: "#urgency",
-                    showSearch: false
-                })
-            })
-        
-    }
+            .then(resJson => setPost(resJson))
+    }, [])
 
-    // Changes description value in state on form change
-    handleDescriptionChange = e => {
-        this.setState({ post: {...this.state.post, description: e.target.value} });
-    }
-
-    // Changes urgency value in state on form change
-    handleUrgencyChange = e => {
-        this.setState({ post: {...this.state.post, urgency: e.target.value} });
-    }
-
-    // Changes task values in state on form change
-    // Goes through each of the options on the form and pushes to opts array if selected
-    handleTaskChange = e => {
-        let opts = [], opt;
-    
-        for (let i = 0; i < e.target.options.length; i++) {
-          opt = e.target.options[i];
-    
-          if (opt.selected) {
-            opts.push(opt.value);
-          }
-        }
-        this.setState({ post: {...this.state.post, categories: opts} });
-    }
-
-    // Handles form sumission using values saved in state
-    // Throws error if no categories are selected
-    // Updates post values in context and pushes location back to the post
-    handleSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
 
-        this.setState({...this.state, loading: true })
+        console.log(e.target.categories)
 
-        if (this.state.post.categories.length === 0) {
-            this.setState({ error: "Please select one or more categories", loading: false })
+        setLoading(true)
+
+        if (post.categories.length === 0) {
+            setError("Please select one or more categories")
+            setLoading(false)
         } else {
-            const post_type = this.state.post.post_type;
-            let category_ids = [], option;
-            for (let i = 0; i < e.target.categories.length; i++) {
-                option = e.target.categories[i];
-            
-                if (option.selected) {
-                    category_ids.push(i+1);
-                }
-            }
-            
-            const post = { post_type, category_ids }
+            const post_type = post.post_type;
+            const categories = e.target.categories;
 
-            if (this.state.post.description) {
-                post.description = this.state.post.description;
-            }
+            const category_ids = [];
+            const category_names = [];
 
-            if (post_type === "request" && this.state.post.urgency) {
-                post.urgency = (this.state.post.urgency).toLowerCase();
+            if (categories.length > 1) {
+                categories.forEach(cat => {
+                    category_ids.push(cat.value)
+                    category_names.push(cats[cat.value - 1])
+                })
+            } else {
+                category_ids.push(categories.value);
+                category_names.push(cats[categories.value - 1])
             }
 
-            UserDataService.patchPost(post, this.state.post.id)
+            const newPost = { post_type, category_ids }
+
+            if (post.description) newPost.description = post.description;
+
+            if (post_type === "request" && e.target.urgency.value) {
+                newPost.urgency = (e.target.urgency.value);
+            }
+
+            UserDataService.patchPost(newPost, post.id)
                 .then(res => {
-                    this.context.updatePost(this.state.post)
-                    this.setState({...this.state, loading: false })
-                    this.props.history.push(`/my-post/${this.state.post.id}`)
+                    communityContext.updatePost({ ...post, description: newPost.description, categories: category_names, urgency: newPost.urgency })
+                    setLoading(false)
+                    navigate(`/my-post/${post.id}`)
                 })
                 .catch(err => {
-                    this.setState({...this.state, error: "Please select one or more categories", loading: false })
+                    setError("Please select one or more categories")
+                    setLoading(false)
                 })
-        } 
+        }
     }
-    
-    render() {
-        return (   
-            <main className={styles.main}>
-                {this.state && <>
-                <h3>Edit {this.state.post.post_type}</h3>
-                <form className={styles.form} onSubmit={e => this.handleSubmit(e)}>
-                    <div>
-                        <Label className={styles.label} htmlFor="categories">{this.state.post.post_type === "offer" ? "What can you help with?": "What do you need help with?"}</Label>
-                        <select id="categories" value={this.state.post.categories} onChange={this.handleTaskChange} multiple className={this.state.error && styles.errorCell}>
-                            <option className="supplies" value="Picking up supplies">Picking up supplies</option>
-                            <option id="errands" value="Running errands">Running errands</option>
-                            <option className="phone" value="Phone call">Phone call</option>
-                            <option className="online" value="Online chat">Online chat</option>
-                            <option className="dog" value="Dog walking">Dog walking</option>
-                            <option className="other" value="Other">Other</option>
-                        </select>
-                        {this.state.error && <div className={styles.error}>{this.state.error}</div>}
-                    </div>
-                    {this.state.post.post_type === "request" && <div>
-                        <Label className={styles.label} htmlFor="urgency">Urgency</Label>
-                        <select value={this.state.post.urgency} onChange={this.handleUrgencyChange} id="urgency" required>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>}
-                    <div>
-                        <Label className={styles.label} htmlFor="description">Description (optional)</Label>
-                        <Textarea value={this.state.post.description === null ? "" : this.state.post.description} onChange={this.handleDescriptionChange} className={styles.textarea} name="description" id="description"></Textarea>
-                    </div>
-                    <div className={styles.buttonContainer}>
-                        <ButtonLight type="button" onClick={() => this.props.history.goBack()}>Cancel</ButtonLight>
-                        <ButtonDark type="submit" loading={this.state.loading.toString()}>Submit</ButtonDark>
-                    </div>
-                </form>
-                </>}
-            </main>
-        )
-    }
+
+    return (
+        <>
+            {!post ? <div>loading</div> :
+                <main className={styles.main}>
+                    <h3>Edit {post.post_type}</h3>
+                    <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+                        <div>
+                            <Label className={styles.label} htmlFor="categories">{post.post_type === "offer" ? "What can you help with?" : "What do you need help with?"}</Label>
+                            <CategoryMultiSelect error={error} defaultValue={post.categories} />
+                            {error && <div className={styles.error}>{error}</div>}
+                        </div>
+
+                        {post.post_type === "request" && <div>
+                            <Label className={styles.label} htmlFor="urgency">Urgency</Label>
+                            <UrgencySelect error={error} defaultValue={post.urgency} />
+                        </div>}
+
+                        <div>
+                            <Label className={styles.label} htmlFor="description">Description (optional)</Label>
+                            <Textarea
+                                value={post.description === null ? "" : post.description}
+                                onChange={e => setPost({ ...post, description: e.target.value })}
+                                className={styles.textarea} name="description" id="description">
+                            </Textarea>
+                        </div>
+
+                        <div className={styles.buttonContainer}>
+                            <ButtonLight type="button" onClick={() => navigate(-1)}>Cancel</ButtonLight>
+                            <ButtonDark type="submit" loading={loading.toString()}>Submit</ButtonDark>
+                        </div>
+                    </form>
+                </main>}
+        </>
+    )
 }
 
-
-
-export default withRouter(EditPostPage);
+export default EditPostPage;

@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import { ProfilePicture } from "../../components/Utils/Utils";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
-export default class MessageSideBar extends Component {
-    static contextType = CommUnityContext;
+const MessageSideBar = ({ chats, activeChat, setActiveChat, mobileDisplay }) => {
+    const communityContext = useContext(CommUnityContext);
 
     // Formats and creates values for the side bar, sorting chats by the most recent message and displaying the most recent message for each
-    makeChats = () => {
-        const { chats, activeChat, setActiveChat } = this.props;
+    const makeChats = () => {
         const sortedChats = chats.sort((a, b) => {
             if (b.messages === undefined || a.messages === undefined) {
                 return -1
@@ -23,11 +22,11 @@ export default class MessageSideBar extends Component {
 
         return sortedChats.map(chat => {
             const lastMessage = chat.messages ? chat.messages[chat.messages.length - 1] : "";
-            
-            const user = chat.user1.id === this.context.user.id ? chat.user2 : chat.user1;
+
+            const user = chat.user1.id === communityContext.user.id ? chat.user2 : chat.user1;
             const classNames = (activeChat && activeChat.id === chat.id) ? styles.active : ""
             return (
-                <div key={chat.id} id={`chat${chat.id}`} className={`${styles.user} ${classNames}`} onClick={() => { setActiveChat(chat) }}>
+                <div key={chat.id} id={`chat${chat.id}`} className={`${styles.user} ${classNames}`} onClick={() => setActiveChat(chat)}>
                     <ProfilePicture className={styles.sidebarPic} first_name={user.first_name} />
                     <div className={styles.userInfo}>
                         <div className={styles.name}>{user.first_name}</div>
@@ -38,19 +37,16 @@ export default class MessageSideBar extends Component {
         })
     }
 
-    render() {
-        const { setActiveChat } = this.props;
-        return (
-            <div id="side-bar" className={`${styles.sideBar} ${this.props.mobileDisplay === true ? styles.activeMobile : styles.inactiveMobile}`}>
-                <div className={styles.heading}>
-                    <div className={styles.chatName}>Chats</div>
-                </div>
-                <div className={styles.users} ref="users" onClick={e => {(e.target === this.refs.user) && setActiveChat(null)}}>
-                    {this.makeChats()}
-                </div>
+    return (
+        <div id="side-bar" className={`${styles.sideBar} ${mobileDisplay === true ? styles.activeMobile : styles.inactiveMobile}`}>
+            <div className={styles.heading}>
+                <div className={styles.chatName}>Chats</div>
             </div>
-        )
-    }
+            <div className={styles.users}>
+                {makeChats()}
+            </div>
+        </div>
+    )
 }
 
 MessageSideBar.propTypes = {
@@ -59,3 +55,5 @@ MessageSideBar.propTypes = {
     setActiveChat: PropTypes.func,
     mobileDisplay: PropTypes.bool
 }
+
+export default MessageSideBar;

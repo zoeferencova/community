@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import MessageContainer from "../MessageContainer/MessageContainer";
 
 import styles from "./MessageLayout.module.css";
 
-export default class MessageLayout extends Component {   
-   render() {
-        return (
-            <div className={styles.container}>
-                <MessageContainer />
-            </div>
-        );
-    }
+const MessageLayout = () => {
+    return (
+        <div className={styles.container}>
+            <MessageContainer />
+        </div>
+    );
 }
+
+export default MessageLayout;
