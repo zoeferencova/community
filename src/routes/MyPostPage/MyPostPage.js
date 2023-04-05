@@ -4,7 +4,7 @@ import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import Task from "../../components/Task/Task"
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
-import { ButtonLight, ButtonDark } from "../../components/Utils/Utils";
+import { ButtonLight, ButtonDark, Container, circleIcon } from "../../components/Utils/Utils";
 import styles from "./MyPostPage.module.css";
 import { DateTime } from 'luxon';
 
@@ -41,7 +41,7 @@ const MyPostPage = () => {
 
     const post = findPost()
     return (
-        <main className={styles.main}>
+        <Container style={{ paddingTop: 0 }}>
             {post && <>
                 <div className={styles.map}>
                     <GoogleMap userLocation={post.location} radius={parseFloat(post.radius)} displayMarker={true} />
@@ -51,12 +51,13 @@ const MyPostPage = () => {
                         <h3>Your {post.post_type}</h3>
                         <p className={styles.date}>{DateTime.fromISO(post.date_created, { zone: communityContext.timeZone }).toFormat('ffff')}</p>
                     </div>
-                    {post.post_type === "request" && <span className={`${styles[post.urgency]} ${styles.urgency}`}><i className="fas fa-circle"></i> {post.urgency} urgency</span>}
+                    {post.post_type === "request" && <span className={`${styles.urgency} ${styles[post.urgency]}`}>{circleIcon}{post.urgency}</span>}
                 </div>
+                {post.description && <p className={styles.description}>{post.description}</p>}
                 <ul className={styles.tasks}>
                     {post.categories.map(task => <Task key={task} task={task} />)}
                 </ul>
-                {post.description && <p className={styles.description}>{post.description}</p>}
+
                 <div className={styles.buttonSection}>
                     <ButtonLight type="button" onClick={() => navigate("/home")}>Back</ButtonLight>
                     <div className={styles.rightButtons}>
@@ -65,7 +66,7 @@ const MyPostPage = () => {
                     </div>
                 </div>
             </>}
-        </main>
+        </Container>
     )
 }
 

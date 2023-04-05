@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
-import { ButtonDark, ButtonLight } from "../../components/Utils/Utils";
+import { ButtonDark, ButtonLight, Container } from "../../components/Utils/Utils";
 import styles from "./DeactivationConfirmationPage.module.css";
 import UserDataService from "../../services/user-data-service";
 import TokenService from "../../services/token-service";
@@ -24,22 +24,22 @@ const DeactivationConfirmationPage = ({ setLoggedIn }) => {
             .then(res => {
                 TokenService.clearAuthToken();
                 setLoading(false)
-                setLoggedIn(false);
+                communityContext.logout();
                 navigate("/deactivated");
             })
     }
 
     return (
-        <div className={styles.main}>
+        <Container>
             <h3>Deactivate Account</h3>
             <div className={styles.inner}>
-                <h4>We're sad to see you go <span role="img" aria-label="sad face emoji">😔</span>. Are you sure you want to deactivate your account?</h4>
+                <h4>We're sad to see you go. Are you sure you want to deactivate your account?</h4>
                 <div className={styles.buttonSection}>
                     <ButtonDark type="button" onClick={() => navigate("/account")}>Nevermind!</ButtonDark>
                     <ButtonLight className={styles.yesButton} type="submit" onClick={handleDeactivation} loading={loading.toString()}>Yes</ButtonLight>
                 </div>
             </div>
-        </div>
+        </Container>
     )
 }
 

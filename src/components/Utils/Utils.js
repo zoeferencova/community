@@ -2,12 +2,40 @@ import React from 'react';
 import Select from "react-select";
 import styles from './Utils.module.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+
+export const messageIcon = <FontAwesomeIcon icon={icon({ name: 'comment' })} />
+export const houseIcon = <FontAwesomeIcon icon={icon({ name: 'house' })} />
+export const infoIcon = <FontAwesomeIcon icon={icon({ name: 'circle-info' })} />
+export const xIcon = <FontAwesomeIcon icon={icon({ name: 'xmark' })} />
+export const chatBackIcon = <FontAwesomeIcon icon={icon({ name: 'chevron-left' })} />
+export const backArrowIcon = <FontAwesomeIcon icon={icon({ name: 'arrow-left' })} />
+export const keyIcon = <FontAwesomeIcon icon={icon({ name: 'key' })} />
+export const locationIcon = <FontAwesomeIcon icon={icon({ name: 'location-dot' })} />
+export const deactivateIcon = <FontAwesomeIcon icon={icon({ name: 'ban' })} />
+export const editIcon = <FontAwesomeIcon icon={icon({ name: 'pen' })} />
+export const circleIcon = <FontAwesomeIcon icon={icon({ name: 'circle' })} />
+export const messageIconHollow = <FontAwesomeIcon icon={icon({ name: 'comment', style: 'regular' })} />
+export const trashIcon = <FontAwesomeIcon icon={icon({ name: 'trash-can', style: 'regular' })} />
+export const postIcon = <FontAwesomeIcon icon={icon({ name: 'file-lines', style: 'regular' })} />
+export const requestIcon = <div className={`${styles.bgIcon} ${styles.greenIcon}`}><FontAwesomeIcon icon={icon({ name: 'question' })} ></FontAwesomeIcon></div>
+export const offerIcon = <div className={`${styles.bgIcon} ${styles.pinkIcon}`}><FontAwesomeIcon icon={icon({ name: 'heart' })} /></div>
+
 export function ButtonLight({ className, ...props }) {
     return <button className={`${styles.button} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
 }
 
 export function ButtonDark({ className, ...props }) {
     return <button className={`${styles.buttonDark} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? <span>loading</span> : props.children}</button>
+}
+
+export function PostActionButton({ className, ...props }) {
+    return (<button className={styles.actionButton} onClick={props.onClick}>
+        {props.action === "details" && <>{postIcon}<span>View details</span></>}
+        {props.action === "chat" && <>{messageIconHollow}<span>Start conversation</span></>}
+        {props.action === "delete" && <>{trashIcon}<span>Delete chat</span></>}
+    </button>)
 }
 
 export function Input({ className, ...props }) {
@@ -19,7 +47,11 @@ export function Label({ className, ...props }) {
 }
 
 export function Textarea({ className, ...props }) {
-    return <textarea className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
+    return <textarea className={`${styles.input} ${styles.textarea} ${className !== undefined ? className : ""}`} {...props} />
+}
+
+export function Container({ className, ...props }) {
+    return <div style={props.style} className={styles.container}>{props.children}</div>
 }
 
 // export function Select({ className, ...props }) {
@@ -56,6 +88,14 @@ export function CategoryMultiSelect({ className, ...props }) {
     ]
 
     const categoryStyles = {
+        option: (styles) => ({
+            ...styles,
+            cursor: 'pointer',
+        }),
+        control: (styles) => ({
+            ...styles,
+            cursor: 'pointer',
+        }),
         multiValue: (styles, { data }) => {
             return {
                 ...styles,
@@ -82,7 +122,7 @@ export function CategoryMultiSelect({ className, ...props }) {
 
     const getDefaultValues = props.defaultValue && categoryOptions.filter(option => props.defaultValue.includes(option.label))
 
-    return <Select name="categories" isMulti options={categoryOptions} styles={categoryStyles} defaultValue={getDefaultValues} className={`basic-multi-select ${props.error && styles.errorCell}`} />
+    return <Select name="categories" isMulti placeholder="Select" options={categoryOptions} styles={categoryStyles} defaultValue={getDefaultValues} className={`basic-multi-select ${props.error && styles.errorCell} ${styles.customSelect}`} />
 }
 
 export function UrgencySelect({ className, ...props }) {
@@ -92,8 +132,19 @@ export function UrgencySelect({ className, ...props }) {
         { value: "high", label: "High" },
     ]
 
+    const urgencyStyles = {
+        option: (styles) => ({
+            ...styles,
+            cursor: 'pointer',
+        }),
+        control: (styles) => ({
+            ...styles,
+            cursor: 'pointer',
+        }),
+    };
+
     const getDefaultValue = urgencyOptions.find(opt => opt.value === props.defaultValue)
 
-    return <Select name="urgency" options={urgencyOptions} defaultValue={getDefaultValue} required className={`basic-single ${props.error && styles.errorCell}`} />
+    return <Select name="urgency" options={urgencyOptions} placeholder="Select" styles={urgencyStyles} defaultValue={getDefaultValue} required className={`basic-single ${props.error && styles.errorCell} ${styles.customSelect}`} />
 }
 

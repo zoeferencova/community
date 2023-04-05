@@ -5,7 +5,7 @@ import UserDataService from "../../services/user-data-service";
 import AuthApiService from "../../services/auth-api-service";
 import CommUnityContext from "../../contexts/context";
 import styles from "./AccountPage.module.css"
-import { Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error, Success } from "../../components/Utils/Utils";
+import { Input, Label, ProfilePicture, ButtonDark, ButtonLight, Error, Success, backArrowIcon, keyIcon, locationIcon, deactivateIcon, Container } from "../../components/Utils/Utils";
 
 const AccountPage = ({ success }) => {
     const communityContext = useContext(CommUnityContext);
@@ -50,8 +50,8 @@ const AccountPage = ({ success }) => {
     }
 
     return (
-        <main className={styles.main}>
-            <button className={styles.backButton} type="button" onClick={() => navigate("/home")}><i className="fas fa-arrow-left"></i></button>
+        <Container>
+            <button className={styles.backButton} type="button" onClick={() => navigate("/home")}>{backArrowIcon}</button>
             {communityContext.user.first_name &&
                 <form className={styles.form} onSubmit={e => handleSubmit(e)}>
                     <ProfilePicture className={styles.profPic} first_name={communityContext.user.first_name} />
@@ -66,18 +66,18 @@ const AccountPage = ({ success }) => {
                     <Input required type="email" name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} />
 
                     <div className={styles.buttonContainer}>
-                        <ButtonLight className={styles.logoutButton} type="button" onClick={handleLogout}>Log out</ButtonLight>
+                        <ButtonLight type="button" onClick={handleLogout}>Log out</ButtonLight>
                         <ButtonDark type="submit" loading={loading.toString()}>Update</ButtonDark>
                     </div>
 
                     <div className={styles.links}>
-                        <Link to="/change-password"><i className="fas fa-key"></i> Change password</Link>
-                        <Link to="/location"><i className="fas fa-map-marker-alt"></i> Change location</Link>
-                        <Link to="/confirm-deactivation"><i className="fas fa-ban"></i> Deactivate account</Link>
+                        <Link to="/change-password">{keyIcon} Change password</Link>
+                        <Link to="/location">{locationIcon} Change location</Link>
+                        <Link to="/confirm-deactivation">{deactivateIcon} Deactivate account</Link>
                     </div>
                 </form>
             }
-        </main>
+        </Container>
     )
 }
 

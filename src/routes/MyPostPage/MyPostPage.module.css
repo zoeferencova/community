@@ -1,17 +1,3 @@
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 65px;
-    width: 90%;
-    background-color: white;
-    padding: 0 0 30px 0;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
-    border-radius: 10px;
-    margin: 30px auto;
-} 
-
 .date {
     font-size: 13px;
     color: gray;
@@ -21,41 +7,48 @@
     margin-bottom: 0px;
 }
 
-.main h3 {
+.postHeader h3 {
     width: 85%;
     text-align: left;
-}
-
-.postHeader i {
-    font-size: 10px;
-    margin-right: 3px;
+    letter-spacing: 0.015em;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .postHeader {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     width: 85%;
     margin-top: 30px;
 }
 
-.urgency {
+.postHeader span {
     display: inline-block;
     font-size: 13px;
-    letter-spacing: 0.6px;
-    margin-top: 18px;
+    margin-top: -25px;
 }
 
-.high {
+.postHeader svg {
+    opacity: 0.6;
+    margin-right: 8px;
+}
+
+.high svg {
     color: #ad3434;
 }
 
-.medium {
+.medium svg {
     color: #edcb64;
 }
 
-.low {
+.low svg {
     color: #3d9145;
+}
+
+.urgency {
+    text-transform: capitalize;
 }
 
 .tasks {
@@ -92,12 +85,6 @@
 
 .delete {
     margin-right: 10px;
-    color: #ad3434;
-    border: 1px solid #ad3434;
-}
-
-.delete:hover {
-    border: 1px solid #b55151;
 }
 
 .postTitle {
@@ -110,6 +97,8 @@
     width: 85%;
     text-align: left;
     margin-bottom: 20px;
+    line-height: 1.26em;
+
 }
 
 @media only screen and (min-width: 600px) {

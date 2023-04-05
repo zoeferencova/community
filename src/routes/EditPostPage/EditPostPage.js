@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import config from "../../config";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
-import { ButtonDark, ButtonLight, Textarea, Label, CategoryMultiSelect, UrgencySelect } from "../../components/Utils/Utils";
+import { ButtonDark, ButtonLight, Textarea, Label, CategoryMultiSelect, UrgencySelect, Container } from "../../components/Utils/Utils";
 import styles from "../NewPostPage/NewPostPage.module.css";
 
 const cats = ['Picking up supplies', 'Running errands', 'Phone call', 'Online chat', 'Dog walking', 'Other']
@@ -84,10 +84,11 @@ const EditPostPage = props => {
 
     return (
         <>
-            {!post ? <div>loading</div> :
-                <main className={styles.main}>
-                    <h3>Edit {post.post_type}</h3>
+
+            <Container>
+                {!post ? <div>loading</div> :
                     <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+                        <h3>Edit {post.post_type}</h3>
                         <div>
                             <Label className={styles.label} htmlFor="categories">{post.post_type === "offer" ? "What can you help with?" : "What do you need help with?"}</Label>
                             <CategoryMultiSelect error={error} defaultValue={post.categories} />
@@ -113,7 +114,8 @@ const EditPostPage = props => {
                             <ButtonDark type="submit" loading={loading.toString()}>Submit</ButtonDark>
                         </div>
                     </form>
-                </main>}
+                }
+            </Container>
         </>
     )
 }

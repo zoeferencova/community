@@ -3,9 +3,14 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 100%;
     height: 100%;
-    position: relative;
+}
+
+.outerContainer {
+    width: 100%;
+    height: 100vh;
+    margin-top: -100px;
+    z-index: 2000;
 }
 
 .sideBar {
@@ -27,15 +32,15 @@
     align-items: center;
     justify-content: space-between;
     background: #fffefc;
-    border-top: 1px solid #e9ebf0;
     border-right: 1px solid #e9ebf0;
-    border-bottom: 1px solid #e9ebf0;
 }
 
 .sideBar .users {
-    overflow-y: scroll;
+    overflow-y: auto;
     background: #fffefc;
     flex-grow: 1;
+    padding: 0px;
+    border-right: 1px solid #e9ebf0;
 }
 
 .sideBar .users::-webkit-scrollbar-track {
@@ -44,7 +49,6 @@
 
 .sideBar .users::-webkit-scrollbar {
     width: 5px;
-    background-color: green;
 }
 
 .sideBar .users::-webkit-scrollbar-thumb {
@@ -54,10 +58,12 @@
 .sideBar .users .user {
     align-items: center;
     display: flex;
-    height: 100px;
+    height: 75px;
     justify-content: flex-start;
     box-sizing: border-box;
     padding-right: 20px;
+    margin: 10px;
+    border-radius: 6px;
 }
 
 .sideBar .users .user:hover {
@@ -79,7 +85,7 @@
     display: flex;
     flex-direction: column;
     width: 60%;
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .sideBar .users .user .sidebarPic {
@@ -94,13 +100,14 @@
 
 .sideBar .users .user .name {
     text-align: left;
+    font-weight: 500;
 }
 
 .sideBar .users .user .userInfo .lastMessage {
-    font-size: 13px;
+    font-size: 14px;
     opacity: .56;
     text-align: left;
-    margin-top: 7px;
+    margin-top: 5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -128,11 +135,23 @@
 }
 
 .chatName {
-    font-weight: bold;
-    font-size: 13.5px;
-    text-transform: uppercase;
-    letter-spacing: 2.8px;
-    margin-left: 12px;
+    margin-left: 10px;
+    border: none;
+    background: transparent;
+}
+
+.chatName span {
+    font-weight: 500 !important;
+    font-size: 17px;
+}
+
+.chatName svg {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.chatName:hover {
+    cursor: pointer;
 }
 
 .chatHeader {
@@ -146,12 +165,12 @@
     max-height: 65px;
     padding: 18px 16px;
     border-bottom: 1px solid #e9ebf0;
-    border-top: 1px solid #e9ebf0;
 }
 
 .chatHeader .userInfo {
     align-items: center;
     display: flex;
+    font-weight: 500;
 }
 
 .chatHeader .userInfo .status {
@@ -167,17 +186,25 @@
     height: 100%;
 }
 
-.chatHeader .options button {
+.chatHeader .options button,
+.chatBackArrow {
     background-color: transparent;
     border: none;
-    color: #6f7ba3;
+    color: #282c33a7;
     cursor: pointer;
+    font-size: 20px;
+    opacity: 1;
+    transition: ease-in-out 300ms;
 }
 
-.chatHeader .options i {
+.chatHeader .options button {
+    margin: 0 3px;
+}
+
+.chatHeader .options button:hover {
     cursor: pointer;
-    font-size: 19px;
-    margin: 0 8px;
+    opacity: 0.7;
+    transition: ease-in-out 300ms;
 }
 
 .chatHeader .headerPic {
@@ -210,11 +237,9 @@
 }
 
 .choose h3 {
-    background-color: #f2f5f7;
     color: #6f7ba3;
     width: 50%;
     height: 8%;
-    padding: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -249,13 +274,13 @@
 .threadContainer .thread {
     position: absolute;
     width: 100%;
-    min-height: 800px;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     color: black;
     background: #fffefc;
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .messageContainer {
@@ -295,7 +320,7 @@
 
 .messageContainer .message {
     background: #f2f5f7;
-    border-radius: 5px;
+    border-radius: 20px;
     box-sizing: border-box;
     color: black;
     height: 100%;
@@ -369,14 +394,14 @@
 }
 
 .messageContainer.right .message {
-    background: #89a1fc;
+    background: #6481ed;
     color: #fff;
-    border-radius: 5px;
+
 }
 
 .messageContainer.right.lastInThread .message::before {
-    border-top-color: #89a1fc;
-    border-left-color: #89a1fc;
+    border-top-color: #6481ed;
+    border-left-color: #6481ed;
     border-right-color: transparent;
     left: auto;
     right: -7px;
@@ -386,11 +411,12 @@
 
 .messageContainer.lastInThread .message {
     border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 20px;
 }
 
 .messageContainer.right.lastInThread .message {
     border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 20px;
 }
 
 .typingUser {
@@ -402,6 +428,7 @@
     color: black;
     box-sizing: border-box;
     height: 90px;
+    background-color: white;
 }
 
 .messageInput .messageForm {
@@ -444,20 +471,14 @@
 }
 
 .messageInput .messageForm .send {
-    width: 100px;
-    box-sizing: border-box;
-    font-size: 1.25em;
-    text-align: center;
+    width: 80px;
     border: none;
-    height: 100%;
-    color: black;
-    background: #fffefc;
-    transition: all .35s ease-out
+    transition: all .35s ease-out;
+    background: inherit;
 }
 
 .sendIcon {
-    height: 28px;
-    color: #6f7ba3;
+    height: 26px;
 }
 
 .messageInput .messageForm .send:hover {
@@ -474,6 +495,14 @@
 }
 
 @media screen and (max-width: 800px) {
+    .container {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
     .sideBar .users .user .userInfo {
         display: none;
     }
@@ -497,7 +526,7 @@
 
 @media screen and (max-width: 510px) {
     .container {
-        position: relative;
+        position: fixed;
     }
 
     .sideBar .users .user .userInfo {

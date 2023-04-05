@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CHAT_STARTED, MESSAGE_SENT } from "../../message-utils/events";
-import { ButtonDark, ButtonLight } from "../../components/Utils/Utils";
+import { ButtonDark, ButtonLight, circleIcon, messageIconHollow } from "../../components/Utils/Utils";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
-import { Textarea } from "../../components/Utils/Utils";
+import { Textarea, Container } from "../../components/Utils/Utils";
 
 import styles from "./PostDetailPage.module.css";
 
@@ -69,14 +69,14 @@ const PostDetailPage = props => {
     const post = findPost();
 
     return (
-        <main className={styles.main}>
+        <Container style={{ paddingTop: 0 }}>
             {post && <>
                 <div className={styles.map}>
-                    <GoogleMap className={styles.gmap} location={post.location} radius={parseFloat(post.radius)} displayMarker={false} />
+                    <GoogleMap className={styles.gmap} userLocation={post.location} radius={parseFloat(post.radius)} displayMarker={false} />
                 </div>
                 <div className={styles.postHeader}>
                     <h3 className={styles.postTitle}>Respond to {post.first_name}'s {post.post_type}</h3>
-                    {post.post_type === "request" && <span className={styles[post.urgency]}><i className="fas fa-circle"></i> {post.urgency} urgency</span>}
+                    {post.post_type === "request" && <span className={`${styles.urgency} ${styles[post.urgency]}`}>{circleIcon}{post.urgency}</span>}
                 </div>
                 <ul className={styles.tasks}>
                     {post.categories.map(task => <Task key={task} task={task} />)}
@@ -95,7 +95,7 @@ const PostDetailPage = props => {
                         </form>
                         :
                         <>
-                            <p className={styles.chatMessage}>You have a chat with {post.first_name}</p>
+                            <p className={styles.chatMessage}>{messageIconHollow} You have a chat with {post.first_name}</p>
                             <div className={styles.buttonSection}>
                                 <ButtonLight type="button" onClick={() => navigate(-1)}>Back</ButtonLight>
                                 <ButtonDark type="button" onClick={() => goToMessages(communityContext.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to chat</ButtonDark>
@@ -105,7 +105,7 @@ const PostDetailPage = props => {
                 </div>
 
             </>}
-        </main>
+        </Container>
     )
 }
 

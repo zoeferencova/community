@@ -1,22 +1,22 @@
 .container {
-    height: 90px;
-    position: absolute;
-    top: 0;
-    z-index: 1000;
-    top: 75px;
-    background-color: #f2f5f7;
-    display: flex;
-    padding: 0px 15px;
-    left: 10px; 
-    right: 10px;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: space-between;
-    animation: fadeInDown ease 0.3s;
-    -webkit-animation: fadeInDown ease 0.3s;
-    -moz-animation: fadeInDown ease 0.3s;
-    -o-animation: fadeInDown ease 0.3s;
-    -ms-animation: fadeInDown ease 0.3s;
+   height: 50px;
+   position: absolute;
+   z-index: 1000;
+   background-color: white;
+   display: flex;
+   padding: 0px 15px;
+   right: 0;
+   left: 0;
+   top: 10;
+   align-items: center;
+   background: #eff1f4aa;
+
+   justify-content: space-between;
+   animation: fadeInDown ease 0.3s;
+   -webkit-animation: fadeInDown ease 0.3s;
+   -moz-animation: fadeInDown ease 0.3s;
+   -o-animation: fadeInDown ease 0.3s;
+   -ms-animation: fadeInDown ease 0.3s;
 }
 
 .container p {
@@ -37,82 +37,68 @@
 }
 
 .deleteButton {
-   color: #ad3434;
-   border: 1px solid #ad3434;
    min-width: 115px;
 }
 
-.deleteButton:hover {
-   border: 1px solid #b55151;
-}
-
-.heart, .hand {
-   margin-left: 6px;
-   font-size: 16px;
-}
-
-.heart {
-   color: #bf5e6b;
-}
-
-.hand {
-   color: #e6c78e;
-}
-
 @keyframes fadeInDown {
-    0% {
-       opacity: 0;
-       transform: translateY(-10px);
-    }
-    100% {
-       opacity: 1;
-       transform: translateY(0);
-    }
-} 
+   0% {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
 @-moz-keyframes fadeInDown {
-    0% {
-       opacity: 0;
-       transform: translateY(-10px);
-    }
-    100% {
-       opacity: 1;
-       transform: translateY(0);
-    }
-} 
+   0% {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
 @-webkit-keyframes fadeInDown {
-    0% {
-       opacity: 0;
-       transform: translateY(-10px);
-    }
-    100% {
-       opacity: 1;
-       transform: translateY(0);
-    }
-} 
+   0% {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
 @-o-keyframes fadeInDown {
-    0% {
-       opacity: 0;
-       transform: translateY(-10px);
-    }
-    100% {
-       opacity: 1;
-       transform: translateY(0);
-    }
-} 
+   0% {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
 @-ms-keyframes fadeInDown {
-    0% {
-       opacity: 0;
-       transform: translateY(-10px);
-    }
-    100% {
-       opacity: 1;
-       transform: translateY(0);
-    }
-} 
+   0% {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
 @media only screen and (max-width: 608px) {
    .container {

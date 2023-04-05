@@ -10,6 +10,7 @@ export default function GoogleMaps(props) {
     const defaultLocation = { lat: 40.7450271, lng: -73.8858674 }
     const radius = parseFloat(props.radius) * 1609.344 || defaultRadius;
     const userLocation = props.userLocation || defaultLocation;
+    const zoom = props.sideBar ? 12 : 13;
 
     const circleOptions = {
         strokeColor: '#4d9e9a',
@@ -34,9 +35,9 @@ export default function GoogleMaps(props) {
                 <h1>Loading...</h1>
             ) : (
                 <GoogleMap
-                    mapContainerClassName={styles.googleMap}
+                    mapContainerClassName={`${styles.googleMap} ${props.sideBar && styles.sideBar}`}
                     center={userLocation}
-                    zoom={13}
+                    zoom={zoom}
                     options={mapOptions}
                 >
                     {props.displayMarker &&

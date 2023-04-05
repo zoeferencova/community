@@ -5,7 +5,7 @@ import styles from "./MessageLayout.module.css";
 
 const MessageLayout = () => {
     return (
-        <div className={styles.container}>
+        <div className={styles.outerContainer}>
             <MessageContainer />
         </div>
     );

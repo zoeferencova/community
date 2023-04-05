@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
-import { ButtonDark, ButtonLight, Input, Label, Error } from "../../components/Utils/Utils";
+import { ButtonDark, ButtonLight, Input, Label, Error, Container } from "../../components/Utils/Utils";
 import styles from "./ChangePasswordPage.module.css";
 import UserDataService from "../../services/user-data-service";
 import AuthApiService from "../../services/auth-api-service";
@@ -53,7 +53,7 @@ const ChangePasswordPage = () => {
     }
 
     return (
-        <div className={styles.main}>
+        <Container>
             <h3>Change Password</h3>
             <form className={styles.form} onSubmit={e => handleSubmit(e)}>
                 {error && <Error message={error} className={styles.error} />}
@@ -74,7 +74,7 @@ const ChangePasswordPage = () => {
                     <ButtonDark type="submit" className={styles.submitButton} loading={loading.toString()}>Change Password</ButtonDark>
                 </div>
             </form>
-        </div>
+        </Container>
     )
 }
 

@@ -1,37 +1,52 @@
 .button {
-    padding: 8px 16px;
+    padding: 9px 20px;
     font-size: 15px;
-    line-height: 24px;
     font-family: inherit;
-    border: 1px solid rgb(38, 38, 39);
-    color: rgb(38, 38, 39);
-    border-radius: 3px;
-    background-color: transparent;
+    border: none;
+    color: #282C33;
+    border-radius: 50px;
+    background-color: #e6ebf2;
     transition: 0.2s;
-    min-width: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 500;
+    letter-spacing: 0.01rem;
 }
 
 .button:hover {
     cursor: pointer;
     opacity: 0.8;
-    border: 1px solid rgba(38, 38, 39, 0.8);
 }
 
 .buttonDark {
     composes: button;
-    background-color: #415166;
+    background-color: #282C33;
     color: white;
-    border: 1px solid #415166;
+    border: 1px solid #282C33;
 }
 
 .buttonLink:hover {
     border: none;
-    background-color: #e4e9f0;
     transition: 0.5s;
     opacity: 1;
+}
+
+.actionButton {
+    border: none;
+    background: transparent;
+    color: #595959;
+    font-size: 14.5px;
+    margin-right: 12px;
+}
+
+.actionButton:hover {
+    cursor: pointer;
+}
+
+.actionButton svg {
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 .spinner {
@@ -49,6 +64,10 @@
     font-size: 15px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.textarea {
+    height: 45px;
 }
 
 .label {
@@ -112,4 +131,56 @@
     composes: error;
     color: #0b4218;
     background-color: #d8e6db;
+}
+
+.bgIcon {
+    height: 23px;
+    width: 23px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    margin-right: 10px;
+    font-size: 13px;
+}
+
+.greenIcon {
+    background: #E3F1E4;
+    color: #87AE8F;
+}
+
+.pinkIcon {
+    background: #FDE8E8;
+    color: #EC7376;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    height: fit-content;
+    width: 100%;
+    background-color: white;
+    padding: 30px 0;
+    text-align: left;
+}
+
+@media only screen and (min-width: 830px) {
+    .container {
+        width: 62%;
+        margin: 25px 0px 50px 0px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .03), 0 1px 2px 0 rgba(0, 0, 0, .03);
+        border-radius: 10px;
+    }
+
+}
+
+.customSelect {
+    margin: 10px 0px 25px 0px;
+}
+
+.errorCell {
+    border: 1px solid #d45e5e;
+    border-radius: 3px;
 }

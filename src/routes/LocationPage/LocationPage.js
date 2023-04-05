@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
-import { ButtonLight, ButtonDark, Input, Label } from "../../components/Utils/Utils";
+import { ButtonLight, ButtonDark, Input, Label, Container } from "../../components/Utils/Utils";
 import styles from "./LocationPage.module.css";
 import GoogleMap from "../../components/GoogleMap/GoogleMap";
 import MapSearch from "../../components/MapSearch/MapSearch";
@@ -50,7 +50,7 @@ const LocationPage = props => {
     }
 
     return (
-        <main className={styles.main}>
+        <Container style={{ paddingTop: 0 }}>
             {userLocation && <>
                 <div className={styles.map}>
                     <MapErrorBoundary>
@@ -72,7 +72,7 @@ const LocationPage = props => {
                     </div>
                 </form>
             </>}
-        </main>
+        </Container>
     )
 }
 

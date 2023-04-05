@@ -2,12 +2,16 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    padding: 20px;
+    padding: 20px 0px;
     text-align: left;
     margin: 15px 0px;
     background-color: white;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .03), 0 1px 2px 0 rgba(0, 0, 0, .03);
     border-radius: 10px;
+}
+
+.post>* {
+    padding: 0px 25px;
 }
 
 .postHeader {
@@ -19,11 +23,21 @@
 }
 
 .postHeader h4 {
-    margin: 0px 10px;
+    margin: 0px 13px;
+}
+
+.postHeader .name {
+    font-weight: 500;
 }
 
 .details {
     width: 100%;
+}
+
+.details p {
+    margin-bottom: 30px;
+    line-height: 1.26em;
+    font-size: 15px;
 }
 
 .nameSection {
@@ -33,25 +47,6 @@
 
 .distance {
     font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #404040;
-}
-
-.button, .buttonLink {
-    margin-top: 5px;
-    align-self: center;
-    width: 200px;
-    font-size: 14px;
-    border: none;
-    background-color: #f2f4f7;
-}
-
-.buttonLink:hover {
-    border: none;
-    background-color: #e4e9f0;
-    transition: 0.5s;
-    opacity: 1;
 }
 
 .helpItems {
@@ -61,43 +56,13 @@
     flex-wrap: wrap;
 }
 
-.high, .medium, .low {
-    font-size: 12px;
-    display: inline-block;
-    padding-top: 8px;
+.actions {
+    border-top: 1px solid #f1f5f5;
+    padding-top: 20px;
 }
 
-.high i, .medium i, .low i {
-    font-size: 10px;
-    margin-right: 3px;
-}
-
-.high {
-    color: #ad3434;
-}
-
-.medium {
-    color: #edcb64;
-}
-
-.low {
-    color: #3d9145;
-}
-
-.heart, .hand {
-    margin-right: 10px;
-}
-
-.heart {
-    color: #bf5e6b;
-}
-
-.hand {
-    color: #e6c78e;
-}
-
-@media only screen and (min-width: 830px) {
+@media only screen and (min-width: 850px) {
     .post {
-        width: 70%;
+        width: 80%;
     }
 }

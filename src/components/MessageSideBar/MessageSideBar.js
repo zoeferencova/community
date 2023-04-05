@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
-import { ProfilePicture } from "../../components/Utils/Utils";
+import { backArrowIcon, ProfilePicture } from "../../components/Utils/Utils";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 const MessageSideBar = ({ chats, activeChat, setActiveChat, mobileDisplay }) => {
     const communityContext = useContext(CommUnityContext);
+
+    const navigate = useNavigate();
 
     // Formats and creates values for the side bar, sorting chats by the most recent message and displaying the most recent message for each
     const makeChats = () => {
@@ -40,7 +43,7 @@ const MessageSideBar = ({ chats, activeChat, setActiveChat, mobileDisplay }) => 
     return (
         <div id="side-bar" className={`${styles.sideBar} ${mobileDisplay === true ? styles.activeMobile : styles.inactiveMobile}`}>
             <div className={styles.heading}>
-                <div className={styles.chatName}>Chats</div>
+                <button className={styles.chatName} onClick={() => navigate("/home")}>{backArrowIcon}<span>Home</span></button>
             </div>
             <div className={styles.users}>
                 {makeChats()}

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
-import { ButtonLight, ButtonDark } from "../Utils/Utils";
+import { ButtonLight, ButtonDark, offerIcon, requestIcon, PostActionButton } from "../Utils/Utils";
 import styles from "./MessageInfo.module.css";
 
 const MessageInfo = ({ user, deleteChat, loading }) => {
@@ -37,10 +37,11 @@ const MessageInfo = ({ user, deleteChat, loading }) => {
 
     return (
         <div className={styles.container}>
-            <p>{formatSentence(post, user)}<span>{post.post_type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>}</span></p>
+            <p>{post.post_type === "offer" ? offerIcon : requestIcon} {formatSentence(post, user)}</p>
             <div className={styles.buttons}>
-                <ButtonDark type="button" onClick={e => handleGoToPost(e, post)} id="post-button">Go to post</ButtonDark>
-                <ButtonLight className={styles.deleteButton} type="button" onClick={e => deleteChat(e)} loading={loading.toString()} id="delete-button">Delete chat</ButtonLight>
+                <PostActionButton type="button" onClick={e => handleGoToPost(e, post)} id="post-button" action="details" />
+
+                <PostActionButton type="button" onClick={e => deleteChat(e)} id="delete-button" action="delete" />
             </div>
         </div>
     );

@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
-import { ButtonLight, ProfilePicture } from "../Utils/Utils";
+import { offerIcon, requestIcon, ProfilePicture, PostActionButton } from "../Utils/Utils";
 import Task from "../Task/Task";
 import UserDataService from "../../services/user-data-service";
 import styles from "./Post.module.css";
 
-const Post = ({ first_name, post_type, distance_from_user, categories, description, id }) => {
+const Post = ({ first_name, post_type, distance_from_user, categories, description, id, user_id }) => {
     const communityContext = useContext(CommUnityContext);
 
     const navigate = useNavigate();
@@ -19,21 +19,24 @@ const Post = ({ first_name, post_type, distance_from_user, categories, descripti
                     <div className={styles.postHeader}>
                         <div className={styles.nameSection}>
                             <ProfilePicture first_name={first_name} user_name={communityContext.user.first_name} />
-                            <h4>{first_name} {post_type === "offer" ? "offered to help" : "requested help"}</h4>
+                            <h4><span className={styles.name}>{first_name}</span> {post_type === "offer" ? "offered to help" : "requested help"}</h4>
                         </div>
                         <div>
-                            <span>{post_type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>}</span>
-                            <span className={styles.distance}>{UserDataService.metersToMiles(distance_from_user) + " mi"}</span>
+                            <span>{post_type === "offer" ? offerIcon : requestIcon}</span>
+                            <span className={styles.distance}>{UserDataService.metersToMiles(distance_from_user) + " mi away"}</span>
                         </div>
                     </div>
+
+                    <p className={styles.description}>{description}</p>
                     <ul className={styles.helpItems}>
                         {categories.map(task => <Task key={task} task={task} />)}
                     </ul>
-                    <p className={styles.description}>{description}</p>
                 </div>
             </div>
-            <ButtonLight type="button" onClick={() => navigate(`/post/${id}`)} className={styles.buttonLink}>{post_type === "offer" ? "Accept offer" : "Offer to help"}</ButtonLight>
-        </div>
+            <div className={styles.actions}>
+                <PostActionButton action="details" onClick={() => navigate(`/post/${id}`)} />
+            </div>
+        </div >
     )
 }
 

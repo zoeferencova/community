@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import styles from "./NewPostPage.module.css";
 import UserDataService from "../../services/user-data-service";
 import '../../components/Utils/slim.scss';
-import { ButtonLight, ButtonDark, Label, Textarea, CategoryMultiSelect, UrgencySelect } from "../../components/Utils/Utils";
+import { ButtonLight, ButtonDark, Label, Textarea, CategoryMultiSelect, UrgencySelect, Container, offerIcon, requestIcon } from "../../components/Utils/Utils";
 
 const NewPostPage = () => {
     const communityContext = useContext(CommUnityContext);
@@ -41,7 +41,6 @@ const NewPostPage = () => {
 
         UserDataService.postPost(post)
             .then(post => {
-                console.log(post)
                 communityContext.addNewPost(post)
                 setLoading(false)
                 navigate("/home")
@@ -53,9 +52,9 @@ const NewPostPage = () => {
     }
 
     return (
-        <main className={styles.main}>
-            <h3>Create a new {type} {type === "offer" ? <i className={`fas fa-heart ${styles.heart}`}></i> : <i className={`fas fa-hand-paper ${styles.hand}`}></i>}</h3>
+        <Container>
             <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+                <h3>{type === "offer" ? offerIcon : requestIcon}New {type}</h3>
                 <div>
                     <Label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?" : "What do you need help with?"}</Label>
                     <CategoryMultiSelect error={error} />
@@ -74,7 +73,7 @@ const NewPostPage = () => {
                     <ButtonDark type="submit" loading={loading.toString()}>Submit</ButtonDark>
                 </div>
             </form>
-        </main>
+        </Container>
     )
 }
 

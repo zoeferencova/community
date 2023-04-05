@@ -1,6 +1,4 @@
 .main {
-    position: absolute;
-    top: 70px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -8,155 +6,58 @@
 }
 
 @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    
-    @-moz-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    
-    @-webkit-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    
-    @-o-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-    }
-    
-    @-ms-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
     }
 
-.header {
-    padding: 50px 15px 0px 15px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: center;
+    100% {
+        opacity: 1;
+    }
 }
 
-.header h2 {
-    font-size: 30px;
-    margin-bottom: 40px;
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.heart, .hand {
-    margin-right: 7px;
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.heart {
-    color: #bf5e6b;
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.hand {
-    color: #e6c78e;
-}
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
 
-.newPostButtons {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.newPostButtons button {
-    width: 50%;
-    margin-right: 10px;
-    background-color: #f2f4f7;
-    border: none;
-}
-
-.newPostButtons button:hover {
-    border: none;
-    background-color: #e4e9f0;
-    transition: 0.5s;
-    opacity: 1;
-}
-
-.requestButton {
-    margin-right: 10px;
-}
-
-.yourPosts {
-    margin: 30px 0;
-}
-
-.yourPosts h3, .mapTitle {
-    text-align: left;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-}
-
-.mapSection {
-    width: 80%;
-}
-
-.userInfo {
-    width: 80%;
-}
-
-.infoTitle {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-    border-bottom: 1px solid black;
-    align-items: flex-end;
-    margin-bottom: 20px;
-    height: 45px;
-}
-
-.plus {
-    font-size: 25px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-}
-
-.infoTitle:hover {
-    cursor: pointer;
-}
-
-.rotate {
-    transform: rotate(45deg);
-    transition: 0.5s;
-}
-
-.unrotate {
-    transform: rotate(0deg);
-    transition: 0.5s;
-}
-
-.infoBody {
-    width: 100%;
-    height: 100%;
-}
-
-.hide {
-    display: none;
-}
-
-.infoBodyMap {
-    width: 100%;
-    height: 250px;
-    margin-bottom: 40px;
-}
-
-.mapSubtitle {
-    margin-top: 15px;
-    font-size: 13px;
-}
-
-.mapSubLink {
-    color: #607187;
+    100% {
+        opacity: 1;
+    }
 }
 
 .feedHeader h3 {
     font-size: 14px;
+    color: #8492a4;
 }
 
 .feedHeader {
@@ -166,7 +67,7 @@
 
 .feed {
     display: flex;
-    width: 90%;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 20px 0px 30px 0px;
@@ -197,80 +98,14 @@
 }
 
 @media only screen and (min-width: 830px) {
-    .mapSection {
-        width: 90%;
-        height: 200px;
-        padding-top: 0;
-        margin-top: 0;
-    }
-
-    .header h2 {
-        margin-bottom: 25px;
-    }
-
-    .plus {
-        display: none;
-    }
-
-    .feed {
-        margin-top: 20px;
-    }
-
-    .hide {
-        display: block;
-    }
-
-    .yourPosts {
-        margin: 40px 0;
-    }
-
-    .header {
-        text-align: left;
-        flex-direction: column;
-        margin-top: 20px;
-        min-width: 260px;
-        width: 35%;
-        padding: 20px;
-        margin-left: 4%;
-        align-items: flex-start;
-        justify-content: flex-start;
-    }
-
-    .userInfo {
-        width: 90%;
-    }
-
-    .infoBodyMap {
-        height: 180px;
-    }
-
-
-    .main {
-        flex-direction: row;
-    }
-
     .feedHeader {
         width: 70%;
         text-align: right;
-    }
-
-    .newPostButtons button {
-        font-size: 14px;
-    }
-
-    .newPostButtons {
-        margin-top: 40px;
     }
 
     .noPosts {
         margin-top: 0px;
         width: 50%;
         margin-left: -50px;
-    }
-}
-
-@media only screen and (min-width: 1100px) {
-    .newPostButtons button {
-        font-size: 15px;
     }
 }

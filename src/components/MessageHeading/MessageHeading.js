@@ -4,7 +4,7 @@ import { CHAT_DELETED } from "../../message-utils/events";
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import MessageInfo from "../MessageInfo/MessageInfo";
-import { ProfilePicture } from "../Utils/Utils";
+import { chatBackIcon, infoIcon, ProfilePicture, xIcon } from "../Utils/Utils";
 import styles from "../MessageLayout/MessageLayout.module.css";
 
 const MessageHeading = ({ receiver, mobileDisplayContacts }) => {
@@ -46,8 +46,7 @@ const MessageHeading = ({ receiver, mobileDisplayContacts }) => {
         <div className={styles.headerContainer}>
             <div className={styles.chatHeader}>
                 <div className={styles.userInfo}>
-                    <i className={`fas fa-chevron-left ${styles.chatBackArrow}`} onClick={() => mobileDisplayContacts}></i>
-
+                    <button className={styles.chatBackArrow} onClick={mobileDisplayContacts}>{chatBackIcon}</button>
                     <ProfilePicture className={styles.headerPic} first_name={receiver.first_name} />
                     <div className={styles.userName}>{receiver.first_name}</div>
                     <div className={styles.status}>
@@ -55,12 +54,8 @@ const MessageHeading = ({ receiver, mobileDisplayContacts }) => {
                     </div>
                 </div>
                 <div className={styles.options}>
-                    <button onClick={toggleInfo}>
-                        <i className="fas fa-info-circle" ></i>
-                    </button>
-                    <button onClick={handleClose}>
-                        <i className="fas fa-times" ></i>
-                    </button>
+                    <button onClick={toggleInfo}>{infoIcon}</button>
+                    <button onClick={handleClose}>{xIcon}</button>
                 </div>
             </div>
             {infoOpen && <MessageInfo user={receiver} deleteChat={handleDelete} loading={loading} />}

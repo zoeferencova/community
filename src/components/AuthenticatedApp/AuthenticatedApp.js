@@ -11,6 +11,7 @@ import TokenService from "../../services/token-service";
 import { USER_CONNECTED, LOGOUT, PRIVATE_MESSAGE, NEW_CHAT, CHAT_TO_REMOVE } from "../../message-utils/events";
 
 import Nav from "../Nav/Nav"
+import SideBar from "../SideBar/SideBar"
 import HomePage from "../../routes/HomePage/HomePage";
 import AccountPage from "../../routes/AccountPage/AccountPage";
 import MessagePage from "../../routes/MessagePage/MessagePage";
@@ -18,6 +19,7 @@ import LocationPage from "../../routes/LocationPage/LocationPage";
 import PostDetailPage from "../../routes/PostDetailPage/PostDetailPage";
 import NewPostPage from "../../routes/NewPostPage/NewPostPage";
 import MyPostPage from "../../routes/MyPostPage/MyPostPage";
+import MyPostListPage from "../../routes/MyPostListPage/MyPostListPage";
 import EditPostPage from "../../routes/EditPostPage/EditPostPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
@@ -213,7 +215,6 @@ export default class AuthenticatedApp extends Component {
 
     TokenService.clearAuthToken();
     this.props.setLoggedIn(false);
-    this.props.history.push("/");
   }
 
   //Setting context values using AuthenticatedApp's states, providing those context values to all children
@@ -222,24 +223,28 @@ export default class AuthenticatedApp extends Component {
     return (
       <main >
         <CommUnityContext.Provider value={value} >
-          <div className={styles.main}>
-            {this.state.user.first_name && <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />}
-            <ErrorBoundary key={window.location.pathname}>
-              <Routes>
-                <Route path="/home" element={<HomePage loading={this.state.loading} />} />
-                <Route path="/account" element={<AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
-                <Route path="/change-password" element={<ChangePasswordPage />} />
-                <Route path="/messages" element={<MessagePage user={this.state.user} />} />
-                {this.state.user.first_name && <Route path="/location" element={<LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 }} radius={this.state.user.radius ? parseFloat(this.state.user.radius) : parseFloat(1609.344)} history={this.props.history} />} />}
-                <Route path="/post/:id" element={<PostDetailPage />} />
-                <Route path="/new-post/:type" element={<NewPostPage />} />
-                <Route path="/my-post/:id" element={<MyPostPage />} />
-                <Route path="/edit-post/:id" element={<EditPostPage />} />
-                <Route path="/confirm-deactivation" element={<DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
-                <Route element={<NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
-              </Routes>
-            </ErrorBoundary>
-          </div>
+          {this.state.user.first_name && <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />}
+          <ErrorBoundary key={window.location.pathname}>
+            <div className={styles.main}>
+              <SideBar />
+              <div className={styles.pageContent}>
+                <Routes>
+                  <Route path="/home" element={<HomePage loading={this.state.loading} />} />
+                  <Route path="/account" element={<AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
+                  <Route path="/change-password" element={<ChangePasswordPage />} />
+                  <Route path="/messages" element={<MessagePage user={this.state.user} />} />
+                  {this.state.user.first_name && <Route path="/location" element={<LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 }} radius={this.state.user.radius ? parseFloat(this.state.user.radius) : parseFloat(1609.344)} history={this.props.history} />} />}
+                  <Route path="/post/:id" element={<PostDetailPage />} />
+                  <Route path="/new-post/:type" element={<NewPostPage />} />
+                  <Route path="/my-post/:id" element={<MyPostPage />} />
+                  <Route path="/my-posts" element={<MyPostListPage />} />
+                  <Route path="/edit-post/:id" element={<EditPostPage />} />
+                  <Route path="/confirm-deactivation" element={<DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
+                  <Route element={<NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
+                </Routes>
+              </div>
+            </div>
+          </ErrorBoundary>
         </CommUnityContext.Provider>
       </main>
     );
