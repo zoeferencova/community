@@ -15,10 +15,10 @@ const MyPost = ({ id, post_type, date_created }) => {
 
     return (
         <Link className={styles.link} to={`/my-post/${id}`}>
-            <p className={styles.userPost}>
+            <div className={styles.userPost}>
                 {post_type === "offer" ? offerIcon : requestIcon}
                 {capitalizeFirstLetter(post_type)} created {DateTime.fromISO(date_created).toRelative()}
-            </p>
+            </div>
         </Link>
     )
 }

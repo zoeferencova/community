@@ -74,35 +74,38 @@ const PostDetailPage = props => {
                 <div className={styles.map}>
                     <GoogleMap className={styles.gmap} userLocation={post.location} radius={parseFloat(post.radius)} displayMarker={false} />
                 </div>
-                <div className={styles.postHeader}>
-                    <h3 className={styles.postTitle}>Respond to {post.first_name}'s {post.post_type}</h3>
-                    {post.post_type === "request" && <span className={`${styles.urgency} ${styles[post.urgency]}`}>{circleIcon}{post.urgency}</span>}
+                <div className={styles.details}>
+                    <div className={styles.postHeader}>
+                        <h3 className={styles.postTitle}>Respond to {post.first_name}'s {post.post_type}</h3>
+                        {post.post_type === "request" && <span className={`${styles.urgency} ${styles[post.urgency]}`}>{circleIcon}{post.urgency}</span>}
+                    </div>
+                    {post.description && <p className={styles.description}>{post.description}</p>}
+                    <ul className={styles.tasks}>
+                        {post.categories.map(task => <Task key={task} task={task} />)}
+                    </ul>
+                    <div className={styles.messageSection}>
+                        {!communityContext.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id) ?
+                            <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+                                <label htmlFor="message">Write a message</label>
+                                <Textarea id="message" className={`${styles.textarea} ${error && styles.errorCell}`} placeholder={`Hi ${post.first_name}...`}></Textarea>
+                                {error && <div className={styles.error}>{error}</div>}
+                                <div className={styles.buttonSection}>
+                                    <ButtonLight type="button" onClick={() => navigate(-1)}>Back</ButtonLight>
+                                    <ButtonDark type="submit" className={styles.submitButton} loading={loading.toString()}>Send Message</ButtonDark>
+                                </div>
+                            </form>
+                            :
+                            <>
+                                <p className={styles.chatMessage}>{messageIconHollow} You have a chat with {post.first_name}</p>
+                                <div className={styles.buttonSection}>
+                                    <ButtonLight type="button" onClick={() => navigate("/home")}>Back</ButtonLight>
+                                    <ButtonDark type="button" onClick={() => goToMessages(communityContext.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to chat</ButtonDark>
+                                </div>
+                            </>
+                        }
+                    </div>
                 </div>
-                <ul className={styles.tasks}>
-                    {post.categories.map(task => <Task key={task} task={task} />)}
-                </ul>
-                {post.description && <p className={styles.description}>{post.description}</p>}
-                <div className={styles.messageSection}>
-                    {!communityContext.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id) ?
-                        <form className={styles.form} onSubmit={e => handleSubmit(e)}>
-                            <label htmlFor="message">Write a message</label>
-                            <Textarea id="message" className={`${styles.textarea} ${error && styles.errorCell}`} placeholder={`Hi ${post.first_name}...`}></Textarea>
-                            {error && <div className={styles.error}>{error}</div>}
-                            <div className={styles.buttonSection}>
-                                <ButtonLight type="button" onClick={() => navigate(-1)}>Back</ButtonLight>
-                                <ButtonDark type="submit" className={styles.submitButton} loading={loading.toString()}>Send Message</ButtonDark>
-                            </div>
-                        </form>
-                        :
-                        <>
-                            <p className={styles.chatMessage}>{messageIconHollow} You have a chat with {post.first_name}</p>
-                            <div className={styles.buttonSection}>
-                                <ButtonLight type="button" onClick={() => navigate(-1)}>Back</ButtonLight>
-                                <ButtonDark type="button" onClick={() => goToMessages(communityContext.chats.find(chat => chat.user1.id === post.user_id || chat.user2.id === post.user_id))}>Go to chat</ButtonDark>
-                            </div>
-                        </>
-                    }
-                </div>
+
 
             </>}
         </Container>

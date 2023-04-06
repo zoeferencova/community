@@ -64,10 +64,10 @@ const LocationPage = props => {
                     </div>
                     <div className={styles.radiusSection}>
                         <Label htmlFor="radius">Radius (miles)</Label>
-                        <Input className={styles.radius} required type="number" step="0.25" name="radius" id="radius" value={radius} onChange={handleRadiusChange} />
+                        <Input className={styles.radius} required type="number" step="0.25" name="radius" id="radius" defaultValue={radius || 1} onChange={handleRadiusChange} />
                     </div>
                     <div className={styles.buttonSection}>
-                        <ButtonLight type="button" onClick={() => navigate(-1)}>Cancel</ButtonLight>
+                        <ButtonLight disabled={!communityContext.user.location.lat} type="button" onClick={() => navigate("/home")}>Cancel</ButtonLight>
                         <ButtonDark type="submit" className={styles.submitButton} loading={loading.toString()}>Use this location</ButtonDark>
                     </div>
                 </form>

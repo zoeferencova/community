@@ -18,9 +18,8 @@ class ErrorBoundary extends Component {
         if (this.state.error) {
             return (
                 <div className={styles.errorBoundary}>
-                    <img src={require("../../images/error-boundary.png")} alt="Error" className={styles.image}></img>
                     <h1 className={styles.title}>Oops, something broke</h1>
-                    <ButtonLight onClick={window.history.back()}>Go back</ButtonLight>
+                    <ButtonLight onClick={() => window.history.pushState({}, "", "/home")}>Go back</ButtonLight>
                 </div>
             );
         }

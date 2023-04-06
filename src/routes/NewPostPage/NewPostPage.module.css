@@ -1,12 +1,39 @@
 .form {
-    width: 75%;
-    margin-bottom: 20px;
+    width: 85%;
 }
 
+.formHeading,
 .form h3 {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 30px;
+}
+
+.formHeading {
+    display: none;
+}
+
+.mobileSelectors {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.mobileSelectors h3 {
+    opacity: 0.3;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.mobileSelectors h3:hover {
+    cursor: pointer;
+}
+
+.mobileSelectors h3:first-of-type {
+    margin-right: 30px;
+}
+
+.mobileSelectors .selected {
+    opacity: 1;
 }
 
 .textarea {
@@ -27,4 +54,18 @@
     font-size: 12px;
     color: #a34343;
     margin: -15px 0px 15px 0px;
+}
+
+@media only screen and (min-width: 830px) {
+    .formHeading {
+        display: block;
+    }
+
+    .mobileSelectors {
+        display: none;
+    }
+
+    .form {
+        width: 80%;
+    }
 }

@@ -19,15 +19,19 @@ export const circleIcon = <FontAwesomeIcon icon={icon({ name: 'circle' })} />
 export const messageIconHollow = <FontAwesomeIcon icon={icon({ name: 'comment', style: 'regular' })} />
 export const trashIcon = <FontAwesomeIcon icon={icon({ name: 'trash-can', style: 'regular' })} />
 export const postIcon = <FontAwesomeIcon icon={icon({ name: 'file-lines', style: 'regular' })} />
+export const plusIcon = <FontAwesomeIcon icon={icon({ name: 'plus' })} />
+export const errorIcon = <FontAwesomeIcon icon={icon({ name: 'exclamation-circle' })} />
+export const successIcon = <FontAwesomeIcon icon={icon({ name: 'check-circle' })} />
+export const spinnerIcon = <FontAwesomeIcon icon={icon({ name: 'spinner' })} spin />
 export const requestIcon = <div className={`${styles.bgIcon} ${styles.greenIcon}`}><FontAwesomeIcon icon={icon({ name: 'question' })} ></FontAwesomeIcon></div>
 export const offerIcon = <div className={`${styles.bgIcon} ${styles.pinkIcon}`}><FontAwesomeIcon icon={icon({ name: 'heart' })} /></div>
 
 export function ButtonLight({ className, ...props }) {
-    return <button className={`${styles.button} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : props.children}</button>
+    return <button disabled={props.disabled} className={`${styles.button} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? spinnerIcon : props.children}</button>
 }
 
 export function ButtonDark({ className, ...props }) {
-    return <button className={`${styles.buttonDark} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? <span>loading</span> : props.children}</button>
+    return <button disabled={props.disabled} className={`${styles.buttonDark} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? spinnerIcon : props.children}</button>
 }
 
 export function PostActionButton({ className, ...props }) {
@@ -39,7 +43,7 @@ export function PostActionButton({ className, ...props }) {
 }
 
 export function Input({ className, ...props }) {
-    return <input className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
+    return <input required={props.required} defaultValue={props.defaultValue} className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
 }
 
 export function Label({ className, ...props }) {
@@ -54,10 +58,6 @@ export function Container({ className, ...props }) {
     return <div style={props.style} className={styles.container}>{props.children}</div>
 }
 
-// export function Select({ className, ...props }) {
-//     return <select className={`${styles.input} ${className !== undefined ? className : ""}`} {...props} />
-// }
-
 // Assigns a color to the profile picture based on the first letter of the user's name
 export function ProfilePicture({ className, ...props }) {
     let color;
@@ -70,11 +70,11 @@ export function ProfilePicture({ className, ...props }) {
 }
 
 export function Error({ className, ...props }) {
-    return <div role="alert" className={`${styles.error} ${className !== undefined ? className : ""}`} {...props}><i className="fas fa-exclamation-circle"></i>{typeof (props.message) === 'string' ? props.message : props.message.name}</div>
+    return <div role="alert" className={`${styles.error} ${className !== undefined ? className : ""}`} {...props}><i className="fas fa-exclamation-circle"></i>{typeof (props.message) === 'string' ? props.message : props.message}</div>
 }
 
 export function Success({ className, ...props }) {
-    return <div role="alert" className={`${styles.success} ${className !== undefined ? className : ""}`} {...props}><i className="fas fa-check-circle"></i>{props.message}</div>
+    return <div role="alert" className={`${styles.success} ${className !== undefined ? className : ""}`} {...props}>{successIcon} {props.message}</div>
 }
 
 export function CategoryMultiSelect({ className, ...props }) {
@@ -122,7 +122,7 @@ export function CategoryMultiSelect({ className, ...props }) {
 
     const getDefaultValues = props.defaultValue && categoryOptions.filter(option => props.defaultValue.includes(option.label))
 
-    return <Select name="categories" isMulti placeholder="Select" options={categoryOptions} styles={categoryStyles} defaultValue={getDefaultValues} className={`basic-multi-select ${props.error && styles.errorCell} ${styles.customSelect}`} />
+    return <Select name="categories" isMulti required placeholder="Select" options={categoryOptions} styles={categoryStyles} defaultValue={getDefaultValues} className={`basic-multi-select ${props.error && styles.errorCell} ${styles.customSelect}`} />
 }
 
 export function UrgencySelect({ className, ...props }) {

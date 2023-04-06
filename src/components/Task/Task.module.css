@@ -1,8 +1,8 @@
 .task {
-    padding: 7px 10px;
+    padding: 6px 7px;
     font-size: 14px;
     border-radius: 5px;
-    margin: 0px 12px 10px 0px;
+    margin: 0px 7px 10px 0px;
 }
 
 .errands {
@@ -26,11 +26,19 @@
 }
 
 .dog {
-    background-color: #faf9e6;
-    color: #404040;
+    background-color: #FAF3DE;
+    color: #3B2E20;
 }
 
 .other {
-    background-color: #fcf5e8;
-    color: #404040;
+    background-color: #F8ECDF;
+    color: #402D1B;
+}
+
+@media only screen and (min-width: 830px) {
+    .task {
+        padding: 7px 10px;
+        margin: 0px 12px 10px 0px;
+
+    }
 }

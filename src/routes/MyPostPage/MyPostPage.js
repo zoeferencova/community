@@ -46,25 +46,28 @@ const MyPostPage = () => {
                 <div className={styles.map}>
                     <GoogleMap userLocation={post.location} radius={parseFloat(post.radius)} displayMarker={true} />
                 </div>
-                <div className={styles.postHeader}>
-                    <div>
-                        <h3>Your {post.post_type}</h3>
+                <div className={styles.details}>
+                    <div className={styles.postHeader}>
+                        <div>
+                            <h3>My {post.post_type}</h3>
+                            {post.post_type === "request" && <span className={`${styles.urgency} ${styles[post.urgency]}`}>{circleIcon}{post.urgency}</span>}
+                        </div>
                         <p className={styles.date}>{DateTime.fromISO(post.date_created, { zone: communityContext.timeZone }).toFormat('ffff')}</p>
                     </div>
-                    {post.post_type === "request" && <span className={`${styles.urgency} ${styles[post.urgency]}`}>{circleIcon}{post.urgency}</span>}
-                </div>
-                {post.description && <p className={styles.description}>{post.description}</p>}
-                <ul className={styles.tasks}>
-                    {post.categories.map(task => <Task key={task} task={task} />)}
-                </ul>
+                    {post.description && <p className={styles.description}>{post.description}</p>}
+                    <ul className={styles.tasks}>
+                        {post.categories.map(task => <Task key={task} task={task} />)}
+                    </ul>
 
-                <div className={styles.buttonSection}>
-                    <ButtonLight type="button" onClick={() => navigate("/home")}>Back</ButtonLight>
-                    <div className={styles.rightButtons}>
-                        <ButtonLight className={styles.delete} onClick={() => handleDelete(post.id)} loading={loading.toString()}>Delete</ButtonLight>
-                        <ButtonDark type="button" onClick={() => navigate(`/edit-post/${post.id}`)}>Edit</ButtonDark>
+                    <div className={styles.buttonSection}>
+                        <ButtonLight type="button" onClick={() => navigate("/home")}>Back</ButtonLight>
+                        <div className={styles.rightButtons}>
+                            <ButtonLight className={styles.delete} onClick={() => handleDelete(post.id)} loading={loading.toString()}>Delete</ButtonLight>
+                            <ButtonDark type="button" onClick={() => navigate(`/edit-post/${post.id}`)}>Edit</ButtonDark>
+                        </div>
                     </div>
                 </div>
+
             </>}
         </Container>
     )

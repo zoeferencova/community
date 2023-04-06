@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import UserDataService from "../../services/user-data-service";
@@ -21,6 +21,7 @@ const AccountPage = ({ success }) => {
     const handleLogout = e => {
         e.preventDefault();
         communityContext.logout();
+        navigate("/")
     }
 
     // Handles form submission, updating the user's name and email information in state
@@ -42,6 +43,7 @@ const AccountPage = ({ success }) => {
             .then(res => {
                 setLoading(false)
                 communityContext.updateUser(userInfo)
+                communityContext.updateSuccessMessage("Account updated")
             })
             .catch(res => {
                 setError(res.error)

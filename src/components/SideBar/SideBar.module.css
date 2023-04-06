@@ -6,19 +6,63 @@
     z-index: 90;
     background-color: white;
     width: 100%;
+    height: fit-content;
 }
 
 .sideBar h2 {
     font-size: 30px;
-    margin-bottom: 40px;
     font-weight: 500;
     text-align: left;
     margin-left: 10px;
+
 }
 
 .userInfo,
 .newPostButtons {
     display: none;
+}
+
+.topSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.introSection h2 {
+    margin-left: 0px;
+}
+
+.introSection {
+    margin: 15px 10px 25px 10px;
+}
+
+.introSection p {
+    text-align: left;
+    font-size: 19px;
+    line-height: 1.25em;
+}
+
+.introSection .note {
+    font-size: 14px;
+    color: gray;
+}
+
+.mobilePostButton {
+    margin-right: 10px;
+    height: 42px;
+    width: 42px;
+}
+
+.mobilePostButton svg {
+    font-size: 16px;
+}
+
+.noPosts {
+    color: #8492a4;
+    font-size: 14.5px;
+    display: block;
+    margin-top: -5px;
 }
 
 
@@ -27,6 +71,23 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+    }
+
+    .introSection p {
+        font-size: 17px;
+        margin-top: 40px;
+    }
+
+    .introSection {
+        margin: 0px 60px 0px 0px;
+    }
+
+    .introSection .note {
+        margin-top: 25px;
+    }
+
+    .mobilePostButton {
+        display: none;
     }
 
     .newPostButtons button {
@@ -92,7 +153,7 @@
     }
 
     .sideBar h2 {
-        margin-left: 0;
+        margin: 30px 0px 22px 0px;
     }
 
     .newPostButtons {

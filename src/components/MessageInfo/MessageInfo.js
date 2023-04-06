@@ -40,7 +40,6 @@ const MessageInfo = ({ user, deleteChat, loading }) => {
             <p>{post.post_type === "offer" ? offerIcon : requestIcon} {formatSentence(post, user)}</p>
             <div className={styles.buttons}>
                 <PostActionButton type="button" onClick={e => handleGoToPost(e, post)} id="post-button" action="details" />
-
                 <PostActionButton type="button" onClick={e => deleteChat(e)} id="delete-button" action="delete" />
             </div>
         </div>

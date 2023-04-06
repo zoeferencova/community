@@ -1,10 +1,14 @@
-.main h4 {
-    margin-bottom: 50px;
-    text-align: left;
+.container {
+    width: 85%;
 }
 
-.inner {
-    width: 70%;
+.header {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.container p {
+    margin: 25px 0px 40px 0px;
 }
 
 .buttonSection {
@@ -21,4 +25,10 @@
 
 .yesButton:hover {
     border: 1px solid #b55151;
+}
+
+@media only screen and (min-width: 830px) {
+    .container {
+        width: 80%;
+    }
 }

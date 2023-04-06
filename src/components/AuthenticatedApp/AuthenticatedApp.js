@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import io from "socket.io-client";
 import jstz from "jstimezonedetect";
@@ -81,6 +81,7 @@ export default class AuthenticatedApp extends Component {
     // Getting user's chats and setting to state and context
     ChatService.getUserChats()
       .then(chats => this.setState({ chats }))
+
   }
 
   componentWillUnmount() {
@@ -131,8 +132,8 @@ export default class AuthenticatedApp extends Component {
         const user_posts = posts.filter(post => post.user_id === userId)
         const neighborhood_posts = posts.filter(post => post.user_id !== userId)
         this.setState({ user_posts, neighborhood_posts })
-        this.setState({ loading: false })
       })
+      .then(posts => this.setState({ loading: false }))
   }
 
   // Adds a new post to state and context when created by user
@@ -159,14 +160,12 @@ export default class AuthenticatedApp extends Component {
   // Calls updateSuccessMessage method after update which displays success message in AccountPage component
   updateUser = updateValues => {
     this.setState({ ...this.state, user: { ...this.state.user, ...updateValues } })
-    this.updateSuccessMessage("Account information updated")
   }
 
   // Finds correct chat and adds new message into chat specified by chatId argument
   // Sets new chats array with updated message value to state
   // Makes chat with new message the activeChat in state
   addNewMessage = (message, chatId) => {
-    console.log(message)
     const chat = this.state.chats.find(chat => chat.id === chatId)
     const filteredChats = this.state.chats.filter(chat => chat.id !== chatId)
     const newChat = chat.messages ? { ...chat, messages: [...chat.messages, message] } : { ...chat, messages: [message] }
@@ -203,6 +202,9 @@ export default class AuthenticatedApp extends Component {
   // Updates success message in state - used for the AccountPage to display success messages after user info change or password change
   updateSuccessMessage = message => {
     this.setState({ success: message })
+    setTimeout(() => {
+      this.setState({ success: null })
+    }, 3000)
   }
 
   // Fires LOGOUT event for web socket which disconnects the socket
@@ -223,30 +225,35 @@ export default class AuthenticatedApp extends Component {
     return (
       <main >
         <CommUnityContext.Provider value={value} >
-          {this.state.user.first_name && <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />}
-          <ErrorBoundary key={window.location.pathname}>
-            <div className={styles.main}>
-              <SideBar />
-              <div className={styles.pageContent}>
-                <Routes>
-                  <Route path="/home" element={<HomePage loading={this.state.loading} />} />
-                  <Route path="/account" element={<AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
-                  <Route path="/change-password" element={<ChangePasswordPage />} />
-                  <Route path="/messages" element={<MessagePage user={this.state.user} />} />
-                  {this.state.user.first_name && <Route path="/location" element={<LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 }} radius={this.state.user.radius ? parseFloat(this.state.user.radius) : parseFloat(1609.344)} history={this.props.history} />} />}
-                  <Route path="/post/:id" element={<PostDetailPage />} />
-                  <Route path="/new-post/:type" element={<NewPostPage />} />
-                  <Route path="/my-post/:id" element={<MyPostPage />} />
-                  <Route path="/my-posts" element={<MyPostListPage />} />
-                  <Route path="/edit-post/:id" element={<EditPostPage />} />
-                  <Route path="/confirm-deactivation" element={<DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
-                  <Route element={<NotFoundPage isLoggedIn={this.props.isLoggedIn} />} />
-                </Routes>
-              </div>
-            </div>
-          </ErrorBoundary>
+          {this.state.neighborhood_posts && this.state.user.first_name &&
+            <>
+              <Nav isLoggedIn={this.props.isLoggedIn} first_name={this.state.user.first_name} />
+              <ErrorBoundary key={window.location.pathname}>
+                <div className={styles.main}>
+                  <SideBar loading={!this.state.user.first_name} />
+                  <div className={styles.pageContent}>
+                    <Routes>
+                      <Route path="/home" element={<HomePage loading={!this.state.user.first_name} />} />
+                      <Route path="/account" element={<AccountPage setLoggedIn={this.props.setLoggedIn} success={this.state.success} />} />
+                      <Route path="/change-password" element={<ChangePasswordPage />} />
+                      <Route path="/messages" element={<MessagePage user={this.state.user} />} />
+                      <Route path="/location" element={<LocationPage userLocation={this.state.user.location.lat !== null ? this.state.user.location : { lat: 40.7450271, lng: -73.8858674 }} radius={this.state.user.radius !== '0.00' ? parseFloat(this.state.user.radius) : 1} history={this.props.history} />} />
+                      <Route path="/post/:id" element={<PostDetailPage />} />
+                      <Route path="/new-post/:type" element={<NewPostPage />} />
+                      <Route path="/my-post/:id" element={<MyPostPage />} />
+                      <Route path="/my-posts" element={<MyPostListPage />} />
+                      <Route path="/edit-post/:id" element={<EditPostPage />} />
+                      <Route path="/confirm-deactivation" element={<DeactivationConfirmationPage setLoggedIn={this.props.setLoggedIn} />} />
+                      <Route path="/error" element={<ErrorBoundary />} />
+                      <Route path="*" element={<Navigate to={this.props.isLoggedIn ? "/home" : "/"} />} />
+                    </Routes>
+                  </div>
+                </div>
+              </ErrorBoundary>
+            </>
+          }
         </CommUnityContext.Provider>
-      </main>
+      </main >
     );
   }
 }

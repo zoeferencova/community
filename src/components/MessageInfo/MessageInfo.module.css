@@ -4,13 +4,12 @@
    z-index: 1000;
    background-color: white;
    display: flex;
-   padding: 0px 15px;
    right: 0;
    left: 0;
    top: 10;
    align-items: center;
    background: #eff1f4aa;
-
+   padding: 0px 15px;
    justify-content: space-between;
    animation: fadeInDown ease 0.3s;
    -webkit-animation: fadeInDown ease 0.3s;
@@ -24,6 +23,7 @@
    font-size: 15px;
    margin-left: 15px;
    text-align: left;
+   display: none;
 }
 
 .buttons {
@@ -33,7 +33,7 @@
 
 
 .buttons button {
-   margin: 0px 10px;
+   margin: 0px 5px;
 }
 
 .deleteButton {
@@ -100,15 +100,12 @@
    }
 }
 
-@media only screen and (max-width: 608px) {
-   .container {
-      flex-wrap: wrap;
-      height: 130px;
-      justify-content: center;
+@media only screen and (min-width: 830px) {
+   .buttons button {
+      margin: 0px 10px;
    }
 
-   .container .buttons {
-      margin-bottom: 20px;
+   .container p {
+      display: block;
    }
-
 }

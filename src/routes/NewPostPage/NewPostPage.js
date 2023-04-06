@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import styles from "./NewPostPage.module.css";
 import UserDataService from "../../services/user-data-service";
@@ -13,8 +13,8 @@ const NewPostPage = () => {
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
-
-    const { type } = useParams()
+    const { type } = useParams();
+    const location = useLocation();
 
     // Handles form submission
     // Submits post request to server for new post and adds post to context
@@ -54,7 +54,11 @@ const NewPostPage = () => {
     return (
         <Container>
             <form className={styles.form} onSubmit={e => handleSubmit(e)}>
-                <h3>{type === "offer" ? offerIcon : requestIcon}New {type}</h3>
+                <h3 className={styles.formHeading}>{type === "offer" ? offerIcon : requestIcon}New {type}</h3>
+                <div className={styles.mobileSelectors}>
+                    <h3 onClick={() => navigate("/new-post/request")} className={location.pathname === "/new-post/request" ? styles.selected : undefined}>{requestIcon}New request</h3>
+                    <h3 onClick={() => navigate("/new-post/offer")} className={location.pathname === "/new-post/offer" ? styles.selected : undefined}>{offerIcon}New offer</h3>
+                </div>
                 <div>
                     <Label className={styles.label} htmlFor="categories">{type === "offer" ? "What can you help with?" : "What do you need help with?"}</Label>
                     <CategoryMultiSelect error={error} />
@@ -69,7 +73,7 @@ const NewPostPage = () => {
                     <Textarea className={styles.textarea} name="description" id="description"></Textarea>
                 </div>
                 <div className={styles.buttonContainer}>
-                    <ButtonLight type="button" onClick={() => navigate(-1)}>Cancel</ButtonLight>
+                    <ButtonLight type="button" onClick={() => navigate("/home")}>Cancel</ButtonLight>
                     <ButtonDark type="submit" loading={loading.toString()}>Submit</ButtonDark>
                 </div>
             </form>

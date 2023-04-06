@@ -26,7 +26,7 @@ const Messages = ({ messages, user, receiver }) => {
         if (messages !== undefined) {
             return messages.map((msg, i) => {
                 return (
-                    <div key={msg.id} className={`${styles.messageContainer} ${msg.sender_id === user.id && styles.right} ${findLastThreadMsg(messages, msg, i) === true && styles.lastInThread}`}>
+                    <div key={msg.id} className={`${styles.messageContainer} ${msg.sender_id === user.id ? styles.right : undefined} ${findLastThreadMsg(messages, msg, i) === true && styles.lastInThread}`}>
                         {findLastThreadMsg(messages, msg, i) && <ProfilePicture className={styles.messagePic} first_name={msg.sender_id === user.id ? user.first_name : receiver.first_name} />}
                         <div className={styles.data}>
                             <div className={styles.message}>{msg.message_content}</div>

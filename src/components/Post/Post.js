@@ -21,7 +21,7 @@ const Post = ({ first_name, post_type, distance_from_user, categories, descripti
                             <ProfilePicture first_name={first_name} user_name={communityContext.user.first_name} />
                             <h4><span className={styles.name}>{first_name}</span> {post_type === "offer" ? "offered to help" : "requested help"}</h4>
                         </div>
-                        <div>
+                        <div className={styles.detailsSection}>
                             <span>{post_type === "offer" ? offerIcon : requestIcon}</span>
                             <span className={styles.distance}>{UserDataService.metersToMiles(distance_from_user) + " mi away"}</span>
                         </div>

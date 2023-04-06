@@ -4,6 +4,7 @@
     flex-direction: row;
     align-items: flex-start;
     height: 100%;
+    flex: 1;
 }
 
 .outerContainer {
@@ -11,6 +12,7 @@
     height: 100vh;
     margin-top: -100px;
     z-index: 2000;
+    display: flex;
 }
 
 .sideBar {
@@ -219,7 +221,12 @@
 
 .chatRoomContainer {
     height: 100%;
-    width: 76.25%;
+    background-color: white;
+    min-width: 10px;
+    display: flex;
+    /* position: absolute;
+    right: 0;
+    width: 74%; */
 }
 
 .chatRoom {
@@ -272,7 +279,7 @@
 
 /* changed from position relative to position absolute */
 .threadContainer .thread {
-    position: absolute;
+    position: relative;
     width: 100%;
     min-height: 100%;
     display: flex;
@@ -300,7 +307,8 @@
 .messageContainer .data {
     order: 2;
     height: 100%;
-    margin-left: 25px
+    margin-left: 25px;
+
 }
 
 .messageContainer .time {
@@ -363,7 +371,7 @@
     position: absolute;
     bottom: 0;
     width: 0;
-    transform: rotate(90deg)
+    transform: rotate(90deg);
 }
 
 .messageContainer.right {
@@ -371,6 +379,7 @@
     padding-left: 30%;
     padding-right: 0;
     text-align: left;
+
 }
 
 .messageContainer.right .messagePic {
@@ -386,7 +395,7 @@
 
 .messageContainer.right .data {
     margin-left: 0;
-    order: 1
+    order: 1;
 }
 
 .messageContainer.right .name {
@@ -396,7 +405,6 @@
 .messageContainer.right .message {
     background: #6481ed;
     color: #fff;
-
 }
 
 .messageContainer.right.lastInThread .message::before {
@@ -417,11 +425,6 @@
 .messageContainer.right.lastInThread .message {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 20px;
-}
-
-.typingUser {
-    text-align: right;
-    margin: 10px 15px
 }
 
 .messageInput {
@@ -494,7 +497,42 @@
     display: none !important;
 }
 
-@media screen and (max-width: 800px) {
+.sideBar {
+    /* min-width: 300px !important; */
+    min-width: 280px !important;
+    width: 26% !important;
+}
+
+
+@media only screen and (max-width: 1100px) {
+    .sideBar .users .user .userInfo {
+        display: none;
+    }
+
+    .sideBar {
+        width: 95px !important;
+        min-width: 95px !important;
+    }
+
+    .sidebarPic {
+        margin-left: 16px !important;
+    }
+
+    .sideBar .users .user {
+        height: 75px;
+    }
+
+    .chatName span {
+        display: none;
+    }
+
+    .chatName svg {
+        font-size: 20px;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width: 830px) {
     .container {
         position: fixed;
         top: 0;
@@ -503,25 +541,21 @@
         right: 0;
     }
 
-    .sideBar .users .user .userInfo {
-        display: none;
+    .messageContainer.right {
+        padding-left: 15%;
     }
 
-    .sideBar {
-        width: 95px;
+    .messageContainer {
+        padding-right: 15%;
     }
 
-    .sideBar .users .user {
-        height: 90px;
-    }
 
-    .chatRoomContainer {
-        width: 100% !important;
-    }
 
     .heading div {
         display: none;
     }
+
+
 }
 
 @media screen and (max-width: 510px) {
@@ -531,6 +565,15 @@
 
     .sideBar .users .user .userInfo {
         display: flex;
+    }
+
+    .chatName span {
+        display: inline-block;
+    }
+
+    .chatName svg {
+        font-size: 16px;
+        margin-left: 0;
     }
 
     .chatRoomContainer,
@@ -552,7 +595,7 @@
 
     .activeMobile {
         position: absolute;
-        width: 100%;
+        width: 100% !important;
         right: 0;
         left: 0;
         z-index: 100;
@@ -581,4 +624,8 @@
 
 .messageContainer:last-child .messagePic {
     margin-bottom: 13px;
+}
+
+.chatRoomContainer {
+    width: 100% !important;
 }

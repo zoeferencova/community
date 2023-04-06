@@ -41,7 +41,7 @@ const ChangePasswordPage = () => {
                     UserDataService.patchUser({ password: newPassword.value }, user.id)
                         .then(res => {
                             setLoading(false)
-                            communityContext.updateSuccessMessage("Password successfully updated")
+                            communityContext.updateSuccessMessage("Password updated")
                             navigate("/account")
                         })
                         .catch(res => {
@@ -54,20 +54,21 @@ const ChangePasswordPage = () => {
 
     return (
         <Container>
-            <h3>Change Password</h3>
             <form className={styles.form} onSubmit={e => handleSubmit(e)}>
+                <h3>Change Password</h3>
+
                 {error && <Error message={error} className={styles.error} />}
                 <div>
                     <Label htmlFor="oldPassword">Old Password</Label>
-                    <Input type="password" name="oldPassword" id="oldPassword" />
+                    <Input required type="password" name="oldPassword" id="oldPassword" />
                 </div>
                 <div>
                     <Label htmlFor="newPassword">New Password</Label>
-                    <Input type="password" name="newPassword" id="newPassword" />
+                    <Input required type="password" name="newPassword" id="newPassword" />
                 </div>
                 <div>
                     <Label htmlFor="confirmPassword">Confirm New Password</Label>
-                    <Input type="password" name="confirmPassword" id="confirmPassword" />
+                    <Input required type="password" name="confirmPassword" id="confirmPassword" />
                 </div>
                 <div className={styles.buttonSection}>
                     <ButtonLight type="button" onClick={() => navigate(-1)}>Cancel</ButtonLight>

@@ -1,13 +1,22 @@
 .main {
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 70px);
 }
 
 .pageContent {
     width: 100%;
     background-color: #F7FAFA;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.pageContent * {
+    min-width: 0;
 }
 
 @media only screen and (min-width: 830px) {

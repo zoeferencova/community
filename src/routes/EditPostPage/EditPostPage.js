@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import config from "../../config";
 import UserDataService from "../../services/user-data-service";
 import CommUnityContext from "../../contexts/context";
 import { ButtonDark, ButtonLight, Textarea, Label, CategoryMultiSelect, UrgencySelect, Container } from "../../components/Utils/Utils";
@@ -23,21 +22,11 @@ const EditPostPage = props => {
     // Creates SlimSelect instances for the category and urgency inputs which are applied to the divs by id value
     useEffect(() => {
         const postId = parseInt(id);
-        fetch(`${config.API_ENDPOINT}/posts/${postId}`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem(config.TOKEN_KEY)}`
-            }
-        })
-            .then(res => res.json())
-            .then(resJson => setPost(resJson))
+        setPost(communityContext.user_posts.find(post => post.id === postId))
     }, [])
 
     const handleSubmit = e => {
         e.preventDefault();
-
-        console.log(e.target.categories)
 
         setLoading(true)
 
@@ -86,7 +75,7 @@ const EditPostPage = props => {
         <>
 
             <Container>
-                {!post ? <div>loading</div> :
+                {!post ? <div className={styles.loading}>Loading...</div> :
                     <form className={styles.form} onSubmit={e => handleSubmit(e)}>
                         <h3>Edit {post.post_type}</h3>
                         <div>
