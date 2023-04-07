@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
-import { ButtonLight, ButtonDark, offerIcon, requestIcon, PostActionButton } from "../Utils/Utils";
+import { offerIcon, requestIcon, PostActionButton } from "../Utils/Utils";
 import styles from "./MessageInfo.module.css";
 
 const MessageInfo = ({ user, deleteChat, loading }) => {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import { ButtonLight, ButtonDark, Input, Label, Error, Success } from "../Utils/Utils";
 
@@ -7,6 +8,8 @@ import styles from "./LoginForm.module.css";
 const LoginForm = ({ logIn, error, success, loading }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigate = useNavigate();
 
     // Handles form submission and calls LoginPage's logIn function with supplied email and password
     const handleSubmit = e => {
@@ -23,7 +26,7 @@ const LoginForm = ({ logIn, error, success, loading }) => {
             <Label htmlFor="password">Password</Label>
             <Input required type="password" name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} />
             <div className={styles.buttonContainer}>
-                <ButtonLight type="button" onClick={() => window.history.push("/")}>Cancel</ButtonLight>
+                <ButtonLight type="button" onClick={() => navigate("/")}>Cancel</ButtonLight>
                 <ButtonDark type="submit" loading={loading.toString()}>Sign in</ButtonDark>
             </div>
         </form>

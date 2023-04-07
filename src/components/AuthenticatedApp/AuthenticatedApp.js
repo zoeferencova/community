@@ -21,7 +21,6 @@ import NewPostPage from "../../routes/NewPostPage/NewPostPage";
 import MyPostPage from "../../routes/MyPostPage/MyPostPage";
 import MyPostListPage from "../../routes/MyPostListPage/MyPostListPage";
 import EditPostPage from "../../routes/EditPostPage/EditPostPage";
-import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import ChangePasswordPage from "../../routes/ChangePasswordPage/ChangePasswordPage";
 import DeactivationConfirmationPage from "../../routes/DeactivationConfirmationPage/DeactivationConfirmationPage";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary"

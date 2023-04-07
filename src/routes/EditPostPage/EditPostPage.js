@@ -7,7 +7,7 @@ import styles from "../NewPostPage/NewPostPage.module.css";
 
 const cats = ['Picking up supplies', 'Running errands', 'Phone call', 'Online chat', 'Dog walking', 'Other']
 
-const EditPostPage = props => {
+const EditPostPage = () => {
     const communityContext = useContext(CommUnityContext);
 
     const [error, setError] = useState(null);
@@ -18,12 +18,10 @@ const EditPostPage = props => {
 
     const { id } = useParams();
 
-    // Fetches post information from server and sets to state so it can be used as the value for the inputs
-    // Creates SlimSelect instances for the category and urgency inputs which are applied to the divs by id value
     useEffect(() => {
         const postId = parseInt(id);
         setPost(communityContext.user_posts.find(post => post.id === postId))
-    }, [])
+    }, [communityContext.user_posts, id])
 
     const handleSubmit = e => {
         e.preventDefault();
