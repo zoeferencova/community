@@ -5,9 +5,13 @@
     align-items: center;
     right: 0;
     min-height: 100px;
-    position: fixed;
+
     z-index: 100;
     width: 100%;
+}
+
+.nav:not(.landing) {
+    position: fixed;
 }
 
 .logo {
@@ -17,11 +21,16 @@
 }
 
 .navLinks {
-    list-style: none;
     display: flex;
     font-size: 22px;
-    letter-spacing: 0.7px;
     margin-right: 35px;
+    list-style: none;
+}
+
+
+
+.navLinks:not(.landing .navLinks):not(.mobile) {
+    letter-spacing: 0.7px;
     border-radius: 50px;
     background-color: white;
     padding: 12px 16px;
@@ -43,24 +52,6 @@
     transition: 0.5s;
 }
 
-.logIn,
-.signUp {
-    border: none;
-    border-radius: 3px;
-    padding: 12px 15px !important;
-    margin-top: 15px;
-}
-
-.logIn {
-    color: black !important;
-    background-color: rgba(225, 225, 225, 0.7);
-}
-
-.signUp {
-    background-color: black;
-    color: white !important;
-}
-
 .mobile {
     display: none;
 }
@@ -68,7 +59,11 @@
 @media only screen and (max-width: 1100px) {
     .logo {
         margin-left: 40px;
-        margin-top: 50px;
+        margin-top: 0px;
+    }
+
+    .landing .navLinks {
+        margin-right: 20px;
     }
 }
 
@@ -80,10 +75,17 @@
         height: 70px;
     }
 
+    .nav.nav:not(.landing) {
+        position: static;
+    }
+
     .logo {
         margin-left: 25px;
-        margin-top: 5px;
         width: 140px;
+    }
+
+    .landing .logo {
+        margin-top: 30px;
     }
 
     .mobile {
@@ -100,16 +102,18 @@
         box-shadow: none;
         margin: 0;
     }
-}
 
-@media only screen and (max-width: 500px) {
-
+    .nav:not(.landing) .navLinks {
+        margin-right: 25px;
+    }
 
     .logIn,
     .signUp {
-        font-size: 12.5px;
-        padding: 8px 10px;
+        margin-top: 27px;
     }
+}
+
+@media only screen and (max-width: 580px) {
 
     .signUp {
         display: none;
@@ -119,7 +123,7 @@
         border: none;
     }
 
-    .navLinks {
-        margin-right: 10px;
+    .landing .navLinks {
+        margin-right: 5px !important;
     }
 }

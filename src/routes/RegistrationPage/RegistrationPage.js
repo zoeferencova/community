@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
+import { Container } from "../../components/Utils/Utils";
 import AuthApiService from "../../services/auth-api-service";
 import styles from "../LoginPage/LoginPage.module.css";
 
@@ -36,15 +37,13 @@ const RegistrationPage = updateSuccess => {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.main}>
+        <Container authForm="true">
+            <div className={styles.form}>
                 <h1>Sign up</h1>
-                <div className={styles.form}>
-                    <RegistrationForm loading={loading} error={error} register={register} updateSuccess={updateSuccess} />
-                    <p>Already have an account? <Link to="/login">Sign in</Link></p>
-                </div>
+                <RegistrationForm loading={loading} error={error} register={register} updateSuccess={updateSuccess} />
+                <p>Already have an account? <Link to="/login">Sign in</Link></p>
             </div>
-        </div>
+        </Container>
     )
 
 }

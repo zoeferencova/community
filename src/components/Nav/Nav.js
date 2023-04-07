@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { useLocation, NavLink } from "react-router-dom";
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import CommUnityContext from "../../contexts/context";
-import { ProfilePicture, messageIcon, houseIcon } from "../Utils/Utils";
+import { ProfilePicture, messageIcon, houseIcon, ButtonDark, ButtonLight } from "../Utils/Utils";
 
 import styles from "./Nav.module.css";
 
@@ -10,13 +10,14 @@ const Nav = ({ isLoggedIn, first_name }) => {
     const communityContext = useContext(CommUnityContext);
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     // Used to disable the user's ability to click on nav links when the user is initially sent to the location page after creating an account and logging in
     // This is done to avoid having the user go to the home page where none of the content would be rendered correctly if the user doesn't have a location saved
     const handleClick = e => location.pathname === "/location" && !communityContext.user.location.lat && (isLoggedIn && e.preventDefault())
 
     return (
-        <nav className={styles.nav}>
+        <nav className={`${styles.nav} ${!isLoggedIn ? styles.landing : undefined}`}>
             <NavLink to={isLoggedIn ? "/home" : "/"} onClick={e => handleClick(e)}>
                 <img src={require("../../images/logo.png")} alt="logo" className={styles.logo} />
             </NavLink>
@@ -42,10 +43,10 @@ const Nav = ({ isLoggedIn, first_name }) => {
                     }
                 </div>
                 :
-                <ul className={styles.navLinks} id="loggedOut">
-                    <NavLink to="/login"><li className={styles.logIn}>Log in</li></NavLink>
-                    <NavLink to="/register"><li className={styles.signUp}>Sign up</li></NavLink>
-                </ul>
+                <div className={styles.navLinks} id="loggedOut">
+                    <ButtonLight className={styles.logIn} large="true" onClick={() => navigate('/login')}>Log in</ButtonLight>
+                    <ButtonDark className={styles.signUp} large="true" onClick={() => navigate('/register')}>Sign up</ButtonDark>
+                </div>
             }
         </nav>
     )

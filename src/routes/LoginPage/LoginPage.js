@@ -5,6 +5,7 @@ import LoginForm from "../../components/LoginForm/LoginForm";
 import AuthApiService from "../../services/auth-api-service";
 
 import styles from "./LoginPage.module.css";
+import { Container } from "../../components/Utils/Utils";
 
 const LoginPage = ({ setLoggedIn }) => {
     const [loading, setLoading] = useState(false);
@@ -34,16 +35,13 @@ const LoginPage = ({ setLoggedIn }) => {
 
 
     return (
-        <div className={styles.container}>
-            <div className={styles.main}>
+        <Container authForm="true">
+            <div className={styles.form}>
                 <h1>Sign in</h1>
-                <div className={styles.form}>
-                    <LoginForm logIn={logIn} loading={loading} error={error} success={success} />
-                    <p>Don't have an account? <Link to="/register">Sign up</Link></p>
-                </div>
+                <LoginForm logIn={logIn} loading={loading} error={error} success={success} />
+                <p>Don't have an account? <Link to="/register">Sign up</Link></p>
             </div>
-        </div>
-
+        </Container>
     )
 
 }

@@ -1,47 +1,64 @@
-.header, .section {
+.header,
+.section {
     display: flex;
     align-items: center;
     text-align: left;
 }
-  
+
 .header {
     height: 100vh;
-    background-color: #F5F1EA;
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: -100px;
+    width: 100%;
 }
 
 .header h1 {
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 .banner {
     height: 100vh;
     position: absolute;
     top: 0;
-    right: 0px;
+    right: 0;
     z-index: 0;
     opacity: 0.9;
 }
 
 .header .left {
     z-index: 10;
-    background-color: #F5F1EA;
+    background-color: white;
 }
 
-.first {
-    margin-top: 90vh;
+.header .buttonSection {
+    justify-content: flex-start;
+    width: 72%;
+    margin: 25px auto;
+}
+
+.bannerIcon {
+    z-index: 100;
+    height: 10vh;
+    width: 10vh;
+    position: absolute;
+}
+
+.heart {
+    top: 24vh;
+    left: calc(50% - 5vh);
+}
+
+.question {
+    top: 64vh;
+    right: 12.7%;
 }
 
 .section {
-    padding: 80px 0px;
+    padding: 80px 50px;
 }
 
-.icons {
-    flex-direction: column;
-}
-  
-.right, .left {
+.right,
+.left {
     width: 50%;
     height: 100%;
     display: flex;
@@ -49,156 +66,183 @@
     flex-direction: column;
 }
 
-.heading, .subheading, .buttonSection {
-    width: 70%;
-    margin: 0px auto 40px auto;
+.heading,
+.subheading,
+.featureList {
+    width: 72%;
+    margin: 0px auto 30px auto;
     z-index: 30;
+}
+
+.buttonSection {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonSection button:first-child {
+    margin-right: 15px;
 }
 
 .heading {
-    font-size: 48px;
+    font-size: 30px;
     padding-bottom: 0px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .subheading {
-    font-size: 20px;
-    line-height: 25px;
-}
-
-.demoButton, .signupButton {
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 12px 15px !important;
-    font-family: inherit;
-    font-size: 16px;
-    letter-spacing: 0.7px;
-    margin-right: 20px;
-}
-
-.demoButton:hover, .signupButton:hover {
-    cursor: pointer;
-}
-
-.demoButton {
-    color: black;
-    background-color: transparent;
-    min-width: 125px;
-}
-
-.spinner {
-    font-size: 20px;
-    margin-top: -4px;
-    
-}
-
-.signupButton {
-    background-color: black;
-    color: white;
-}
-
-.first .left {
-    width: 40%;
-}
-
-.first .right {
-    width: 60%;
+    font-size: 19px;
+    line-height: 26px;
 }
 
 .section .heading {
-    font-size: 38px;
+    font-size: 28px;
 }
 
-.section .subheading {
-    font-size: 18px;
-}
-
-.mockupDesktop {
+.mockup {
     height: auto;
     width: 100%;
+    box-shadow: 0 4px 20px 4px rgba(0, 0, 0, .02), 0 2px 10px 2px rgba(0, 0, 0, .04);
+    border-radius: 10px;
 }
 
-.icons {
-    background-color: #f7f9fa;
-    position: relative;
+.featureList {
+    list-style: none;
+    padding: 0;
 }
 
-.iconList {
+.featureList li {
+    font-size: 17px;
+    margin: 0px 0px 20px 0px;
     display: flex;
-    padding: 0px 30px;
-    z-index: 30;
-}
-
-.icons h2 {
-    font-size: 35px;
-    z-index: 50;
-    /* align-self: flex-start;
-    margin-left: 80px; */
-}
-
-.iconImage {
-    height: auto;
-    width: 100%;
-    z-index: 30;
-}
-
-.iconSection, .last {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 50px;
+    line-height: 23px;
 }
 
-.iconHeading {
-    align-self: flex-start;
-    margin: 30px 0px 0px 0px;
-    z-index: 30;
+.featureList li svg {
+    font-size: 20px;
 }
 
-.iconSubheading {
-    width: 100%;
-    margin: 10px 0px;
-    display: block;
-    z-index: 30;
+.featureList li div {
+    padding: 17px;
+    border-radius: 6px;
+    margin-right: 20px;
+}
+
+.first .left {
+    width: 56%
+}
+
+.first .right {
+    width: 44%;
+}
+
+.first .heading,
+.first .featureList,
+.first .button {
+    width: 80%;
+    padding-left: 50px;
+    margin: 0 auto;
+}
+
+.first .heading {
+    padding-left: 60px;
+    margin-bottom: 40px;
+}
+
+.first button {
+    margin-top: 25px;
+    width: fit-content;
+    margin-left: 10px;
 }
 
 .security {
-    background-color: #F5F1EA;
-}
-
-.security .left {
-    width: 60%;
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 95%;
+    justify-content: center;
+    background-color: #F7FAFA;
+    margin: 0 auto;
+    border-radius: 30px;
 }
 
 .security .right {
     width: 40%;
 }
 
-.securityMockup {
-    width: 95%;
-    height: auto;
+.security .left {
+    width: 60%;
+}
+
+.security .top {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.security .heading {
+    margin-bottom: 13px;
+}
+
+.security .subheading {
+    color: #8e97a3c8;
+    font-weight: 500;
+}
+
+.securityDetails {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.security .mockupSection {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.security .mockup:first-child {
+    margin-right: 35px;
+}
+
+.security .mockup {
     align-self: flex-start;
+    height: 100%;
+    min-width: 0;
+    width: auto;
+}
+
+.security .featureList {
+    width: 85%;
+    margin-right: 0;
+}
+
+.security .featureList li {
+    margin-bottom: 30px;
 }
 
 .last {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin-top: 10px;
-    padding-bottom: 60px;
-    background-color: #F5F1EA;
+    padding-bottom: 90px;
     margin: 0;
 }
 
 .last .heading {
-    font-size: 28px;
+    font-size: 26px;
+    margin-bottom: 50px;
 }
 
 .footer {
-    padding: 5px 30px;
-    background-color: #494f5c;
+    padding: 15px 45px;
+    background-color: #F7FAFA;
     display: flex;
     justify-content: space-between;
-    color: white;
 }
 
 .footerDetails {
@@ -206,14 +250,23 @@
     align-items: center;
 }
 
-.footer p {
-    margin-right: 20px;
+.footerDetails a {
+    margin-right: 15px;
 }
 
-.footer i {
-    font-size: 25px;
-    color: white;
-    margin: 0px 8px;
+.footerDetails svg {
+    font-size: 20px;
+}
+
+.footerDetails svg,
+.footer p {
+    color: #8e97a3;
+}
+
+.footer p {
+    margin-right: 20px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .footer img {
@@ -221,188 +274,110 @@
     width: auto;
 }
 
-.shape1 {
-    position: absolute;
-    top: -100px;
-    left: -200px;
-    z-index: 0;
-    height: 600px;
-    width: 550px;
-    transform: rotate(-10deg);
-    overflow: hidden;
-}
-
-.shape2 {
-    position: absolute;
-    z-index: 0;
-    bottom: -290px;
-    height: 700px;
-    right: -130px;
-    overflow: hidden;
-}
-
 .mobile {
     display: none;
 }
 
-.iconColumn {
-    display: flex;
-    flex-direction: column;
-}
-
-@media only screen and (max-width: 1050px) {
-    .header, .banner {
-        height: 80vh;   
-    }
-
+@media only screen and (max-width: 950px) {
     .header {
-        overflow: hidden;
+        height: 60vh;
     }
+
+
 
     .banner {
-        right: -120px;
-    }
-
-    .header .heading {
-        font-size: 35px;
-        margin-bottom: 25px;
-        margin-top: 40px;
-    }
-
-    .header .subheading {
-        font-size: 18px;
-    }
-
-    .first {
-        margin-top: 70vh;
-    }
-
-    .first .heading, .security .heading, .icons h2 {
-        font-size: 30px;
-    }
-
-    .first .subheading, .security .subheading {
-        font-size: 16px;
-    }
-
-    .shape1 {
-        height: 500px;
-    }
-
-    .shape2 {
-        height: 600px;
-        /* top: 720px; */
-    }
-
-    .iconSection {
-        margin: 20px;
-    }
-
-    .last .heading {
-        font-size: 25px;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .mobile {
-        display: block;
-    }
-
-    .desktop {
         display: none;
     }
 
-    .header {
-        flex-direction: column;
+    .header .heading,
+    .header .subheading {
+        width: 60%;
+    }
+
+    .header .right {
+        width: 0% !important;
+    }
+
+    .header .left {
+        width: 100%;
         text-align: center;
-        height: 75vh;
-        align-items: center;
     }
 
-    .header .heading {
-        font-size: 30px;
+    .header .buttonSection {
+        justify-content: center;
     }
 
-    .right {
-        width: 0;
-        height: 0;
+    .bannerIcon {
+        height: 80px;
+        width: 80px;
     }
 
-    .header .left, .header .right {
+    .heart {
+        left: 13%;
+        top: 52vh;
+    }
+
+    .question {
+        top: 18vh;
+        right: 7%;
+    }
+
+    .section,
+    .securityDetails {
+        flex-direction: column;
+    }
+
+    .section .left,
+    .section .right {
         width: 100%;
     }
 
     .first {
-        margin-top: 70vh;
-    }
-    .section {
-        flex-direction: column;
-        padding: 50px 0;
+        padding-top: 0px;
     }
 
-    .section .left, .section .right {
+    .section .featureList,
+    .section .heading,
+    .first .button {
         width: 100%;
-        height: auto;
     }
 
-    .section .heading, .section .subheading, .icons h2 {
-        width: 85%;
+    .first .right {
+        align-items: center;
+        padding-top: 90px;
     }
 
-    .first, .security {
-        flex-direction: column-reverse !important;
+    .first .right .button {
+        display: flex;
+        justify-content: center;
     }
 
-    .first img, .security img {
-        width: 85%;
-        
+    .first .heading {
+        margin-bottom: 40px;
     }
 
-    .first img {
-        margin: 0 auto 60px auto;
-    }
-
-    .icons h2 {
-        margin-bottom: 50px;
-    }
-
-    .iconList {
-        flex-direction: column;
-    }
-
-    .iconSection {
-        flex-direction: row;
-        margin-bottom: 50px;
-    }
-
-    .iconImage {
-        width: 50%;
-    }
-
-    .iconColumn {
-        padding: 0 0 0 50px;
-    }
-
-    .iconSection:nth-child(2) {
-        flex-direction: row-reverse;
-    }
-
-    .iconSection:nth-child(2) .iconColumn {
-        padding: 0 50px 0 0;
-    }
-
-    .security h2 {
-        margin-top: 50px;
-    }
-
-    .shape2 {
-        bottom: -220px;
+    .security .right {
+        margin-top: 90px;
     }
 }
 
-@media only screen and (max-width: 500px) {
-    .header, .banner {
-        height: 80vh;
+@media only screen and (max-width: 580px) {
+
+    .header {
+        height: 70vh;
+    }
+
+    .header .left {
+        justify-content: flex-end;
+    }
+
+
+    .header .subheading {
+        width: 80%;
+    }
+
+    .header .heading {
+        width: 70%;
     }
 
     .header .heading {
@@ -411,80 +386,80 @@
 
     .header .subheading {
         font-size: 16px;
-        line-height: 20px;
+        line-height: 22px;
     }
 
-    .section .heading, .icons h2 {
+    .buttonSection {
+        width: 90% !important
+    }
+
+    .bannerIcon {
+        height: 8vh;
+        width: 8vh;
+    }
+
+    .question {
+        top: 18vh;
+        right: 5%;
+    }
+
+    .heart {
+        top: 73vh;
+        left: 7%;
+    }
+
+    .section {
+        padding: 50px 20px;
+    }
+
+    .featureList {
+        padding: 0px !important;
+    }
+
+    .featureList li {
+        font-size: 17px;
+        line-height: 22px;
+    }
+
+    .first .heading {
+        padding-left: 10px;
+        margin-bottom: 30px;
+    }
+
+    .first .right .button {
+        justify-content: flex-start;
+        padding-left: 0;
+    }
+
+    .first .right {
+        padding-top: 70px;
+    }
+
+    .securtity .heading {
+        width: 100%;
+    }
+
+    .section .heading {
         font-size: 23px;
     }
 
     .section .subheading {
-        font-size: 16px;
-        line-height: 19px;
+        display: none;
     }
 
-    .demoButton, .signupButton {
-        font-size: 12.5px;
-        padding: 8px 10px;
+    .security .right {
+        margin-top: 60px;
     }
 
-    .buttonSection {
-        width: 90%;
-    }
-
-    .iconSection, .iconSection:nth-child(2) {
-        flex-direction: column;
-        margin: 0px 0px 40px 0px;
-    }
-
-    .iconColumn, .iconSection:nth-child(2) .iconColumn, .iconSection {
-        padding: 0px;
-        width: 100%;
-    }
-
-    .iconSection img {
-        width: 100%;
-    }
-
-    .shape2 {
-        height: 550px;
-        right: -110px;
-        bottom: -180px;
+    .security .featureList {
+        margin-bottom: 0px;
     }
 
     .footer {
-        padding: 5px 15px;
-        font-size: 14px;
+        padding-left: 20px;
     }
 
-    .footer img {
-        height: 60px;
-    }
-}
-
-@media only screen and (min-height: 1030px) {
-    .header, .banner {
-        height: 55vh;   
-    }
-
-    .first {
-        margin-top: 55vh
-    }
-
-}
-
-@media only screen and (max-height: 600px) {
-    .header, .banner {
-        height: 80vh;   
-    }
-
-    .header .heading {
-        font-size: 21px;
-    }
-
-    .header .subheading {
-        font-size: 14px;
-        line-height: 16px;
+    .last {
+        padding: 70px 25px;
     }
 }
-

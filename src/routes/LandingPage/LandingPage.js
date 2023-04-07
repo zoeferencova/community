@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from 'prop-types';
 import AuthApiService from "../../services/auth-api-service";
+import { ButtonDark, ButtonLight, lockSquareIcon, eyeSquareIcon, mobileSquareIcon, githubIcon, linkedinIcon, locationSquareIcon, postSquareIcon, messageSquareIcon } from "../../components/Utils/Utils"
 
 import styles from "./LandingPage.module.css";
 
@@ -21,79 +22,76 @@ const LandingPage = ({ setLoggedIn }) => {
             })
     }
 
+    const demoButton = <ButtonLight large="true" onClick={() => demoLogin()} loading={loading.toString()}>See a demo</ButtonLight>
+    const signupButton = <ButtonDark large="true" type="button" onClick={() => navigate("/register")}>Get started</ButtonDark>
+
     return (
         <main className={styles.main}>
             <header className={styles.header}>
                 <div className={styles.left}>
                     <h1 className={styles.heading}>Coming together in a time of need</h1>
-                    <p className={styles.subheading}>Right now, more than ever, we need to unite our communities and help those in need. CommUnity is a platform that enables the sharing of services and resources to ensure no one is left stranded during the Coronavirus (COVID-19) outbreak.</p>
+                    <p className={styles.subheading}>Inspired by acts of kindness during Covid lockdown, CommUnity is a platform that allows neighbors to help each other out and share resources.</p>
                     <div className={styles.buttonSection}>
-                        <button className={styles.signupButton} type="button" onClick={() => navigate("/register")}>Start now</button>
-                        <button className={styles.demoButton} type="button" onClick={() => demoLogin()}>{loading ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : "See a demo"}</button>
+                        {signupButton}
+                        {demoButton}
                     </div>
                 </div>
                 <div className={styles.right}>
                     <img className={`${styles.banner} ${styles.desktop}`} src={require("../../images/banner.jpeg")} alt="grocery delivery" />
+                    <img className={`${styles.bannerIcon} ${styles.heart}`} src={require("../../images/banner-heart.png")} alt="offer icon" />
+                    <img className={`${styles.bannerIcon} ${styles.question}`} src={require("../../images/banner-question.png")} alt="request icon" />
                 </div>
             </header>
             <section className={`${styles.section} ${styles.first}`}>
+
                 <div className={styles.left}>
-                    <h2 className={styles.heading}>How does it work?</h2>
-                    <p className={styles.subheading}>Post offers or requests for help and see other active postings in your neighborhood. <br></br><br></br> Other members of your community can then offer to help or accept your offer, initiating a private chat where you can securely work out the details.</p>
+                    <img className={styles.mockup} src={require("../../images/home-page.png")} alt="mockup of application on desktop browser" />
                 </div>
                 <div className={styles.right}>
-                    <img className={styles.mockupDesktop} src={require("../../images/mockup1.png")} alt="mockup of application on desktop browser" />
-                </div>
-            </section>
-            <section className={`${styles.section} ${styles.icons}`}>
-                <h2>What our helpers can do for you</h2>
-                <div className={styles.iconList}>
-                    <div className={styles.iconSection}>
-                        <img className={styles.iconImage} src={require("../../images/supplies.jpg")} alt="man handing supplies to older couple" />
-                        <div className={styles.iconColumn}>
-                            <h3 className={styles.iconHeading}>Pick up supplies</h3>
-                            <p className={styles.iconSubheading}>Running low on groceries, medicine, or household supplies? Our helpers can grab anything you need and drop it off at your doorstep.</p>
-                        </div>
-                    </div>
-                    <div className={styles.iconSection}>
-                        <img className={styles.iconImage} src={require("../../images/dog.jpg")} alt="woman walking dog wearing a face mask" />
-                        <div className={styles.iconColumn}>
-                            <h3 className={styles.iconHeading}>Walk your dog</h3>
-                            <p className={styles.iconSubheading}>Our helpers can take your furry friend for a safe stroll if you don’t feel comfortable being out and about.</p>
-                        </div>
-                    </div>
-                    <div className={styles.iconSection}>
-                        <img className={styles.shape1} src={require("../../images/shape1.png")} alt="decorative shape" />
-                        <img className={styles.shape2} src={require("../../images/shape2.png")} alt="decorative shape" />
-                        <img className={styles.iconImage} src={require("../../images/phone.jpg")} alt="woman talking on the phone looking at laptop" />
-                        <div className={styles.iconColumn}>
-                            <h3 className={styles.iconHeading}>Friendly chat</h3>
-                            <p className={styles.iconSubheading}>We know that quarantining can be an isolating and frightening time. Our helpers can offer a friendly chat through our secure instant messaging system.</p>
-                        </div>
+                    <h2 className={styles.heading}>How it works</h2>
+                    <ul className={styles.featureList}>
+                        <li>{locationSquareIcon} Set your location and radius. The radius captures the offers and requests in that area.</li>
+                        <li>{postSquareIcon} Create a posting or browse offers and requests from other users in your area.</li>
+                        <li>{messageSquareIcon} Respond to requests or accept help and work out the details in an in-app private chat.</li>
+                    </ul>
+                    <div className={styles.button}>
+                        <ButtonDark large="true" onClick={() => demoLogin()} loading={loading.toString()}>See a demo</ButtonDark>
                     </div>
                 </div>
             </section>
             <section className={`${styles.section} ${styles.security}`}>
-                <div className={styles.left}>
-                    <img className={styles.securityMockup} src={require("../../images/security-mockups.png")} alt="mockup of chat functionality and post detail page" />
+                <div className={styles.top}>
+                    <h2 className={styles.heading}>Simple and secure interface</h2>
+                    <p className={styles.subheading}>Works on desktop and mobile browsers</p>
                 </div>
-                <div className={styles.right}>
-                    <h2 className={styles.heading}>Your safety and security are important to us</h2>
-                    <p className={styles.subheading}>We will never share any of your personal information. The other users in your neighborhood will only see your first name and location radius (not your exact location), so the amount of information that you share in the chat is 100% your call.</p>
+                <div className={styles.securityDetails}>
+                    <div className={styles.left}>
+                        <div className={styles.mockupSection}>
+                            <img className={styles.mockup} src={require("../../images/chat.png")} alt="mockup of chat functionality" />
+                            <img className={styles.mockup} src={require("../../images/location.png")} alt="mockup of location detail page on a mobile device" />
+                        </div>
+                    </div>
+                    <div className={styles.right}>
+                        <ul className={styles.featureList}>
+                            <li>{eyeSquareIcon} Other users will only see your first name and radius, not your exact location.</li>
+                            <li>{lockSquareIcon} Discuss logistics in a private chat and only share what you're comfortable with. </li>
+                            <li>{mobileSquareIcon} Mobile version makes it easy to get and give help on the go.</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
             <section className={`${styles.section} ${styles.last}`}>
                 <h2 className={styles.heading}>Ready to make a difference in your community?</h2>
                 <div className={styles.buttonSection}>
-                    <button className={styles.signupButton} type="button" onClick={() => navigate("/register")}>Start now</button>
-                    <button className={styles.demoButton} type="button" onClick={() => demoLogin()}>{loading ? <i className={`fa fa-spinner fa-spin ${styles.spinner}`}></i> : "See a demo"}</button>
+                    {signupButton}
+                    {demoButton}
                 </div>
             </section>
             <footer className={styles.footer}>
                 <div className={styles.footerDetails}>
                     <p>Made by Zoe Ferencova</p>
-                    <a href="https://github.com/zoeferencova/" target="_blank" rel="noopener noreferrer"><i className="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/zoeferencova/" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/zoeferencova/" target="_blank" rel="noopener noreferrer">{githubIcon}</a>
+                    <a href="https://www.linkedin.com/in/zoeferencova/" target="_blank" rel="noopener noreferrer">{linkedinIcon}</a>
                 </div>
             </footer>
         </main>

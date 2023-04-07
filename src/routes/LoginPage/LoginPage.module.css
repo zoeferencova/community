@@ -1,39 +1,15 @@
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.form {
+    width: 80%;
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 115px;
-    width: 90%;
-    max-width: 450px;
-    background-color: white;
-    padding: 25px 0px 30px 0px;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06);
-    border-radius: 10px;
-    margin: 30px auto;
-}
-
-.main h1 {
-    font-size: 28px;
+.form h1 {
+    font-size: 22px;
+    font-weight: 500;
     margin-bottom: 30px;
 }
 
-.form {
-    width: 70%;
+.form p,
+.form p a {
+    color: #8e97a3;
+    font-size: 15px;
 }
-
-@media only screen and (min-height: 1000px) {
-    .main {
-        top: 120px;
-    }
-}
-
-
-
-

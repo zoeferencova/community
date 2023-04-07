@@ -31,7 +31,7 @@ const AccountPage = ({ success }) => {
 
         setLoading(true)
 
-        const userInfo = { firstName, email };
+        const userInfo = { first_name: firstName, email };
         const userId = communityContext.user.id;
 
         // Updates JWT token if user email changes

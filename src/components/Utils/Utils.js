@@ -23,15 +23,24 @@ export const plusIcon = <FontAwesomeIcon icon={icon({ name: 'plus' })} />
 export const errorIcon = <FontAwesomeIcon icon={icon({ name: 'exclamation-circle' })} />
 export const successIcon = <FontAwesomeIcon icon={icon({ name: 'check-circle' })} />
 export const spinnerIcon = <FontAwesomeIcon icon={icon({ name: 'spinner' })} spin />
+export const githubIcon = <FontAwesomeIcon icon={icon({ name: 'github', style: 'brands' })} />
+export const linkedinIcon = <FontAwesomeIcon icon={icon({ name: 'linkedin', style: 'brands' })} />
 export const requestIcon = <div className={`${styles.bgIcon} ${styles.greenIcon}`}><FontAwesomeIcon icon={icon({ name: 'question' })} ></FontAwesomeIcon></div>
 export const offerIcon = <div className={`${styles.bgIcon} ${styles.pinkIcon}`}><FontAwesomeIcon icon={icon({ name: 'heart' })} /></div>
+export const locationSquareIcon = <div className={`${styles.bgIcon} ${styles.purpleIcon}`}>{locationIcon}</div>
+export const postSquareIcon = <div className={`${styles.bgIcon} ${styles.yellowIcon}`}>{postIcon}</div>
+export const messageSquareIcon = <div className={`${styles.bgIcon} ${styles.blueIcon}`}>{messageIcon}</div>
+export const lockSquareIcon = <div className={`${styles.bgIcon} ${styles.greenIcon}`}><FontAwesomeIcon icon={icon({ name: 'lock' })} /></div>
+export const eyeSquareIcon = <div className={`${styles.bgIcon} ${styles.pinkIcon}`}><FontAwesomeIcon icon={icon({ name: 'eye' })} /></div>
+export const mobileSquareIcon = <div className={`${styles.bgIcon} ${styles.purpleIcon}`}><FontAwesomeIcon icon={icon({ name: 'mobile' })} /></div>
+
 
 export function ButtonLight({ className, ...props }) {
-    return <button disabled={props.disabled} className={`${styles.button} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? spinnerIcon : props.children}</button>
+    return <button disabled={props.disabled} className={`${styles.button} ${props.large ? styles.large : undefined} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? spinnerIcon : props.children}</button>
 }
 
 export function ButtonDark({ className, ...props }) {
-    return <button disabled={props.disabled} className={`${styles.buttonDark} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? spinnerIcon : props.children}</button>
+    return <button disabled={props.disabled} className={`${styles.buttonDark} ${props.large ? styles.large : undefined} ${className !== undefined ? className : ""}`} {...props}>{props.loading === "true" ? spinnerIcon : props.children}</button>
 }
 
 export function PostActionButton({ className, ...props }) {
@@ -55,7 +64,7 @@ export function Textarea({ className, ...props }) {
 }
 
 export function Container({ className, ...props }) {
-    return <div style={props.style} className={styles.container}>{props.children}</div>
+    return <div style={props.style} className={`${styles.container} ${props.authForm ? styles.authContainer : undefined}`}>{props.children}</div>
 }
 
 // Assigns a color to the profile picture based on the first letter of the user's name
