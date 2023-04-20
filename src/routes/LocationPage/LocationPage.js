@@ -5,7 +5,7 @@ import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import { ButtonLight, ButtonDark, Input, Label, Container } from "../../components/Utils/Utils";
 import styles from "./LocationPage.module.css";
-import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import GoogleMaps from "../../components/GoogleMaps/GoogleMaps";
 import MapSearch from "../../components/MapSearch/MapSearch";
 import MapErrorBoundary from "../../components/MapErrorBoundary/MapErrorBoundary";
 
@@ -54,7 +54,7 @@ const LocationPage = props => {
             {userLocation && <>
                 <div className={styles.map}>
                     <MapErrorBoundary>
-                        <GoogleMap radius={radius} userLocation={userLocation} displayMarker={true} />
+                        <GoogleMaps radius={radius} userLocation={userLocation} displayMarker={true} />
                     </MapErrorBoundary>
                 </div>
                 <form className={styles.form} onSubmit={e => handleSubmit(e)}>

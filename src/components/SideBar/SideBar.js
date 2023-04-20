@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import MyPost from "../../components/MyPost/MyPost";
 import MobileMenu from "../../components/MobileMenu/MobileMenu";
-import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import GoogleMaps from "../GoogleMaps/GoogleMaps";
 import MapErrorBoundary from "../../components/MapErrorBoundary/MapErrorBoundary";
 import { ButtonDark, editIcon, plusIcon } from "../../components/Utils/Utils";
 import styles from "./SideBar.module.css";
@@ -47,7 +47,7 @@ const SideBar = ({ loading }) => {
                         </div>
                         <div className={`${styles.infoBody} ${styles.infoBodyMap}`}>
                             <MapErrorBoundary>
-                                <GoogleMap sideBar className={styles.map} radius={+communityContext.user.radius} userLocation={communityContext.user.location} displayMarker={true} />
+                                <GoogleMaps sideBar className={styles.map} radius={+communityContext.user.radius} userLocation={communityContext.user.location} displayMarker={true} />
                             </MapErrorBoundary>
                             <p className={styles.mapSubtitle}>Results are being shown for this area</p>
                         </div>

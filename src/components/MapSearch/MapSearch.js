@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoadScript, Autocomplete } from "@react-google-maps/api";
+import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import { PropTypes } from 'prop-types';
 import config from '../../config';
 
@@ -8,10 +8,16 @@ import styles from "./MapSearch.module.css";
 const MapSearch = props => {
   const [searchResult, setSearchResult] = useState(null)
 
-  const { isLoaded } = useLoadScript({
-    key: process.env.REACT_APP_GMAP_API_KEY,
+  // const { isLoaded } = useLoadScript({
+  //   key: process.env.REACT_APP_GMAP_API_KEY,
+  //   libraries: config.GMAPS_LIBRARIES
+  // });
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.REACT_APP_GMAP_API_KEY,
     libraries: config.GMAPS_LIBRARIES
-  });
+  })
 
   const onLoad = result => {
     setSearchResult(result)
@@ -19,7 +25,6 @@ const MapSearch = props => {
 
   const onPlaceChanged = () => {
     if (searchResult !== null) {
-      console.log(searchResult.getPlace())
       const result = searchResult.getPlace()
       const lat = result.geometry.location.lat()
       const lng = result.geometry.location.lng()
@@ -32,15 +37,15 @@ const MapSearch = props => {
 
   return (
     <div>
-      {!isLoaded ? ('loading') :
-        (
-          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-            <input
-              className={styles.input}
-              placeholder="Type to search"
-            />
-          </Autocomplete>
-        )}
+      {!isLoaded ? ('loading') : (
+
+        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+          <input
+            className={styles.input}
+            placeholder="Type to search"
+          />
+        </Autocomplete>
+      )}
     </div>)
 };
 

@@ -5,7 +5,7 @@ import { ButtonDark, ButtonLight, circleIcon, messageIconHollow } from "../../co
 import ChatService from "../../services/chat-service";
 import CommUnityContext from "../../contexts/context";
 import Task from "../../components/Task/Task";
-import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import GoogleMap from "../../components/GoogleMaps/GoogleMaps";
 import { Textarea, Container } from "../../components/Utils/Utils";
 
 import styles from "./PostDetailPage.module.css";

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import CommUnityContext from "../../contexts/context";
 import UserDataService from "../../services/user-data-service";
 import Task from "../../components/Task/Task"
-import GoogleMap from "../../components/GoogleMap/GoogleMap";
+import GoogleMap from "../../components/GoogleMaps/GoogleMaps";
 import { ButtonLight, ButtonDark, Container, circleIcon } from "../../components/Utils/Utils";
 import styles from "./MyPostPage.module.css";
 import { DateTime } from 'luxon';

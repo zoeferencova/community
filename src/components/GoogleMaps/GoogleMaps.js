@@ -1,11 +1,10 @@
 import React from "react";
-import { GoogleMap, Marker, Circle, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, Circle, useJsApiLoader } from "@react-google-maps/api";
 import config from "../../config";
 
-import styles from "./GoogleMap.module.css"
-import { PropTypes } from 'prop-types';
+import styles from "./GoogleMaps.module.css"
 
-export default function GoogleMaps(props) {
+const GoogleMaps = props => {
     const defaultRadius = 1609.344;
     const defaultLocation = { lat: 40.7450271, lng: -73.8858674 }
     const radius = parseFloat(props.radius) * 1609.344 || defaultRadius;
@@ -24,10 +23,21 @@ export default function GoogleMaps(props) {
         disableDefaultUI: true
     }
 
-    const { isLoaded } = useLoadScript({
-        key: process.env.REACT_APP_GMAP_API_KEY,
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: process.env.REACT_APP_GMAP_API_KEY,
         libraries: config.GMAPS_LIBRARIES
-    });
+    })
+
+    // const [map, setMap] = useState(null)
+
+    // const onLoad = useCallback(function callback(map) {
+    //     setMap(map)
+    // }, [])
+
+    // const onUnmount = useCallback(function callback(map) {
+    //     setMap(null)
+    // }, [])
 
     return (
         <div>
@@ -39,6 +49,8 @@ export default function GoogleMaps(props) {
                     center={userLocation}
                     zoom={zoom}
                     options={mapOptions}
+                // onLoad={onLoad}
+                // onUnmount={onUnmount}
                 >
                     {props.displayMarker &&
                         <Marker position={userLocation} />
@@ -54,8 +66,4 @@ export default function GoogleMaps(props) {
     )
 }
 
-GoogleMaps.propTypes = {
-    userLocation: PropTypes.objectOf(PropTypes.number),
-    radius: PropTypes.number,
-    displayMarker: PropTypes.bool
-}
+export default React.memo(GoogleMaps)
