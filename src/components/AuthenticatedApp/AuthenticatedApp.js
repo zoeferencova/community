@@ -142,7 +142,6 @@ export default class AuthenticatedApp extends Component {
 
   // Takes updated post values and replaces post with matching ID with new values, setting new user_posts values to state
   updatePost = updatedPost => {
-    console.log(updatedPost)
     const newPosts = this.state.user_posts.map(post => {
       return post.id === updatedPost.id ? updatedPost : post
     })
