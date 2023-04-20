@@ -9,7 +9,7 @@ const MapSearch = props => {
   const [searchResult, setSearchResult] = useState(null)
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GMAP_API_KEY,
+    key: process.env.REACT_APP_GMAP_API_KEY,
     libraries: config.GMAPS_LIBRARIES
   });
 
